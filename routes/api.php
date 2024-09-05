@@ -22,3 +22,5 @@ Route::post('/submitbrand', [BrandController::class, 'submitBrand']);
 Route::get('/shopupdateform/{id}', [BrandController::class, 'update']);
 Route::put('/brand/update/{id}', [BrandController::class, 'updateBrand']);
 Route::get('/brand/delete/{id}', [BrandController::class, 'deleteBrand']);
+
+//measurement routes
