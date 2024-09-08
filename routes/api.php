@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\MeasurementController;
+use App\Http\Controllers\ShopCategoryController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +24,17 @@ Route::post('/submitbrand', [BrandController::class, 'submitBrand']);
 Route::get('/shopupdateform/{id}', [BrandController::class, 'update']);
 Route::put('/brand/update/{id}', [BrandController::class, 'updateBrand']);
 Route::get('/brand/delete/{id}', [BrandController::class, 'deleteBrand']);
+
+//measurement routes
+Route::get('/addbrand', [MeasurementController::class, 'index']);
+Route::post('/submitmeasurement', [MeasurementController::class, 'addMeasurement']);
+Route::get('/getmeasurement/{id}', [MeasurementController::class, 'getMeasurement']);
+Route::put('/measurement/update/{id}', [MeasurementController::class, 'updateMeasurement']);
+Route::get('/measurement/delete/{id}', [MeasurementController::class, 'deleteMeasurement']);
+
+//measurement routes
+Route::get('/addshopcategory', [ShopCategoryController::class, 'index']);
+Route::post('/submitshopcategory', [ShopCategoryController::class, 'insertShopCategory']);
+Route::get('/getshopcategory/{id}', [ShopCategoryController::class, 'getShopCategory']);
+Route::put('/shopcategory/update/{id}', [ShopCategoryController::class, 'updateShopCategory']);
+Route::get('/shopcategory/delete/{id}', [ShopCategoryController::class, 'deleteShopCategory']);
