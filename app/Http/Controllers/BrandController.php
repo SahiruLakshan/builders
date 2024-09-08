@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 class BrandController extends Controller
 {
 
+    public function brand()
+    {
+        return view('admin.addbrand');
+    }
+
     public function index()
     {
         return response()->json([

@@ -1,0 +1,38 @@
+/* General form styling */
+.form-horizontal {
+  font-size: 14px; /* Increase font size for the entire form */
+}
+
+/* Label and input field styling */
+.form-group label {
+  font-size: 15px; /* Increase font size of labels */
+}
+
+.form-control {
+  font-size: 12px; /* Increase font size of input text */
+  padding: 2px; /* Increase padding for larger field size */
+  height: 30px; /* Height of input fields */
+}
+
+/* Select dropdown styling */
+.form-control.select-box {
+  font-size: 12px;
+  padding: 12px;
+  height: 40px;
+}
+
+/* Textarea styling */
+textarea.form-control {
+  font-size: 14px;
+}
+
+/* Button styling */
+.btn {
+  font-size: 14px;
+  padding: 10px 15px;
+}
+
+/* Adjusting the width of the form fields */
+.form-control {
+  width: 100%; /* Full width of the form */
+}
