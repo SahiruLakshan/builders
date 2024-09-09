@@ -1055,7 +1055,7 @@
                 <h3>Add Shop Catogories</h3>
                 <section>
                   <div class="row">
-                    <div class="col-lg-12 col-md-12">
+                    <h class="col-lg-12 col-md-12">
                       <div class="card">
                         <div class="card-body">
                           <div class="mb-4">
@@ -1073,12 +1073,46 @@
                             </select>
                           </div>
 
+
+
                         </div>
                       </div>
-                    </div>
+                      <div class="row">
+                        <!-- Start Time -->
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="form-label" for="start_time">Start Time</label>
+                            <input type="time" class="form-control" id="start_time" required />
+                            <div class="invalid-feedback">
+                              Please enter a valid start time.
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Close Time -->
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="form-label" for="close_time">Close Time</label>
+                            <input type="time" class="form-control" id="close_time" required />
+                            <div class="invalid-feedback">
+                              Please enter a valid close time.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Shop Name -->
+                      <div class="col-md-6">
+                        <div class="control-group form-group">
+                          <label class="form-label" for="shop_name">Location</label>
+                          <input type="text" class="form-control" id="location" placeholder="Enter Location" required />
+                          <div class="invalid-feedback">
+                            Enter Your Location
+                          </div>
+                        </div>
+                      </div>
                   </div>
-                </section>
               </div>
+              </section>
             </div>
           </div>
         </div>
