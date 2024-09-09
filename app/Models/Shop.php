@@ -15,13 +15,15 @@ class Shop extends Model
         'email',
         'address',
         'district',
+        'p_number',
         'city',
+        'category',
         'location',
         'start_time',
         'end_time',
         'fb_link',
         'br',
-        'logo_img',
+        'shop_img',
         
     ];
 }
