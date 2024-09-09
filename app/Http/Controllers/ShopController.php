@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\District;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Shop;
+use App\Models\City;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -11,10 +13,9 @@ class ShopController extends Controller
 {
     public function index()
     {
-        return response()->json([
-            'message' => 'show shop add form',
-            'status' => 200
-        ]);
+        $districts = District::all();
+        $city = City::all();
+        return view('admin.addshop', compact('districts','city'));
     }
 
     public function submitShop(Request $request)
