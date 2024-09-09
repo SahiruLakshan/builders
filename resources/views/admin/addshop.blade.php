@@ -976,9 +976,9 @@
                             Select District
                           </option>
                           @foreach($districts as $district)
-                          <option value="{{ $district->id }}">
-                            {{ $district->name }}
-                          </option>
+                            <option value="{{ $district->dis_id }}">
+                              {{ $district->dis_name }}
+                            </option>
                           @endforeach
                         </select>
                         <div class="invalid-feedback">
@@ -992,10 +992,12 @@
                       <div class="form-group">
                         <label class="form-label" for="city">Select City</label>
                         <select name="city" id="city" class="form-control form-select select2"
-                          data-bs-placeholder="Select City" disabled required>
-                          <option value="" disabled selected>
-                            Select City
-                          </option>
+                          data-bs-placeholder="Select City" required>
+                          @foreach ($city as $cities)
+                            <option value="{{ $cities->ds_id }}" disabled selected>
+                              {{ $cities->ds_name }}
+                            </option>
+                          @endforeach
                         </select>
                         <div class="invalid-feedback">
                           Please select a city.
