@@ -796,7 +796,7 @@
           </aside>
         </div>
         <!-- main-sidebar -->
-      </div>
+      </div></div>
 
       <!-- main-content -->
       {{-- <div class="main-content app-content"> --}}
