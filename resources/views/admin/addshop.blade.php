@@ -994,7 +994,7 @@
                         <select name="city" id="city" class="form-control form-select select2"
                           data-bs-placeholder="Select City" required>
                           @foreach ($city as $cities)
-                            <option value="{{ $cities->ds_id }}" disabled selected>
+                            <option value="{{ $cities->ds_name }}">
                               {{ $cities->ds_name }}
                             </option>
                           @endforeach

@@ -32,6 +32,7 @@ Route::name('admin.')->group(function () {
 
 });
 
+
 // //shop routes
 Route::get('/addshop', [ShopController::class, 'index']);
 Route::post('/submitshop', [ShopController::class, 'submitshop']);

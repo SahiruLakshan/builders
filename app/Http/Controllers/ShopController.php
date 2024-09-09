@@ -64,8 +64,6 @@ class ShopController extends Controller
             //     $data['logo_img'] = $filename;
             // }
 
-
-
             $shop = new Shop($data); //save shop data
             $shop->save();
 
