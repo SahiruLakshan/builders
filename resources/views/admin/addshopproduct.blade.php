@@ -125,21 +125,57 @@
                             </div>
 
                             <!-- Product Table -->
-                            <table class="table table-bordered" id="productTable">
-                                <thead>
-                                    <tr>
-                                        <th>Product Name</th>
-                                        <th>Brand</th>
-                                        <th>Category</th>
-                                        <th>SubCategory</th>
-                                        <th>Quantity</th>
-                                        <th>Measurement</th>
-                                        <th>Color</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
+                            <!-- Row -->
+                            <div class="row row-sm">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4>Shop Product</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table border-top-0 table-bordered text-nowrap border-bottom" id="basic-datatable">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="wd-25p border-bottom-0">Product Name</th>
+                                                            <th class="wd-15p border-bottom-0">Brand</th>
+                                                            <th class="wd-20p border-bottom-0">Category</th>
+                                                            <th class="wd-15p border-bottom-0">SubCategory</th>
+                                                            <th class="wd-10p border-bottom-0">Quantity</th>
+                                                            <th class="wd-25p border-bottom-0">Measurement</th>
+                                                            <th class="wd-25p border-bottom-0">Color</th>
+                                                            <th class="wd-25p border-bottom-0">Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- Data will be added dynamically via AJAX or JS -->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                               <!-- Include DataTables CSS and JS -->
+                               <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
+                               <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+                               
+                            <!-- Initialize DataTable -->
+                            <script>
+                                $(document).ready(function() {
+                                    $('#basic-datatable').DataTable({
+                                        // Optional settings
+                                        paging: true,       // Enable pagination
+                                        searching: true,    // Enable search/filter
+                                        ordering: true,     // Enable sorting
+                                        columnDefs: [
+                                            { orderable: false, targets: 7 } // Disable sorting for actions column
+                                        ]
+                                    });
+                                });
+                            </script>
+                            
+				<!-- End Row -->
 
                             <!-- Submit Button -->
                             <div class="form-group mb-0 mt-3 justify-content-end">
