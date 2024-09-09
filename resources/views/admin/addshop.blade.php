@@ -1367,72 +1367,70 @@
   </div>
   <!-- End Page -->
 
-  <!-- Back-to-top -->
+  <!-- Back-to-top ok -->
   <a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
 
-  <!-- JQuery min js -->
+  <!-- JQuery min js  ok-->
   <script src="../assets/plugins/jquery/jquery.min.js"></script>
 
-  <!-- Bootstrap Bundle js -->
+  <!-- Bootstrap Bundle js ok-->
   <script src="../assets/plugins/bootstrap/js/popper.min.js"></script>
   <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
-  <!--Internal  Chart.bundle js -->
+  <!--Internal  Chart.bundle js ok-->
   <script src="../assets/plugins/chart.js/Chart.bundle.min.js"></script>
 
-  <!-- Moment js -->
+  <!-- Moment js ok-->
   <script src="../assets/plugins/moment/moment.js"></script>
 
-  <!--Internal Sparkline js -->
+  <!--Internal Sparkline js ok-->
   <script src="../assets/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
 
-  <!-- Moment js -->
+  <!-- Moment js ok-->
   <script src="../assets/plugins/raphael/raphael.min.js"></script>
 
-  <!--Internal Apexchart js-->
+  <!--Internal Apexchart js ok-->
   <script src="../assets/js/apexcharts.js"></script>
 
-  <!-- Rating js-->
+  <!-- Rating js ok-->
   <script src="../assets/plugins/ratings-2/jquery.star-rating.js"></script>
   <script src="../assets/plugins/ratings-2/star-rating.js"></script>
 
-  <!--Internal  Perfect-scrollbar js -->
+  <!--Internal  Perfect-scrollbar js ok-->
   <script src="../assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
   <script src="../assets/plugins/perfect-scrollbar/p-scroll.js"></script>
 
-  <!-- Eva-icons js -->
+  <!-- Eva-icons js ok -->
   <script src="../assets/js/eva-icons.min.js"></script>
 
-  <!-- right-sidebar js -->
+  <!-- right-sidebar js ok-->
   <script src="../assets/plugins/sidebar/sidebar.js"></script>
   <script src="../assets/plugins/sidebar/sidebar-custom.js"></script>
 
-  <!-- Sticky js -->
+  <!-- Sticky js ok -->
   <script src="../assets/js/sticky.js"></script>
   <script src="../assets/js/modal-popup.js"></script>
 
-  <!-- Left-menu js-->
+  <!-- Left-menu js ok-->
   <script src="../assets/plugins/side-menu/sidemenu.js"></script>
 
-  <!-- Internal Map -->
+  <!-- Internal Map ok-->
   <script src="../assets/plugins/jqvmap/jquery.vmap.min.js"></script>
   <script src="../assets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 
-  <!--Internal  index js -->
+  <!--Internal  index js ok-->
   <script src="../assets/js/index.js"></script>
 
-  <!--themecolor js-->
+  <!--themecolor js ok-->
   <script src="../assets/js/themecolor.js"></script>
 
-  <!-- Apexchart js-->
+  <!-- Apexchart js -->
   <script src="../assets/js/apexcharts.js"></script>
   <script src="../assets/js/jquery.vmap.sampledata.js"></script>
 
-  <!-- custom js -->
+  <!-- custom js  ok-->
   <script src="../assets/js/custom.js"></script>
 
-  <!-- Back-to-top -->
-  <a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
 
   <!-- JQuery min js -->
   <script src="../assets/plugins/jquery/jquery.min.js"></script>
