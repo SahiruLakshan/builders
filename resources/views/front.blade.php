@@ -488,7 +488,7 @@
                   </a>
                   <ul class="slide-menu">
                     <li class="side-menu__label1">
-                      <a href="javascript:void(0);">Shops</a>
+                      <a href="javascript:void(0);"></a>
                     </li>
                     <li>
                       <a class="slide-item" href="">
@@ -496,7 +496,7 @@
                       </a>
                     </li>
                     <li>
-                      <a class="slide-item" href="{{route('addshopproduct')}}"
+                      <a class="slide-item" href=""
                         >Add Shop Products
                       </a>
                     </li>
@@ -540,7 +540,7 @@
                       <a href="javascript:void(0);">Shop Catogory</a>
                     </li>
                     <li>
-                      <a class="slide-item" href="addShopCatogory.html"
+                      <a class="slide-item" href="{{route('addshopcatogory')}}"
                         >Add New Catogory
                       </a>
                     </li>
@@ -1195,43 +1195,42 @@
           </div>
         </footer>
 
-   <!-- Back-to-top -->
-<a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
+    <!-- Back-to-top -->
+    <a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
 
-<!-- JQuery min js -->
-<script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- JQuery min js -->
+    <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
 
-<!-- Bootstrap Bundle js -->
-<script src="{{ asset('assets/plugins/bootstrap/js/popper.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-
-<!-- Internal Chart.bundle js -->
+    <!-- Bootstrap Bundle js -->
+    <script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+<!--Internal  Chart.bundle js -->
 <script src="{{ asset('assets/plugins/chart.js/Chart.bundle.min.js') }}"></script>
 
 <!-- Moment js -->
 <script src="{{ asset('assets/plugins/moment/moment.js') }}"></script>
 
-<!-- Internal Sparkline js -->
+<!--Internal Sparkline js -->
 <script src="{{ asset('assets/plugins/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
 
 <!-- Raphael js -->
 <script src="{{ asset('assets/plugins/raphael/raphael.min.js') }}"></script>
 
-<!-- Internal Apexchart js -->
+<!--Internal Apexchart js-->
 <script src="{{ asset('assets/js/apexcharts.js') }}"></script>
 
-<!-- Rating js -->
+<!-- Rating js-->
 <script src="{{ asset('assets/plugins/ratings-2/jquery.star-rating.js') }}"></script>
 <script src="{{ asset('assets/plugins/ratings-2/star-rating.js') }}"></script>
 
-<!-- Internal Perfect-scrollbar js -->
+<!--Internal Perfect-scrollbar js -->
 <script src="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/perfect-scrollbar/p-scroll.js') }}"></script>
 
 <!-- Eva-icons js -->
 <script src="{{ asset('assets/js/eva-icons.min.js') }}"></script>
 
-<!-- Right-sidebar js -->
+<!-- right-sidebar js -->
 <script src="{{ asset('assets/plugins/sidebar/sidebar.js') }}"></script>
 <script src="{{ asset('assets/plugins/sidebar/sidebar-custom.js') }}"></script>
 
@@ -1239,34 +1238,46 @@
 <script src="{{ asset('assets/js/sticky.js') }}"></script>
 <script src="{{ asset('assets/js/modal-popup.js') }}"></script>
 
-<!-- Left-menu js -->
+<!-- Left-menu js-->
 <script src="{{ asset('assets/plugins/side-menu/sidemenu.js') }}"></script>
 
 <!-- Internal Map -->
 <script src="{{ asset('assets/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
 
-<!-- Internal index js -->
+<!--Internal index js -->
 <script src="{{ asset('assets/js/index.js') }}"></script>
 
-<!-- Themecolor js -->
+<!-- themecolor js -->
 <script src="{{ asset('assets/js/themecolor.js') }}"></script>
 
-<!-- Select2 js -->
+<!-- Apexchart js -->
+<script src="{{ asset('assets/js/apexcharts.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.vmap.sampledata.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<!--Internal Fancy uploader js-->
+<script src="../assets/plugins/fancyuploder/jquery.ui.widget.js"></script>
+<script src="../assets/plugins/fancyuploder/jquery.fileupload.js"></script>
+<script src="../assets/plugins/fancyuploder/jquery.iframe-transport.js"></script>
+<script src="../assets/plugins/fancyuploder/jquery.fancy-fileupload.js"></script>
+<script src="../assets/plugins/fancyuploder/fancy-uploader.js"></script>
 
-<!-- Internal Fancy uploader js -->
-<script src="{{ asset('assets/plugins/fancyuploder/jquery.ui.widget.js') }}"></script>
-<script src="{{ asset('assets/plugins/fancyuploder/jquery.fileupload.js') }}"></script>
-<script src="{{ asset('assets/plugins/fancyuploder/jquery.iframe-transport.js') }}"></script>
-<script src="{{ asset('assets/plugins/fancyuploder/jquery.fancy-fileupload.js') }}"></script>
-<script src="{{ asset('assets/plugins/fancyuploder/fancy-uploader.js') }}"></script>
 
-<!-- Internal Form elements -->
-<script src="{{ asset('assets/js/form-elements.js') }}"></script>
+    <!-- DATA TABLE JS-->
+    <script src="../assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="../assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
+    <script src="../assets/plugins/datatable/js/dataTables.buttons.min.js"></script>
+    <script src="../assets/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
+    <script src="../assets/plugins/datatable/js/jszip.min.js"></script>
+    <script src="../assets/plugins/datatable/pdfmake/pdfmake.min.js"></script>
+    <script src="../assets/plugins/datatable/pdfmake/vfs_fonts.js"></script>
+    <script src="../assets/plugins/datatable/js/buttons.html5.min.js"></script>
+    <script src="../assets/plugins/datatable/js/buttons.print.min.js"></script>
+    <script src="../assets/plugins/datatable/js/buttons.colVis.min.js"></script>
+    <script src="../assets/plugins/datatable/dataTables.responsive.min.js"></script>
+    <script src="../assets/plugins/datatable/responsive.bootstrap5.min.js"></script>
 
-<!-- Custom js -->
-<script src="{{ asset('assets/js/custom.js') }}"></script>
+    
 
 <script>
   $(document).ready(function () {
