@@ -98,40 +98,8 @@
               </div>
             </div>
           </div>
-
-          <!-- row closed -->
-
-          <!-- row opened -->
-
-          <!-- row closed -->
-
-          <!-- row opened -->
-
-          <!-- row close -->
-
-          <!-- row opened -->
-
-          <!-- /row -->
         </div>
-        <!-- /Container -->
-      </div>
-      <!-- /main-content -->
-
-      <!-- Sidebar-right-->
-
-      <!--/Sidebar-right-->
-
-      <!-- Message Modal -->
-
-      <!--Video Modal -->
-     
-      <!-- modal -->
-
-      <!-- Audio Modal -->
-    
-      <!-- modal -->
-
-      
+      </div> 
     </div>
     <!-- End Page -->
 
