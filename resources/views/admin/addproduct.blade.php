@@ -26,7 +26,7 @@
                   <form class="form-horizontal" id="addbarand">
                     <!-- Brand Name Field -->
                     <div class="form-group">
-                      <label for="brand_name">Brand Name*</label>
+                      <label for="brand_name">Brand Name</label>
                       <input
                         type="text"
                         class="form-control"
@@ -42,7 +42,7 @@
 
                     <!-- Company Name Field -->
                     <div class="form-group">
-                      <label for="company_name">Company Name*</label>
+                      <label for="company_name">Company Name</label>
                       <input
                         type="text"
                         class="form-control"
@@ -58,7 +58,7 @@
 
                     <!-- Country of Origin Field -->
                     <div class="form-group">
-                      <label for="country_of_origin">Country Of Origin*</label>
+                      <label for="country_of_origin">Country Of Origin</label>
                       <input
                         type="text"
                         class="form-control"
@@ -90,7 +90,7 @@
 
                     <!-- Email Address Field -->
                     <div class="form-group">
-                      <label for="email">Email Address*</label>
+                      <label for="email">Email Address</label>
                       <input
                         type="email"
                         class="form-control"
