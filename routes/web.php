@@ -20,23 +20,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/addbrand', [BrandController::class, 'brand'])->name('addbrand');
-Route::get('/addshopproduct', function () {
-    return view('admin.addshopproduct');
-})->name('addshopproduct');
-Route::get('/addshopcatogory', function () {
-    return view('admin.addshopcatogory');
-})->name('addshopcatogory');
-Route::get('/addshop', function () {
-    return view('admin.addshop');
-})->name('addshop');
+// Route::get('/addbrand', [BrandController::class, 'brand'])->name('addbrand');
+// Route::get('/addshopproduct', function () {
+//     return view('admin.addshopproduct');
+// })->name('addshopproduct');
+// Route::get('/addshopcatogory', function () {
+//     return view('admin.addshopcatogory');
+// })->name('addshopcatogory');
+// Route::get('/addshop', function () {
+//     return view('admin.addshop');
+// })->name('addshop');
 
-Route::name('admin.')->group(function () {
-    Route::get('/admindashboard', function () {
-        return view('admin.index');
-    })->name('admindashboard');
+// Route::name('admin.')->group(function () {
+//     Route::get('/admindashboard', function () {
+//         return view('admin.index');
+//     })->name('admindashboard');
 
-});
+// });
 
 
 // //shop routes
@@ -54,7 +54,7 @@ Route::put('/brand/update/{id}', [BrandController::class, 'updateBrand']);
 Route::get('/brand/delete/{id}', [BrandController::class, 'deleteBrand']);
 
 // //measurement routes
-Route::get('/addbrand', [MeasurementController::class, 'index']);
+//Route::get('/addbrand', [MeasurementController::class, 'index']);
 Route::post('/submitmeasurement', [MeasurementController::class, 'addMeasurement']);
 Route::get('/getmeasurement/{id}', [MeasurementController::class, 'getMeasurement']);
 Route::put('/measurement/update/{id}', [MeasurementController::class, 'updateMeasurement']);

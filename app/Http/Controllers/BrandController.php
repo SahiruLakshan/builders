@@ -10,17 +10,14 @@ use Illuminate\Http\Request;
 class BrandController extends Controller
 {
 
-    public function brand()
-    {
-        return view('admin.addbrand');
-    }
+    // public function brand()
+    // {
+    //     return view('admin.addbrand');
+    // }
 
     public function index()
     {
-        return response()->json([
-            'message' => 'show shop add form',
-            'status' => 200
-        ]);
+        return view('admin.addbrand');
     }
 
     public function submitBrand(Request $request)
