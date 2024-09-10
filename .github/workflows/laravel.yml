@@ -29,7 +29,7 @@ jobs:
             fi
 
             # Navigate to the project directory
-            cd /var/www/laravel-project
+            cd /home/local/builders/
 
 
             # Install dependencies via Composer
