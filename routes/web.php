@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/addbrand', [BrandController::class, 'brand'])->name('addbrand');
+// Route::get('/addbrand', [BrandController::class, 'brand'])->name('addbrand');
 Route::get('/addshopproduct', function () {
     return view('admin.addshopproduct');
 })->name('addshopproduct');
@@ -66,4 +66,5 @@ Route::post('/submitshopcategory', [ShopCategoryController::class, 'insertShopCa
 Route::get('/getshopcategory/{id}', [ShopCategoryController::class, 'getShopCategory']);
 Route::put('/shopcategory/update/{id}', [ShopCategoryController::class, 'updateShopCategory']);
 Route::get('/shopcategory/delete/{id}', [ShopCategoryController::class, 'deleteShopCategory']);
-// require __DIR__ . '/auth.php';
+
+require __DIR__ . '/auth.php';
