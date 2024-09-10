@@ -40,9 +40,9 @@ jobs:
             # php artisan key:generate
 
             # Set directory permissions
-            chown -R www-data:www-data /var/www/laravel-project
-            chmod -R 775 /var/www/laravel-project/storage
-            chmod -R 775 /var/www/laravel-project/bootstrap/cache
+            chown -R www-data:www-data /home/local/builders/
+            chmod -R 775 /home/local/builders/storage
+            chmod -R 775 /home/local/builders/bootstrap/cache
 
             # Run database migrations
             # php artisan migrate --force
