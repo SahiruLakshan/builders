@@ -25,7 +25,7 @@ jobs:
               git clone https://${{secrets.pat}}@github.com/SahiruLakshan/builders.git /home/local/builders/
             else
               cd /home/local/builders/
-              git pull origin master
+              git pull origin main
             fi
 
             # Navigate to the project directory
