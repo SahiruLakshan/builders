@@ -20,6 +20,40 @@
 
     <!-- Title -->
     <title>Builder.lk</title>
+
+  <!-- Icons css -->
+  <link href="../assets/css/icons.css" rel="stylesheet">
+
+  <!-- Bootstrap css -->
+  <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- style css -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+  <!--- Animations css-->
+  <link href="../assets/css/animate.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/img/brand/favicon.png" type="image/x-icon" />
+
+  <!-- Icons css -->
+  <link href="../assets/css/icons.css" rel="stylesheet" />
+
+  <!-- Bootstrap css -->
+  <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Import jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Import SumoSelect CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/sumoselect/3.0.2/sumoselect.min.css" rel="stylesheet" />
+
+  <!-- Import SumoSelect JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sumoselect/3.0.2/jquery.sumoselect.min.js"></script>
+
+  <link href="../assets/css/style.css" rel="stylesheet" />
+
+  <!--- Animations css-->
+  <link href="../assets/css/animate.css" rel="stylesheet" />
+
   <!-- Favicon -->
   <link
     rel="icon"
@@ -491,7 +525,7 @@
                       <a href="javascript:void(0);"></a>
                     </li>
                     <li>
-                      <a class="slide-item" href="">
+                      <a class="slide-item" href="{{route('addshop')}}">
                         Add New Shops
                       </a>
                     </li>

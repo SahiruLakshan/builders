@@ -27,9 +27,9 @@ Route::get('/addshopproduct', function () {
 Route::get('/addshopcatogory', function () {
     return view('admin.addshopcatogory');
 })->name('addshopcatogory');
-// Route::get('/addshop', function () {
-//     return view('admin.addshop');
-// })->name('addshop');
+Route::get('/addshop', function () {
+    return view('admin.addshop');
+})->name('addshop');
 
 Route::name('admin.')->group(function () {
     Route::get('/admindashboard', function () {

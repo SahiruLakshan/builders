@@ -11,7 +11,7 @@
           <!-- row -->
           <div
             class="row row-sm d-flex justify-content-center align-items-center"
-            style="height: 450px"
+             style="height: 450px"
           >
             <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12">
               <div class="card box-shadow-0">
