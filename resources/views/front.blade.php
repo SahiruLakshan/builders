@@ -488,7 +488,7 @@
                       <a href="javascript:void(0);">Brand</a>
                     </li>
                     <li>
-                      <a class="slide-item" href="{{route('addbrand')}}">
+                      <a class="slide-item" href='/addbrand'>
                         Add New Brand
                       </a>
                     </li>
@@ -1233,6 +1233,10 @@
     <a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
 
     <!-- JQuery min js -->
+    <!-- Back-to-top -->
+    <a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
+
+    <!-- JQuery min js -->
     <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
 
     <!-- Bootstrap Bundle js -->
@@ -1310,6 +1314,9 @@
     <script src="../assets/plugins/datatable/js/buttons.colVis.min.js"></script>
     <script src="../assets/plugins/datatable/dataTables.responsive.min.js"></script>
     <script src="../assets/plugins/datatable/responsive.bootstrap5.min.js"></script>
+
+
+
     
 
 <script>
