@@ -1,0 +1,55 @@
+name: Deploy Laravel Project to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      
+      - name: Deploy to Server via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: ${{ secrets.SERVER_PORT }}
+          script: |
+            # Navigate to the directory where the project is located or clone it if it doesn't exist
+            if [ ! -d "/home/local/builders/" ]; then
+              git clone https://${{secrets.pat}}@github.com/SahiruLakshan/builders.git /home/local/builders/
+            else
+              cd /home/local/builders/
+              git pull origin master
+            fi
+
+            # Navigate to the project directory
+            cd /home/local/builders/
+
+
+            # Install dependencies via Composer
+            composer install --no-interaction --prefer-dist --optimize-autoloader
+
+            # Set up the .env file
+            # cp .env.example .env
+            # php artisan key:generate
+
+            # Set directory permissions
+            chown -R www-data:www-data /home/local/builders/
+            chmod -R 775 /home/local/builders/storage
+            chmod -R 775 /home/local/builders/bootstrap/cache
+
+            # Run database migrations
+            # php artisan migrate --force
+
+            # Cache configuration and routes (optional)
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+
+            # Restart services (e.g
