@@ -24,14 +24,16 @@ class ShopController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:shops,email',
             'address' => 'required|string|max:500',
+            'p_number' => 'required|string|max:255',
             'district' => 'required|string|max:255',
             'city' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i|after:start_time',
             'fb_link' => 'nullable|url|max:255',
             'br' => 'required|string|max:255',
-            // 'logo_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'shop_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if ($validator->fails()) {                  //validation check
@@ -48,23 +50,23 @@ class ShopController extends Controller
                 'email',
                 'address',
                 'district',
+                'p_number',
                 'city',
+                'category',
                 'location',
                 'start_time',
                 'end_time',
                 'fb_link',
                 'br',
-                // 'logo_img'
+                'shop_img'
             ]);
 
-            // if ($request->hasFile('logo_img')) {    //image upload
-            //     $file = $request->file('logo_img');
-            //     $filename = time() . '_' . $file->getClientOriginalName();
-            //     $file->storeAs('public/assets/shop', $filename); 
-            //     $data['logo_img'] = $filename;
-            // }
-
-
+            if ($request->hasFile('shop_img')) {    //image upload
+                $file = $request->file('shop_img');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->storeAs('public/assets/shop', $filename); 
+                $data['shop_img'] = $filename;
+            }
 
             $shop = new Shop($data); //save shop data
             $shop->save();
