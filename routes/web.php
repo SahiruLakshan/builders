@@ -11,8 +11,10 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('admin.dashboard');
+})
+    // ->middleware(['auth', 'verified'])->name('dashboard')
+;
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -24,9 +26,9 @@ Route::middleware('auth')->group(function () {
 // Route::get('/addshopproduct', function () {
 //     return view('admin.addshopproduct');
 // })->name('addshopproduct');
-// Route::get('/addshopcatogory', function () {
-//     return view('admin.addshopcatogory');
-// })->name('addshopcatogory');
+Route::get('/addshopcatogory', function () {
+    return view('admin.addshopcatogory');
+})->name('addshopcatogory');
 // Route::get('/addshop', function () {
 //     return view('admin.addshop');
 // })->name('addshop');
@@ -37,10 +39,11 @@ Route::middleware('auth')->group(function () {
 //     })->name('admindashboard');
 
 // });
-
+//login routes
+Route::get('/login', [ShopController::class, 'login'])->name('login');
 
 // //shop routes
-Route::get('/addshop', [ShopController::class, 'index']);
+Route::get('/addshop', [ShopController::class, 'index'])->name('addshop');
 Route::post('/submitshop', [ShopController::class, 'submitshop']);
 Route::get('/shopupdateform/{id}', [ShopController::class, 'update']);
 Route::put('/shop/update/{id}', [ShopController::class, 'updateShop']);
@@ -55,6 +58,7 @@ Route::get('/brand/delete/{id}', [BrandController::class, 'deleteBrand']);
 
 // //measurement routes
 //Route::get('/addbrand', [MeasurementController::class, 'index']);
+Route::get('/addmeasurement', [MeasurementController::class, 'index']);
 Route::post('/submitmeasurement', [MeasurementController::class, 'addMeasurement']);
 Route::get('/getmeasurement/{id}', [MeasurementController::class, 'getMeasurement']);
 Route::put('/measurement/update/{id}', [MeasurementController::class, 'updateMeasurement']);
