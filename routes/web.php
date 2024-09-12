@@ -1,10 +1,20 @@
 <?php
+
+
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\ShopCategoryController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,7 +46,6 @@ Route::middleware('auth')->group(function () {
 //         return view('admin.index');
 //     })->name('admindashboard');
 
-// });
 
 
 // //shop routes
@@ -67,4 +76,11 @@ Route::get('/getshopcategory/{id}', [ShopCategoryController::class, 'getShopCate
 Route::put('/shopcategory/update/{id}', [ShopCategoryController::class, 'updateShopCategory']);
 Route::get('/shopcategory/delete/{id}', [ShopCategoryController::class, 'deleteShopCategory']);
 
-require __DIR__ . '/auth.php';
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
