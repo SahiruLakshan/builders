@@ -11,11 +11,17 @@ use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
+
+    public function login()
+    {
+        return view('login');
+    }
+
     public function index()
     {
         $districts = District::all();
         $city = City::all();
-        return view('admin.addshop', compact('districts','city'));
+        return view('admin.addshop', compact('districts', 'city'));
     }
 
     public function submitShop(Request $request)
@@ -64,7 +70,7 @@ class ShopController extends Controller
             if ($request->hasFile('shop_img')) {    //image upload
                 $file = $request->file('shop_img');
                 $filename = time() . '_' . $file->getClientOriginalName();
-                $file->storeAs('public/assets/shop', $filename); 
+                $file->storeAs('public/assets/shop', $filename);
                 $data['shop_img'] = $filename;
             }
 
@@ -84,7 +90,8 @@ class ShopController extends Controller
         }
     }
 
-    public function update($id){
+    public function update($id)
+    {
         $shop = Shop::find($id);
         if (!$shop) {
             return response()->json([
@@ -202,5 +209,5 @@ class ShopController extends Controller
         }
     }
 
-    
+
 }

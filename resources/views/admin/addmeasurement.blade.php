@@ -1,4 +1,5 @@
-@extends('front')
+@extends('admin.sidebar')
+
 @section('content')
       <!-- main-content -->
       <div class="main-content app-content">
@@ -9,8 +10,7 @@
           <!-- breadcrumb -->
           <!-- row -->
           <div
-            class="row row-sm d-flex justify-content-center align-items-center"
-            style="height: 450px"
+            class="row row-sm d-flex mt-5 justify-content-center align-items-center"
           >
             <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12">
               <div class="card box-shadow-0">
