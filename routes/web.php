@@ -30,24 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route::get('/addbrand', [BrandController::class, 'brand'])->name('addbrand');
-// Route::get('/addshopproduct', function () {
-//     return view('admin.addshopproduct');
-// })->name('addshopproduct');
-// Route::get('/addshopcatogory', function () {
-//     return view('admin.addshopcatogory');
-// })->name('addshopcatogory');
-// Route::get('/addshop', function () {
-//     return view('admin.addshop');
-// })->name('addshop');
-
-// Route::name('admin.')->group(function () {
-//     Route::get('/admindashboard', function () {
-//         return view('admin.index');
-//     })->name('admindashboard');
-
-// });
-
 
 // //shop routes
 Route::get('/addshop', [ShopController::class, 'index'])->name('addshop');
@@ -77,10 +59,4 @@ Route::get('/getshopcategory/{id}', [ShopCategoryController::class, 'getShopCate
 Route::put('/shopcategory/update/{id}', [ShopCategoryController::class, 'updateShopCategory']);
 Route::get('/shopcategory/delete/{id}', [ShopCategoryController::class, 'deleteShopCategory']);
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
