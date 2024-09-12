@@ -46,7 +46,6 @@ Route::middleware('auth')->group(function () {
 //         return view('admin.index');
 //     })->name('admindashboard');
 
-// });
 
 
 // //shop routes
@@ -84,3 +83,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
