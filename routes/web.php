@@ -7,11 +7,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+Route::get('/admindashboard', function () {
+    return view('admin.admindashboard');
 })
     // ->middleware(['auth', 'verified'])->name('dashboard')
 ;
@@ -40,10 +40,12 @@ Route::get('/addshopcatogory', function () {
 
 // });
 //login routes
-Route::get('/login', [ShopController::class, 'login'])->name('login');
+
 
 // //shop routes
+
 Route::get('/addshop', [ShopController::class, 'index'])->name('addshop');
+Route::get('/shopprofile', [ShopController::class, 'shopprofile'])->name('shopprofile');
 Route::post('/submitshop', [ShopController::class, 'submitshop']);
 Route::get('/shopupdateform/{id}', [ShopController::class, 'update']);
 Route::put('/shop/update/{id}', [ShopController::class, 'updateShop']);

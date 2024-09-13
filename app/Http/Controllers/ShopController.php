@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Storage;
 class ShopController extends Controller
 {
 
+    public function shopprofile()
+    {
+        return view('profile.profiles.shopprofile');
+    }
+
+    //login
     public function login()
     {
         return view('login');

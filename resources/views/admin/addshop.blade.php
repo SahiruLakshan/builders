@@ -1,8 +1,9 @@
-@extends('sidebar')
+@extends('admin.sidebar')
 
 @section('content')
 
 <div class="main-content app-content">
+  
     <!-- container -->
     <div class="main-container container-fluid">
       <!-- breadcrumb -->
