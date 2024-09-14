@@ -1,4 +1,4 @@
-@extends('sidebar')
+@extends('admin.sidebar')
 
 @section('content')
 
@@ -231,11 +231,7 @@
           </div>
         </div>
       </div>
-
-
     </div>
-
-  
   </div>
     <script>
       setTimeout(function () {
@@ -246,4 +242,4 @@
       }, 5000);
     </script>
 
-    @endsection
+@endsection
