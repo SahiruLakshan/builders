@@ -246,11 +246,7 @@
           </div>
         </div>
       </div>
-
-
     </div>
-
-  
   </div>
     <script>
       setTimeout(function () {
@@ -261,4 +257,4 @@
       }, 5000);
     </script>
 
-    @endsection
+@endsection
