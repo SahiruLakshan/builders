@@ -9,7 +9,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Route::get('/dashboard', function () {
@@ -32,7 +32,9 @@ Route::middleware('auth')->group(function () {
 
 
 // //shop routes
+
 Route::get('/addshop', [ShopController::class, 'index'])->name('addshop');
+Route::get('/shopprofile', [ShopController::class, 'shopprofile'])->name('shopprofile');
 Route::post('/submitshop', [ShopController::class, 'submitshop']);
 Route::get('/shopupdateform/{id}', [ShopController::class, 'update']);
 Route::put('/shop/update/{id}', [ShopController::class, 'updateShop']);
@@ -60,3 +62,5 @@ Route::put('/shopcategory/update/{id}', [ShopCategoryController::class, 'updateS
 Route::get('/shopcategory/delete/{id}', [ShopCategoryController::class, 'deleteShopCategory']);
 
 require __DIR__ . '/auth.php';
+
+

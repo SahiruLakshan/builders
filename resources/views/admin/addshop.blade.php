@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="main-content app-content">
+  
     <!-- container -->
     <div class="main-container container-fluid">
       <!-- breadcrumb -->
@@ -210,10 +211,11 @@
                             </div>
                           </div>
                         </div>
-                        <!-- Shop Name -->
+                        <div class="row">
+                          <!-- Shop Name -->
                         <div class="col-md-6">
                           <div class="control-group form-group">
-                            <label class="form-label" for="shop_name">Location</label>
+                            <label class="form-label" for="location">Location</label>
                             <input type="text" class="form-control" id="location" placeholder="Enter Location"
                               required />
                             <div class="invalid-feedback">
@@ -221,6 +223,19 @@
                             </div>
                           </div>
                         </div>
+                        <div class="col-md-6">
+                          <div class="control-group form-group">
+                            <label class="form-label" for="fb_link">FaceBook Link</label>
+                            <input type="text" class="form-control" id="location" placeholder="Enter Location"
+                              required />
+                            <div class="invalid-feedback">
+                              Enter Your FaceBook Link
+                            </div>
+                          </div>
+                        </div>
+
+                        </div>
+                        
                     </div>
 
                   </section>
