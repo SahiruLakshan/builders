@@ -83,8 +83,6 @@
                 <button type="button" id="singInButton" class="btn btn-secondary me-5 ms-5">
                   Sign In
                 </button>
-                
-
               </div>
             </div>
           </form>

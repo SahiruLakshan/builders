@@ -10,7 +10,7 @@ class ShopCategoryController extends Controller
 {
 
     public function index(){
-        return view('');
+        return view('admin.addshopcatogory');
     }
     
     public function insertShopCategory(Request $request)

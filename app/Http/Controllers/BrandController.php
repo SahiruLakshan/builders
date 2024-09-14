@@ -25,10 +25,13 @@ class BrandController extends Controller
         $validator = Validator::make($request->all(), [
             'b_name' => 'required|string|max:255',
             'company_name' => 'required|string|max:255',
+            'address' => 'required|string|max:500',
+            'description' => 'nullable|string|max:1000',
             'country_of_origin' => 'required|string|max:255',
             'production' => 'required|string|max:255',
             'brand_contact_number' => 'required|regex:/^[0-9]{10}$/',
-            'email' => 'required|email|max:255|unique:brand,email',
+            'email' => 'required|email|max:255|unique:brands,email',
+            'brand_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // optional image upload
         ]);
 
         if ($validator->fails()) {
@@ -40,7 +43,28 @@ class BrandController extends Controller
         }
 
         try {
-            $brand = new Brand($request->all());
+            // Prepare data for saving
+            $data = $request->only([
+                'b_name',
+                'company_name',
+                'address',
+                'description',
+                'country_of_origin',
+                'production',
+                'brand_contact_number',
+                'email'
+            ]);
+
+            // Handle file upload if provided
+            if ($request->hasFile('brand_img')) {
+                $file = $request->file('brand_img');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move('assets/brand', $filename); // Save image to 'storage/app/public/brand_images'
+                $data['brand_img'] = $filename;  // Store filename in the database
+            }
+
+            // Save brand data
+            $brand = new Brand($data);
             $brand->save();
 
             return response()->json([
@@ -55,6 +79,7 @@ class BrandController extends Controller
             ], 500);
         }
     }
+
 
     public function update($id)
     {
@@ -83,14 +108,17 @@ class BrandController extends Controller
             ], 404);
         }
 
-        // Validate the incoming request
+        // Validate the incoming data
         $validator = Validator::make($request->all(), [
             'b_name' => 'required|string|max:255',
             'company_name' => 'required|string|max:255',
+            'address' => 'required|string|max:500',
+            'description' => 'nullable|string|max:1000',
             'country_of_origin' => 'required|string|max:255',
             'production' => 'required|string|max:255',
             'brand_contact_number' => 'required|regex:/^[0-9]{10}$/',
-            'email' => 'required|email|max:255|unique:brand,email,' . $id,
+            'email' => 'required|email|max:255|unique:brands,email,' . $brand->id, // Ignore current brand's email for uniqueness check
+            'brand_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // optional image upload
         ]);
 
         if ($validator->fails()) {
@@ -102,8 +130,34 @@ class BrandController extends Controller
         }
 
         try {
-            // Update brand data
-            $brand->update($request->all());
+            // Update the brand data
+            $data = $request->only([
+                'b_name',
+                'company_name',
+                'address',
+                'description',
+                'country_of_origin',
+                'production',
+                'brand_contact_number',
+                'email'
+            ]);
+
+            // Check if a new image is uploaded
+            if ($request->hasFile('brand_img')) {
+                // Delete the old image if exists
+                if ($brand->brand_img && file_exists(public_path('assets/brand/' . $brand->brand_img))) {
+                    unlink(public_path('assets/brand/' . $brand->brand_img)); // Delete old image
+                }
+
+                // Save the new image
+                $file = $request->file('brand_img');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move('assets/brand', $filename);
+                $data['brand_img'] = $filename; // Store new filename in database
+            }
+
+            // Update the brand
+            $brand->update($data);
 
             return response()->json([
                 'message' => 'Brand updated successfully!',
@@ -117,6 +171,7 @@ class BrandController extends Controller
             ], 500);
         }
     }
+
 
     public function deleteBrand($id)
     {

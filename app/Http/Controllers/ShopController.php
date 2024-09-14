@@ -6,6 +6,7 @@ use App\Models\District;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Shop;
 use App\Models\City;
+use App\Models\ShopCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,74 +28,78 @@ class ShopController extends Controller
     {
         $districts = District::all();
         $city = City::all();
-        return view('admin.addshop', compact('districts', 'city'));
+        $category = ShopCategory::all();
+        return view('admin.addshop', compact('districts', 'city','category'));
     }
 
     public function submitShop(Request $request)
-    {
-        $validator = Validator::make($request->all(), [       //data validate
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:shops,email',
-            'address' => 'required|string|max:500',
-            'p_number' => 'required|string|max:255',
-            'district' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'category' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i|after:start_time',
-            'fb_link' => 'nullable|url|max:255',
-            'br' => 'required|string|max:255',
-            'shop_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+{
+    $validator = Validator::make($request->all(), [       // data validation
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255|unique:shops,email',
+        'address' => 'required|string|max:500',
+        'p_number' => 'required|string|max:255',
+        'district' => 'required|string|max:255',
+        'city' => 'required|string|max:255',
+        'category' => 'required|array',                   // multiple categories
+        'category.*' => 'string|max:255',                 // each category must be a string
+        'location' => 'required|string|max:255',
+        'start_time' => 'required|date_format:H:i',
+        'end_time' => 'required|date_format:H:i|after:start_time',
+        'fb_link' => 'nullable|url|max:255',
+        'br' => 'required|string|max:255',
+        'shop_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+
+    if ($validator->fails()) {                            // validation check
+        return response()->json([
+            'message' => 'Validation failed',
+            'errors' => $validator->errors(),
+            'status' => 422,
+        ], 422);
+    }
+
+    try {
+        $data = $request->only([
+            'name',
+            'email',
+            'address',
+            'district',
+            'p_number',
+            'city',
+            'location',
+            'start_time',
+            'end_time',
+            'fb_link',
+            'br'
         ]);
 
-        if ($validator->fails()) {                  //validation check
-            return response()->json([
-                'message' => 'Validation failed',
-                'errors' => $validator->errors(),
-                'status' => 422,
-            ], 422);
+        // Handle multiple categories
+        $data['category'] = implode(',', $request->input('category')); // convert array to comma-separated string
+
+        if ($request->hasFile('shop_img')) {              // image upload
+            $file = $request->file('shop_img');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move('assets/shop', $filename);
+            $data['shop_img'] = $filename;
         }
 
-        try {
-            $data = $request->only([
-                'name',
-                'email',
-                'address',
-                'district',
-                'p_number',
-                'city',
-                'category',
-                'location',
-                'start_time',
-                'end_time',
-                'fb_link',
-                'br',
-                'shop_img'
-            ]);
+        $shop = new Shop($data);                         // save shop data
+        $shop->save();
 
-            if ($request->hasFile('shop_img')) {    //image upload
-                $file = $request->file('shop_img');
-                $filename = time() . '_' . $file->getClientOriginalName();
-                $file->storeAs('public/assets/shop', $filename);
-                $data['shop_img'] = $filename;
-            }
-
-            $shop = new Shop($data); //save shop data
-            $shop->save();
-
-            return response()->json([
-                'message' => 'Shop submitted successfully!',
-                'status' => 200
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'An error occurred while submitting the shop details.',
-                'error' => $e->getMessage(),
-                'status' => 500
-            ], 500);
-        }
+        return response()->json([
+            'message' => 'Shop submitted successfully!',
+            'status' => 200
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'message' => 'An error occurred while submitting the shop details.',
+            'error' => $e->getMessage(),
+            'status' => 500
+        ], 500);
     }
+}
+
 
     public function update($id)
     {
@@ -134,7 +139,7 @@ class ShopController extends Controller
             'end_time' => 'required|date_format:H:i|after:start_time',
             'fb_link' => 'nullable|url|max:255',
             'br' => 'required|string|max:255',
-            // 'logo_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Nullable if not changing image
+            'shop_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Nullable if not changing image
         ]);
 
         // If validation fails, return error response
@@ -159,12 +164,12 @@ class ShopController extends Controller
             $shop->br = $request->input('br');
 
 
-            // if ($request->hasFile('logo_img')) {
-            //     $file = $request->file('logo_img');
-            //     $filename = time() . '_' . $file->getClientOriginalName();
-            //     $file->storeAs('public/assets/shop', $filename); 
-            //     $shop->logo_img = $filename;
-            // }
+            if ($request->hasFile('shop_img')) {
+                $file = $request->file('shop_img');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move('assets/shop', $filename); 
+                $shop->shop_img = $filename;
+            }
 
             // Save the updated shop data
             $shop->save();
