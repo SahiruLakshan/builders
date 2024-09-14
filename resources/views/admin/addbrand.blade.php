@@ -22,7 +22,8 @@
             </p>
           </div>
           <div class="card-body pt-0">
-            <form class="form-horizontal" id="addbarand">
+            <form action="/submitbrand" method="POST" class="form-horizontal" enctype="multipart/form-data">
+              @csrf
               <div class="row">
                 <!-- Brand Name Field -->
                 <div class="form-group col-md-6">
@@ -30,6 +31,7 @@
                   <input
                     type="text"
                     class="form-control"
+                    name="b_name"
                     id="brand_name"
                     placeholder="Brand Name"
                     required
@@ -46,6 +48,7 @@
                   <input
                     type="text"
                     class="form-control"
+                    name="country_of_origin"
                     id="country_of_origin"
                     placeholder="Country Of Origin"
                     required
@@ -62,6 +65,7 @@
                 <input
                   type="text"
                   class="form-control"
+                  name="company_name"
                   id="company_name"
                   placeholder="Company Name"
                   required
@@ -78,6 +82,7 @@
                   type="text"
                   class="form-control"
                   id="address"
+                  name="address"
                   placeholder="Enter Your Address"
                   required
                 />
@@ -93,6 +98,7 @@
                   type="email"
                   class="form-control"
                   id="email"
+                  name="email"
                   placeholder="Enter Your Email"
                   required
                 />
@@ -109,6 +115,7 @@
                     type="tel"
                     class="form-control"
                     id="contact_no"
+                    name="brand_contact_number"
                     placeholder="Enter Your Contact Number"
                     pattern="[0-9]{10}"
                     required
@@ -122,8 +129,8 @@
                 <div class="form-group col-md-6">
                   <label for="product_source">Product Source</label>
                   <select
-                    name="product_source"
                     id="product_source"
+                    name="production"
                     class="form-control"
                     required
                   >
@@ -145,6 +152,7 @@
                 <textarea
                   class="form-control"
                   id="description"
+                  name="description"
                   placeholder="Provide details about the brand"
                   rows="3"
                 ></textarea>
@@ -164,6 +172,7 @@
                   class="form-control"
                   type="file"
                   id="brand_img"
+                  name="brand_img"
                   accept=".jpg,.jpeg,.png"
                   required
                 />

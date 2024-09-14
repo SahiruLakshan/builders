@@ -12,6 +12,7 @@ class Measurement extends Model
     protected $table='measurement';
     protected $fillable=[
         'unit',
+        'description'
     ];
 
 }

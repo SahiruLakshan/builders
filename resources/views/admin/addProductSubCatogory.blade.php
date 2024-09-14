@@ -1,4 +1,5 @@
-@extends('front')
+@extends('admin.sidebar')
+
 @section('content')
       <!-- main-content -->
       <div class="main-content app-content">
@@ -7,7 +8,6 @@
           <!-- row -->
           <div
             class="row row-sm d-flex justify-content-center align-items-center"
-            style="height: 800px"
           >
             <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12">
               <div class="card box-shadow-0">
@@ -18,11 +18,8 @@
                   </p>
                 </div>
                 <div class="card-body pt-0">
-                  <form
-                    class="form-horizontal"
-                    id="addSubcategoryForm"
-                    novalidate
-                  >
+                  <form action="/submitsub" method="POST" class="form-horizontal" id="addSubcategoryForm" novalidate>
+                    @csrf
                     <!-- Subcategory Name Field -->
                     <div class="form-group">
                       <label for="subcategory_name">Subcategory Name</label>
@@ -30,6 +27,7 @@
                         type="text"
                         class="form-control"
                         id="subcategory_name"
+                        name="name"
                         placeholder="Subcategory Name"
                         required
                       />
@@ -48,6 +46,7 @@
                       <textarea
                         class="form-control"
                         id="description"
+                        name="description"
                         placeholder="Provide details about the subcategory"
                         rows="3"
                       ></textarea>

@@ -424,7 +424,7 @@
                     <a href="javascript:void(0);">Brand</a>
                   </li>
                   <li>
-                    <a class="slide-item" href="addBrand.html"
+                    <a class="slide-item" href="/addbrand"
                       >Add New Brand
                     </a>
                   </li>
@@ -445,12 +445,12 @@
                     <a href="javascript:void(0);">Shops</a>
                   </li>
                   <li>
-                    <a class="slide-item" href="addShop.html"
+                    <a class="slide-item" href="/addshop"
                       >Add New Shops
                     </a>
                   </li>
                   <li>
-                    <a class="slide-item" href="addshopProduct.html"
+                    <a class="slide-item" href="/addshopproduct"
                       >Add Shop Product
                     </a>
                   </li>
@@ -471,7 +471,7 @@
                       <a href="javascript:void(0);">Product </a>
                     </li>
                     <li>
-                      <a class="slide-item" href="addproduct.html"
+                      <a class="slide-item" href="/addproduct"
                         >Add New Product 
                       </a>
                     </li>
@@ -495,7 +495,7 @@
                     <a href="javascript:void(0);">Shop Catogory</a>
                   </li>
                   <li>
-                    <a class="slide-item" href="addShopCatogory.html"
+                    <a class="slide-item" href="/addshopcategory"
                       >Add New Catogory
                     </a>
                   </li>
@@ -519,7 +519,7 @@
                     <a href="javascript:void(0);">Product Catogory</a>
                   </li>
                   <li>
-                    <a class="slide-item" href="addProductCatogory.html"
+                    <a class="slide-item" href="/addproductcategory"
                       >Add New Product Catogory
                     </a>
                   </li>
@@ -545,7 +545,7 @@
                     <a href="javascript:void(0);">Product SubCatogory</a>
                   </li>
                   <li>
-                    <a class="slide-item" href="addProductSubCatogory.html"
+                    <a class="slide-item" href="/addproductsub"
                       >Add New Product SubCatogory
                     </a>
                   </li>
@@ -571,7 +571,7 @@
                     <a href="javascript:void(0);">Product Measurements</a>
                   </li>
                   <li>
-                    <a class="slide-item" href="addMusrment.html"
+                    <a class="slide-item" href="/addmeasurement"
                       >Add Product Measurement
                     </a>
                   </li>

@@ -1,5 +1,5 @@
 
-@extends('front')
+@extends('admin.sidebar')
 @section('content')
       <!-- main-content -->
       <div class="main-content app-content">

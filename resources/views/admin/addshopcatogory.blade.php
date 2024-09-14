@@ -1,4 +1,4 @@
-@extends('front')
+@extends('admin.sidebar')
 @section('content')
       <!-- main-content -->
       <div class="main-content app-content">
@@ -23,7 +23,8 @@
                   </p>
                 </div>
                 <div class="card-body pt-0">
-                  <form id="shopCategoryForm" novalidate>
+                  <form action="/submitshopcategory" method="post" id="shopCategoryForm" novalidate>
+                    @csrf
                     <div class="">
                       <!-- Shop Category Name Field -->
                       <div class="form-group">
@@ -34,6 +35,7 @@
                           type="text"
                           class="form-control"
                           id="shop_category_name"
+                          name="name"
                           placeholder="Enter Shop Category Name"
                           required
                         />
@@ -51,6 +53,7 @@
                           class="form-control"
                           id="shop_category_description"
                           placeholder="Enter Description"
+                          name="description"
                           rows="4"
                           required
                         ></textarea>
