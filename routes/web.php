@@ -1,4 +1,6 @@
 <?php
+
+
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\ShopCategoryController;
@@ -10,11 +12,17 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/admindashboard', function () {
-    return view('admin.admindashboard');
-})
-    // ->middleware(['auth', 'verified'])->name('dashboard')
-;
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -26,9 +34,9 @@ Route::middleware('auth')->group(function () {
 // Route::get('/addshopproduct', function () {
 //     return view('admin.addshopproduct');
 // })->name('addshopproduct');
-Route::get('/addshopcatogory', function () {
-    return view('admin.addshopcatogory');
-})->name('addshopcatogory');
+// Route::get('/addshopcatogory', function () {
+//     return view('admin.addshopcatogory');
+// })->name('addshopcatogory');
 // Route::get('/addshop', function () {
 //     return view('admin.addshop');
 // })->name('addshop');
@@ -38,8 +46,6 @@ Route::get('/addshopcatogory', function () {
 //         return view('admin.index');
 //     })->name('admindashboard');
 
-// });
-//login routes
 
 
 // //shop routes
@@ -59,17 +65,24 @@ Route::put('/brand/update/{id}', [BrandController::class, 'updateBrand']);
 Route::get('/brand/delete/{id}', [BrandController::class, 'deleteBrand']);
 
 // //measurement routes
-//Route::get('/addbrand', [MeasurementController::class, 'index']);
-Route::get('/addmeasurement', [MeasurementController::class, 'index']);
+// Route::get('/addbrand', [MeasurementController::class, 'index']);
 Route::post('/submitmeasurement', [MeasurementController::class, 'addMeasurement']);
 Route::get('/getmeasurement/{id}', [MeasurementController::class, 'getMeasurement']);
 Route::put('/measurement/update/{id}', [MeasurementController::class, 'updateMeasurement']);
 Route::get('/measurement/delete/{id}', [MeasurementController::class, 'deleteMeasurement']);
 
 // //measurement routes
-Route::get('/addshopcategory', [ShopCategoryController::class, 'index']);
+Route::get('/addshopcategory', [ShopCategoryController::class, 'index'])->name('addshopcatogory');
 Route::post('/submitshopcategory', [ShopCategoryController::class, 'insertShopCategory']);
 Route::get('/getshopcategory/{id}', [ShopCategoryController::class, 'getShopCategory']);
 Route::put('/shopcategory/update/{id}', [ShopCategoryController::class, 'updateShopCategory']);
 Route::get('/shopcategory/delete/{id}', [ShopCategoryController::class, 'deleteShopCategory']);
-// require __DIR__ . '/auth.php';
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__ . '/auth.php';
+
