@@ -20,8 +20,9 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            nvm use 20
+            # nvm use 20
             # node -v
+            pdw
           
             # # Navigate to the directory where the project is located or clone it if it doesn't exist
             # if [ ! -d "/home/local/builders/" ]; then
