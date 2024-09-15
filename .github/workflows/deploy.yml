@@ -9,8 +9,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      # - name: Checkout Repository
+      #   uses: actions/checkout@v2
 
       - name: Deploy to Server via SSH
         uses: appleboy/ssh-action@master
@@ -19,8 +19,8 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           port: ${{ secrets.SERVER_PORT }}
-          script: |
-            nvm use 20
+          script:
+            # nvm use 20
             node -v
             # # Navigate to the directory where the project is located or clone it if it doesn't exist
             # if [ ! -d "/home/local/builders/" ]; then
