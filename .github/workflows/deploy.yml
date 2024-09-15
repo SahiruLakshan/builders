@@ -20,8 +20,8 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: ${{ secrets.SERVER_PORT }}
           script:
-            # nvm use 20
-            node -v
+            nvm use 20
+            # node -v
             # # Navigate to the directory where the project is located or clone it if it doesn't exist
             # if [ ! -d "/home/local/builders/" ]; then
             #   git clone https://${{secrets.pat}}@github.com/SahiruLakshan/builders.git /home/local/builders/
