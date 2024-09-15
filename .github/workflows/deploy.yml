@@ -22,7 +22,7 @@ jobs:
           script: |
             # nvm use 20
             # node -v
-            pdw
+            pwd
           
             # # Navigate to the directory where the project is located or clone it if it doesn't exist
             # if [ ! -d "/home/local/builders/" ]; then
