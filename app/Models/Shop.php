@@ -26,4 +26,14 @@ class Shop extends Model
         'shop_img',
         
     ];
+
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'district', 'dis_id'); 
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city', 'ds_id'); 
+    }
 }
