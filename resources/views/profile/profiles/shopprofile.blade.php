@@ -2,7 +2,7 @@
 @section('section')
 	<!-- Loader -->
 	<div id="global-loader">
-		<img src="../assets/img/loader.svg" class="loader-img" alt="Loader">
+		<img src="../assets/shop/loader.svg" class="loader-img" alt="Loader">
 	</div>
 	<!-- /Loader -->
 		<!-- main-content -->
@@ -58,12 +58,12 @@
 								<div class="ps-0">
 									<div class="main-profile-overview">
 										<div class="main-img-user profile-user">
-											<img alt="" src="../assets/img/faces/6.jpg"><a
+											<img alt="" src="{{ asset('assets/shop/'.$shop->shop_img) }}"><a
 												class="fas fa-camera profile-edit" href="JavaScript:void(0);"></a>
 										</div>
 										<div class="d-flex justify-content-between mg-b-20">
 											<div>
-												<h5 class="main-profile-name">Shop Name</h5>
+												<h5 class="main-profile-name">{{ $shop->name }}</h5>
 											</div>
 										</div>
 										<hr class="mg-y-30">
@@ -73,7 +73,7 @@
 													<i class="fa fa-envelope"></i>
 												</div>
 												<div class="media-body">
-													<span class="fw-bold">Email</span> <span>shopname@gmil.com</span>
+													<span class="fw-bold">Email</span> <span>{{ $shop->email }}</span>
 												</div>
 											</div>
 											<div class="media">
@@ -81,7 +81,7 @@
 													<i class="fa fa-phone"></i>
 												</div>
 												<div class="media-body">
-													<span class="fw-bold">Phone</span>  <span>+94 76 88 55 987</span>
+													<span class="fw-bold">Phone</span>  <span>{{ $shop->p_number }}</span>
 												</div>
 											</div>
 											<div class="media">
@@ -89,7 +89,7 @@
 													<i class="fa-solid fa-house-chimney-user"></i>
 												</div>
 												<div class="media-body">
-													<span class="fw-bold">Address</span> <span>1st street, colombo</span>
+													<span class="fw-bold">Address</span>{{ $shop->address }}<span></span>
 												</div>
 											</div>
 											<div class="media">
@@ -97,7 +97,7 @@
 													<i class="fa-solid fa-house"></i>
 												</div>
 												<div class="media-body">
-													<span class="fw-bold">District</span>  <span>Colombo</span>
+													<span class="fw-bold">District</span>  <span>{{ $district->dis_name }}</span>
 												</div>
 											</div>
 											<div class="media">
@@ -105,7 +105,7 @@
 													<i class="fa-solid fa-city"></i>
 												</div>
 												<div class="media-body">
-													<span class="fw-bold">City</span> <span>Homagama</span>
+													<span class="fw-bold">City</span> <span>{{ $city->ds_name }}</span>
 												</div>
 											</div>
 										</div>
@@ -125,7 +125,7 @@
 											</div>
 											<div class="ms-auto">
 												<h5 class="tx-13">Products</h5>
-												<h2 class="mb-0 tx-22 mb-1 mt-1">1,587</h2>
+												<h2 class="mb-0 tx-22 mb-1 mt-1">{{ $product_count }}</h2>
 												<p class="text-muted mb-0 tx-11"><i
 														class="si si-arrow-up-circle text-success me-1"></i>increase</p>
 											</div>
@@ -142,7 +142,7 @@
 											</div>
 											<div class="ms-auto">
 												<h5 class="tx-13">Brands</h5>
-												<h2 class="mb-0 tx-22 mb-1 mt-1">46,782</h2>
+												<h2 class="mb-0 tx-22 mb-1 mt-1">{{ $brand_count }}</h2>
 												<p class="text-muted mb-0 tx-11"><i
 														class="si si-arrow-up-circle text-success me-1"></i>increase</p>
 											</div>
@@ -159,7 +159,7 @@
 											</div>
 											<div class="ms-auto">
 												<h5 class="tx-13">Categories</h5>
-												<h2 class="mb-0 tx-22 mb-1 mt-1">1,890</h2>
+												<h2 class="mb-0 tx-22 mb-1 mt-1">{{ $category_count }}</h2>
 												<p class="text-muted mb-0 tx-11"><i
 														class="si si-arrow-up-circle text-success me-1"></i>increase</p>
 											</div>
@@ -203,48 +203,15 @@
 														</tr>
 													</thead>
 													<tbody>
-														<tr>
-															<th scope="row">1</th>
-															<td>Cement</td>
-															<td>Construction</td>
-															<td>ultratech</td>
-															<td>2000 LKR</td>
-														</tr>
-														<tr>
-															<th scope="row">1</th>
-															<td>Cement</td>
-															<td>Construction</td>
-															<td>ultratech</td>
-															<td>2000 LKR</td>
-														</tr>
-														<tr>
-															<th scope="row">1</th>
-															<td>Cement</td>
-															<td>Construction</td>
-															<td>ultratech</td>
-															<td>2000 LKR</td>
-														</tr>
-														<tr>
-															<th scope="row">1</th>
-															<td>Cement</td>
-															<td>Construction</td>
-															<td>ultratech</td>
-															<td>2000 LKR</td>
-														</tr>
-														<tr>
-															<th scope="row">1</th>
-															<td>Cement</td>
-															<td>Construction</td>
-															<td>ultratech</td>
-															<td>2000 LKR</td>
-														</tr>
-														<tr>
-															<th scope="row">1</th>
-															<td>Cement</td>
-															<td>Construction</td>
-															<td>ultratech</td>
-															<td>2000 LKR</td>
-														</tr>
+														@foreach ($shop_product as $product)
+														    <tr>
+														    	<th scope="row">{{ $product->product_id }}</th>
+														    	<td>{{ $product->product->name }}</td>
+														    	<td>{{ $product->category->name }}</td>
+														    	<td>{{ $product->brand->b_name}}</td>
+														    	<td>{{ $product->category->unit_price }} LKR</td>
+														    </tr>
+														@endforeach
 													</tbody>
 												</table>
 											</div>
@@ -252,7 +219,9 @@
 						
 									</div>
 									<div class="tab-pane" id="gallery">
-										<form class="form-horizontal">
+										<form action="{{url ('shop/update',$shop->id) }}" method="POST" class="form-horizontal">
+											@csrf
+											@method('PUT')
 											<div class="mb-4 main-content-label">Basic information</div>
 											<div class="form-group ">
 												<div class="row">
@@ -260,7 +229,7 @@
 														<label class="form-label">Email</label>
 													</div>
 													<div class="col-md-9">
-														<input type="text" class="form-control" placeholder="E-mail" value="shop@gmail.com">
+														<input type="text" class="form-control" name="email" placeholder="E-mail" value="{{ $shop->email }}">
 													</div>
 												</div>
 											</div>
@@ -270,7 +239,7 @@
 														<label class="form-label">Phone number</label>
 													</div>
 													<div class="col-md-9">
-														<input type="text" class="form-control" placeholder="Phone" value="+94765xxxx">
+														<input type="text" class="form-control" name="p_number" placeholder="Phone" value="{{ $shop->p_number }}">
 													</div>
 												</div>
 											</div>
@@ -280,7 +249,7 @@
 														<label class="form-label">Address</label>
 													</div>
 													<div class="col-md-9">
-														<input type="text" class="form-control" placeholder="Address" value="1st street, Colombo">
+														<input type="text" class="form-control" name="address" placeholder="Address" value="{{ $shop->address }}">
 													</div>
 												</div>
 											</div>
@@ -290,7 +259,20 @@
 														<label class="form-label">District</label>
 													</div>
 													<div class="col-md-9">
-														<input type="text" class="form-control" placeholder="District" value="Colombo">
+														<select name="district" id="district"
+                                                            class="form-control form-select select2"
+                                                            data-bs-placeholder="Select District" required>
+
+															@php
+																$select = $district->dis_name
+															@endphp
+															
+                                                            @foreach ($alldistricts as $districts)
+                                                                <option value="{{ $districts->dis_id }}" {{$districts->dis_name == $select ? 'selected':''}}>
+                                                                    {{ $districts->dis_name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
 													</div>
 												</div>
 											</div>
@@ -300,7 +282,7 @@
 														<label class="form-label">Facebook Link</label>
 													</div>
 													<div class="col-md-9">
-														<input type="text" class="form-control" placeholder="Enter Your Facebook Link" value="Colombo">
+														<input type="text" class="form-control" name="fb_link" placeholder="Enter Your Facebook Link" value="{{ $shop->fb_link }}">
 													</div>
 												</div>
 											</div>
@@ -310,12 +292,24 @@
 														<label class="form-label">City</label>
 													</div>
 													<div class="col-md-9">
-														<input type="text" class="form-control" placeholder="City" value="Homagama">
+														<select name="city" id="city"
+                                                            class="form-control form-select select2"
+                                                            data-bs-placeholder="Select City" required>
+															@php
+																$select = $city->ds_name
+															@endphp
+
+                                                            @foreach ($allcities as $cities)
+                                                                <option value="{{ $cities->ds_id }}" {{$cities->ds_name == $select ? 'selected':''}}>
+                                                                    {{ $cities->ds_name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
 													</div>
 												</div>
 											</div>
 											<div class="w-100 d-flex justify-content-end">
-												<button class="btn btn-primary">Save changes</button>
+												<button type="submit" class="btn btn-primary">Save changes</button>
 											</div>
 											
 											

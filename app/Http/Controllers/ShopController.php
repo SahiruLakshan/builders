@@ -7,15 +7,38 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Shop;
 use App\Models\City;
 use App\Models\ShopCategory;
+use App\Models\Shopproduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
 
-    public function shopprofile()
+    public function shopprofile($id)
     {
-        return view('profile.profiles.shopprofile');
+        
+
+        $shop = Shop::with('district','city')->find($id);
+        $district = District::where('dis_id', $shop->district)->first();
+        $city = City::where('ds_id', $shop->city)->first();
+
+        $alldistricts = District::all();
+        $allcities = City::all();
+
+        $product_count = Shopproduct::where('shop_id', $id)->count();
+        $brand_count = Shopproduct::where('shop_id', $id)->distinct('brand_id')->count();
+        $category_count = Shopproduct::where('shop_id', $id)->distinct('product_category_id')->count();
+
+
+        $shop_product = Shopproduct::where('shop_id', $id)->with('product','category','brand')->get();;
+        if (!$shop) {
+            return response()->json([
+                'message' => 'Shop not found',
+                'status' => 404
+            ], 404);
+        }
+
+        return view('profile.profiles.shopprofile',compact('shop','shop_product','district','city','alldistricts','allcities','product_count','brand_count','category_count'));
     }
 
     //login
@@ -129,17 +152,17 @@ class ShopController extends Controller
 
         // Validate the input data
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
+            // 'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:shops,email,' . $shop->id, // Ignore the current shop's email
             'address' => 'required|string|max:500',
             'district' => 'required|string|max:255',
             'city' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i|after:start_time',
+            // 'location' => 'required|string|max:255',
+            // 'start_time' => 'required|date_format:H:i',
+            // 'end_time' => 'required|date_format:H:i|after:start_time',
             'fb_link' => 'nullable|url|max:255',
-            'br' => 'required|string|max:255',
-            'shop_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Nullable if not changing image
+            // 'br' => 'required|string|max:255',
+            // 'shop_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Nullable if not changing image
         ]);
 
         // If validation fails, return error response
@@ -152,24 +175,25 @@ class ShopController extends Controller
         }
 
         try {
-            $shop->name = $request->input('name');
+            // $shop->name = $request->input('name');
             $shop->email = $request->input('email');
             $shop->address = $request->input('address');
             $shop->district = $request->input('district');
             $shop->city = $request->input('city');
-            $shop->location = $request->input('location');
-            $shop->start_time = $request->input('start_time');
-            $shop->end_time = $request->input('end_time');
+            $shop->p_number = $request->input('p_number');
+            // $shop->location = $request->input('location');
+            // $shop->start_time = $request->input('start_time');
+            // $shop->end_time = $request->input('end_time');
             $shop->fb_link = $request->input('fb_link');
-            $shop->br = $request->input('br');
+            // $shop->br = $request->input('br');
 
 
-            if ($request->hasFile('shop_img')) {
-                $file = $request->file('shop_img');
-                $filename = time() . '_' . $file->getClientOriginalName();
-                $file->move('assets/shop', $filename); 
-                $shop->shop_img = $filename;
-            }
+            // if ($request->hasFile('shop_img')) {
+            //     $file = $request->file('shop_img');
+            //     $filename = time() . '_' . $file->getClientOriginalName();
+            //     $file->move('assets/shop', $filename); 
+            //     $shop->shop_img = $filename;
+            // }
 
             // Save the updated shop data
             $shop->save();

@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
 // //shop routes
 
 Route::get('/addshop', [ShopController::class, 'index'])->name('addshop');
-Route::get('/shopprofile', [ShopController::class, 'shopprofile'])->name('shopprofile');
+Route::get('/shopprofile/{id}', [ShopController::class, 'shopprofile'])->name('shopprofile');
 Route::post('/submitshop', [ShopController::class, 'submitshop']);
 Route::get('/shopupdateform/{id}', [ShopController::class, 'update']);
 Route::put('/shop/update/{id}', [ShopController::class, 'updateShop']);
@@ -70,7 +70,7 @@ Route::post('/submitproduct', [ShopproductController::class, 'submitProducts'])-
 
 Route::get('/addproduct', [ProductController::class, 'index']);
 
-Route::get('/addproductcategory', [ProductcategoryController::class, 'index']);
+// Route::get('/addproductcategory', [ProductcategoryController::class, 'index']);
 Route::get('/addproductsub', [ProductcategoryController::class, 'index2']);
 Route::post('/submitsub',[ProductcategoryController::class, 'store']);
 
