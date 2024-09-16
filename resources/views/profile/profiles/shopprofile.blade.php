@@ -2,7 +2,7 @@
 @section('section')
 	<!-- Loader -->
 	<div id="global-loader">
-		<img src="../assets/shop/loader.svg" class="loader-img" alt="Loader">
+		<img src="../assets/img/loader.svg" class="loader-img" alt="Loader">
 	</div>
 	<!-- /Loader -->
 		<!-- main-content -->
