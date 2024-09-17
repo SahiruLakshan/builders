@@ -2,9 +2,9 @@
 @extends('admin.sidebar')
 @section('content')
       <!-- main-content -->
-      <div class="main-content app-content">
+      {{-- <div class="main-content app-content"> --}}
         <!-- container -->
-        <div class="main-container container-fluid">
+        {{-- <div class="main-container container-fluid"> --}}
           <!-- breadcrumb -->
 
           <!-- breadcrumb -->
@@ -12,12 +12,11 @@
           <!-- row -->
           <div
             class="row row-sm d-flex justify-content-center align-items-center"
-            style="height: 450px"
           >
             <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12">
               <div class="card box-shadow-0">
                 <div class="card-header">
-                  <h4 class="card-title mb-1">Add New Brand Form</h4>
+                  <h4 class="card-title mb-1">Add New Product</h4>
                   <p class="mb-2">
                     Enter the name of the brand you want to add
                   </p>
@@ -215,8 +214,8 @@
           <!-- row opened -->
 
           <!-- /row -->
-        </div>
+        {{-- </div> --}}
         <!-- /Container -->
-      </div>
+      {{-- </div> --}}
       <!-- /main-content -->
       @endsection
