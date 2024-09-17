@@ -40,13 +40,6 @@
       crossorigin="anonymous"
     />
 
-    <!-- Bootstrap 5 JS with Popper.js -->
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0-alpha1/js/bootstrap.bundle.min.js"
-      integrity="sha384-mQ93B3X6K8/qg3FQ4puhG8txscyK8i6uN0VRVSlA+VVFZn7qFXi1QI0KMPZSu0gF"
-      crossorigin="anonymous"
-    ></script>
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- Bootstrap CSS -->
     <link
@@ -139,6 +132,20 @@
                         <button
                           class="btn btn-warning dropdown-toggle"
                           type="button"
+                          data-toggle="dropdown"
+                        >
+                          My Account
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a href="login.html">Login</a></li>
+                          <li><a href="signup.html">Sign up</a></li>
+                          <li><a href="shopprofile.html">Shop Profile</a></li>
+                        </ul>
+                      </div>
+                      <!-- <div class="dropdown">
+                        <button
+                          class="btn btn-warning dropdown-toggle"
+                          type="button"
                           id="dropdownMenuButton1"
                           data-bs-toggle="dropdown"
                           aria-expanded="false"
@@ -158,7 +165,7 @@
                             >
                           </li>
                         </ul>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -294,7 +301,6 @@
                         </ul>
                       </div>
                     </div>
-
                     <!-- Search Bar -->
                     <div
                       class="col-12 col-md-4 mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end"
@@ -313,7 +319,6 @@
                         </button>
                       </div>
                     </div>
-
                     <!-- Other Dropdowns -->
                     <div class="col-12 col-md-2 mb-2 mb-md-0">
                       <div class="navbar-collapse" id="navbarNavDarkDropdown">
@@ -348,7 +353,7 @@
 
                     <!-- Additional Dropdowns -->
                     <div class="col-12 col-md-2 mb-2 mb-md-0">
-                      <div class="navbar-collapse" id="navbarNavDarkDropdown">
+                      <!-- <div class="navbar-collapse" id="navbarNavDarkDropdown">
                         <ul class="navbar-nav">
                           <li class="nav-item dropdown">
                             <button
@@ -375,7 +380,7 @@
                             </ul>
                           </li>
                         </ul>
-                      </div>
+                      </div> -->
                     </div>
 
                     <div class="col-12 col-md-2 mb-2 mb-md-0">
@@ -1780,7 +1785,12 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
+    <!-- Bootstrap 5 JS with Popper.js -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0-alpha1/js/bootstrap.bundle.min.js"
+      integrity="sha384-mQ93B3X6K8/qg3FQ4puhG8txscyK8i6uN0VRVSlA+VVFZn7qFXi1QI0KMPZSu0gF"
+      crossorigin="anonymous"
+    ></script>
     <script>
       $(document).ready(function () {
         $(".owl-carousel").owlCarousel({
