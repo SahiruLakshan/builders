@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+    return view('admin.admindashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', function () {
@@ -72,7 +72,7 @@ Route::get('/addproduct', [ProductController::class, 'index']);
 
 // Route::get('/addproductcategory', [ProductcategoryController::class, 'index']);
 Route::get('/addproductsub', [ProductcategoryController::class, 'index2']);
-Route::post('/submitsub',[ProductcategoryController::class, 'store']);
+Route::post('/submitsub', [ProductcategoryController::class, 'store']);
 
 
 require __DIR__ . '/auth.php';
