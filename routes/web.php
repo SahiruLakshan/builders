@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+    return view('admin.admindashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', function () {
@@ -39,14 +39,16 @@ Route::middleware('auth')->group(function () {
 Route::get('/addshop', [ShopController::class, 'index'])->name('addshop');
 Route::get('/shopprofile/{id}', [ShopController::class, 'shopprofile'])->name('shopprofile');
 Route::post('/submitshop', [ShopController::class, 'submitshop']);
-Route::get('/shopupdateform/{id}', [ShopController::class, 'update']);
+Route::get('/shops', [ShopController::class, 'shops']);
+Route::get('/shopupdate/{id}', [ShopController::class, 'update']);
 Route::put('/shop/update/{id}', [ShopController::class, 'updateShop']);
 Route::get('/shop/delete/{id}', [ShopController::class, 'deleteShop']);
 
 // //brand routes
 Route::get('/addbrand', [BrandController::class, 'index'])->name('addbrand');
 Route::post('/submitbrand', [BrandController::class, 'submitBrand']);
-Route::get('/shopupdateform/{id}', [BrandController::class, 'update']);
+Route::get('/brands', [BrandController::class, 'brands']);
+Route::get('/brandupdate/{id}', [BrandController::class, 'update']);
 Route::put('/brand/update/{id}', [BrandController::class, 'updateBrand']);
 Route::get('/brand/delete/{id}', [BrandController::class, 'deleteBrand']);
 
@@ -69,10 +71,11 @@ Route::get('/addshopproduct', [ShopproductController::class, 'index']);
 Route::post('/submitproduct', [ShopproductController::class, 'submitProducts'])->name('submit.products');
 
 Route::get('/addproduct', [ProductController::class, 'index']);
+Route::get('/products', [ProductController::class, 'products']);
 
 // Route::get('/addproductcategory', [ProductcategoryController::class, 'index']);
 Route::get('/addproductsub', [ProductcategoryController::class, 'index2']);
-Route::post('/submitsub',[ProductcategoryController::class, 'store']);
+Route::post('/submitsub', [ProductcategoryController::class, 'store']);
 
 
 require __DIR__ . '/auth.php';
