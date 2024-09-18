@@ -6,31 +6,17 @@
   <table class="table table-bordered border text-nowrap mb-0">
       <thead>
           <tr>
-              <th>Brand</th>
-              <th>Country Of Origin</th>
-              <th>Company Name</th>
-              <th>Address</th>
-              <th>Email Address</th>
-              <th>Contact Number</th>
-              <th>Product Source</th>
-              <th>Description</th>
-              <th>Brand Image</th>
+              <th>Product Name</th>
+              <th>Product Description</th>
               <th>Actions</th> <!-- For Approve, Update, and Delete -->
           </tr>
       </thead>
       <tbody>
-          {{-- @foreach($brands as $brand)
+          {{-- @foreach($products as $product)
           <tr>
-              <td>{{ $brand->b_name }}</td>
-              <td>{{ $brand->country_of_origin }}</td>
-              <td>{{ $brand->company_name }}</td>
-              <td>{{ $brand->address }}</td>
-              <td>{{ $brand->email }}</td>
-              <td>{{ $brand->brand_contact_number }}</td>
-              <td>{{ $brand->production }}</td>
-              <td>{{ $brand->description }}</td>
-              <td><img src="{{ asset('images/' . $brand->brand_img) }}" alt="Brand Image" width="50"></td>
-              <td>
+              <td>{{ $product->p_name }}</td>
+            <td>{{ $product->description }}</td>
+           <td>
                   @if(!$brand->approved)
                   <form action="{{ route('brands.approve', $brand->id) }}" method="POST" style="display:inline-block;">
                       @csrf
@@ -49,8 +35,6 @@
       </tbody>
   </table>
 </div>
-
-
 
 {{-- 
 <!-- Update Modal -->
