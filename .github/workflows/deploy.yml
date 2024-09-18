@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
-      
+        uses: actions/checkout@v3
+
       - name: Deploy to Server via SSH
         uses: appleboy/ssh-action@master
         with:
@@ -20,21 +20,33 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm use 20
+            # node -v
+            # pwd
+          
             # Navigate to the directory where the project is located or clone it if it doesn't exist
             if [ ! -d "/home/local/builders/" ]; then
               git clone https://${{secrets.pat}}@github.com/SahiruLakshan/builders.git /home/local/builders/
+              cd /home/local/builders/
+              composer install --no-interaction --prefer-dist --optimize-autoloader
             else
               cd /home/local/builders/
-              git pull origin master
+              # Mark the directory as safe for Git operations
+              git config --global --add safe.directory /home/local/builders
+              git pull origin main
             fi
 
             # Navigate to the project directory
             cd /home/local/builders/
 
 
-            # Install dependencies via Composer
-            composer install --no-interaction --prefer-dist --optimize-autoloader
-
+            #composer install --no-interaction --prefer-dist --optimize-autoloader
+            # Install dependencies via npm
+            npm install
+            #npm run prod
+            npm run build
             # Set up the .env file
             # cp .env.example .env
             # php artisan key:generate
@@ -48,8 +60,8 @@ jobs:
             # php artisan migrate --force
 
             # Cache configuration and routes (optional)
-            php artisan config:cache
-            php artisan route:cache
-            php artisan view:cache
+            # php artisan config:cache
+            # php artisan route:cache
+            # php artisan view:cache
 
             # Restart services (e.g
