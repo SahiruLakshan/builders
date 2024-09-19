@@ -359,7 +359,7 @@
                                         </li>
 
                                         <li>
-                                            <a class="slide-item" href="icons.html">Shop Catogory Veiw
+                                            <a class="slide-item" href="/shopcategories">Shop Catogory Veiw
                                             </a>
                                         </li>
                                     </ul>
@@ -376,7 +376,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="icons.html">Veiw Product Catogory</a>
+                                            <a class="slide-item" href="/categories">Veiw Product Catogory</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -393,7 +393,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="icons.html">Veiw Product SubCatogory</a>
+                                            <a class="slide-item" href="/subcategories">Veiw Product SubCatogory</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -410,7 +410,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="icons.html">Veiw Product Measurement</a>
+                                            <a class="slide-item" href="/measurements">Veiw Product Measurement</a>
                                         </li>
                                     </ul>
                                 </li>

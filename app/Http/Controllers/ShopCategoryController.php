@@ -13,6 +13,18 @@ class ShopCategoryController extends Controller
         return view('admin.addshopcatogory');
     }
     
+    public function shopecate(Request $request){
+        $query = $request->input('query');
+
+        $categories = ShopCategory::where('name', 'like', '%' . $query . '%')->orWhere('id', 'like', '%' . $query . '%')->paginate(8);
+
+        if ($request->ajax()) {
+            return view('admin.viewtbl.shopcatepagination', compact('categories'))->render();
+        }
+
+        return view('admin.viewtbl.viewshopcategory', compact('categories'));
+    }
+
     public function insertShopCategory(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -56,11 +68,7 @@ class ShopCategoryController extends Controller
             ], 404);
         }
 
-        return response()->json([
-            'message' => 'Shop category retrieved successfully!',
-            'shopCategory' => $shopCategory,
-            'status' => 200,
-        ]);
+        return view('admin.updateforms.updateshopcategory', compact('shopCategory'));
     }
 
     public function updateShopCategory(Request $request, $id)

@@ -15,8 +15,8 @@
                 <td style="max-width:600px;overflow:scroll">{{ $product->description }}</td>
                 <td>
                     <span>
-                        <a href="{{ url('/productupdate/' . $product->id) }}" class="btn btn-success btn-sm">Edit</a>
-                        <a href="{{ url('/product/delete/' . $product->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="{{ url('/getproduct/' . $product->id) }}" class="btn btn-success btn-sm">Edit</a>
+                        <a href="{{ url('/delete/product/' . $product->id) }}" class="btn btn-danger btn-sm">Delete</a>
                     </span>
                 </td>
             </tr>
