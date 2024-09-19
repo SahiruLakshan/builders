@@ -23,7 +23,7 @@ class BrandController extends Controller
     public function brands()
     {
         $brands = Brand::all();
-        return view('admin.viewtbl.viewBrand', compact('brands'));
+        return view('admin.viewtbl.viewbrand', compact('brands'));
     }
 
     public function submitBrand(Request $request)
