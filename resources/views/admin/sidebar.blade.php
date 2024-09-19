@@ -340,12 +340,13 @@
             <a class="desktop-logo logo-light active" href="index.html"
               ><img src="#" class="main-logo" alt="logo"
             /></a>
-            <a class="desktop-logo logo-dark active" href="index.html"
-              ><img
+            <a class="desktop-logo logo-dark active" href="index.html">
+              {{-- <img
                 src="../assets/img/brand/logo-white.png"
                 class="main-logo"
                 alt="logo"
-            /></a>
+            /> --}}
+          </a>
             <a
               class="logo-icon mobile-logo icon-light active"
               href="index.html"
