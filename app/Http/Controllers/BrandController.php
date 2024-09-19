@@ -20,6 +20,12 @@ class BrandController extends Controller
         return view('admin.addbrand');
     }
 
+    public function brands()
+    {
+        $brands = Brand::all();
+        return view('admin.viewtbl.viewBrand', compact('brands'));
+    }
+
     public function submitBrand(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -85,15 +91,9 @@ class BrandController extends Controller
     {
         $brand = Brand::find($id);
         if (!$brand) {
-            return response()->json([
-                'message' => 'Brand not found',
-                'status' => 404
-            ], 404);
+            return redirect()->back()->with('error', 'Brand not found');
         }
-        return response()->json([
-            'message' => 'show brand update form',
-            'status' => 200
-        ]);
+        return view('admin.updateforms.updatebrand',compact('brand'));
     }
 
     public function updateBrand(Request $request, $id)

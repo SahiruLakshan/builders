@@ -16,14 +16,15 @@
       <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12">
         <div class="card box-shadow-0">
           <div class="card-header">
-            <h4 class="card-title mb-1">Add New Brand Form</h4>
+            <h4 class="card-title mb-1">Update Brand - {{ $brand->b_name }}</h4>
             <p class="mb-2">
-              Enter the name of the brand you want to add
+              Update your brand
             </p>
           </div>
           <div class="card-body pt-0">
-            <form action="/submitbrand" method="POST" class="form-horizontal" enctype="multipart/form-data">
+            <form action="{{url ('brand/update',$brand->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
               @csrf
+              @method('PUT')
               <div class="row">
                 <!-- Brand Name Field -->
                 <div class="form-group col-md-6">
@@ -32,6 +33,7 @@
                     type="text"
                     class="form-control"
                     name="b_name"
+                    value="{{ $brand->b_name }}"
                     id="brand_name"
                     placeholder="Brand Name"
                     required
@@ -49,6 +51,7 @@
                     type="text"
                     class="form-control"
                     name="country_of_origin"
+                    value="{{ $brand->country_of_origin }}"
                     id="country_of_origin"
                     placeholder="Country Of Origin"
                     required
@@ -66,6 +69,7 @@
                   type="text"
                   class="form-control"
                   name="company_name"
+                  value="{{ $brand->company_name }}"
                   id="company_name"
                   placeholder="Company Name"
                   required
@@ -82,6 +86,7 @@
                   type="text"
                   class="form-control"
                   id="address"
+                  value="{{ $brand->address }}"
                   name="address"
                   placeholder="Enter Your Address"
                   required
@@ -99,6 +104,7 @@
                   class="form-control"
                   id="email"
                   name="email"
+                  value="{{ $brand->email }}"
                   placeholder="Enter Your Email"
                   required
                 />
@@ -116,6 +122,7 @@
                     class="form-control"
                     id="contact_no"
                     name="brand_contact_number"
+                    value="{{ $brand->brand_contact_number }}"
                     placeholder="Enter Your Contact Number"
                     pattern="[0-9]{10}"
                     required
@@ -137,9 +144,9 @@
                     <option value="" disabled selected>
                       Select Product Source
                     </option>
-                    <option value="imported">Imported</option>
-                    <option value="manufactured">Manufactured</option>
-                    <option value="deal">Deal/Distribute</option>
+                    <option value="imported" {{$brand->production == 'imported' ? 'selected':''}}>Imported</option>
+                    <option value="manufactured" {{$brand->production == 'manufactured' ? 'selected':''}}>Manufactured</option>
+                    <option value="deal" {{$brand->production == 'deal' ? 'selected':''}}>Deal/Distribute</option>
                   </select>
                   <small class="form-text text-muted">
                     Specify how the product is sourced. Required field.
@@ -155,18 +162,22 @@
                   name="description"
                   placeholder="Provide details about the brand"
                   rows="3"
-                ></textarea>
+                >{{ $brand->description }}</textarea>
                 <small class="form-text text-muted"
                   >Add any relevant information about this brand. Optional
                   field.</small
                 >
               </div>
 
+              <img src="" alt="">
+
               <!-- Brand Image Field -->
               <div class="mb-3">
                 <label for="brand_img" class="form-label"
                   >Brand Image</label
                 >
+
+                <img src="{{ asset('assets/brand/'.$brand->brand_img) }}" height="200px" alt="Brand_Image">
 
                 <input
                   class="form-control"
