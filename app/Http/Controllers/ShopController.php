@@ -55,9 +55,16 @@ class ShopController extends Controller
         return view('admin.addshop', compact('districts', 'city','category'));
     }
 
-    public function shops(){
-        $shops = Shop::all();
-        return view('admin.viewtbl.viewShop',compact('shops'));
+    public function shops(Request $request){
+        $query = $request->input('query');
+
+        $shops = Shop::where('name', 'like', '%' . $query . '%')->orWhere('id', 'like', '%' . $query . '%')->paginate(8);
+
+        if ($request->ajax()) {
+            return view('admin.viewtbl.shoppagination', compact('shops'))->render();
+        }
+
+        return view('admin.viewtbl.viewshop', compact('shops'));
     }
 
     public function submitShop(Request $request)

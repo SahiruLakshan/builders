@@ -69,7 +69,7 @@ Route::get('/getshopcategory/{id}', [ShopCategoryController::class, 'getShopCate
 Route::put('/shopcategory/update/{id}', [ShopCategoryController::class, 'updateShopCategory']);
 Route::get('/shopcategory/delete/{id}', [ShopCategoryController::class, 'deleteShopCategory']);
 Route::get('/addshopproduct', [ShopproductController::class, 'index']);
-Route::post('/submitproduct', [ShopproductController::class, 'submitProducts'])->name('submit.products');
+Route::post('/submitshopproduct', [ShopproductController::class, 'submitProducts'])->name('submit.products');
 
 Route::get('/addproduct', [ProductController::class, 'index']);
 Route::get('/products', [ProductController::class, 'products']);
@@ -90,7 +90,8 @@ Route::post('/submitsub', [ProductcategoryController::class, 'store']);
 Route::get('/subcategories', [ProductcategoryController::class, 'subcat']);
 Route::get('/getsubcategory/{id}', [ProductcategoryController::class, 'getsubcategory']);  
 Route::put('/update/productsubcategory/{id}', [ProductcategoryController::class, 'updatesubProductCategory']);
-Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']);                             
+Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']); 
+                            
 
 require __DIR__ . '/auth.php';
 
