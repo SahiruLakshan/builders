@@ -217,14 +217,17 @@
                                                                 class="" />
                                                         </div>
                                                         <div class="ms-3 my-auto">
-                                                            <h6>UDARA</h6>
-                                                            <span>Premium Member</span>
+                                                            <h6>{{ Auth()->user()->name }}</h6>
+                                                            <span>Admin</span>
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <a class="dropdown-item" href="signin.html"><i class="bx bx-log-out"></i>
-                                                    Sign Out</a>
+                                                <form action="/logout" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="dropdown-item"><i class="bx bx-log-out"></i>
+                                                        Logout</button>
+                                                </form>
+                                                
                                             </div>
                                         </li>
                                     </ul>
@@ -258,8 +261,8 @@
                                             class="avatar-status profile-status bg-green"></span>
                                     </div>
                                     <div class="user-info">
-                                        <h4 class="fw-semibold mt-3 mb-0">UDARA</h4>
-                                        <span class="mb-0 text-muted">ADMIN</span>
+                                        <h4 class="fw-semibold mt-3 mb-0">{{ Auth()->user()->name }}</h4>
+                                        <span class="mb-0 text-muted">ADMIN</span><br>
                                     </div>
                                 </div>
                             </div>
