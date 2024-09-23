@@ -99,6 +99,12 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']);
 });
 
+
+// website
+
+Route::get('/shop', function(){
+    return view('webpages.home');
+});
 //Authentication Routes
 Route::get('register', [RegisteredUserController::class, 'create'])
     ->name('register');
