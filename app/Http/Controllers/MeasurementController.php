@@ -46,6 +46,19 @@ class MeasurementController extends Controller
         }
     }
 
+    public function measurements(Request $request)
+    {
+        $query = $request->input('query');
+
+        $measurement = Measurement::where('unit', 'like', '%' . $query . '%')->orWhere('id', 'like', '%' . $query . '%')->paginate(8);
+
+        if ($request->ajax()) {
+            return view('admin.viewtbl.measurementpagination', compact('measurement'))->render();
+        }
+
+        return view('admin.viewtbl.viewmeasurment', compact('measurement'));
+    }
+
     public function getMeasurement($id)
     {
         $measurement = Measurement::find($id);
@@ -55,10 +68,7 @@ class MeasurementController extends Controller
                 'status' => 404,
             ], 404);
         }
-        return response()->json([
-            'measurement' => $measurement,
-            'status' => 200,
-        ]);
+        return view('admin.updateforms.updatemeasument', compact('measurement'));
     }
 
     public function updateMeasurement(Request $request, $id)

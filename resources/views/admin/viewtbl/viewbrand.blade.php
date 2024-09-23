@@ -1,36 +1,47 @@
 @extends('admin.sidebar')
 
 @section('content')
-    <h1 style="margin-left:400px; margin-top:20px;">Brand Details</h1> <!-- Shop Details title -->
-    <div class="table-responsive"> <!-- This makes the table scrollable if needed -->
-        <table class="table table-bordered border text-nowrap mb-0 mt-3" style="margin-left:400px;width:800px;">
-            <thead>
-                <tr>
-                    <th>Brand ID</th>
-                    <th>Brand Name</th>
-                    <th>Company Name</th>
-                    <th>Email</th>
-                    <th>Contact Number</th>
-                    <th>Actions</th> <!-- For Approve, Update, and Delete -->
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($brands as $brand)
-                    <tr>
-                        <td>{{ $brand->id }}</td>
-                        <td>{{ $brand->b_name }}</td>
-                        <td>{{ $brand->company_name }}</td>
-                        <td>{{ $brand->email }}</td>
-                        <td>{{ $brand->brand_contact_number }}</td>
-                        <td>
-                            <span>
-                              <a href={{ url('/brandupdate/' . $brand->id) }} class="btn btn-success btn-sm">Edit Details</a>
-                              <a href={{ url('/brand/delete/' . $brand->id) }} class="btn btn-danger btn-sm">Delete</a>
-                            </span>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <h1 style="margin-left:300px; margin-top:20px;">Brands Details</h1>
+
+    <div class="search-bar" style="margin-left:300px; margin-top:20px; width: 800px;">
+        <input type="text" id="search-input" class="form-control" placeholder="Search products by Brand Name or Id...">
     </div>
+
+    <div class="table-responsive" id="pagination-data">
+        @include('admin.viewtbl.brandpagination') <!-- Load paginated data -->
+    </div>
+@endsection
+
+@section('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $(document).on('click', '.pagination a', function(event) {
+            event.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+            var query = $('#search-input').val();
+            fetchProducts(page, query);
+        });
+
+        $('#search-input').on('keyup', function() {
+            var query = $(this).val();
+            fetchProducts(1, query); 
+        });
+
+        function fetchProducts(page, query) {
+            $.ajax({
+                url: "/brands",
+                type: "GET",
+                data: {
+                    page: page,
+                    query: query
+                },
+                success: function(data) {
+                    $('#pagination-data').html(data);
+                }
+            });
+        }
+    });
+</script>
 @endsection

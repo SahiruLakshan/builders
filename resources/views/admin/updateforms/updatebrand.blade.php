@@ -185,7 +185,6 @@
                   id="brand_img"
                   name="brand_img"
                   accept=".jpg,.jpeg,.png"
-                  required
                 />
                 <small class="form-text text-muted"
                   >Upload an image (JPEG or PNG format) representing the
@@ -201,7 +200,7 @@
                     id="submitButton"
                     class="btn btn-primary"
                   >
-                    Add Brand
+                    Update Brand
                   </button>
 
                   <button
@@ -209,7 +208,7 @@
                     id="resetButton"
                     class="btn btn-secondary ms-4"
                   >
-                    Cancel
+                    Reset
                   </button>
                 </div>
               </div>

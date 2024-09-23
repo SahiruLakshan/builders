@@ -4,7 +4,7 @@
     <h1 style="margin-left:300px; margin-top:20px;">Product Details</h1>
 
     <div class="search-bar" style="margin-left:300px; margin-top:20px; width: 800px;">
-        <input type="text" id="search-input" class="form-control" placeholder="Search products by name...">
+        <input type="text" id="search-input" class="form-control" placeholder="Search products by Name or Id...">
     </div>
 
     <div class="table-responsive" id="pagination-data">
