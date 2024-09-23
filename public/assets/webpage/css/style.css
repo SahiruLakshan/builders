@@ -1366,7 +1366,7 @@ textarea.input {
 }
 
 .products-slick-nav {
-  position: absolute;
+  position: relative;
   right: 15px;
   z-index: 10;
 }
@@ -2348,7 +2348,7 @@ textarea.input {
   font-size: 15px; /* Adjust this value as needed */
   color: black;
 }
-/* 
+/*
 @media (max-width: 768px) {
   #header .header-logo img {
     width: 150px; /* Adjust logo size */

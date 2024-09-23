@@ -222,12 +222,17 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <a class="dropdown-item" href="{{route('profile.edit')}}"><i
+                                                        class="bx bx-user-circle"></i>Profile</a>
+                                                <a class="dropdown-item" href="{{route('home')}}"><i
+                                                        class="bx bx-window"></i>Website</a>
+
                                                 <form action="/logout" method="POST">
                                                     @csrf
                                                     <button type="submit" class="dropdown-item"><i class="bx bx-log-out"></i>
                                                         Logout</button>
                                                 </form>
-                                                
+
                                             </div>
                                         </li>
                                     </ul>

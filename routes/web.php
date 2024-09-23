@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('webpages.home');
 })->name('home');
 
 // Route::get('/dashboard', function () {
@@ -102,9 +102,16 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
 // website
 
-Route::get('/shop', function(){
-    return view('webpages.home');
+// Route::get('/front', function(){
+//     return view('webpages.home');
+// });
+Route::get('/product', function(){
+    return view('webpages.product');
 });
+
+
+
+
 //Authentication Routes
 Route::get('register', [RegisteredUserController::class, 'create'])
     ->name('register');
