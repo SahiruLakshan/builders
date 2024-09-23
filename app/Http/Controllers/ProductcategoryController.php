@@ -32,7 +32,7 @@ class ProductcategoryController extends Controller
             'unit_price' => $request->unit_price,
         ]);
 
-        return redirect()->back()->with('success', 'Product Category added successfully.');
+        return redirect()->back()->with('success', 'Product Category Added.');
     }
 
     public function getProductCategory($id)
@@ -56,7 +56,7 @@ class ProductcategoryController extends Controller
             'unit_price' => $request->unit_price,
         ]);
 
-        return redirect()->back()->with('success', 'Product Category updated successfully.');
+        return redirect()->back()->with('success', 'Product Category Updated.');
     }
 
     public function deleteproductcate($id)
@@ -64,7 +64,7 @@ class ProductcategoryController extends Controller
         $productcategory = Productcategory::findOrFail($id);
 
         $productcategory->delete();
-        return redirect()->back()->with('success', 'Product Category deleted successfully.');
+        return redirect()->back()->with('success', 'Product Category Deleted.');
     }
 
 
@@ -92,7 +92,7 @@ class ProductcategoryController extends Controller
 
         $subcategory = Productsub::create($validatedData);
 
-        return redirect()->back()->with('success', 'Subcategory added successfully!');
+        return redirect()->back()->with('success', 'Subcategory Added!');
     }
 
     public function subcat(Request $request){
@@ -124,7 +124,7 @@ class ProductcategoryController extends Controller
         $subcategory = Productsub::findOrFail($id);
         $subcategory->update($validatedData);
 
-        return redirect()->back()->with('success', 'Subcategory updated successfully!');
+        return redirect()->back()->with('success', 'Subcategory Updated!');
     }
 
     // Delete
@@ -133,6 +133,6 @@ class ProductcategoryController extends Controller
         $subcategory = Productsub::findOrFail($id);
         $subcategory->delete();
 
-        return redirect()->back()->with('success', 'Subcategory deleted successfully!');
+        return redirect()->back()->with('success', 'Subcategory Deleted!');
     }
 }

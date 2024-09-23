@@ -211,7 +211,7 @@
         <!-- /Container -->
     </div>
     <script src="
-            https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
+                https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
 
     <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -240,7 +240,7 @@
                 let measurement = $('#measurement').val();
                 let measurementName = $('#measurement option:selected').text();
                 let color = $('#color').val();
-                let image = $('#image').val();
+                let image = $('#image')[0].files[0]; // Get the file object
 
                 if (!productName || !brand || !category || !quantity || !measurement) {
                     alert('Please fill in all required fields.');
@@ -256,23 +256,23 @@
                     quantity,
                     measurement,
                     color,
-                    image
+                    image // Add the file object here
                 };
 
                 products.push(product);
 
                 // Append to the table
                 let row = `<tr>
-                        <td>${productName2}</td>
-                        <td>${brandName}</td>
-                        <td>${categoryName}</td>
-                        <td>${subCategoryName}</td>
-                        <td>${quantity}</td>
-                        <td>${measurementName}</td>
-                        <td>${color}</td>
-                        <td>${image}</td>
-                        <td><button type="button" class="btn btn-danger btn-sm deleteProduct">Delete</button></td>
-                   </tr>`;
+            <td>${productName2}</td>
+            <td>${brandName}</td>
+            <td>${categoryName}</td>
+            <td>${subCategoryName}</td>
+            <td>${quantity}</td>
+            <td>${measurementName}</td>
+            <td>${color}</td>
+            <td>${image ? image.name : ''}</td>
+            <td><button type="button" class="btn btn-danger btn-sm deleteProduct">Delete</button></td>
+        </tr>`;
                 $('#basic-datatable tbody').append(row);
 
                 // Reset fields
@@ -300,24 +300,39 @@
                     return;
                 }
 
+                let formData = new FormData();
+                formData.append('_token', '{{ csrf_token() }}');
+                formData.append('shop_name', shopName);
+
+                products.forEach((product, index) => {
+                    formData.append(`products[${index}][productName]`, product.productName);
+                    formData.append(`products[${index}][brand]`, product.brand);
+                    formData.append(`products[${index}][category]`, product.category);
+                    formData.append(`products[${index}][subCategory]`, product.subCategory);
+                    formData.append(`products[${index}][quantity]`, product.quantity);
+                    formData.append(`products[${index}][measurement]`, product.measurement);
+                    formData.append(`products[${index}][color]`, product.color);
+                    if (product.image) {
+                        formData.append(`products[${index}][image]`, product
+                        .image); // Attach the file
+                    }
+                });
+
                 $.ajax({
-                    url: '{{ route('submit.products') }}', // Ensure this is correct
+                    url: '{{ route('submit.products') }}',
                     method: 'POST',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        shop_name: shopName,
-                        products: products
-                    },
+                    data: formData,
+                    contentType: false, // Important for file upload
+                    processData: false, // Important for file upload
                     success: function(response) {
                         alert('Products added successfully!');
                         window.location.reload();
                     },
                     error: function(xhr, status, error) {
-                        console.error(xhr.responseText); // Log the response for more details
+                        console.error(xhr.responseText);
                         alert('An error occurred while adding the products.');
                     }
                 });
-
             });
         });
     </script>
