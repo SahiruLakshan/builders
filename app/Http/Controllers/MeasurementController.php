@@ -22,27 +22,17 @@ class MeasurementController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'message' => 'Validation failed',
-                'errors' => $validator->errors(),
-                'status' => 422,
-            ], 422);
+            return redirect()->back()->with('error', 'Validation Failed');
         }
 
         try {
             $measurement = new Measurement($request->all());
             $measurement->save();
 
-            return response()->json([
-                'message' => 'Measurement added successfully!',
-                'status' => 200,
-            ]);
+            return redirect()->back()->with('success','Measurement Added.');
+            
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'An error occurred while adding the measurement.',
-                'error' => $e->getMessage(),
-                'status' => 500,
-            ], 500);
+            return redirect()->back()->with('error', 'An error occurred while adding the measurement.');
         }
     }
 
@@ -63,10 +53,7 @@ class MeasurementController extends Controller
     {
         $measurement = Measurement::find($id);
         if (!$measurement) {
-            return response()->json([
-                'message' => 'Measurement not found',
-                'status' => 404,
-            ], 404);
+            return redirect()->back()->with('warning', 'Measurement is not found');
         }
         return view('admin.updateforms.updatemeasument', compact('measurement'));
     }
@@ -76,10 +63,7 @@ class MeasurementController extends Controller
         $measurement = Measurement::find($id);
 
         if (!$measurement) {
-            return response()->json([
-                'message' => 'Measurement not found',
-                'status' => 404,
-            ], 404);
+            return redirect()->back()->with('warning', 'Measurement is not found.');
         }
 
         $validator = Validator::make($request->all(), [
@@ -87,26 +71,16 @@ class MeasurementController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'message' => 'Validation failed',
-                'errors' => $validator->errors(),
-                'status' => 422,
-            ], 422);
+            return redirect()->back()->with('error', 'Validation Failed.');
         }
 
         try {
             $measurement->update($request->all());
 
-            return response()->json([
-                'message' => 'Measurement updated successfully!',
-                'status' => 200,
-            ]);
+            return redirect()->back()->with('success', 'Measurement Updated.');
+
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'An error occurred while updating the measurement.',
-                'error' => $e->getMessage(),
-                'status' => 500,
-            ], 500);
+            return redirect()->back()->with('error', 'An error occurred while adding the measurement.');
         }
     }
 
@@ -115,25 +89,16 @@ class MeasurementController extends Controller
         $measurement = Measurement::find($id);
 
         if (!$measurement) {
-            return response()->json([
-                'message' => 'Measurement not found',
-                'status' => 404,
-            ], 404);
+            return redirect()->back()->with('warning', 'Measurement is not found.');
         }
 
         try {
             $measurement->delete();
 
-            return response()->json([
-                'message' => 'Measurement deleted successfully!',
-                'status' => 200,
-            ]);
+            return redirect()->back()->with('success', 'Measurement Deleted.');
+
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'An error occurred while deleting the measurement.',
-                'error' => $e->getMessage(),
-                'status' => 500,
-            ], 500);
+            return redirect()->back()->with('error', 'An error occurred while adding the measurement.');
         }
     }
 

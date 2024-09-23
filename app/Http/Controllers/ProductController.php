@@ -20,27 +20,17 @@ class ProductController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'message' => 'Validation failed',
-                'errors' => $validator->errors(),
-                'status' => 422,
-            ], 422);
+            return redirect()->back()->with('error', 'Validation Failed.');
         }
 
         try {
             $product = new Product($request->all());
             $product->save();
 
-            return response()->json([
-                'message' => 'Product added successfully!',
-                'status' => 200,
-            ]);
+            return redirect()->back()->with('success', 'Product Added.');
+
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'An error occurred while adding the measurement.',
-                'error' => $e->getMessage(),
-                'status' => 500,
-            ], 500);
+            return redirect()->back()->with('error', 'An error occurred while adding the product.');
         }
     }
     
@@ -72,7 +62,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->update($validatedData);
 
-        return response()->json(['message' => 'Product updated successfully'], 200);
+        return redirect()->back()->with('success', 'Product Updated.');
     }
 
     public function destroy($id)
@@ -80,6 +70,6 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return response()->json(['message' => 'Product deleted successfully'], 200);
+        return redirect()->back()->with('success', 'Product Deleted.');
     }
 }
