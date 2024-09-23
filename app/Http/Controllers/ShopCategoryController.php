@@ -40,7 +40,7 @@ class ShopCategoryController extends Controller
             $shopCategory = new ShopCategory($request->all());
             $shopCategory->save();
 
-            return redirect()->back()->with('success', 'Shop Category Updated.');
+            return redirect()->back()->with('success', 'Shop Category Added.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An error occurred while adding the Shop Category.');
         }
