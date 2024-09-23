@@ -110,6 +110,17 @@
                                                 placeholder="Enter color" />
                                         </div>
                                     </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="color">Image</label>
+                                            <input class="form-control" type="file" name="image" id="image"
+                                                accept=".jpg,.jpeg,.png" />
+                                            {{-- <small class="form-text text-muted">
+                                                Upload an image (JPEG or PNG format) representing
+                                                the Product. Optional field.
+                                            </small> --}}
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="form-group">
@@ -148,6 +159,7 @@
                                                                 <th class="wd-10p border-bottom-0">Quantity</th>
                                                                 <th class="wd-25p border-bottom-0">Measurement</th>
                                                                 <th class="wd-25p border-bottom-0">Color</th>
+                                                                <th class="wd-25p border-bottom-0">Image</th>
                                                                 <th class="wd-25p border-bottom-0">Actions</th>
                                                             </tr>
                                                         </thead>
@@ -199,7 +211,7 @@
         <!-- /Container -->
     </div>
     <script src="
-        https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
+            https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
 
     <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -228,6 +240,7 @@
                 let measurement = $('#measurement').val();
                 let measurementName = $('#measurement option:selected').text();
                 let color = $('#color').val();
+                let image = $('#image').val();
 
                 if (!productName || !brand || !category || !quantity || !measurement) {
                     alert('Please fill in all required fields.');
@@ -241,7 +254,8 @@
                     subCategory,
                     quantity,
                     measurement,
-                    color
+                    color,
+                    image
                 };
 
                 products.push(product);
@@ -255,6 +269,7 @@
                         <td>${quantity}</td>
                         <td>${measurementName}</td>
                         <td>${color}</td>
+                        <td>${image}</td>
                         <td><button type="button" class="btn btn-danger btn-sm deleteProduct">Delete</button></td>
                    </tr>`;
                 $('#basic-datatable tbody').append(row);
@@ -267,6 +282,7 @@
                 $('#quantity').val('');
                 $('#measurement').val('').trigger('change');
                 $('#color').val('');
+                $('#image').val('');
             });
 
             $(document).on('click', '.deleteProduct', function() {

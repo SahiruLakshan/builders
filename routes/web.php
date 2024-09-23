@@ -10,6 +10,8 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopproductController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -103,4 +105,15 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 Route::get('/shop', function(){
     return view('webpages.home');
 });
+//Authentication Routes
+Route::get('register', [RegisteredUserController::class, 'create'])
+    ->name('register');
+
+Route::post('register', [RegisteredUserController::class, 'store']);
+
+Route::get('login', [AuthenticatedSessionController::class, 'create'])
+    ->name('login');
+
+Route::post('login', [AuthenticatedSessionController::class, 'store']);
+
 require __DIR__ . '/auth.php';

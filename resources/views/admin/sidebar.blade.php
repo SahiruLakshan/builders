@@ -454,7 +454,23 @@
 
 
 
-                                <li class="side-item side-item-category">COMPONENTS</li>
+                                <li class="side-item side-item-category">REGISTER  </li>
+                                <li class="slide">
+                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
+                                            class="side-menu__label"> Users</span></a>
+                                    <ul class="slide-menu">
+                                        {{-- <li class="side-menu__label1">
+                                            <a href="javascript:void(0);">Add New Service Provider</a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="addServiceProvider.html">Add New Service
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="icons.html">Veiw Service Provider</a>
+                                        </li> --}}
+                                    </ul>
+                                </li>
 
 
 
