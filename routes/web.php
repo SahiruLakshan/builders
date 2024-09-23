@@ -97,4 +97,10 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']);
 });
 
+
+// website
+
+Route::get('/shop', function(){
+    return view('webpages.home');
+});
 require __DIR__ . '/auth.php';
