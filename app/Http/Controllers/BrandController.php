@@ -10,11 +10,6 @@ use Illuminate\Http\Request;
 class BrandController extends Controller
 {
 
-    // public function brand()
-    // {
-    //     return view('admin.addbrand');
-    // }
-
     public function index()
     {
         return view('admin.addbrand');
@@ -48,11 +43,7 @@ class BrandController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'message' => 'Validation failed',
-                'errors' => $validator->errors(),
-                'status' => 422,
-            ], 422);
+            return redirect()->back()->with('error', 'Validation is failed.');
         }
 
         try {
@@ -80,16 +71,10 @@ class BrandController extends Controller
             $brand = new Brand($data);
             $brand->save();
 
-            return response()->json([
-                'message' => 'Brand added successfully!',
-                'status' => 200
-            ]);
+            return redirect()->back()->with('success', 'Brand Added.');
+
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'An error occurred while adding the brand.',
-                'error' => $e->getMessage(),
-                'status' => 500
-            ], 500);
+            return redirect()->back()->with('error', 'An error occurred while adding the brand.');
         }
     }
 
@@ -98,7 +83,7 @@ class BrandController extends Controller
     {
         $brand = Brand::find($id);
         if (!$brand) {
-            return redirect()->back()->with('error', 'Brand not found');
+            return redirect()->back()->with('error', 'Brand is not found');
         }
         return view('admin.updateforms.updatebrand',compact('brand'));
     }
@@ -109,10 +94,7 @@ class BrandController extends Controller
         $brand = Brand::find($id);
 
         if (!$brand) {
-            return response()->json([
-                'message' => 'Brand not found',
-                'status' => 404
-            ], 404);
+            return redirect()->back()->with('error', 'Brand is not found.');
         }
 
         // Validate the incoming data
@@ -129,11 +111,7 @@ class BrandController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'message' => 'Validation failed',
-                'errors' => $validator->errors(),
-                'status' => 422,
-            ], 422);
+            return redirect()->back()->with('error', 'Validation failed.');
         }
 
         try {
@@ -168,16 +146,10 @@ class BrandController extends Controller
             // Update the brand
             $brand->update($data);
 
-            return response()->json([
-                'message' => 'Brand updated successfully!',
-                'status' => 200
-            ]);
+            return redirect()->back()->with('success', 'Brand Updated.');
+
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'An error occurred while updating the brand.',
-                'error' => $e->getMessage(),
-                'status' => 500
-            ], 500);
+            return redirect()->back()->with('error', 'An error occurred while updating the Brand.');
         }
     }
 
@@ -188,26 +160,17 @@ class BrandController extends Controller
         $brand = Brand::find($id);
 
         if (!$brand) {
-            return response()->json([
-                'message' => 'Brand not found',
-                'status' => 404
-            ], 404);
+            return redirect()->back()->with('warning', 'Brand is not found.');
         }
 
         try {
             // Delete the brand
             $brand->delete();
 
-            return response()->json([
-                'message' => 'Brand deleted successfully!',
-                'status' => 200
-            ]);
+            return redirect()->back()->with('success', 'Brand Deleted.');
+
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'An error occurred while deleting the brand.',
-                'error' => $e->getMessage(),
-                'status' => 500
-            ], 500);
+            return redirect()->back()->with('error', 'An error occurred while deleting the brand.');
         }
     }
 }

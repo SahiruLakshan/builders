@@ -44,7 +44,7 @@
                                     <div class="form-group mb-0 mt-3 justify-content-end">
                                         <div>
                                             <button type="submit" id="submitButton" class="btn btn-primary">
-                                                ADD
+                                                Update
                                             </button>
 
                                             <button type="reset" id="resetButton" class="btn btn-secondary ms-4">

@@ -850,5 +850,43 @@
 
    <!-- custom js -->
    <script src="{{ asset('assets/js/custom.js') }}"></script> --}}
+
+   <script src="https://cdn.jsdelivr.net/gh/noumanqamar450/alertbox@main/version/1.0.2/alertbox.min.js"></script>
+
+    @if (session('success'))
+        <script>
+            alertbox.render({
+                alertIcon: 'success',
+                title: 'SUCCESS!',
+                message: '{{ session('success') }}',
+                btnTitle: 'OK',
+                border: true
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            alertbox.render({
+                alertIcon: 'error',
+                title: 'FAILED!',
+                message: '{{ session('failed') }}',
+                btnTitle: 'OK',
+                border: true
+            });
+        </script>
+    @endif
+
+    @if (session('warning'))
+        <script>
+            alertbox.render({
+                alertIcon: 'warning',
+                title: 'WARNING!',
+                message: '{{ session('warning') }}',
+                btnTitle: 'OK',
+                border: true
+            });
+        </script>
+    @endif
     </body>
 @endsection

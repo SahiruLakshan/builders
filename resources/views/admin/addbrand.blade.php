@@ -83,7 +83,7 @@
                   class="form-control"
                   id="address"
                   name="address"
-                  placeholder="Enter Your Address"
+                  placeholder="Enter Address"
                   required
                 />
                 <small class="form-text text-muted"
@@ -198,7 +198,7 @@
                     id="resetButton"
                     class="btn btn-secondary ms-4"
                   >
-                    Cancel
+                    Reset
                   </button>
                 </div>
               </div>
