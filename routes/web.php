@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('webpages.home');
 })->name('home');
 
 // Route::get('/dashboard', function () {
@@ -98,6 +98,19 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::put('/update/productsubcategory/{id}', [ProductcategoryController::class, 'updatesubProductCategory']);
     Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']);
 });
+
+
+// website
+
+// Route::get('/front', function(){
+//     return view('webpages.home');
+// });
+Route::get('/product', function(){
+    return view('webpages.product');
+});
+
+
+
 
 //Authentication Routes
 Route::get('register', [RegisteredUserController::class, 'create'])
