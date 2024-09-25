@@ -22,7 +22,7 @@ class ShopproductController extends Controller
         $products = Product::all();
         $pc = Productcategory::all();
         $sub = Productsub::all();
-        return view('admin.addshopproduct', compact('shops','brand','measurement','products','pc','sub'));
+        return view('admin.addshopproduct', compact('shops', 'brand', 'measurement', 'products', 'pc', 'sub'));
     }
 
     public function submitProducts(Request $request)
@@ -36,18 +36,23 @@ class ShopproductController extends Controller
             'products.*.quantity' => 'required|integer|min:1',
             'products.*.measurement' => 'required|string',
             'products.*.color' => 'nullable|string',
+            'products.*.image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Image validation
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'message' => 'Validation failed',
-                'errors' => $validator->errors(),
-                'status' => 422,
-            ], 422);
+            return redirect()->back()->with('error', 'Validation failed.');
         }
 
         try {
             foreach ($request->products as $product) {
+                // Handle the image upload
+                $imageName = null;
+                if (isset($product['image'])) {
+                    // Save the image in public/assets/shopproduct folder
+                    $imageName = time() . '_' . $product['image']->getClientOriginalName();
+                    $product['image']->move(public_path('assets/shopproduct'), $imageName); // Store image in folder
+                }
+
                 // Store product in the database for the given shop
                 Shopproduct::create([
                     'shop_id' => $request->shop_name,
@@ -58,19 +63,13 @@ class ShopproductController extends Controller
                     'quantity' => $product['quantity'],
                     'measurement_id' => $product['measurement'],
                     'color' => $product['color'] ?? null,
+                    'image' => $imageName, // Only store image name in the database
                 ]);
             }
 
-            return response()->json([
-                'message' => 'Products added successfully!',
-                'status' => 200,
-            ]);
+            return redirect()->back()->with('success', 'Product Added.');
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'An error occurred while adding the products.',
-                'error' => $e->getMessage(),
-                'status' => 500,
-            ], 500);
+            return redirect()->back()->with('error', 'An error occurred while adding the product.');
         }
     }
 }

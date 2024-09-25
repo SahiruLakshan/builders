@@ -87,11 +87,7 @@ class ShopController extends Controller
     ]);
 
     if ($validator->fails()) {                            // validation check
-        return response()->json([
-            'message' => 'Validation failed',
-            'errors' => $validator->errors(),
-            'status' => 422,
-        ], 422);
+        return redirect()->back()->with('error', 'Validation failed.');
     }
 
     try {
@@ -122,16 +118,9 @@ class ShopController extends Controller
         $shop = new Shop($data);                         // save shop data
         $shop->save();
 
-        return response()->json([
-            'message' => 'Shop submitted successfully!',
-            'status' => 200
-        ]);
+        return redirect()->back()->with('success', 'Shop Added.');
     } catch (\Exception $e) {
-        return response()->json([
-            'message' => 'An error occurred while submitting the shop details.',
-            'error' => $e->getMessage(),
-            'status' => 500
-        ], 500);
+        return redirect()->back()->with('error', 'An error occurred while adding the shop.');
     }
 }
 
@@ -144,7 +133,7 @@ class ShopController extends Controller
         $selectedCategories = explode(',', $shop->category);
         $category = ShopCategory::all();
         if (!$shop) {
-            return redirect()->back()->with('error', 'Shop not found');
+            return redirect()->back()->with('error', 'Shop is not found');
         }
         return view('admin.updateforms.updateshop',compact('shop','districts','city','category', 'selectedCategories'));
     }
@@ -153,10 +142,7 @@ class ShopController extends Controller
     {
         $shop = Shop::find($id);
         if (!$shop) {
-            return response()->json([
-                'message' => 'Shop not found',
-                'status' => 404
-            ], 404);
+            return redirect()->back()->with('error', 'Shop is not found');
         }
 
         // Validate the input data
@@ -176,11 +162,7 @@ class ShopController extends Controller
 
         // If validation fails, return error response
         if ($validator->fails()) {
-            return response()->json([
-                'message' => 'Validation failed',
-                'errors' => $validator->errors(),
-                'status' => 422
-            ], 422);
+            return redirect()->back()->with('error', 'Validation failed.');
         }
 
         try {
@@ -208,17 +190,10 @@ class ShopController extends Controller
             $shop->save();
 
             // Return success response
-            return response()->json([
-                'message' => 'Shop updated successfully!',
-                'status' => 200
-            ]);
+            return redirect()->back()->with('success', 'Shop Updated.');
         } catch (\Exception $e) {
             // Return error response if something goes wrong
-            return response()->json([
-                'message' => 'An error occurred while updating the shop details.',
-                'error' => $e->getMessage(),
-                'status' => 500
-            ], 500);
+            return redirect()->back()->with('error', 'An error occurred while adding the measurement.');
         }
     }
 
@@ -227,10 +202,7 @@ class ShopController extends Controller
         $shop = Shop::find($id);
 
         if (!$shop) {
-            return response()->json([
-                'message' => 'Shop not found',
-                'status' => 404
-            ], 404);
+            return redirect()->back()->with('warning', 'Shop is not found.');
         }
 
         try {
@@ -240,16 +212,9 @@ class ShopController extends Controller
 
             $shop->delete();
 
-            return response()->json([
-                'message' => 'Shop deleted successfully!',
-                'status' => 200
-            ]);
+            return redirect()->back()->with('success', 'Shop Deleted.');
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'An error occurred while deleting the shop.',
-                'error' => $e->getMessage(),
-                'status' => 500
-            ], 500);
+            return redirect()->back()->with('error', 'An error occurred while adding the shop.');
         }
     }
 
