@@ -21,8 +21,11 @@
     />
 
     <!-- Slick -->
-        <link type="text/css" rel="stylesheet" href="{{ asset('assets/webpage/css/slick.css') }}" />
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/webpage/css/slick-theme.css') }}" />
+        {{-- <link type="text/css" rel="stylesheet" href="{{ asset('assets/webpage/css/slick.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ asset('assets/webpage/css/slick-theme.css') }}" /> --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"/>
+
 
     <!-- Owl Carousel CSS -->
     <link
@@ -40,6 +43,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
 
+
     <!-- Custom stylesheet -->
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/webpage/css/style.css') }}" />
 
@@ -56,12 +60,10 @@
     </style>
   </head>
 
-  <body>
+  <body class="overflow-x-hidden">
     <!-- HEADER -->
-    <header>
-      <div class="fixed-top">
-        <div class="container-fluid">
-          <div class="row">
+    <header class="nav navbar-expand-lg">
+        <div class="row">
             <!-- Logo Section -->
             <div
               class="col-2 d-flex align-items-center justify-content-center"
@@ -81,8 +83,8 @@
               <!-- First Row: Top Header (Contact Info & Links) -->
               <div id="top-header">
                 <div class="container-fluid">
-                  <div class="row px-0">
-                    <div class="col-md-10 d-flex justify-content-end">
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex ">
                       <ul class="header-links float-left">
                         <li>
                           <a href="tel:0112748149"
@@ -115,17 +117,31 @@
                         <li><a href="education.html">Education</a></li>
                       </ul>
                     </div>
-                    <div class="col-md-2 d-flex justify-content-end">
+                    <div class="d-flex">
 
-                          <div class="dropdown">
-                            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                          <div class="dropdown px-0">
+                            <button class="btn btn-sm btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 My Account
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                              <li><a class="dropdown-item" href="#">Login</a></li>
-                              <li><a class="dropdown-item" href="#">Sign up</a></li>
-                              <li><a class="dropdown-item" href="#">Shop profile</a></li>
+                            @guest()
+                                <li><a class="dropdown-item" href="{{route('login')}}">Login</a></li>
+                                <li><a class="dropdown-item" href="{{route('register')}}">Sign up</a></li>
                             </ul>
+                            @endguest
+                            @auth
+                            @if (Auth::user()->type==1)
+                            <li><a class="dropdown-item " href="{{route('dashboard')}}">Dashboard</a></li>
+                            @endif
+                                <li>
+                                    <form action="{{route('logout')}}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item btn btn danger"><i></i>
+                                            Logout</button>
+                                    </form>
+                                </li>
+                              </ul>
+                            @endauth
                           </div>
                     </div>
                   </div>
@@ -240,9 +256,9 @@
               <!-- Third Row: Search Bar and Dropdowns -->
               <div id="header">
                 <div class="container-fluid p-1">
-                  <div class="row">
+                  <div class="d-flex">
                     <!-- First Dropdown -->
-                    <div class="col-12 col-md-2 mb-2 mb-md-0 p-1">
+                    <div class="  mb-2 mb-md-0 p-1">
                       <div class="subnav">
                         <button class="subnavbtn">
                           Service By Category <i class="fa fa-caret-down"></i>
@@ -285,7 +301,7 @@
                     </div>
                     <!-- Search Bar -->
                     <div
-                      class="col-12 col-md-4 mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end"
+                      class=" mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end"
                     >
                       <div class="input-group w-100 w-md-75">
                         <input
@@ -380,7 +396,7 @@
                       </div>
                     </div>
                     <!-- Fourth Dropdown -->
-                    <div class="col-12 col-md-2 mb-2 mb-md-0">
+                    <div class="col-12 col-md-2 mb-2 ">
                       <div class="subnav">
                         <button class="subnavbtn">
                           Purchase With Builders.lk
@@ -398,8 +414,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
     </header>
 
     <!-- /MAIN HEADER -->
@@ -408,7 +422,7 @@
     <!-- FOOTER -->
 
     <!-- Footer -->
-    <footer style="background: #15161d" class="text-white">
+    {{-- <footer style="background: #15161d" class="text-white">
       <!-- Grid container -->
       <div class="container p-4">
         <h3 class="footer-title">About Us</h3>
@@ -535,7 +549,7 @@
         </span>
         <!-- Copyright -->
       </div>
-    </footer>
+    </footer> --}}
 
     <!-- Footer -->
     <!-- FOOTER -->
@@ -630,16 +644,18 @@
 {{-- <script src="jquery.min.js"></script> --}}
 {{-- <script src="{{ asset('assets/webpage/lib/owlcarousel/owl.carousel.min.js') }}"></script> --}}
 <!-- jQuery Plugins -->
-<script src="{{ asset('assets/webpage/js/jquery.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/webpage/js/jquery.min.js') }}"></script> --}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{{-- <script src="{{ asset('assets/webpage/js/bootstrap.min.js') }}"></script> --}}
+{{-- <script src="{{ asset('assets/webpage/js/slick.min.js') }}"></script> --}}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
 
-<script src="{{ asset('assets/webpage/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('assets/webpage/js/slick.min.js') }}"></script>
 <script src="{{ asset('assets/webpage/js/nouislider.min.js') }}"></script>
 <script src="{{ asset('assets/webpage/js/jquery.zoom.min.js') }}"></script>
 <script src="{{ asset('assets/webpage/js/main.js') }}"></script>
 
 <!-- jQuery (Required by Owl Carousel) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
 <!-- Owl Carousel JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 

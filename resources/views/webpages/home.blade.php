@@ -1,7 +1,7 @@
 @extends('webpages.index')
 <!--  Main carousels start here -->
 @section('content')
-    <div class="container mt-3 maincontainer">
+    <div class="container">
         <div class="row p-0">
           <!-- Left Vertical Slider -->
           <div class="col-md-3 p-0">
@@ -1186,7 +1186,7 @@
 
       <!-- NEWSLETTER -->
 
-      <div id="newsletter" class="section">
+      {{-- <div id="newsletter" class="section">
         <!-- container -->
         <div class="container">
           <!-- row -->
@@ -1261,6 +1261,8 @@
           <!-- /row -->
         </div>
         <!-- /container -->
-      </div>
+      </div> --}}
       <!-- /NEWSLETTER -->
+
+
 @endsection
