@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
-    public function shopcategory($name){
-        $shop=Shop::where('category','like', '%' . $name . '%')->get();
-        dd($shop);
+    public function shopcategory($name)
+    {
+        $shop = Shop::where('category', 'like', '%' . $name . '%')->get();
+        // dd($shop);
     }
 }
