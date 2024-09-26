@@ -12,6 +12,10 @@ use App\Http\Controllers\ShopproductController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\WebController;
+use App\Models\Productcategory;
+use Illuminate\Routing\Route as RoutingRoute;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -109,6 +113,10 @@ Route::get('/product', function(){
     return view('webpages.product');
 });
 
+Route::name('category.')->group(function(){
+    Route::get('product/cat/{name}',[WebController::class,'shopcategory'])->name('shop');
+});
+
 
 
 
@@ -123,4 +131,6 @@ Route::get('login', [AuthenticatedSessionController::class, 'create'])
 
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
+// Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+//     ->name('logout');
 require __DIR__ . '/auth.php';

@@ -60,7 +60,7 @@
     </style>
   </head>
 
-  <body class="overflow-x-hidden">
+  <body>
     <!-- HEADER -->
     <header class="nav navbar-expand-lg">
         <div class="row">
@@ -83,8 +83,8 @@
               <!-- First Row: Top Header (Contact Info & Links) -->
               <div id="top-header">
                 <div class="container-fluid">
-                  <div class="d-flex justify-content-between">
-                    <div class="d-flex ">
+                  <div class="row ">
+                    <div class="col-md-10 d-flex justify-content-start">
                       <ul class="header-links float-left">
                         <li>
                           <a href="tel:0112748149"
@@ -117,7 +117,7 @@
                         <li><a href="education.html">Education</a></li>
                       </ul>
                     </div>
-                    <div class="d-flex">
+                    <div class="col-md-2 pd-2 d-flex align-self-center ">
 
                           <div class="dropdown px-0">
                             <button class="btn btn-sm btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -256,9 +256,9 @@
               <!-- Third Row: Search Bar and Dropdowns -->
               <div id="header">
                 <div class="container-fluid p-1">
-                  <div class="d-flex">
+                  <div class="row">
                     <!-- First Dropdown -->
-                    <div class="  mb-2 mb-md-0 p-1">
+                    <div class="col-12 col-md-2 mb-2 mb-md-0 p-1">
                       <div class="subnav">
                         <button class="subnavbtn">
                           Service By Category <i class="fa fa-caret-down"></i>
@@ -301,7 +301,7 @@
                     </div>
                     <!-- Search Bar -->
                     <div
-                      class=" mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end"
+                      class="col-12 col-md-4 mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end"
                     >
                       <div class="input-group w-100 w-md-75">
                         <input
@@ -324,33 +324,12 @@
                         <button class="subnavbtn">
                           Shop By Category <i class="fa fa-caret-down"></i>
                         </button>
-                        <div class="subnav-content">
-                          <div class="row">
-                            <div class="col-6 col-md-4">
-                              <a href="#">HARDWARE SHOP</a>
-                              <a href="#">ELECTRICAL SHOP</a>
-                              <a href="#">PAINT HOUSE</a>
-                              <a href="#">STEEL SHOP</a>
-                              <a href="#">ALUMINIUM SHOP</a>
-                              <a href="#">TILE AND BATHWARE</a>
-                              <a href="#">CARPET SHOP</a>
-                            </div>
-                            <div class="col-6 col-md-4">
-                              <a href="#">PICTURE PALACE</a>
-                              <a href="#">CEILING SHOWROOM</a>
-                              <a href="#">TIMBER HOUSE</a>
-                              <a href="#">TOOL SHOP</a>
-                              <a href="#">STAINLESS STEEL SHOP</a>
-                            </div>
-                            <div class="col-6 col-md-4">
-                              <a href="#">NUT AND BOLT SHOP</a>
-                              <a href="#">CONSTRUCTION CHEMICALS</a>
-                              <a href="#">GRANITE AND MARBLES</a>
-                              <a href="#">CONCREATE WORKS</a>
-                              <a href="#">ROOFING</a>
-                              <a href="#">BRICKS AND BLOCKS</a>
-                              <a href="#">METAL SUPLLYER</a>
-                            </div>
+                        <div class="subnav-content" style="height:50vh">
+                          <div class="d-flex flex-wrap flex-column">
+                                @foreach($shopcats as $shopcat)
+                                    <a href="{{route('category.shop', $shopcat->name)}}">{{$shopcat->name}}</a>
+
+                                @endforeach
                           </div>
                         </div>
                       </div>
@@ -396,7 +375,7 @@
                       </div>
                     </div>
                     <!-- Fourth Dropdown -->
-                    <div class="col-12 col-md-2 mb-2 ">
+                    <div class="col-12 col-md-2 mb-2 mb-md-0">
                       <div class="subnav">
                         <button class="subnavbtn">
                           Purchase With Builders.lk
