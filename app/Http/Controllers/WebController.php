@@ -10,7 +10,7 @@ class WebController extends Controller
 {
     public function shopcategory($name)
     {
-        $shops = Shop::where('category', 'like', '%' . $name . '%')->get();
+        $shops = Shop::where('category', 'like', '%' . $name . '%')->paginate(20);
         // dd($shops);
         return view('webpages.product',compact('shops'));
     }
