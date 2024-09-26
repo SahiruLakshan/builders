@@ -105,10 +105,12 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 // Route::get('/front', function(){
 //     return view('webpages.home');
 // });
-Route::get('/product', function(){
+Route::get('/product', function () {
     return view('webpages.product');
 });
-
+Route::get('/serviceprovider', function () {
+    return view('webpages.serviceprovider');
+})->name('serviceprovider');
 
 
 

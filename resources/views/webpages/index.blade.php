@@ -226,7 +226,7 @@
                         <ul class="dropdown-menu p-1 border">
                           <li>
                             <a
-                              href="serviceprovider.html"
+                              href="{{route('serviceprovider')}}"
                               class="dropdown-item p-1 border"
                               >Service Providers</a
                             >
@@ -422,7 +422,7 @@
     <!-- FOOTER -->
 
     <!-- Footer -->
-    {{-- <footer style="background: #15161d" class="text-white">
+    <footer style="background: #15161d" class="text-white">
       <!-- Grid container -->
       <div class="container p-4">
         <h3 class="footer-title">About Us</h3>
@@ -549,11 +549,11 @@
         </span>
         <!-- Copyright -->
       </div>
-    </footer> --}}
+    </footer>
 
     <!-- Footer -->
     <!-- FOOTER -->
-    <footer id="footer">
+    {{-- <footer id="footer">
       <!-- top footer -->
       <div class="section">
         <!-- container -->
@@ -633,7 +633,7 @@
       <!-- /top footer -->
 
       <!-- bottom footer -->
-    </footer>
+    </footer> --}}
 
     <!-- /FOOTER -->
 
