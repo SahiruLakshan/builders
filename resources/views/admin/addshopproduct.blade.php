@@ -4,7 +4,7 @@
         <!-- container -->
         <div class="main-container container-fluid">
             <!-- row -->
-            <div class="row row-sm d-flex justify-content-center align-items-center" style="height: 450px">
+            <div class="row row-sm d-flex justify-content-center align-items-center" >
                 <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                     <div class="card box-shadow-0">
                         <div class="card-header">
@@ -246,6 +246,7 @@
                     alert('Please fill in all required fields.');
                     return;
                 }
+          
 
                 let product = {
                     productName,

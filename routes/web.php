@@ -12,6 +12,10 @@ use App\Http\Controllers\ShopproductController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\WebController;
+use App\Models\Productcategory;
+use Illuminate\Routing\Route as RoutingRoute;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -23,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('webpages.home');
 })->name('home');
 
 // Route::get('/dashboard', function () {
@@ -99,6 +103,26 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']);
 });
 
+
+// website
+
+// Route::get('/front', function(){
+//     return view('webpages.home');
+// });
+Route::get('/product', function () {
+    return view('webpages.product');
+});
+Route::get('/serviceprovider', function () {
+    return view('webpages.serviceprovider');
+})->name('serviceprovider');
+
+Route::name('category.')->group(function () {
+    Route::get('product/cat/{name}', [WebController::class, 'shopcategory'])->name('shop');
+});
+
+
+
+
 //Authentication Routes
 Route::get('register', [RegisteredUserController::class, 'create'])
     ->name('register');
@@ -110,4 +134,6 @@ Route::get('login', [AuthenticatedSessionController::class, 'create'])
 
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
+// Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+//     ->name('logout');
 require __DIR__ . '/auth.php';
