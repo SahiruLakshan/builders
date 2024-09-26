@@ -324,34 +324,13 @@
                         <button class="subnavbtn">
                           Shop By Category <i class="fa fa-caret-down"></i>
                         </button>
-                        <div class="subnav-content">
-                          <div class="row">
-                            <div class="col-6 col-md-4">
-                              <a href="#">HARDWARE SHOP</a>
-                              <a href="#">ELECTRICAL SHOP</a>
-                              <a href="#">PAINT HOUSE</a>
-                              <a href="#">STEEL SHOP</a>
-                              <a href="#">ALUMINIUM SHOP</a>
-                              <a href="#">TILE AND BATHWARE</a>
-                              <a href="#">CARPET SHOP</a>
+                        <div class="subnav-content" style="height:50vh">
+                            <div class="d-flex flex-wrap flex-column">
+                                  @foreach($shopcats as $shopcat)
+                                      <a href="{{route('category.shop', $shopcat->name)}}">{{$shopcat->name}}</a>
+
+                                  @endforeach
                             </div>
-                            <div class="col-6 col-md-4">
-                              <a href="#">PICTURE PALACE</a>
-                              <a href="#">CEILING SHOWROOM</a>
-                              <a href="#">TIMBER HOUSE</a>
-                              <a href="#">TOOL SHOP</a>
-                              <a href="#">STAINLESS STEEL SHOP</a>
-                            </div>
-                            <div class="col-6 col-md-4">
-                              <a href="#">NUT AND BOLT SHOP</a>
-                              <a href="#">CONSTRUCTION CHEMICALS</a>
-                              <a href="#">GRANITE AND MARBLES</a>
-                              <a href="#">CONCREATE WORKS</a>
-                              <a href="#">ROOFING</a>
-                              <a href="#">BRICKS AND BLOCKS</a>
-                              <a href="#">METAL SUPLLYER</a>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>

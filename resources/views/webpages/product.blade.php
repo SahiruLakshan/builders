@@ -273,141 +273,32 @@
         </aside>
         <div class="col-9">
           <div class="row row-cols-2 g-2 mb-2">
-            <div class="col">
-              <div class="card d-flex flex-row">
-                <!-- Image on the left side -->
-                <img src="{{ asset('assets/webpage/img/product01.png') }}" class="img-fluid" alt="..." style="width: 40%;">
-                
-                <!-- Text and button on the right side -->
-                <div class="card-body d-flex flex-column justify-content-between">
-                  <div>
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">
-                      With supporting text below as a natural lead-in to additional content.
-                    </p>
+              @foreach ($shops as $shop)
+              <div class="col">
+                <div class="card d-flex flex-row">
+                  <!-- Image on the left side -->
+                  <img src="{{ asset('assets/shop/'.$shop->shop_img) }}" class="img-fluid" alt="..." style="width: 40%;">
+
+                  <!-- Text and button on the right side -->
+                  <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                      <h5 class="card-title">{{$shop->name}}</h5>
+                      {{-- <p class="card-text">
+                        With supporting text below as a natural lead-in to additional content.
+                      </p> --}}
+                    </div>
+                    <a href="#" class="btn btn-primary align-self-end">{{$shop->email}}</a>
                   </div>
-                  <a href="#" class="btn btn-primary align-self-end">Contact Us</a>
                 </div>
               </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
-                  <a href="#" class="btn btn-primary">Contact Us</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row row-cols-2 g-2 mb-2">
-            <div class="col mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
-                  <a href="#" class="btn btn-warning">Contact Us</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
-                  <a href="#" class="btn btn-warning">Contact Us</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row row-cols-2 g-2 mb-2">
-            <div class="col mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
-                  <a href="#" class="btn btn-warning">Contact Us</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
-                  <a href="#" class="btn btn-warning">Contact Us</a>
-                </div>
-              </div>
-            </div>
+
+            @endforeach
+
           </div>
 
-          <div class="row row-cols-2 g-2 mb-2">
-            <div class="col mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
-                  <a href="#" class="btn btn-warning">Contact Us</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
-                  <a href="#" class="btn btn-warning">Contact Us</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row row-cols-2 g-2 mb-2">
-            <div class="col mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
-                  <a href="#" class="btn btn-warning">Contact Us</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
-                  <a href="#" class="btn btn-warning">Contact Us</a>
-                </div>
-              </div>
-            </div>
-          </div>
+
+
+
         </div>
       </div>
     </div>
