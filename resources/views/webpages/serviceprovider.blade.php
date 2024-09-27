@@ -1,16 +1,16 @@
 @extends('webpages.index')
 @section('content')
     <!-- /MAIN HEADER -->
-    <div class="container-fluid mt-2" >
+    <div class="container-fluid " style="padding-top: 132px" >
       <div class="text-center">
         <h3 class="display-4 text-primary font-weight-bold">BUILDERS.LK</h3>
         <h4 class="display-6 text-secondary font-weight-bold">
           Constructions Service Provides Registration form
         </h4>
       </div>
-      <form class="border mt-2">
+      <form class="border p-4">
         <div class="row">
-          <div class="form-group col-md-5">
+          <div class="form-group col">
             <label for="inputPassword4">Name</label>
             <input
               type="text"
@@ -19,7 +19,7 @@
               placeholder="Name Of The Service Provider"
             />
           </div>
-          <div class="col-5">
+          <div class="col">
             <label for="maxProjectValue">Grade </label>
             <input
               type="text"
@@ -31,7 +31,7 @@
         </div>
 
         <div class="row">
-          <div class="col-4">
+          <div class="col-auto">
             <label for="category">Select Category:</label>
             <select id="category" name="category" class="form-select">
               <option value="cat1">Category 1</option>
@@ -39,7 +39,6 @@
               <option value="cat3">Category 3</option>
             </select>
           </div>
-
           <div class="col-8">
             <label for="inputAddress">Address</label>
             <textarea
@@ -99,6 +98,30 @@
             }
           });
         </script>
+
+        <h5>Cantact Details</h5>
+        <div class="row g-3 align-items-space-between">
+          <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label">Telephone :</label>
+          </div>
+          <div class="col-auto">
+            <input type="Telephone" id="telephone" class="form-control" aria-describedby="telephoneHelp">
+          </div>
+          <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label">Mobile :</label>
+          </div>
+          <div class="col-auto">
+            <input type="Telephone" id="mobile" class="form-control" aria-describedby="telephoneHelp">
+          </div>
+          <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label">Whatsapp :</label>
+          </div>
+          <div class="col-auto">
+            <input type="Telephone" id="telephone" class="form-control" aria-describedby="telephoneHelp">
+          </div>
+
+  
+        </div>
         <h5>Project History</h5>
         <table class="table" id="projectTable">
           <thead>

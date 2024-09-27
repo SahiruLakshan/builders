@@ -2,13 +2,13 @@
 @section('content')
 
     <!-- /MAIN HEADER -->
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding-top:132px ">
         <div class="row">
             <h3>Select Your Products</h3>
             <aside class="col-md-3 px-0">
                 <div class="card">
                     <!-- Product Type Filter -->
-                    <article class="filter-group">
+                    {{-- <article class="filter-group">
                         <!-- Search Bar with Dropdown -->
                         <div class="container">
                             <div class="row">
@@ -28,41 +28,40 @@
                         <script>
                             $(".select2").select2();
                         </script>
-                        <!-- <header class="card-header">
-
-                <a
-                  href="#"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapse_1"
-                  aria-expanded="true"
-                >
-                  <i class="icon-control fa fa-chevron-down"></i>
-                  <h6 class="title">Product type</h6>
-                </a>
-              </header> -->
-                        <!-- <div class="filter-content collapse show" id="collapse_1">
-
-                <div class="card-body">
-                  <form class="pb-3">
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search" />
-                      <button class="btn btn-light" type="button">
-                        <i class="fa fa-search"></i>
-                      </button>
-                    </div>
-                  </form>
-                  <ul class="list-menu">
-                    <li><a href="#">Paint</a></li>
-                    <li><a href="#">Cement</a></li>
-                    <li><a href="#">-----</a></li>
-                    <li><a href="#">Electronic</a></li>
-                    <li><a href="#">Home Accessories</a></li>
-                    <li><a href="#">Mechanic Tools</a></li>
-                    <li><a href="#">-----</a></li>
-                  </ul>
-                </div>
-              </div> -->
+                   
+                    </article> --}}
+                    <!-- Product Type Filter with Searchable Dropdown -->
+                    <article class="filter-group">
+                        <header class="card-header">
+                            <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_1" aria-expanded="true">
+                                <i class="icon-control fa fa-chevron-down"></i>
+                                <h6 class="title">Product Type with Search</h6>
+                            </a>
+                        </header>
+                        <div class="filter-content collapse show" id="collapse_1">
+                            <div class="card-body">
+                                <form>
+                                    <label for="product-type">Select Product Type</label>
+                                    <select class="form-control select2" id="product-type">
+                                        <option>Select Product</option>
+                                        <option value="car">Car</option>
+                                        <option value="bike">Bike</option>
+                                        <option value="scooter">Scooter</option>
+                                        <option value="cycle">Cycle</option>
+                                        <option value="horse">Horse</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
                     </article>
+                    <script>
+                        $(document).ready(function() {
+                            $('.select2').select2({
+                                placeholder: "Select a product",
+                                allowClear: true
+                            });
+                        });
+                    </script>
 
                     <!-- Location Filter -->
                     <article class="filter-group">
@@ -235,7 +234,7 @@
                             <div class="col">
                                 <div class="card d-flex flex-row">
                                     <!-- Image on the left side -->
-                                    {{-- <img src="{{ asset('assets/shop/'.$shop->shop_img) }}" class="img-fluid" alt="..." style="width: 40%;"> --}}
+                                    <img src="{{ asset('assets/shop/'.$shop->shop_img) }}" class="img-fluid" alt="..." style="width: 40%;">
 
                                     <!-- Text and button on the right side -->
                                     <div class="card-body d-flex flex-column justify-content-between">
@@ -263,4 +262,5 @@
     </div>
     </div>
     </div>
+ 
 @endsection

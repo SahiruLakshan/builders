@@ -120,8 +120,10 @@ Route::name('category.')->group(function () {
     Route::get('product/cat/{name}', [WebController::class, 'shopcategory'])->name('shop');
 });
 
-
-
+// about us page route
+Route::get('/aboutus', function () {
+    return view('webpages.about');
+})->name('about');
 
 //Authentication Routes
 Route::get('register', [RegisteredUserController::class, 'create'])
