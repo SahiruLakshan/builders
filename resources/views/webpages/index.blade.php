@@ -162,7 +162,7 @@
                           </a>
                         </li>
                         <li><a href="home.html">Home</a></li>
-                        <li><a href="{{ url('/about') }}">About Us</a></li>
+                        <li><a href="{{ url('/aboutus') }}">About Us</a></li>
                         <li><a href="galary.html">Gallery</a></li>
                         <li><a href="publications.html">Publications</a></li>
                         <li>

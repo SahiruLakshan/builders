@@ -123,7 +123,7 @@ Route::name('category.')->group(function () {
 // about us page route
 Route::get('/aboutus', function () {
     return view('webpages.about');
-})->name('about');
+})->name('aboutus');
 
 //Authentication Routes
 Route::get('register', [RegisteredUserController::class, 'create'])
