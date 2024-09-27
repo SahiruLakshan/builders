@@ -60,15 +60,60 @@
     </style>
   </head>
 
-  <body>
+  <body class="overflow-x-hidden">
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Accordion Item #1
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Accordion Item #2
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Accordion Item #3
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- HEADER -->
-    <header class="nav navbar-expand-lg">
-        <div class="row">
+    <header class="nav navbar-expand-lg fixed-top">
+        <div class="row justify-content-between justify-content-lg-start align-items-center align-items-lg-start">
             <!-- Logo Section -->
             <div
               class="col-2 d-flex align-items-center justify-content-center"
-              style="background-color: blanchedalmond"
-            >
+              style="background-color: blanchedalmond">
               <a href="index.html">
                 <img
                   src="{{ asset('assets/webpage/img/LOGO-01.png') }}"
@@ -77,14 +122,17 @@
                 />
               </a>
             </div>
+            <div class="d-block d-lg-none w-auto" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+              <i class="fa-solid fa-bars fs-2 px-4"></i>
+            </div>
 
             <!-- Main Content Section -->
-            <div class="col-md-10 px-0">
+            <div class="col-md-10 px-0 d-none d-lg-block">
               <!-- First Row: Top Header (Contact Info & Links) -->
               <div id="top-header">
                 <div class="container-fluid">
-                  <div class="row ">
-                    <div class="col-md-10 d-flex justify-content-start">
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex ">
                       <ul class="header-links float-left">
                         <li>
                           <a href="tel:0112748149"
@@ -117,7 +165,7 @@
                         <li><a href="education.html">Education</a></li>
                       </ul>
                     </div>
-                    <div class="col-md-2 pd-2 d-flex align-self-center ">
+                    <div class="d-flex">
 
                           <div class="dropdown px-0">
                             <button class="btn btn-sm btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -226,7 +274,7 @@
                         <ul class="dropdown-menu p-1 border">
                           <li>
                             <a
-                              href="{{route('serviceprovider')}}"
+                              href="serviceprovider.html"
                               class="dropdown-item p-1 border"
                               >Service Providers</a
                             >
@@ -256,9 +304,9 @@
               <!-- Third Row: Search Bar and Dropdowns -->
               <div id="header">
                 <div class="container-fluid p-1">
-                  <div class="row">
+                  <div class="d-flex">
                     <!-- First Dropdown -->
-                    <div class="col-12 col-md-2 mb-2 mb-md-0 p-1">
+                    <div class="  mb-2 mb-md-0 p-1">
                       <div class="subnav">
                         <button class="subnavbtn">
                           Service By Category <i class="fa fa-caret-down"></i>
@@ -301,7 +349,7 @@
                     </div>
                     <!-- Search Bar -->
                     <div
-                      class="col-12 col-md-4 mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end"
+                      class=" mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end"
                     >
                       <div class="input-group w-100 w-md-75">
                         <input
@@ -322,20 +370,20 @@
                     <div class="col-12 col-md-2 mb-2 mb-md-0">
                       <div class="subnav">
                         <button class="subnavbtn">
-                          Shop By Category <i class="fa fa-caret-down"></i>
+                          Product By Category <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content" style="height:50vh">
-                          <div class="d-flex flex-wrap flex-column">
-                                @foreach($shopcats as $shopcat)
-                                    <a href="{{route('category.shop', $shopcat->name)}}">{{$shopcat->name}}</a>
+                            <div class="d-flex flex-wrap flex-column">
+                                  @foreach($shopcats as $shopcat)
+                                      <a href="{{route('category.shop', $shopcat->name)}}">{{$shopcat->name}}</a>
 
-                                @endforeach
-                          </div>
+                                  @endforeach
+                            </div>
                         </div>
                       </div>
                     </div>
                     <!-- Third Dropdown -->
-                    <div class="col-12 col-md-2 mb-2 mb-md-0">
+                    {{-- <div class="col-12 col-md-2 mb-2 mb-md-0">
                       <div class="subnav">
                         <button class="subnavbtn">
                           Product By Category <i class="fa fa-caret-down"></i>
@@ -373,9 +421,9 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> --}}
                     <!-- Fourth Dropdown -->
-                    <div class="col-12 col-md-2 mb-2 mb-md-0">
+                    <div class="col-12 col-md-2 mb-2 ">
                       <div class="subnav">
                         <button class="subnavbtn">
                           Purchase With Builders.lk
@@ -401,7 +449,7 @@
     <!-- FOOTER -->
 
     <!-- Footer -->
-    <footer style="background: #15161d" class="text-white">
+    {{-- <footer style="background: #15161d" class="text-white">
       <!-- Grid container -->
       <div class="container p-4">
         <h3 class="footer-title">About Us</h3>
@@ -528,11 +576,11 @@
         </span>
         <!-- Copyright -->
       </div>
-    </footer>
+    </footer> --}}
 
     <!-- Footer -->
     <!-- FOOTER -->
-    {{-- <footer id="footer">
+    <footer id="footer">
       <!-- top footer -->
       <div class="section">
         <!-- container -->
@@ -612,7 +660,7 @@
       <!-- /top footer -->
 
       <!-- bottom footer -->
-    </footer> --}}
+    </footer>
 
     <!-- /FOOTER -->
 
