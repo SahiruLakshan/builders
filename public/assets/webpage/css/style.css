@@ -511,7 +511,7 @@ textarea.input {
 .header-links li {
   display: inline-block;
   margin-right: 15px;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .header-links li:last-child {
@@ -561,7 +561,7 @@ textarea.input {
 }
 
 .subnav .subnavbtn {
-  font-size: 11px;
+  font-size: 13px;
   border: none;
   outline: none;
   color: rgb(0, 0, 0);
@@ -600,9 +600,9 @@ textarea.input {
   color: black;
 }
 
-.maincontainer {
+/* .maincontainer {
   padding-top: 132px;
-}
+} 
 /* .header-logo {
   float: left;
 } */
