@@ -1,7 +1,7 @@
 @extends('webpages.index')
 <!--  Main carousels start here -->
 @section('content')
-    <div class="container">
+    <div class="container " style="margin-top: 180px">
         <div class="row p-0">
           <!-- Left Vertical Slider -->
           <div class="col-md-3 p-0">
