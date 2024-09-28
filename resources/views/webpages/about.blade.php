@@ -4,7 +4,7 @@
 <!-- About Start -->
 <div class="about-section "style="padding-top: 140px;">
   <div class="container">
-    <div class="row align-items-center">
+    <div class="d-flex">
       <div class="col-lg-6 col-md-12">
         <div class="about-img animate-fade">
           <img src="img/about-us.png" alt="About Image" class="img-fluid" />
@@ -12,8 +12,8 @@
       </div>
       <div class="col-lg-6 col-md-12">
         <div class="about-text animate-fade-right">
-          <h2>Welcome to Our Company</h2>
-          <p>25+ Years of Excellence in the Industry</p>
+          <h2>Welcome to Builderz</h2>
+          <p>Excellence in the Industry</p>
           <p>
             We have been serving with dedication, delivering quality services and products to our clients. Our team is made up of experienced professionals committed to making every project a success.
           </p>
@@ -36,19 +36,19 @@
         </div>
       </div>
             <div class="col-lg-3 col-sm-6">
-        <div class="fact-box animate-slide-up bg-warning text-white p-4 rounded">
+        <div class="fact-box animate-slide-up bg-warning text-white p-4 rounded shadow">
           <h3>485</h3>
           <p>Happy Clients</p>
         </div>
       </div>
       <div class="col-lg-3 col-sm-6">
-        <div class="fact-box animate-slide-up bg-warning text-white p-4 rounded">
+        <div class="fact-box animate-slide-up bg-warning text-white p-4 rounded shadow">
           <h3>789</h3>
           <p>Completed Projects</p>
         </div>
       </div>
       <div class="col-lg-3 col-sm-6">
-        <div class="fact-box animate-slide-up bg-warning text-white p-4 rounded">
+        <div class="fact-box animate-slide-up bg-warning text-white p-4 rounded shadow">
           <h3>890</h3>
           <p>Ongoing Projects</p>
         </div>
@@ -78,6 +78,4 @@
   </div>
 </div>
 <!-- FAQ End -->
-
-
 @endsection
