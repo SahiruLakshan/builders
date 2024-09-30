@@ -182,6 +182,7 @@
                             @guest()
                                 <li><a class="dropdown-item" href="{{route('login')}}">Login</a></li>
                                 <li><a class="dropdown-item" href="{{route('register')}}">Sign up</a></li>
+                                <li><a class="dropdown-item" href="#">Shop Login</a></li>
                             </ul>
                             @endguest
                             @auth
