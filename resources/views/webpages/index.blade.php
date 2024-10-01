@@ -119,7 +119,7 @@
         <div class="row justify-content-between justify-content-lg-start align-items-center align-items-lg-start">
             <!-- Logo Section -->
             <div
-              class="col-2 d-flex align-items-center justify-content-center"
+              class="col-2 d-flex align-items-center justify-content-center h-100 "
               style="background-color: blanchedalmond">
               <a href="{{ url('/') }}">
                 <img
@@ -312,7 +312,7 @@
               <!-- Third Row: Search Bar and Dropdowns -->
               <div id="header">
                 <div class="container-fluid p-1">
-                  <div class="d-flex">
+                  <div class="d-flex justify-content-around">
                     <!-- First Dropdown -->
                     <div class="  mb-2 mb-md-0 p-1">
                       <div class="subnav">

@@ -105,6 +105,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
 
 // website
+//filter
+Route::post('/filter', [WebController::class, 'fliter'])->name('filter');
 
 // Route::get('/front', function(){
 //     return view('webpages.home');

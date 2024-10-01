@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Shop;
 use App\Models\ShopCategory;
+
 use Illuminate\Http\Request;
 
 class WebController extends Controller
@@ -13,5 +14,12 @@ class WebController extends Controller
         $shops = Shop::where('category', 'like', '%' . $name . '%')->paginate(20);
         // dd($shops);
         return view('webpages.product', compact('shops'));
+    }
+
+    //add filter 
+
+    public function filter(Request $request)
+    {
+
     }
 }
