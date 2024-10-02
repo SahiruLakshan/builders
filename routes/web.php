@@ -106,7 +106,10 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
 // website
 //filter
-Route::post('/filter', [WebController::class, 'fliter'])->name('filter');
+// Route::get('/filter', [WebController::class, 'filter'])->name('filter');
+// Route::get('/get-cities/{districtId}', [WebController::class, 'getCities']);
+// Route::get('/filters', [WebController::class, 'showFilters']);
+
 
 // Route::get('/front', function(){
 //     return view('webpages.home');

@@ -378,7 +378,7 @@
                     <div class="col-12 col-md-2 mb-2 mb-md-0">
                       <div class="subnav">
                         <button class="subnavbtn">
-                          Product By Category <i class="fa fa-caret-down"></i>
+                          Shops By Category <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content" style="height:50vh">
                             <div class="d-flex flex-wrap flex-column">

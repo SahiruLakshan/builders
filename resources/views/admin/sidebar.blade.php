@@ -865,7 +865,7 @@
         </script>
     @endif
 
-    @if (session('error'))
+    {{-- @if (session('error'))
         <script>
             alertbox.render({
                 alertIcon: 'error',
@@ -873,6 +873,28 @@
                 message: '{{ session('failed') }}',
                 btnTitle: 'OK',
                 border: true
+            });
+        </script>
+    @endif --}}
+
+    @if ($errors->any())
+    <script>
+            let errorList='';
+            @foreach ($errors->all() as $error)
+                // errorList+='{{$error}}+<br>';
+                errorList+="<li>{{ $error }}</li>";
+            @endforeach
+            console.log(errorList);
+            $(document).ready(function(){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'FAILED!',
+                    html: errorList,
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        confirmButton: 'btn btn-danger'
+                    }
+                });
             });
         </script>
     @endif
