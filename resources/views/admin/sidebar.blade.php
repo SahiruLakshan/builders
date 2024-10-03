@@ -454,6 +454,22 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <li class="slide">
+                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
+                                            class="side-menu__label"> Advertisement</span></a>
+                                    <ul class="slide-menu">
+                                        <li class="side-menu__label1">
+                                            <a href="javascript:void(0);">Adedvertisement</a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="/addadvertisement">Add New Main Advertisement
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="icons.html">Veiw Advertisement</a>
+                                        </li>
+                                    </ul>
+                                </li>
 
 
 
@@ -739,7 +755,7 @@
                             <h5>Valex Voice call</h5>
                             <img src="../assets/img/faces/6.jpg" class="rounded-circle user-img-circle h-8 w-8 mt-4 mb-3"
                                 alt="img" />
-                            <h4 class="mb-1 fw-semibold">Daneil Scott</h4>
+                            <h4 class="mb-1 fw-semibold">Udara</h4>
                             <h6>Calling...</h6>
                             <div class="mt-5">
                                 <div class="row">

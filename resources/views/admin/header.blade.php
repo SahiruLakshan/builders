@@ -52,10 +52,13 @@
 <!-- DataTables CSS and JS -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css" integrity="sha512-I8jPq2nAlDxMQI98aGiGh0kBJv3LeC+b9Cw1Lo0cFuI2MzoLg2/xlNJz8dhBDlNXD8QsPcVgkPCyD1F+fIXl3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   </head>
 
   @yield('section')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js" integrity="sha512-qpcH8i71YX5DFB/jRJ5cv6BeZH9V1HlcptEB8RBqsv28XQd0fSz/jM0SyVSHnUvVO4cvXUfzQic1fnoEzbmSOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 {{-- @push('js') --}}
 <!-- JQuery min js -->
 <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>

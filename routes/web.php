@@ -101,8 +101,23 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/getsubcategory/{id}', [ProductcategoryController::class, 'getsubcategory']);
     Route::put('/update/productsubcategory/{id}', [ProductcategoryController::class, 'updatesubProductCategory']);
     Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']);
+
+
+    //advertisement routes
+    // Route::get('/addadvertisement', [AdvertisementController::class, 'index'])->name('addadvertisement');
+
+
 });
 
+Route::get('/addadvertisement', function () {
+    return view('admin.addadvertisement');
+})->name('addadvertisement');
+
+// routes/web.php
+
+use App\Http\Controllers\FileUploadController;
+
+Route::post('/upload', [FileUploadController::class, 'upload'])->name('upload');
 
 // website
 //filter
@@ -117,6 +132,11 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 Route::get('/product', function () {
     return view('webpages.product');
 });
+//bass form loarding
+Route::get('/shopSuppliers', function () {
+    return view('webpages.shopSuppliers');
+})->name('shopSuppliers');
+//service provider form loading
 Route::get('/serviceprovider', function () {
     return view('webpages.serviceprovider');
 })->name('serviceprovider');

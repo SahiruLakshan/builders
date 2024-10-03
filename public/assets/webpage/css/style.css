@@ -88,7 +88,7 @@ Table OF Contents
 .dropdown-menu a:hover,
 .dropdown-menu a:focus {
   background-color: #ff0000; /* Background color on hover/focus */
-  color: white; /* Text color on hover/focus to maintain readability */
+  color: rgb(10, 10, 10); /* Text color on hover/focus to maintain readability */
 }
 
 body {
@@ -150,7 +150,7 @@ ol {
 .primary-btn:hover,
 .primary-btn:focus {
   opacity: 0.9;
-  color: #fff;
+  color: #211f1f;
 }
 
 /*----------------------------*\

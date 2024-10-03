@@ -282,7 +282,7 @@
                         <ul class="dropdown-menu p-1 border">
                           <li>
                             <a
-                              href="serviceprovider.html"
+                              href="/serviceproviders"
                               class="dropdown-item p-1 border"
                               >Service Providers</a
                             >
@@ -293,7 +293,7 @@
                             >
                           </li>
                           <li>
-                            <a href="#" class="dropdown-item p-1 border"
+                            <a href="/shopSuppliers" class="dropdown-item p-1 border"
                               >Bass</a
                             >
                           </li>
