@@ -8,26 +8,26 @@ class FileUploadController extends Controller
 {
     public function upload(Request $request)
     {
-        // Validate the uploaded files
+        // Validate the uploaded files for each section
         $request->validate([
-            'file' => 'required|file|mimes:jpg,png,jpeg|max:2048',
+            'left_image.*' => 'file|mimes:jpg,png,jpeg|max:2048',
+            'middle_image.*' => 'file|mimes:jpg,png,jpeg|max:2048',
+            'right_image.*' => 'file|mimes:jpg,png,jpeg|max:2048',
         ]);
 
-        // Handle the uploaded file
-        if ($request->hasFile('file')) {
-            // Get the uploaded file
-            $file = $request->file('file');
+        $uploadedFiles = [];
 
-            // Generate a unique filename with extension
-            $filename = time() . '_' . $file->getClientOriginalName();
-
-            // Move the file to the desired directory (public/assets/Advertisementuploads)
-            $file->move(public_path('assets/Advertisementuploads'), $filename);
-            // Return success response
-            return response()->json(['success' => true, 'message' => 'File uploaded successfully.', 'file' => $filename]);
+        foreach (['left_image', 'middle_image', 'right_image'] as $imageType) {
+            if ($request->hasFile($imageType)) {
+                foreach ($request->file($imageType) as $file) {
+                    $filename = time() . '_' . $file->getClientOriginalName();
+                    $file->move(public_path('assets/Advertisementuploads'), $filename);
+                    $uploadedFiles[] = $filename;
+                }
+            }
         }
 
-        // Return error response if something went wrong
-        return response()->json(['success' => false, 'message' => 'File upload failed.']);
+        return response()->json(['success' => true, 'message' => 'Files uploaded successfully.', 'files' => $uploadedFiles]);
     }
+
 }

@@ -17,7 +17,7 @@ use App\Models\Productcategory;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\FileUploadController;
 // Route::get('/', function () {
 //     return view('login');
 // });
@@ -109,13 +109,10 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
 });
 
+// routes/web.php
 Route::get('/addadvertisement', function () {
     return view('admin.addadvertisement');
 })->name('addadvertisement');
-
-// routes/web.php
-
-use App\Http\Controllers\FileUploadController;
 
 Route::post('/upload', [FileUploadController::class, 'upload'])->name('upload');
 
