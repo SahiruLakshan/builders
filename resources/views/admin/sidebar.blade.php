@@ -433,7 +433,7 @@
                                             <a href="javascript:void(0);">Service</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="addService.html">Add New Service
+                                            <a class="slide-item" href="/addservice">Add New Service
                                             </a>
                                         </li>
                                         <li>

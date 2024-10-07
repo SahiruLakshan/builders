@@ -106,15 +106,19 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     //advertisement routes
     // Route::get('/addadvertisement', [AdvertisementController::class, 'index'])->name('addadvertisement');
 
+    Route::get('/addadvertisement', function () {
+        return view('admin.addadvertisement');
+    })->name('addadvertisement');
+
+    Route::post('/upload', [FileUploadController::class, 'upload'])->name('upload');
+
+    Route::get('/addservice', function () {
+        return view('admin.addservice');
+    })->name('addservice');
 
 });
 
 // routes/web.php
-Route::get('/addadvertisement', function () {
-    return view('admin.addadvertisement');
-})->name('addadvertisement');
-
-Route::post('/upload', [FileUploadController::class, 'upload'])->name('upload');
 
 // website
 //filter
