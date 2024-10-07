@@ -10,7 +10,7 @@
                     </p>
                 </div>
                 <div class="card-body pt-0">
-                    <form action="/submitproduct" method="POST" class="form-horizontal" id="addproduct">
+                    <form action="/addservice" method="POST" class="form-horizontal" id="addproduct">
                         @csrf
                         <!-- Service Name Field -->
                         <div class="form-group">
