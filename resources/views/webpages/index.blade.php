@@ -50,10 +50,12 @@
 
     <!-- Select2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Select2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
       /* Common Dropdown Button Styles */
       .common-dropdown-btn {
@@ -680,7 +682,6 @@
 {{-- <script src="{{ asset('assets/webpage/lib/owlcarousel/owl.carousel.min.js') }}"></script> --}}
 <!-- jQuery Plugins -->
 {{-- <script src="{{ asset('assets/webpage/js/jquery.min.js') }}"></script> --}}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 {{-- <script src="{{ asset('assets/webpage/js/bootstrap.min.js') }}"></script> --}}
 {{-- <script src="{{ asset('assets/webpage/js/slick.min.js') }}"></script> --}}
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>

@@ -335,6 +335,9 @@
                                         <li>
                                             <a class="slide-item" href="/shops">view Shops</a>
                                         </li>
+                                        <li>
+                                            <a class="slide-item" href="#">Pending Full Approval</a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="slide">

@@ -9,7 +9,7 @@
               id="leftHorizontalCarousel"
               class="carousel slide"
               data-bs-ride="carousel"
-              data-bs-interval="3000"
+              data-bs-interval="4000"
               data-bs-direction="left"
             >
               <div class="carousel-inner">
@@ -44,7 +44,7 @@
               id="carouselExampleCaptions"
               class="products-tabs carousel slide"
               data-bs-ride="carousel"
-              data-bs-interval="3000"
+              data-bs-interval="4000"
             >
               <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -65,7 +65,7 @@
               id="rightHorizontalCarousel"
               class="carousel slide"
               data-bs-ride="carousel"
-              data-bs-interval="3000"
+              data-bs-interval="4000"
               data-bs-direction="right"
             >
             <div class="carousel-inner">
@@ -109,7 +109,7 @@
             <div class="owl-carousel owl-theme">
               <div class="item">
                 <div class="card">
-                  <img src="./img/product08.png" class="card-img-top" alt="..." />
+                  <img src="{{ asset('assets/webpage/img/left2.jpg') }}" class="card-img-top" alt="..." />
                 </div>
               </div>
               <div class="item">
@@ -134,7 +134,7 @@
             <div class="owl-carousel owl-theme">
               <div class="item">
                 <div class="card">
-                  <img src="./img/product08.png" class="card-img-top" alt="..." />
+                  <img src="{{ asset('assets/webpage/img/left2.jpg') }}" class="card-img-top" alt="..." />
                 </div>
               </div>
               <div class="item">

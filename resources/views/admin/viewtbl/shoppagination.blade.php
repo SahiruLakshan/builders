@@ -22,6 +22,8 @@
                         <span>
                           <a href={{ url('/shopupdate/' . $shop->id) }} class="btn btn-success btn-sm">Edit Details</a>
                           <a href={{ url('/shop/delete/' . $shop->id) }} class="btn btn-danger btn-sm">Delete</a>
+                          {{-- // add this button for first approve --}}
+                          <a href={{ url('/shop/delete/' . $shop->id) }} class="btn btn-success btn-sm">Approve</a>
                         </span>
                     </td>
                 </tr>
