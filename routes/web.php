@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\ProductcategoryController;
@@ -112,9 +112,16 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
     Route::post('/upload', [FileUploadController::class, 'upload'])->name('upload');
 
-    Route::get('/addservice', function () {
-        return view('admin.addservice');
-    })->name('addservice');
+    // Route::get('/addservice', function () {
+    //     return view('admin.addservice');
+    // })->name('addservice');
+    // Route to display the add service form (optional)
+    Route::get('/addservice', [ServiceController::class, 'create'])->name('addservice');
+
+    // Route to handle form submission
+    Route::post('/addservice', [ServiceController::class, 'store']);
+    Route::get('/viewservice', [ServiceController::class, 'viewservice']);
+
 
 });
 

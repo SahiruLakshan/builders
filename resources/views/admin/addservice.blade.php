@@ -10,12 +10,12 @@
                     </p>
                 </div>
                 <div class="card-body pt-0">
-                    <form action="/addservice" method="POST" class="form-horizontal" id="addproduct">
+                    <form action="{{url('addservice')}}" method="POST" class="form-horizontal" id="addproduct">
                         @csrf
                         <!-- Service Name Field -->
                         <div class="form-group">
                             <label for="product_name">Service Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="Service Name" required onchange="this.value = this.value.toUpperCase();" />
+                            <input type="text" class="form-control" name="servicename" placeholder="Service Name" required onchange="this.value = this.value.toUpperCase();" />
                             <small class="form-text text-muted">Enter the Service name. This field is
                                 required.</small>
                         </div>

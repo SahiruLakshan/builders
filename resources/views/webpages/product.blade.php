@@ -25,12 +25,12 @@
                                 </form>
                             </div>
                         </div>
-                        <script>
-                            $(".select2").select2();
-                        </script>
-                   
+                        
                     </article> --}}
                     <!-- Product Type Filter with Searchable Dropdown -->
+                    <script>
+                        $(".select2").select2();
+                    </script>
                     <article class="filter-group">
                         <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_1" aria-expanded="true">
@@ -240,6 +240,8 @@
                                     <div class="card-body d-flex flex-column justify-content-between">
                                         <div>
                                             <h5 class="card-title">{{ $shop->name }}</h5>
+                                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                             {{-- <p class="card-text">
                         With supporting text below as a natural lead-in to additional content.
                       </p> --}}

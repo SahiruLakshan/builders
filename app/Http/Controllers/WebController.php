@@ -15,8 +15,8 @@ class WebController extends Controller
     public function shopcategory($name)
     {
         $shops = Shop::where('category', 'like', '%' . $name . '%')->paginate(20);
-        dd($shops);
-        $brand = Shop::where('category', 'like', '%' . $name . '%')->brand()->get();
+        // dd($shops);
+        // $brand = Shop::where('category', 'like', '%' . $name . '%')->brand()->get();
         return view('webpages.product', compact('shops'));
 
 
