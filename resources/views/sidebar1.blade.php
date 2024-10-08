@@ -284,6 +284,31 @@
                     </li>
                   </ul>
                 </li>
+                <li class="slide">
+                  <a
+                    class="side-menu__item"
+                    data-bs-toggle="slide"
+                    href="javascript:void(0);"
+                    ><span class="side-menu__label"
+                      >Advertisement</span
+                    ></a
+                  >
+                  <ul class="slide-menu">
+                    <li class="side-menu__label1">
+                      <a href="javascript:void(0);">Advertisement</a>
+                    </li>
+                    <li>
+                      <a class="slide-item" href="addProductSubCatogory.html"
+                        >Add New Product SubCatogory
+                      </a>
+                    </li>
+                    <li>
+                      <a class="slide-item" href="icons.html"
+                        >Veiw Product SubCatogory</a
+                      >
+                    </li>
+                  </ul>
+                </li>
             </div>
           </aside>
         </div>

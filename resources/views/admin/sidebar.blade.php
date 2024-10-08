@@ -251,11 +251,11 @@
                             <a class="desktop-logo logo-light active" href="index.html"><img src="#"
                                     class="main-logo" alt="logo" /></a>
                             <a class="desktop-logo logo-dark active" href="index.html"><img
-                                    src="../assets/img/brand/logo-white.png" class="main-logo" alt="logo" /></a>
+                                    src="../assets/img/brand/logo-white1.png" class="main-logo" alt="logo" /></a>
                             <a class="logo-icon mobile-logo icon-light active" href="index.html"><img
                                     src="../assets/img/brand/favicon.png" alt="logo" /></a>
                             <a class="logo-icon mobile-logo icon-dark active" href="index.html"><img
-                                    src="../assets/img/brand/favicon-white.png" alt="logo" /></a>
+                                    src="../assets/img/brand/favicon-white1.png" alt="logo" /></a>
                         </div>
                         <div class="main-sidemenu">
                             <div class="app-sidebar__user clearfix">
@@ -328,12 +328,15 @@
                                             <a class="slide-item" href="/addshop">Add New Shops
                                             </a>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <a class="slide-item" href="/addshopproduct">Add Shop Product
                                             </a>
-                                        </li>
+                                        </li> --}}
                                         <li>
                                             <a class="slide-item" href="/shops">view Shops</a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="#">Pending Full Approval</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -430,7 +433,7 @@
                                             <a href="javascript:void(0);">Service</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="addService.html">Add New Service
+                                            <a class="slide-item" href="/addservice">Add New Service
                                             </a>
                                         </li>
                                         <li>
@@ -451,6 +454,22 @@
                                         </li>
                                         <li>
                                             <a class="slide-item" href="icons.html">Veiw Service Provider</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="slide">
+                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
+                                            class="side-menu__label"> Advertisement</span></a>
+                                    <ul class="slide-menu">
+                                        <li class="side-menu__label1">
+                                            <a href="javascript:void(0);">Adedvertisement</a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="/addadvertisement">Add New Main Advertisement
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="icons.html">Veiw Advertisement</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -739,7 +758,7 @@
                             <h5>Valex Voice call</h5>
                             <img src="../assets/img/faces/6.jpg" class="rounded-circle user-img-circle h-8 w-8 mt-4 mb-3"
                                 alt="img" />
-                            <h4 class="mb-1 fw-semibold">Daneil Scott</h4>
+                            <h4 class="mb-1 fw-semibold">Udara</h4>
                             <h6>Calling...</h6>
                             <div class="mt-5">
                                 <div class="row">
@@ -852,6 +871,12 @@
    <script src="{{ asset('assets/js/custom.js') }}"></script> --}}
 
    <script src="https://cdn.jsdelivr.net/gh/noumanqamar450/alertbox@main/version/1.0.2/alertbox.min.js"></script>
+   <!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     @if (session('success'))
         <script>
@@ -865,7 +890,7 @@
         </script>
     @endif
 
-    @if (session('error'))
+    {{-- @if (session('error'))
         <script>
             alertbox.render({
                 alertIcon: 'error',
@@ -873,6 +898,28 @@
                 message: '{{ session('failed') }}',
                 btnTitle: 'OK',
                 border: true
+            });
+        </script>
+    @endif --}}
+
+    @if ($errors->any())
+    <script>
+            let errorList='';
+            @foreach ($errors->all() as $error)
+                // errorList+='{{$error}}+<br>';
+                errorList+="<li>{{ $error }}</li>";
+            @endforeach
+            console.log(errorList);
+            $(document).ready(function(){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'FAILED!',
+                    html: errorList,
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        confirmButton: 'btn btn-danger'
+                    }
+                });
             });
         </script>
     @endif

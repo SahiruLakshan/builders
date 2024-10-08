@@ -46,16 +46,25 @@
 
     <!-- Custom stylesheet -->
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/webpage/css/style.css') }}" />
+    {{-- <link href="{{ asset('assets/webpage/css/about.css') }}" rel="stylesheet" /> --}}
 
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
       /* Common Dropdown Button Styles */
       .common-dropdown-btn {
-        font-size: 13px; /* Adjust this value as needed */
+        font-size: 12px; /* Adjust this value as needed */
       }
 
       /* Common Dropdown Menu Items */
       .common-dropdown-menu .dropdown-item {
-        font-size: 13px; /* Adjust this value as needed */
+        font-size: 12px; /* Adjust this value as needed */
       }
     </style>
   </head>
@@ -112,9 +121,9 @@
         <div class="row justify-content-between justify-content-lg-start align-items-center align-items-lg-start">
             <!-- Logo Section -->
             <div
-              class="col-2 d-flex align-items-center justify-content-center"
+              class="col-2 d-flex align-items-center justify-content-center h-100 "
               style="background-color: blanchedalmond">
-              <a href="index.html">
+              <a href="{{ url('/') }}">
                 <img
                   src="{{ asset('assets/webpage/img/LOGO-01.png') }}"
                   alt="Description of Image"
@@ -127,7 +136,7 @@
             </div>
 
             <!-- Main Content Section -->
-            <div class="col-md-10 px-0 d-none d-lg-block">
+            <div class="col-md-10 px-0 d-none d-lg-block" >
               <!-- First Row: Top Header (Contact Info & Links) -->
               <div id="top-header">
                 <div class="container-fluid">
@@ -155,7 +164,7 @@
                           </a>
                         </li>
                         <li><a href="home.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="{{ url('/aboutus') }}">About Us</a></li>
                         <li><a href="galary.html">Gallery</a></li>
                         <li><a href="publications.html">Publications</a></li>
                         <li>
@@ -175,6 +184,7 @@
                             @guest()
                                 <li><a class="dropdown-item" href="{{route('login')}}">Login</a></li>
                                 <li><a class="dropdown-item" href="{{route('register')}}">Sign up</a></li>
+                                <li><a class="dropdown-item" href="#">Shop Login</a></li>
                             </ul>
                             @endguest
                             @auth
@@ -274,7 +284,7 @@
                         <ul class="dropdown-menu p-1 border">
                           <li>
                             <a
-                              href="serviceprovider.html"
+                              href="/serviceproviders"
                               class="dropdown-item p-1 border"
                               >Service Providers</a
                             >
@@ -285,7 +295,7 @@
                             >
                           </li>
                           <li>
-                            <a href="#" class="dropdown-item p-1 border"
+                            <a href="/shopSuppliers" class="dropdown-item p-1 border"
                               >Bass</a
                             >
                           </li>
@@ -304,7 +314,7 @@
               <!-- Third Row: Search Bar and Dropdowns -->
               <div id="header">
                 <div class="container-fluid p-1">
-                  <div class="d-flex">
+                  <div class="d-flex justify-content-around">
                     <!-- First Dropdown -->
                     <div class="  mb-2 mb-md-0 p-1">
                       <div class="subnav">
@@ -351,15 +361,15 @@
                     <div
                       class=" mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end"
                     >
-                      <div class="input-group w-100 w-md-75">
+                      <div class="input-group input-group-sm w-100 w-md-75">
                         <input
                           type="search"
-                          class="form-control form-control-md"
+                          class="form-control"
                           placeholder="Search here"
                           aria-label="Search here"
                         />
                         <button
-                          class="btn btn-medium btn-dark btn-search"
+                          class="btn btn-dark btn-search"
                           type="button"
                         >
                           <i class="fa fa-search"></i>
@@ -370,7 +380,7 @@
                     <div class="col-12 col-md-2 mb-2 mb-md-0">
                       <div class="subnav">
                         <button class="subnavbtn">
-                          Product By Category <i class="fa fa-caret-down"></i>
+                          Shops By Category <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content" style="height:50vh">
                             <div class="d-flex flex-wrap flex-column">
@@ -449,7 +459,7 @@
     <!-- FOOTER -->
 
     <!-- Footer -->
-    {{-- <footer style="background: #15161d" class="text-white">
+    <footer style="background: #15161d" class="text-white">
       <!-- Grid container -->
       <div class="container p-4">
         <h3 class="footer-title">About Us</h3>
@@ -470,7 +480,7 @@
           <div class="row">
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase footer-title">Links</h5>
+              <h5 class="text-uppercase footer-title">Contact Us</h5>
 
               <ul class="footer-links">
                 <li>
@@ -576,11 +586,11 @@
         </span>
         <!-- Copyright -->
       </div>
-    </footer> --}}
+    </footer>
 
     <!-- Footer -->
     <!-- FOOTER -->
-    <footer id="footer">
+    {{-- <footer id="footer">
       <!-- top footer -->
       <div class="section">
         <!-- container -->
@@ -660,7 +670,7 @@
       <!-- /top footer -->
 
       <!-- bottom footer -->
-    </footer>
+    </footer> --}}
 
     <!-- /FOOTER -->
 
@@ -672,7 +682,6 @@
 {{-- <script src="{{ asset('assets/webpage/lib/owlcarousel/owl.carousel.min.js') }}"></script> --}}
 <!-- jQuery Plugins -->
 {{-- <script src="{{ asset('assets/webpage/js/jquery.min.js') }}"></script> --}}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 {{-- <script src="{{ asset('assets/webpage/js/bootstrap.min.js') }}"></script> --}}
 {{-- <script src="{{ asset('assets/webpage/js/slick.min.js') }}"></script> --}}
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
@@ -680,6 +689,7 @@
 <script src="{{ asset('assets/webpage/js/nouislider.min.js') }}"></script>
 <script src="{{ asset('assets/webpage/js/jquery.zoom.min.js') }}"></script>
 <script src="{{ asset('assets/webpage/js/main.js') }}"></script>
+
 
 <!-- jQuery (Required by Owl Carousel) -->
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}

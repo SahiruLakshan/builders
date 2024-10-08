@@ -35,13 +35,13 @@
                         <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_1" aria-expanded="true">
                                 <i class="icon-control fa fa-chevron-down"></i>
-                                <h6 class="title">Product Type with Search</h6>
+                                <h6 class="title">Service Type with Search</h6>
                             </a>
                         </header>
-                        <div class="filter-content collapse show" id="collapse_1">
+                        {{-- <div class="filter-content collapse show" id="collapse_1">
                             <div class="card-body">
                                 <form>
-                                    <label for="product-type">Select Product Type</label>
+                                    <label for="product-type">Select Service Type</label>
                                     <select class="form-control select2" id="product-type">
                                         <option>Select Product</option>
                                         <option value="car">Car</option>
@@ -52,7 +52,7 @@
                                     </select>
                                 </form>
                             </div>
-                        </div>
+                        </div> --}}
                     </article>
                     <script>
                         $(document).ready(function() {
@@ -64,6 +64,7 @@
                     </script>
 
                     <!-- Location Filter -->
+                    {{-- get form distrc tble and city table --}}
                     <article class="filter-group">
                         <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_4" aria-expanded="true">
@@ -141,19 +142,20 @@
                         </div>
                     </article>
 
-                    <!-- Brand Filter -->
+                    <!-- Servicers  Filter -->
+                    {{-- //get form the service table --}}
                     <article class="filter-group">
                         <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_2" aria-expanded="true">
                                 <i class="icon-control fa fa-chevron-down"></i>
-                                <h6 class="title">Brands</h6>
+                                <h6 class="title">Services </h6>
                             </a>
                         </header>
                         <div class="filter-content collapse show" id="collapse_2">
                             <div class="card-body">
                                 <label class="form-check">
                                     <input type="checkbox" class="form-check-input" checked />
-                                    <span class="form-check-label">PE+
+                                    <span class="form-check-label">
                                         <span class="badge bg-light text-dark float-end">120</span></span>
                                 </label>
                                 <label class="form-check">
@@ -198,15 +200,15 @@
                     </article>
 
                     <!-- Additional Filters -->
-                    <article class="filter-group">
+                    {{-- <article class="filter-group">
                         <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_5"
                                 aria-expanded="false">
                                 <i class="icon-control fa fa-chevron-down"></i>
                                 <h6 class="title">More filter</h6>
                             </a>
-                        </header>
-                        <div class="filter-content collapse" id="collapse_5">
+                        </header> --}}
+                        {{-- <div class="filter-content collapse" id="collapse_5">
                             <div class="card-body">
                                 <label class="form-check">
                                     <input type="radio" name="filter-radio" class="form-check-input" checked />
@@ -216,7 +218,7 @@
                                     <input type="radio" name="filter-radio" class="form-check-input" />
                                     <span class="form-check-label">Brand new</span>
                                 </label>
-                            </div>
+                            </div> --}}
                         </div>
                     </article>
                 </div>
@@ -224,7 +226,7 @@
             @if ($shops == null)
                 <div class="col">
 
-                    <h2>There are no shops in this Category</h2>
+                    <h2>There are no Service  in this Category</h2>
 
                 </div>
             @else

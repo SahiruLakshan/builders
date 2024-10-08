@@ -9,8 +9,8 @@ class Shop extends Model
 {
     use HasFactory;
 
-    protected $table='shops';
-    protected $fillable=[
+    protected $table = 'shops';
+    protected $fillable = [
         'name',
         'email',
         'address',
@@ -24,16 +24,22 @@ class Shop extends Model
         'fb_link',
         'br',
         'shop_img',
-        
+        'shop_approve',
+        'product_approve'
     ];
 
     public function district()
     {
-        return $this->belongsTo(District::class, 'district', 'dis_id'); 
+        return $this->belongsTo(District::class, 'district', 'dis_id');
     }
 
     public function city()
     {
-        return $this->belongsTo(City::class, 'city', 'ds_id'); 
+        return $this->belongsTo(City::class, 'city', 'ds_id');
+    }
+
+    public function shopproducts()
+    {
+        return $this->hasMany(Shopproduct::class, 'shop_id');
     }
 }

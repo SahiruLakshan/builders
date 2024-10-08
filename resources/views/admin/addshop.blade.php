@@ -224,7 +224,7 @@
                                                                 <label class="form-label" for="location">Location</label>
                                                                 <input type="text" class="form-control"
                                                                     name="location" id="location"
-                                                                    placeholder="Enter Location" required />
+                                                                    placeholder="Enter Location" />
                                                                 <div class="invalid-feedback">
                                                                     Enter Your Location
                                                                 </div>
@@ -236,7 +236,7 @@
                                                                     Link</label>
                                                                 <input type="text" class="form-control" name="fb_link"
                                                                     id="location" placeholder="Enter Location"
-                                                                    required />
+                                                                     />
                                                                 <div class="invalid-feedback">
                                                                     Enter Your FaceBook Link
                                                                 </div>
