@@ -10,6 +10,7 @@ use App\Models\ShopCategory;
 use App\Models\Shopproduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class ShopController extends Controller
 {
@@ -30,8 +31,7 @@ class ShopController extends Controller
         $category_count = Shopproduct::where('shop_id', $id)->distinct('product_category_id')->count();
 
 
-        $shop_product = Shopproduct::where('shop_id', $id)->with('product', 'category', 'brand')->get();
-        ;
+        $shop_product = Shopproduct::where('shop_id', $id)->with('product', 'category', 'brand')->get();;
         if (!$shop) {
             return response()->json([
                 'message' => 'Shop not found',
@@ -220,5 +220,12 @@ class ShopController extends Controller
         }
     }
 
+    public function approveShop(Request $request, $id)
+    {
+        $shop = Shop::find($id);
+        $shop->shop_approve = Carbon::now(); 
+        $shop->save();
 
+        return redirect('/shops')->with('success', 'Shop approved successfully!');
+    }
 }
