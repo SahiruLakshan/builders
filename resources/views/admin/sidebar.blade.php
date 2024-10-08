@@ -251,11 +251,11 @@
                             <a class="desktop-logo logo-light active" href="index.html"><img src="#"
                                     class="main-logo" alt="logo" /></a>
                             <a class="desktop-logo logo-dark active" href="index.html"><img
-                                    src="../assets/img/brand/logo-white.png" class="main-logo" alt="logo" /></a>
+                                    src="../assets/img/brand/logo-white1.png" class="main-logo" alt="logo" /></a>
                             <a class="logo-icon mobile-logo icon-light active" href="index.html"><img
                                     src="../assets/img/brand/favicon.png" alt="logo" /></a>
                             <a class="logo-icon mobile-logo icon-dark active" href="index.html"><img
-                                    src="../assets/img/brand/favicon-white.png" alt="logo" /></a>
+                                    src="../assets/img/brand/favicon-white1.png" alt="logo" /></a>
                         </div>
                         <div class="main-sidemenu">
                             <div class="app-sidebar__user clearfix">
