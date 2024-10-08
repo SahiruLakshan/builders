@@ -12,7 +12,7 @@
       <div class="text-center">
         <h3 class="display-4 text-primary font-weight-bold">BUILDERS.LK</h3>
         <h4 class="display-6 text-secondary font-weight-bold">
-          Constructions Service Provides Registration form
+          Constructions Materials Suppliers/Shop Registration form
         </h4>
       </div>
       <form class="border p-4">
@@ -22,18 +22,18 @@
             <input
               type="text"
               class="form-control"
-              id="s_name"
-              placeholder="Name Of The Service Provider"
+              id="supplier_name"
+              placeholder="Name Of The Suppliers/Shop"
             />
           </div>
           <div class="col">
-            <label for="maxProjectValue">Grade </label>
-            <input
-              type="text"
+            <label for="inputAddress">Address</label>
+            <textarea
               class="form-control"
-              id="grade"
-              placeholder="Grade Of The Service Provider"
-            />
+              id="inputAddress"
+              rows="3"
+              placeholder="Address Of The Service Provider"
+            ></textarea>
           </div>
         </div>
 
@@ -47,13 +47,7 @@
             </select>
           </div>
           <div class="col-10">
-            <label for="inputAddress">Address</label>
-            <textarea
-              class="form-control"
-              id="inputAddress"
-              rows="3"
-              placeholder="Address Of The Service Provider"
-            ></textarea>
+     
           </div>
         </div>
         <div class="row">

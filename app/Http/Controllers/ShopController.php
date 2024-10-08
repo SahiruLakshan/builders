@@ -16,9 +16,9 @@ class ShopController extends Controller
 
     public function shopprofile($id)
     {
-        
 
-        $shop = Shop::with('district','city')->find($id);
+
+        $shop = Shop::with('district', 'city')->find($id);
         $district = District::where('dis_id', $shop->district)->first();
         $city = City::where('ds_id', $shop->city)->first();
 
@@ -30,7 +30,8 @@ class ShopController extends Controller
         $category_count = Shopproduct::where('shop_id', $id)->distinct('product_category_id')->count();
 
 
-        $shop_product = Shopproduct::where('shop_id', $id)->with('product','category','brand')->get();;
+        $shop_product = Shopproduct::where('shop_id', $id)->with('product', 'category', 'brand')->get();
+        ;
         if (!$shop) {
             return response()->json([
                 'message' => 'Shop not found',
@@ -38,7 +39,7 @@ class ShopController extends Controller
             ], 404);
         }
 
-        return view('profile.profiles.shopprofile',compact('shop','shop_product','district','city','alldistricts','allcities','product_count','brand_count','category_count'));
+        return view('profile.profiles.shopprofile', compact('shop', 'shop_product', 'district', 'city', 'alldistricts', 'allcities', 'product_count', 'brand_count', 'category_count'));
     }
 
     //login
@@ -52,10 +53,11 @@ class ShopController extends Controller
         $districts = District::all();
         $city = City::all();
         $category = ShopCategory::all();
-        return view('admin.addshop', compact('districts', 'city','category'));
+        return view('admin.addshop', compact('districts', 'city', 'category'));
     }
 
-    public function shops(Request $request){
+    public function shops(Request $request)
+    {
         $query = $request->input('query');
 
         $shops = Shop::where('name', 'like', '%' . $query . '%')->orWhere('id', 'like', '%' . $query . '%')->paginate(8);
@@ -68,61 +70,61 @@ class ShopController extends Controller
     }
 
     public function submitShop(Request $request)
-{
-    $validator = Validator::make($request->all(), [       // data validation
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|max:255|unique:shops,email',
-        'address' => 'required|string|max:500',
-        'p_number' => 'required|string|max:255',
-        'district' => 'required|string|max:255',
-        'city' => 'required|string|max:255',
-        'category' => 'required|array',                   // multiple categories
-        'category.*' => 'string|max:255',                 // each category must be a string
-        'location' => 'required|string|max:255',
-        'start_time' => 'required|date_format:H:i',
-        'end_time' => 'required|date_format:H:i|after:start_time',
-        'fb_link' => 'nullable|url|max:255',
-        'br' => 'required|string|max:255',
-        'shop_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    ]);
-
-    if ($validator->fails()) {                            // validation check
-        return redirect()->back()->with('error', 'Validation failed.');
-    }
-
-    try {
-        $data = $request->only([
-            'name',
-            'email',
-            'address',
-            'district',
-            'p_number',
-            'city',
-            'location',
-            'start_time',
-            'end_time',
-            'fb_link',
-            'br'
+    {
+        $validator = Validator::make($request->all(), [       // data validation
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:shops,email',
+            'address' => 'required|string|max:500',
+            'p_number' => 'required|string|max:255',
+            'district' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'category' => 'required|array',                   // multiple categories
+            'category.*' => 'string|max:255',                 // each category must be a string
+            'location' => 'nullable|string|max:255',
+            'start_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i|after:start_time',
+            'fb_link' => 'nullable|url|max:255',
+            'br' => 'required|string|max:255',
+            'shop_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Handle multiple categories
-        $data['category'] = implode(',', $request->input('category')); // convert array to comma-separated string
-
-        if ($request->hasFile('shop_img')) {              // image upload
-            $file = $request->file('shop_img');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move('assets/shop', $filename);
-            $data['shop_img'] = $filename;
+        if ($validator->fails()) {                            // validation check
+            return redirect()->back()->with('error', 'Validation failed.');
         }
 
-        $shop = new Shop($data);                         // save shop data
-        $shop->save();
+        try {
+            $data = $request->only([
+                'name',
+                'email',
+                'address',
+                'district',
+                'p_number',
+                'city',
+                'location',
+                'start_time',
+                'end_time',
+                'fb_link',
+                'br'
+            ]);
 
-        return redirect()->back()->with('success', 'Shop Added.');
-    } catch (\Exception $e) {
-        return redirect()->back()->with('error', 'An error occurred while adding the shop.');
+            // Handle multiple categories
+            $data['category'] = implode(',', $request->input('category')); // convert array to comma-separated string
+
+            if ($request->hasFile('shop_img')) {              // image upload
+                $file = $request->file('shop_img');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move('assets/shop', $filename);
+                $data['shop_img'] = $filename;
+            }
+
+            $shop = new Shop($data);                         // save shop data
+            $shop->save();
+
+            return redirect()->back()->with('success', 'Shop Added.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred while adding the shop.');
+        }
     }
-}
 
 
     public function update($id)
@@ -135,7 +137,7 @@ class ShopController extends Controller
         if (!$shop) {
             return redirect()->back()->with('error', 'Shop is not found');
         }
-        return view('admin.updateforms.updateshop',compact('shop','districts','city','category', 'selectedCategories'));
+        return view('admin.updateforms.updateshop', compact('shop', 'districts', 'city', 'category', 'selectedCategories'));
     }
 
     public function updateShop(Request $request, $id)
@@ -182,7 +184,7 @@ class ShopController extends Controller
             if ($request->hasFile('shop_img')) {
                 $file = $request->file('shop_img');
                 $filename = time() . '_' . $file->getClientOriginalName();
-                $file->move('assets/shop', $filename); 
+                $file->move('assets/shop', $filename);
                 $shop->shop_img = $filename;
             }
 

@@ -17,7 +17,7 @@ use App\Models\Productcategory;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\FileUploadController;
 // Route::get('/', function () {
 //     return view('login');
 // });
@@ -101,10 +101,31 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/getsubcategory/{id}', [ProductcategoryController::class, 'getsubcategory']);
     Route::put('/update/productsubcategory/{id}', [ProductcategoryController::class, 'updatesubProductCategory']);
     Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']);
+
+
+    //advertisement routes
+    // Route::get('/addadvertisement', [AdvertisementController::class, 'index'])->name('addadvertisement');
+
+    Route::get('/addadvertisement', function () {
+        return view('admin.addadvertisement');
+    })->name('addadvertisement');
+
+    Route::post('/upload', [FileUploadController::class, 'upload'])->name('upload');
+
+    Route::get('/addservice', function () {
+        return view('admin.addservice');
+    })->name('addservice');
+
 });
 
+// routes/web.php
 
 // website
+//filter
+// Route::get('/filter', [WebController::class, 'filter'])->name('filter');
+// Route::get('/get-cities/{districtId}', [WebController::class, 'getCities']);
+// Route::get('/filters', [WebController::class, 'showFilters']);
+
 
 // Route::get('/front', function(){
 //     return view('webpages.home');
@@ -112,6 +133,11 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 Route::get('/product', function () {
     return view('webpages.product');
 });
+//bass form loarding
+Route::get('/shopSuppliers', function () {
+    return view('webpages.shopSuppliers');
+})->name('shopSuppliers');
+//service provider form loading
 Route::get('/serviceprovider', function () {
     return view('webpages.serviceprovider');
 })->name('serviceprovider');
@@ -120,8 +146,10 @@ Route::name('category.')->group(function () {
     Route::get('product/cat/{name}', [WebController::class, 'shopcategory'])->name('shop');
 });
 
-
-
+// about us page route
+Route::get('/aboutus', function () {
+    return view('webpages.about');
+})->name('aboutus');
 
 //Authentication Routes
 Route::get('register', [RegisteredUserController::class, 'create'])
