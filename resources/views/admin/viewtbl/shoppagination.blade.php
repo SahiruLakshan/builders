@@ -7,7 +7,7 @@
                 <th>Email</th>
                 <th>Address</th>
                 <th>Contact Number</th>
-                <th>Actions</th> <!-- For Approve, Update, and Delete -->
+                <th>Action</th> <!-- For Approve, Update, and Delete -->
             </tr>
         </thead>
         <tbody>
