@@ -4,7 +4,7 @@
         <!-- container -->
         <div class="main-container container-fluid">
             <!-- row -->
-            <div class="row row-sm d-flex justify-content-center align-items-center" >
+            <div class="row row-sm d-flex justify-content-center align-items-center">
                 <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                     <div class="card box-shadow-0">
                         <div class="card-header">
@@ -20,9 +20,7 @@
                                         <div class="form-group">
                                             <label for="shop_name">Select Shop Name</label>
                                             <select class="form-control select2" id="shop_name" name="shop_name">
-                                                @foreach ($shops as $shop)
-                                                    <option value="{{ $shop->id }}">{{ $shop->name }}</option>
-                                                @endforeach
+                                                <option value="{{ $shops->id }}">{{ $shops->name }}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -211,7 +209,7 @@
         <!-- /Container -->
     </div>
     <script src="
-                https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
+                        https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
 
     <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -246,7 +244,7 @@
                     alert('Please fill in all required fields.');
                     return;
                 }
-          
+
 
                 let product = {
                     productName,
@@ -314,7 +312,7 @@
                     formData.append(`products[${index}][color]`, product.color);
                     if (product.image) {
                         formData.append(`products[${index}][image]`, product
-                        .image); // Attach the file
+                            .image); // Attach the file
                     }
                 });
 
@@ -325,13 +323,30 @@
                     contentType: false, // Important for file upload
                     processData: false, // Important for file upload
                     success: function(response) {
-                        alert('Products added successfully!');
-                        window.location.reload();
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Products added successfully!',
+                            icon: 'success',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.reload();
+                            }
+                        });
                     },
+
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        alert('An error occurred while adding the products.');
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'An error occurred while adding the products.',
+                            icon: 'error',
+                            confirmButtonColor: '#d33',
+                            confirmButtonText: 'OK'
+                        });
                     }
+
                 });
             });
         });

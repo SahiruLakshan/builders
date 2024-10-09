@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Validator;
 
 class ShopproductController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        $shops = Shop::all();
+        $shops = Shop::find($id);
         $brand = Brand::all();
         $measurement = Measurement::all();
         $products = Product::all();

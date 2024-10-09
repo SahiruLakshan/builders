@@ -53,6 +53,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/shopupdate/{id}', [ShopController::class, 'update']);
     Route::put('/shop/update/{id}', [ShopController::class, 'updateShop']);
     Route::get('/shop/delete/{id}', [ShopController::class, 'deleteShop']);
+    Route::post('/shopapprove/{id}', [ShopController::class, 'approveShop']);
 
     // //brand routes
     Route::get('/addbrand', [BrandController::class, 'index'])->name('addbrand');
@@ -78,7 +79,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/getshopcategory/{id}', [ShopCategoryController::class, 'getShopCategory']);
     Route::put('/shopcategory/update/{id}', [ShopCategoryController::class, 'updateShopCategory']);
     Route::get('/shopcategory/delete/{id}', [ShopCategoryController::class, 'deleteShopCategory']);
-    Route::get('/addshopproduct', [ShopproductController::class, 'index']);
+    Route::get('/addshopproduct/{id}', [ShopproductController::class, 'index']);
     Route::post('/submitshopproduct', [ShopproductController::class, 'submitProducts'])->name('submit.products');
 
     Route::get('/addproduct', [ProductController::class, 'index']);
