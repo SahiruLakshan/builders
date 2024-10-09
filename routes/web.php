@@ -54,6 +54,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::put('/shop/update/{id}', [ShopController::class, 'updateShop']);
     Route::get('/shop/delete/{id}', [ShopController::class, 'deleteShop']);
     Route::post('/shopapprove/{id}', [ShopController::class, 'approveShop']);
+    Route::post('/cancelapprove/{id}', [ShopController::class, 'cancelShop']);
+    Route::post('/productapprove/{id}', [ShopController::class, 'approveProduct']);
+    Route::post('/cancelproductapprove/{id}', [ShopController::class, 'cancelProduct']);
 
     // //brand routes
     Route::get('/addbrand', [BrandController::class, 'index'])->name('addbrand');
