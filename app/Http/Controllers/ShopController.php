@@ -220,12 +220,42 @@ class ShopController extends Controller
         }
     }
 
-    public function approveShop(Request $request, $id)
-    {
-        $shop = Shop::find($id);
-        $shop->shop_approve = Carbon::now(); 
-        $shop->save();
+    public function approveShop($id)
+{
+    $shop = Shop::find($id);
+    $shop->shop_approve = Carbon::now(); 
+    $shop->cancel_shop = 'No';
+    $shop->save();
 
-        return redirect('/shops')->with('success', 'Shop approved successfully!');
-    }
+    return response()->json(['message' => 'Shop approved successfully!']);
+}
+
+public function cancelShop($id)
+{
+    $shop = Shop::find($id);
+    $shop->cancel_shop = 'Yes';
+    $shop->save();
+
+    return response()->json(['message' => 'Shop approval canceled successfully!']);
+}
+
+public function approveProduct($id)
+{
+    $shop = Shop::find($id);
+    $shop->product_approve = Carbon::now();
+    $shop->cancel_product = 'No';
+    $shop->save();
+
+    return response()->json(['message' => 'Product approved successfully!']);
+}
+
+public function cancelProduct($id)
+{
+    $shop = Shop::find($id);
+    $shop->cancel_product = 'Yes';
+    $shop->save();
+
+    return response()->json(['message' => 'Product approval canceled successfully!']);
+}
+
 }

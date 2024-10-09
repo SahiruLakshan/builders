@@ -1,9 +1,9 @@
 @extends('admin.sidebar')
 
 @section('content')
-    <h1 style="margin-left:300px; margin-top:20px;">Shop Details</h1>
+    <h1 style="margin-left:250px; margin-top:20px;">Shop Details</h1>
 
-    <div class="search-bar" style="margin-left:300px; margin-top:20px; width: 800px;">
+    <div class="search-bar" style="margin-left:250px; margin-top:20px; width: 800px;">
         <input type="text" id="search-input" class="form-control" placeholder="Search products by Shop Name or Id...">
     </div>
 
