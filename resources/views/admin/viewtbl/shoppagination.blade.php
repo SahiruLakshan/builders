@@ -7,7 +7,7 @@
                 <th>Email</th>
                 <th>Address</th>
                 <th>Contact Number</th>
-                <th>Action</th> <!-- For Approve, Update, and Delete -->
+                <th>Actions</th> <!-- For Approve, Update, and Delete -->
             </tr>
         </thead>
         <tbody>
@@ -23,12 +23,6 @@
                             <a href="{{ url('/shopupdate/' . $shop->id) }}" class="btn btn-success btn-sm me-2">Edit
                                 Details</a>
                             <a href="{{ url('/shop/delete/' . $shop->id) }}" class="btn btn-danger btn-sm me-2">Delete</a>
-<form id="shopApproveForm" action="{{ url('/shopapprove', $shop->id) }}" method="POST"
-                                    class="me-2">
-                                    @csrf
-                                    <button type="button" class="btn btn-dark btn-sm" onclick="confirmApproval()">Shop
-                                        Approve</button>
-                                </form>
 
                             @if ($shop->shop_approve == null)
                                 <form id="shopApproveForm" action="{{ url('/shopapprove', $shop->id) }}" method="POST"
