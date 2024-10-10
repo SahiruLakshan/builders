@@ -24,7 +24,10 @@ class Shop extends Model
         'fb_link',
         'br',
         'shop_img',
-
+        'shop_approve',
+        'product_approve',
+        'cancel_shop',
+        'cancel_product'
     ];
 
     public function district()

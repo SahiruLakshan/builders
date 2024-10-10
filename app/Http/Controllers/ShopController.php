@@ -10,6 +10,7 @@ use App\Models\ShopCategory;
 use App\Models\Shopproduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class ShopController extends Controller
 {
@@ -30,8 +31,7 @@ class ShopController extends Controller
         $category_count = Shopproduct::where('shop_id', $id)->distinct('product_category_id')->count();
 
 
-        $shop_product = Shopproduct::where('shop_id', $id)->with('product', 'category', 'brand')->get();
-        ;
+        $shop_product = Shopproduct::where('shop_id', $id)->with('product', 'category', 'brand')->get();;
         if (!$shop) {
             return response()->json([
                 'message' => 'Shop not found',
@@ -220,5 +220,42 @@ class ShopController extends Controller
         }
     }
 
+    public function approveShop($id)
+{
+    $shop = Shop::find($id);
+    $shop->shop_approve = Carbon::now(); 
+    $shop->cancel_shop = 'No';
+    $shop->save();
+
+    return response()->json(['message' => 'Shop approved successfully!']);
+}
+
+public function cancelShop($id)
+{
+    $shop = Shop::find($id);
+    $shop->cancel_shop = 'Yes';
+    $shop->save();
+
+    return response()->json(['message' => 'Shop approval canceled successfully!']);
+}
+
+public function approveProduct($id)
+{
+    $shop = Shop::find($id);
+    $shop->product_approve = Carbon::now();
+    $shop->cancel_product = 'No';
+    $shop->save();
+
+    return response()->json(['message' => 'Product approved successfully!']);
+}
+
+public function cancelProduct($id)
+{
+    $shop = Shop::find($id);
+    $shop->cancel_product = 'Yes';
+    $shop->save();
+
+    return response()->json(['message' => 'Product approval canceled successfully!']);
+}
 
 }

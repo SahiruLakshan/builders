@@ -328,10 +328,10 @@
                                             <a class="slide-item" href="/addshop">Add New Shops
                                             </a>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <a class="slide-item" href="/addshopproduct">Add Shop Product
                                             </a>
-                                        </li>
+                                        </li> --}}
                                         <li>
                                             <a class="slide-item" href="/shops">view Shops</a>
                                         </li>
@@ -871,6 +871,12 @@
    <script src="{{ asset('assets/js/custom.js') }}"></script> --}}
 
    <script src="https://cdn.jsdelivr.net/gh/noumanqamar450/alertbox@main/version/1.0.2/alertbox.min.js"></script>
+   <!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     @if (session('success'))
         <script>
