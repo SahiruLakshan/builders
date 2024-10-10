@@ -54,10 +54,10 @@
                             @endif
 
                             <!-- Product Approval Buttons -->
-                            @if ($shop->shop_approve)
+                            @if ($shop->shop_approve && $shop->product_approve == null || $shop->cancel_product == 'Yes')
                                 <button type="button" class="btn btn-dark btn-sm me-2"
                                     onclick="confirmApproval('{{ $shop->id }}', 'approveProduct')">Product Approve</button>
-                            @elseif ($shop->shop_approve && $shop->product_approve || $shop->cancel_product == 'No')
+                            @elseif ($shop->cancel_product == 'No')
                                 <button type="button" class="btn btn-danger btn-sm me-2"
                                     onclick="confirmApproval('{{ $shop->id }}', 'cancelProduct')">Cancel Product</button>
                             @endif
@@ -122,7 +122,7 @@
                     },
                     success: function(response) {
                         Swal.fire('Success', response.message, 'success');
-                        location.reload(); // Reload to refresh the table
+                        location.reload();
                     },
                     error: function() {
                         Swal.fire('Error', 'Something went wrong', 'error');
