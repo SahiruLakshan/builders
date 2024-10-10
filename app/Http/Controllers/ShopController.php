@@ -258,4 +258,24 @@ public function cancelProduct($id)
     return response()->json(['message' => 'Product approval canceled successfully!']);
 }
 
+public function approvedshop(Request $request){
+
+    $query = $request->input('query');
+
+    $shops = Shop::where(function($q) use ($query) {
+        $q->where('name', 'like', '%' . $query . '%')
+          ->orWhere('id', 'like', '%' . $query . '%');
+    })
+    ->where('cancel_shop', 'No')
+    ->where('cancel_product', 'No')
+    ->paginate(8);
+
+    if ($request->ajax()) {
+        return view('admin.viewtbl.approvalpagination', compact('shops'))->render();
+    }
+
+    return view('admin.viewtbl.viewapproval', compact('shops'));
+
+}
+
 }

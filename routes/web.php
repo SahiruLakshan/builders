@@ -57,6 +57,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/cancelapprove/{id}', [ShopController::class, 'cancelShop']);
     Route::post('/productapprove/{id}', [ShopController::class, 'approveProduct']);
     Route::post('/cancelproductapprove/{id}', [ShopController::class, 'cancelProduct']);
+    Route::get('/approvedshops', [ShopController::class, 'approvedshop']);
 
     // //brand routes
     Route::get('/addbrand', [BrandController::class, 'index'])->name('addbrand');
