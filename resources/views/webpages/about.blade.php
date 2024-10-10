@@ -15,8 +15,7 @@
           <h2>Welcome to Builderz</h2>
           <p>Excellence in the Industry</p>
           <p>
-            We have been serving with dedication, delivering quality services and products to our clients. Our team is made up of experienced professionals committed to making every project a success.
-          </p>
+            At [Your Company Name], we specialize in providing top-quality building materials and services to meet all your construction needs. Our mission is to deliver exceptional products and services that help you build your dreams, whether it’s a small renovation project or a large-scale construction.</p>
           <a href="#" class="btn-primary">Learn More</a>
         </div>
       </div>
