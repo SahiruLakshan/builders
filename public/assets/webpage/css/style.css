@@ -76,7 +76,6 @@ Table OF Contents
     border: 1px solid #ebbc00; /* Optional: Add border for better visibility */
     --bs-dropdown-zindex: 99999;
 }
-
 /* Style for dropdown menu links */
 .dropdown-menu a {
     color: black; /* Default text color for dropdown items */
@@ -543,7 +542,7 @@ textarea.input {
 #header {
     padding-top: 4px;
     padding-bottom: 4px;
-    background-color: blanchedalmond;
+    background-color: rgb(224, 156, 54);
 }
 
 .navbar {

@@ -66,6 +66,33 @@
       .common-dropdown-menu .dropdown-item {
         font-size: 12px; /* Adjust this value as needed */
       }
+
+      /* Initial button colors */
+.navbar-nav .nav-item .nav-link {
+  background-color: #007bff; /* Set the button background color */
+  color: #ffffff; /* Set the text color */
+  border-radius: 5px; /* Optional: Add border radius for better appearance */
+  padding: 5px 10px;
+}
+
+/* Hover effect to change color to white */
+.navbar-nav .nav-item .nav-link:hover {
+  background-color: #ffffff; /* Change background to white on hover */
+  color: #007bff; /* Change text color to your primary color */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Add smooth transition */
+}
+
+/* Optional: Style for dropdown items */
+.navbar-nav .dropdown-menu .dropdown-item {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.navbar-nav .dropdown-menu .dropdown-item:hover {
+  background-color: #ffffff;
+  color: #007bff;
+}
+
     </style>
   </head>
 
@@ -122,7 +149,7 @@
             <!-- Logo Section -->
             <div
               class="col-2 d-flex align-items-center justify-content-center h-100 "
-              style="background-color: blanchedalmond">
+              style="background-color: rgb(224, 156, 54">
               <a href="{{ url('/') }}">
                 <img
                   src="{{ asset('assets/webpage/img/LOGO-01.png') }}"
@@ -210,7 +237,7 @@
               <nav
                 id="navigation"
                 class="navbar navbar-expand p-0"
-                style="background-color: #e3f2fd"
+                style="background-color: #002b49"
               >
                 <div class="container-fluid px-3">
                   <!-- Hamburger Toggler Button -->
@@ -501,7 +528,7 @@
 
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Links</h5>
+              <h5 class="text-uppercase">Mail Us</h5>
 
               <ul class="footer-links">
                 <li>
@@ -514,7 +541,7 @@
                   <a href="#!">Link 3</a>
                 </li>
                 <li>
-                  <a href="#!" class="">Link 4</a>
+                  <a href="#!">Link 4</a>
                 </li>
               </ul>
             </div>
@@ -522,7 +549,7 @@
 
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Links</h5>
+              <h5 class="text-uppercase">Policy</h5>
 
               <ul class="footer-links">
                 <li>

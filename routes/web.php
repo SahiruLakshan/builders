@@ -141,6 +141,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 // Route::get('/front', function(){
 //     return view('webpages.home');
 // });
+
+// get cityes fir the dropdown
+
 Route::get('/product', function () {
     return view('webpages.product');
 });
