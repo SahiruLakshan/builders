@@ -9,9 +9,9 @@ class District extends Model
 {
     use HasFactory;
 
-    protected $table='tbl_district';
+    protected $table = 'tbl_district';
 
-    protected $fillable=[
+    protected $fillable = [
         'dis_id',
         'pro_id',
         'dis_code',
@@ -21,6 +21,11 @@ class District extends Model
     public function shops()
     {
         return $this->hasMany(Shop::class, 'district', 'dis_id');
+    }
+
+    public function city()
+    {
+        return $this->hasMany(City::class, 'dis_id', 'dis_id');
     }
 
 }

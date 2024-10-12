@@ -181,7 +181,7 @@
                             info@builders.lk</a
                           >
                         </li>
-                        <li>
+                        {{-- <li>
                           <a
                             href="https://www.google.com/maps/search/?api=1&query=No541D,Galawilawaththa,Homagama"
                             target="_blank"
@@ -189,7 +189,7 @@
                             <i class="fa fa-map-marker"></i> No541D,
                             Galawilawaththa, Homagama
                           </a>
-                        </li>
+                        </li> --}}
                         <li><a href="home.html">Home</a></li>
                         <li><a href="{{ url('/aboutus') }}">About Us</a></li>
                         <li><a href="galary.html">Gallery</a></li>
@@ -311,7 +311,7 @@
                         <ul class="dropdown-menu p-1 border">
                           <li>
                             <a
-                              href="/serviceproviders"
+                              href="serviceprovider"
                               class="dropdown-item p-1 border"
                               >Service Providers</a
                             >
@@ -322,12 +322,12 @@
                             >
                           </li>
                           <li>
-                            <a href="/shopSuppliers" class="dropdown-item p-1 border"
+                            <a href="#" class="dropdown-item p-1 border"
                               >Bass</a
                             >
                           </li>
                           <li>
-                            <a href="#" class="dropdown-item p-1 border"
+                            <a href="shopSuppliers" class="dropdown-item p-1 border"
                               >Shops</a
                             >
                           </li>
@@ -343,7 +343,43 @@
                 <div class="container-fluid p-1">
                   <div class="d-flex justify-content-around">
                     <!-- First Dropdown -->
-                    <div class="  mb-2 mb-md-0 p-1">
+                    <div class="  mb-2 mb-md-0 p-0">
+                    
+                      <div class="subnav">
+                        <button class="subnavbtn fs-6">
+                          Shops By Category <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="subnav-content" style="height:50vh">
+                            <div class="d-flex flex-wrap flex-column">
+                                  @foreach($shopcats as $shopcat)
+                                      <a href="{{route('category.shop', $shopcat->name)}}">{{$shopcat->name}}</a>
+
+                                  @endforeach
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Search Bar -->
+                    <div
+                      class=" mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end"
+                    >
+                      <div class="input-group input-group-sm w-100 w-md-75">
+                        <input
+                          type="search"
+                          class="form-control"
+                          placeholder="Search here"
+                          aria-label="Search here"
+                        />
+                        <button
+                          class="btn btn-dark btn-search"
+                          type="button"
+                        >
+                          <i class="fa fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- Second Dropdown -->
+                    <div class="col-12 col-md-2 mb-2 mb-md-0">
                       <div class="subnav">
                         <button class="subnavbtn">
                           Service By Category <i class="fa fa-caret-down"></i>
@@ -381,41 +417,6 @@
                             <a href="#">SOLAR POWER</a>
                             <a href="#">OTHERS</a>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Search Bar -->
-                    <div
-                      class=" mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end"
-                    >
-                      <div class="input-group input-group-sm w-100 w-md-75">
-                        <input
-                          type="search"
-                          class="form-control"
-                          placeholder="Search here"
-                          aria-label="Search here"
-                        />
-                        <button
-                          class="btn btn-dark btn-search"
-                          type="button"
-                        >
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <!-- Second Dropdown -->
-                    <div class="col-12 col-md-2 mb-2 mb-md-0">
-                      <div class="subnav">
-                        <button class="subnavbtn">
-                          Shops By Category <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="subnav-content" style="height:50vh">
-                            <div class="d-flex flex-wrap flex-column">
-                                  @foreach($shopcats as $shopcat)
-                                      <a href="{{route('category.shop', $shopcat->name)}}">{{$shopcat->name}}</a>
-
-                                  @endforeach
-                            </div>
                         </div>
                       </div>
                     </div>

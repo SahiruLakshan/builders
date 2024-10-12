@@ -148,9 +148,7 @@ Route::get('/product', function () {
     return view('webpages.product');
 });
 //bass form loarding
-Route::get('/shopSuppliers', function () {
-    return view('webpages.shopSuppliers');
-})->name('shopSuppliers');
+Route::get('/shopSuppliers', [WebController::class, 'shopSuppliers'])->name('shopSuppliers');
 //service provider form loading
 Route::get('/serviceprovider', function () {
     return view('webpages.serviceprovider');
