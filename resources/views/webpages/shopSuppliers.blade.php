@@ -214,10 +214,14 @@
     @if ($errors->any())
       <script>
         document.addEventListener("DOMContentLoaded", function(event) {
+          let errorText = '';
+          @foreach($errors->all() as $error)
+            errorText += '{{ $error }}\n';
+          @endforeach
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: '{{ $errors->first() }}'
+            text: errorText
           })
         });
       </script>

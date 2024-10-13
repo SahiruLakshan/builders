@@ -134,7 +134,7 @@
               <div id="top-header">
                 <div class="container-fluid">
                   <div class="d-flex justify-content-between">
-                    <div class="d-flex ">
+                    <div class="d-flex">
                       <ul class="header-links float-left">
                         <li>
                           <a href="tel:0112748149"
@@ -464,10 +464,7 @@
         <!-- Section: Text -->
         <section class="mb-4">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-            distinctio earum repellat quaerat voluptatibus placeat nam, commodi
-            optio pariatur est quia magnam eum harum corrupti dicta, aliquam
-            sequi voluptate quas.
+            A.A.I.C. Business Solutions (Pvt) Ltd provides accounting, marketing, IT, and business consulting services in Sri Lanka. Recognizing the need for a digital platform in the construction industry, the company developed BUILDERS.LK to create an integrated market.
           </p>
         </section>
         <!-- Section: Text -->
