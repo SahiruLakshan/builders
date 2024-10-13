@@ -57,41 +57,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
-      /* Common Dropdown Button Styles */
-      .common-dropdown-btn {
-        font-size: 12px; /* Adjust this value as needed */
-      }
-
-      /* Common Dropdown Menu Items */
-      .common-dropdown-menu .dropdown-item {
-        font-size: 12px; /* Adjust this value as needed */
-      }
-
-      /* Initial button colors */
-.navbar-nav .nav-item .nav-link {
-  background-color: #007bff; /* Set the button background color */
-  color: #ffffff; /* Set the text color */
-  border-radius: 5px; /* Optional: Add border radius for better appearance */
-  padding: 5px 10px;
-}
-
-/* Hover effect to change color to white */
-.navbar-nav .nav-item .nav-link:hover {
-  background-color: #ffffff; /* Change background to white on hover */
-  color: #007bff; /* Change text color to your primary color */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Add smooth transition */
-}
-
-/* Optional: Style for dropdown items */
-.navbar-nav .dropdown-menu .dropdown-item {
-  background-color: #007bff;
-  color: #ffffff;
-}
-
-.navbar-nav .dropdown-menu .dropdown-item:hover {
-  background-color: #ffffff;
-  color: #007bff;
-}
+ 
 
     </style>
   </head>
@@ -99,7 +65,7 @@
   <body class="overflow-x-hidden">
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Builders.lk</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -107,7 +73,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Accordion Item #1
+                Re
               </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -203,7 +169,7 @@
                     </div>
                     <div class="d-flex">
 
-                          <div class="dropdown px-0">
+                          <div class="dropdown px-2">
                             <button class="btn btn-sm btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 My Account
                             </button>
@@ -296,7 +262,7 @@
                           data-bs-toggle="dropdown"
                           aria-expanded="false"
                         >
-                          Free Quater
+                          Free Quoter
                         </a>
                       </li>
                       <li class="nav-item dropdown custom-dropdown p-1">
@@ -349,7 +315,7 @@
                         <button class="subnavbtn fs-6">
                           Shops By Category <i class="fa fa-caret-down"></i>
                         </button>
-                        <div class="subnav-content" style="height:50vh">
+                        <div class="subnav-content" style="height:30vh">
                             <div class="d-flex flex-wrap flex-column">
                                   @foreach($shopcats as $shopcat)
                                       <a href="{{route('category.shop', $shopcat->name)}}">{{$shopcat->name}}</a>
@@ -381,7 +347,7 @@
                     <!-- Second Dropdown -->
                     <div class="col-12 col-md-2 mb-2 mb-md-0">
                       <div class="subnav">
-                        <button class="subnavbtn">
+                        <button class="subnavbtn fs-6 p-0">
                           Service By Category <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content">
@@ -463,7 +429,7 @@
                     <!-- Fourth Dropdown -->
                     <div class="col-12 col-md-2 mb-2 ">
                       <div class="subnav">
-                        <button class="subnavbtn">
+                        <button class="subnavbtn fs-6 p-0">
                           Purchase With Builders.lk
                           <i class="fa fa-caret-down"></i>
                         </button>
@@ -482,8 +448,12 @@
     </header>
 
     <!-- /MAIN HEADER -->
+    <body class="background" >
+      @yield('content')
+
+    </body>
 {{-- content --}}
-@yield('content')
+
     <!-- FOOTER -->
 
     <!-- Footer -->
@@ -725,7 +695,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
 
-    <script>
+    {{-- <script>
       // JavaScript to handle dropdown functionality
       document.querySelectorAll(".subnavbtn").forEach(function (button) {
         button.addEventListener("mouseenter", function () {
@@ -773,8 +743,39 @@
       document.addEventListener("click", function () {
         closeAllDropdowns();
       });
-    </script>
+    </script> --}}
     <script>
+      // JavaScript to handle dropdown functionality
+document.querySelectorAll(".subnavbtn").forEach(function (button) {
+  const subnavContent = button.nextElementSibling;
+
+  // Show dropdown when hovering over the button
+  button.addEventListener("mouseenter", function () {
+    subnavContent.style.display = "flex"; // Show the dropdown
+  });
+
+  // Hide dropdown when leaving the button, unless cursor is over the dropdown content
+  button.addEventListener("mouseleave", function () {
+    setTimeout(function () {
+      if (!subnavContent.matches(':hover')) {
+        subnavContent.style.display = "none"; // Hide if not hovered over
+      }
+    }, 200); // Slight delay to allow smooth transition
+  });
+
+  // Ensure dropdown stays visible if the user hovers over the dropdown content itself
+  subnavContent.addEventListener("mouseenter", function () {
+    subnavContent.style.display = "flex"; // Keep dropdown visible
+  });
+
+  // Hide dropdown when the cursor leaves the dropdown content
+  subnavContent.addEventListener("mouseleave", function () {
+    setTimeout(function () {
+      subnavContent.style.display = "none"; // Hide dropdown when cursor leaves
+    }, 200); // Slight delay for smooth interaction
+  });
+});
+
       $(document).ready(function () {
         $(".owl-carousel").owlCarousel({
           items: 8,

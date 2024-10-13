@@ -93,13 +93,16 @@ Table OF Contents
         10
     ); /* Text color on hover/focus to maintain readability */
 }
-
+.background {
+    background-color: #eae7dc;
+}
 body {
     /* font-family: "Montserrat", sans-serif; */
-    font-weight: 400;
-    color: #333;
+    /* font-weight: 400;
+    color: #333; */
+    background-color: #eae7dc;
 }
-
+/*
 h1,
 h2,
 h3,
@@ -557,7 +560,6 @@ textarea.input {
     padding: 14px 16px;
     text-decoration: none;
 }
-
 .subnav {
     float: left;
     overflow: hidden;
@@ -586,7 +588,7 @@ textarea.input {
     position: absolute;
     left: 0;
     background-color: rgb(173, 172, 164);
-    width: 100%; /* Full width */
+    width: 100%;
     z-index: 99;
 }
 
@@ -602,6 +604,12 @@ textarea.input {
     background-color: #eee;
     color: black;
 }
+
+/* Open dropdown on hover */
+.subnav:hover .subnav-content {
+    display: block;
+}
+
 /* .container {
   padding-top: 132px;
 }  */
@@ -2348,6 +2356,41 @@ textarea.input {
 .custom-dropdown .nav-link {
     font-size: 15px; /* Adjust this value as needed */
     color: black;
+}
+/* Common Dropdown Button Styles */
+.common-dropdown-btn {
+    font-size: 12px; /* Adjust this value as needed */
+}
+
+/* Common Dropdown Menu Items */
+.common-dropdown-menu .dropdown-item {
+    font-size: 12px; /* Adjust this value as needed */
+}
+
+/* Initial button colors */
+.navbar-nav .nav-item .nav-link {
+    background-color: #007bff; /* Set the button background color */
+    color: #ffffff; /* Set the text color */
+    border-radius: 5px; /* Optional: Add border radius for better appearance */
+    padding: 5px 10px;
+}
+
+/* Hover effect to change color to white */
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: #ffffff; /* Change background to white on hover */
+    color: #007bff; /* Change text color to your primary color */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Add smooth transition */
+}
+
+/* Optional: Style for dropdown items */
+.navbar-nav .dropdown-menu .dropdown-item {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.navbar-nav .dropdown-menu .dropdown-item:hover {
+    background-color: #ffffff;
+    color: #007bff;
 }
 
 @media (max-width: 768px) {

@@ -1,7 +1,7 @@
 @extends('webpages.index')
 <!--  Main carousels start here -->
 @section('content')
-<body style="background-color: #959595fb;">
+
   
   <div class="container " style="margin-top: 165px">
     <div class="row p-0">
@@ -111,7 +111,7 @@
         <div class="owl-carousel owl-theme">
           <div class="item">
             <div class="card">
-              <img src="{{ asset('assets/webpage/img/left2.jpg') }}" class="card-img-top" alt="..." />
+              <img src="{{ asset('assets/webpage/img/right_image_20241003_111005_WhatsApp Image 2024-08-21 at 09.00.29_609a785a.jpg') }}" class="card-img-top" alt="..." />
             </div>
           </div>
           <div class="item">
@@ -1269,4 +1269,4 @@
 
 
   
-</body>@endsection
+@endsection

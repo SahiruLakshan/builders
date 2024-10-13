@@ -2,21 +2,27 @@
 @section('content')
     <!-- /MAIN HEADER -->
     <style>
-      .border {
+      /* .border {
         border: 1px solid #ccc;
         border-radius: 5px;
         padding: 10px;
+      } */
+      .custom-form-style {
+        border: 2px solid #f6f2f2;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 8px; /* Optional: Adds rounded corners */
       }
+
     </style>
-    <div class="container-fluid " style="padding-top: 132px" >
+    <div class="container-fluid " style="padding-top: 132px" >      
       <div class="text-center">
         <h3 class="display-4 text-primary font-weight-bold">BUILDERS.LK</h3>
         <h4 class="display-6 text-secondary font-weight-bold">
-          Constructions Materials Suppliers/Shop Registration form
+          Constructions Materials Suppliers/Shop Registration 
         </h4>
       </div>
-      <form method="POST" class="border p-4">
-        <div class="row">
+      <form method="POST" class="custom-form-style border p-4" enctype="multipart/form-data" >        <div class="row">
           <div class="form-group col">
             <label for="inputPassword4">Shop Name</label>
             <input
@@ -41,7 +47,7 @@
         <div class="row">
           <div class="col-4">
             <label for="category">Select Shop Category:</label>
-            <select id="category" name="shop_category" class="form-select">
+            <select id="shop_category" name="shop_category" class="form-select select2">
               {{-- <option value="cat1">Category 1</option>
               <option value="cat2">Category 2</option>
               <option value="cat3">Category 3</option> --}}
@@ -52,7 +58,7 @@
           </div>
           <div class="col-4">
             <label for="category">Select Selling Brands:</label>
-            <select id="category" name="brand" class="form-select">
+            <select id="brand_category" name="brand" class="form-select select2">
               @foreach ($brands as $brand)
                 <option value="{{ $brand->id }}">{{ $brand->b_name }}</option>
               @endforeach
@@ -60,6 +66,18 @@
               <option value="cat2">Category 2</option>
               <option value="cat3">Category 3</option> --}}
             </select>
+            <script>
+              $(document).ready(function() {
+                $('#shop_category').select2({
+                  placeholder: "Select a category",
+                  allowClear: true
+                });
+                $('#brand_category').select2({
+                  placeholder: "Select a brand",
+                  allowClear: true
+                });
+              });
+            </script>
           </div>
           <div class="col-10">
      
@@ -79,7 +97,7 @@
           </div>
         </div>  
         <script>
-          // sanjana
+          // select district and city 
           var cities=[
             @forEach($dictricts as $dictrict)
               {
@@ -108,7 +126,7 @@
             $('#district').change(function() {
               $('#city').removeClass('disabled');
               $('#city').removeAttr('disabled');
-              console.log("city:", cities.find((elem) => elem.districtId == $(this).val()));
+              // console.log("city:", cities.find((elem) => elem.districtId == $(this).val()));
               let content='<option value="">Select City</option>';
               cities.find((elem) => elem.districtId == $(this).val()).cities.forEach((elem) => {
                 content+=`<option value="${elem.cityId}">${elem.cityName}</option>`;
@@ -117,41 +135,10 @@
               $('#city').select2();
             });
           })
-
-          // sanjana
-
-
-          // const cities = {
-          //   Colombo: ["Colombo", "Kotahena", "Nugegoda"],
-          //   Gampaha: ["Gampaha", "Negombo", "Minuwangoda"],
-          //   Kalutara: ["Kalutara", "Panadura", "Horana"],
-          //   Kandy: ["Kandy", "Nawalapitiya", "Peradeniya"],
-          //   Matale: ["Matale", "Dambulla", "Kurunegala"],
-          //   "Nuwara Eliya": ["Nuwara Eliya", "Hatton", "Bandarawela"],
-          // };
-
-          // const distSelect = document.getElementById("district");
-          // const citySelect = document.getElementById("city");
-
-          // distSelect.addEventListener("change", (e) => {
-          //   const dist = e.target.value;
-          //   if (cities[dist]) {
-          //     citySelect.disabled = false;
-          //     citySelect.innerHTML = "<option value=''>Select City</option>";
-          //     cities[dist].forEach((city) => {
-          //       const opt = document.createElement("option");
-          //       opt.value = city;
-          //       opt.textContent = city;
-          //       citySelect.appendChild(opt);
-          //     });
-          //   } else {
-          //     citySelect.disabled = true;
-          //   }
-          // });
         </script>
 
-      <h5>Other Details</h5>
-      <div class="row">
+        <h5>Other Details</h5>
+        <div class="row">
         <div class="col-md-4">
           <div class="form-group">
             <label for="telephone" class="col-form-label">Telephone :</label>
@@ -176,107 +163,16 @@
             <input type="text" name="fb_link" id="telephone" class="form-control" aria-describedby="telephoneHelp">
           </div>
         </div>
-      </div>
-
-
-        {{-- <h5>Company Details</h5>
-        <div class="row align-items-space-between">
-          <div class="col">
-            <label for="inputPassword6" class="col-form-label">Name :</label>
-            <input type="Telephone" id="telephone" class="form-control" aria-describedby="telephoneHelp">
-          </div>
-          <div class="col">
-            <label for="inputPassword6" class="col-form-label">Business Registration No :</label>
-            <input type="Telephone" id="mobile" class="form-control" aria-describedby="telephoneHelp">
-          </div>
+        <div class="col-md-4 mt-3">
+          <label for="bussiness_reg_no" class="col-form-label">Business Registration No :</label>
+          <input type="text" name="bussiness_reg_no" id="bussiness_reg_no" class="form-control" aria-describedby="telephoneHelp">
+        </div>
         </div>
 
-        <div class="row">
-          <div class="col-4">
-            <label for="noOfEmp" class="col-form-label">Number of Employees :</label>
-            <input type="number" id="noOfEmp" class="form-control" aria-describedby="noOfEmpHelp">
-          </div>
-          <div class="col-4">
-            <label for="employeesQualification" class="col-form-label">Employees Qualification :</label>
-            <input type="text" id="employeesQualification" class="form-control" aria-describedby="employeesQualificationHelp">
-          </div>
-          <div class="col-4">
-            <label for="maxProjectValue" class="col-form-label">Maximum Project Value :</label>
-            <input type="text" id="maxProjectValue" class="form-control" aria-describedby="maxProjectValueHelp">
-          </div>
-        </div> --}}
-        {{-- <h5>Project History</h5>
-        <table class="table" id="projectTable">
-          <thead>
-            <tr>
-              <th>Project Name</th>
-              <th>Location</th>
-              <th>Value</th>
-              <th>Contact Person</th>
-              <th>Contact Number</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="projectHistory">
-            <tr>
-              <td>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="projectName[]"
-                  placeholder="Project Name"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="projectLocation[]"
-                  placeholder="Location"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="projectValue[]"
-                  placeholder="Value"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="contactPerson[]"
-                  placeholder="Contact Person"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="contactNumber[]"
-                  placeholder="Contact Number"
-                />
-              </td>
-              <td>
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  onclick="removeRow(this)"
-                >
-                  Remove
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
 
-        <button type="button" class="btn btn-success" onclick="addProjectRow()">
-          Add Project
-        </button> --}}
         <div class="mt-3 mb-3">
           <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-secondary" onclick="window.location.href='{{ url()->previous() }}'">Cancel</button>
         </div>
       </form>
     </div>
