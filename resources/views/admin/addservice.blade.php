@@ -10,19 +10,19 @@
                     </p>
                 </div>
                 <div class="card-body pt-0">
-                    <form action="{{url('addservice')}}" method="POST" class="form-horizontal" id="addproduct">
+                    <form action="{{url('addservice')}}" method="POST" class="form-horizontal" id="addproduct" enctype="multipart/form-data">
                         @csrf
                         <!-- Service Name Field -->
                         <div class="form-group">
                             <label for="product_name">Service Name</label>
-                            <input type="text" class="form-control" name="servicename" placeholder="Service Name" required onchange="this.value = this.value.toUpperCase();" />
+                            <input type="text" class="form-control" name="service_name" placeholder="Service Name" required onchange="this.value = this.value.toUpperCase();" />
                             <small class="form-text text-muted">Enter the Service name. This field is
                                 required.</small>
                         </div>
                         <!-- Service Description Field -->
                         <div class="form-group">
                             <label for="description">Service Description</label>
-                            <textarea class="form-control" name="description" id="description" placeholder="Enter a description about the service" rows="3"
+                            <textarea class="form-control" name="service_description" id="description" placeholder="Enter a description about the service" rows="3"
                                 required></textarea>
                             <small class="form-text text-muted">Enter a brief description about the service. This field
                                 is required.</small>

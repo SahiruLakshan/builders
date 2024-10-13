@@ -124,10 +124,12 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/addservice', [ServiceController::class, 'create'])->name('addservice');
 
     // Route to handle form submission
-    Route::post('/addservice', [ServiceController::class, 'store']);
-    Route::get('/viewservice', [ServiceController::class, 'viewservice']);
-
-
+    Route::post('/addservice', [ServiceController::class, 'store'])->name('storeservice');
+    Route::get('/viewservice', [ServiceController::class, 'viewservice'])->name('viewservice');
+    Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy'); // Delete service
+    Route::get('/services/{id}/edit', [ServiceController::class, 'edit'])->name('services.edit'); // Show edit form
+    Route::put('/services/{id}', [ServiceController::class, 'update'])->name('services.update'); // Update service
+    // Route::get('/indexse', [ServiceController::class, 'viewservice'])->name('viewservice');
 });
 
 // routes/web.php
