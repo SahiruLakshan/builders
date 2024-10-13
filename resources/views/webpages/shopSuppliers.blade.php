@@ -22,7 +22,9 @@
           Constructions Materials Suppliers/Shop Registration 
         </h4>
       </div>
-      <form method="POST" class="custom-form-style border p-4" enctype="multipart/form-data" >        <div class="row">
+      <form method="POST" class="custom-form-style border p-4" enctype="multipart/form-data" action="{{ route('addshopSuppliers') }}" > 
+        @csrf
+               <div class="row">
           <div class="form-group col">
             <label for="inputPassword4">Shop Name</label>
             <input
@@ -139,6 +141,24 @@
 
         <h5>Other Details</h5>
         <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="shop_image" class="col-form-label">Shop Image :</label>
+            <input type="file" name="shop_image" id="shop_image" class="form-control-file">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <img src="" id="preview-image" style="max-width: 150px; max-height: 150px;">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="location" class="col-form-label">Location :</label>
+            <input type="text" name="location" id="location" class="form-control" aria-describedby="locationHelp">
+          </div>
+        </div>
+      
         <div class="col-md-4">
           <div class="form-group">
             <label for="telephone" class="col-form-label">Telephone :</label>
@@ -171,12 +191,78 @@
 
 
         <div class="mt-3 mb-3">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button onclick="postData()" class="btn btn-primary">Submit</button>
           <button type="button" class="btn btn-secondary" onclick="window.location.href='{{ url()->previous() }}'">Cancel</button>
         </div>
       </form>
     </div>
 
+    @if ($message = Session::get('success'))
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: '{{ $message }}'
+          })
+        });
+      </script>
+
+    @endif
+
+    @if ($errors->any())
+      <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '{{ $errors->first() }}'
+          })
+        });
+      </script>
+    @endif
+
+    {{-- <script>
+    
+      $(document).ready(function(){
+        $('#shop_image').on('change', function(){
+          let reader = new FileReader();
+          reader.onload = (e) => {
+            $('#preview-image').attr('src', e.target.result);
+          }
+          reader.readAsDataURL(this.files[0]);
+        })
+      })
+
+      function postData(){
+        var formData = new FormData();
+        formData.append('shop_name', $('#shop_name').val());
+        formData.append('address', $('#address').val());
+        formData.append('shop_category', 2);
+        formData.append('brand', 3);
+        formData.append('district', $('#district').val());
+        formData.append('shop_image', $('#shop_image')[0].files[0]);
+        formData.append('telephone', $('#telephone').val());
+        formData.append('mobile', $('#mobile').val());
+        formData.append('whatsapp', $('#whatsapp').val());
+        formData.append('fb_link', $('#fb_link').val());
+        formData.append('bussiness_reg_no', $('#bussiness_reg_no').val());
+        $.ajax({
+          url: "/shopSuppliers",
+          type: 'POST',
+          data: formData,
+          contentType: false,
+          processData: false,
+          success: function(data) {
+            alert(data);
+          },
+          error: function(data) {
+            alert(data.responseText);
+          }
+        });
+      }
+    </script> --}}
     {{-- <script>
       // Function to add a new project row
       function addProjectRow() {
