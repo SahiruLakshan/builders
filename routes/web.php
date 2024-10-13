@@ -142,6 +142,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 // Route::get('/front', function(){
 //     return view('webpages.home');
 // });
+//search optoins route 
+Route::get('/search', [WebController::class, 'search'])->name('search');
 
 // get cityes fir the dropdown
 

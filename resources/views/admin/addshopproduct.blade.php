@@ -108,21 +108,26 @@
                                                 placeholder="Enter color" />
                                         </div>
                                     </div>
+
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="color">Image</label>
-                                            <input class="form-control" type="file" name="image" id="image"
-                                                accept=".jpg,.jpeg,.png" />
-                                            {{-- <small class="form-text text-muted">
-                                                Upload an image (JPEG or PNG format) representing
-                                                the Product. Optional field.
-                                            </small> --}}
+                                            <input class="form-control" type="file" name="image" id="image" accept=".jpg,.jpeg,.png" />
                                         </div>
+                                    
+                                        <!-- Container for dynamically added input fields -->
+                                        <div id="inputFieldsContainer"></div>
+                                    
+                                        <button type="button" id="addMoreFieldsBtn" class="btn btn-success ">Add More Fields</button>
+                                    
+                                    
                                     </div>
+                                    
+                                    
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col">
                                             <div class="form-group">
-                                                <button type="button" id="addProductButton" class="btn btn-success">
+                                                <button type="button" id="addProductButton" class="btn btn-primary">
                                                     Add Product
                                                 </button>
                                             </div>
@@ -350,5 +355,41 @@
                 });
             });
         });
+        // Get references to the container and button
+        const inputFieldsContainer = document.getElementById('inputFieldsContainer');
+        const addMoreFieldsBtn = document.getElementById('addMoreFieldsBtn');
+        
+        // Initialize a counter to give unique IDs to each input field
+        let fieldCounter = 1; // Start from 1 since we already have one field
+
+        // Function to add a new input field using a string of HTML
+        function addNewField() {
+            // Create a string of HTML for the new field with a delete button
+            const newFieldHTML = `
+                <div class="inputFieldGroup" id="fieldGroup${fieldCounter}">
+                    <label for="field${fieldCounter}">Field ${fieldCounter + 1}:</label>
+                    <input type="text" name="fields[]" id="field${fieldCounter}" placeholder="Enter value">
+                    <button type="button" onclick="deleteField(${fieldCounter})" class="btn btn-danger btn-sm "><i class="fas fa-trash"></i></button>
+                </div>
+            `;
+
+            // Append the new field HTML to the container
+            inputFieldsContainer.innerHTML += newFieldHTML;
+
+            // Increment the counter for the next field
+            fieldCounter++;
+        }
+
+        // Function to delete an input field
+        function deleteField(counter) {
+            const fieldGroup = document.getElementById(`fieldGroup${counter}`);
+            if (fieldGroup) {
+                inputFieldsContainer.removeChild(fieldGroup);
+            }
+        }
+
+        // Add click event listener to the button
+        addMoreFieldsBtn.addEventListener('click', addNewField);
+                                            
     </script>
 @endsection
