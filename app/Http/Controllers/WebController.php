@@ -8,7 +8,9 @@ use App\Models\City;
 use App\Models\District;
 use App\Models\Brand;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class WebController extends Controller
 {
@@ -20,51 +22,92 @@ class WebController extends Controller
         return view('webpages.product', compact('shops'));
 
 
+
+
+
     }
+    public function shopSuppliers(Request $request)
+    {
+        $shop_catogories = ShopCategory::select('id', 'name')->get();
+        $brands = Brand::select('id', 'b_name')->get();
+        // dd($shop_catogories);
+        $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
+        // dd($dictricts, $dictricts[0]->city[1]->ds_name);
+        // dd($dictricts[0]->city);
+        // print_r($dictricts);
+        // $citys = City::with('district')->get();
+        // dd($citys);
+
+
+
+        return view('webpages.shopSuppliers', compact('shop_catogories', 'brands', 'dictricts'));
+
+    }
+
+    public function addshopSuppliers(Request $request)
+    {
+        // Validate the form data
+        $validator = Validator::make($request->all(), [
+            'shop_name' => 'required|string|max:255',
+            'address' => 'required|string|max:255|unique:shops,address',
+            'shop_category' => 'required|string|max:500',
+            'telephone' => 'required|string|max:255',
+            'mobile' => 'nullable|string|max:255',
+            'whatsapp' => 'nullable|string|max:255',
+            'location' => 'nullable|string|max:255',
+            'start_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i|after:start_time',
+            'fb_link' => 'nullable|url|max:255',
+            'bussiness_reg_no' => 'nullable|string|max:255',
+            'shop_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        // If validation fails, redirect back with errors
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        try {
+            // Prepare the data for saving
+            $data = $request->only([
+                'shop_name',
+                'address',
+                'shop_category',
+                'telephone',
+                'mobile',
+                'whatsapp',
+                'location',
+                'fb_link',
+                'bussiness_reg_no',
+                'district',
+                'city',
+                'brand'
+            ]);
+
+            // Convert category array to comma-separated string if necessary
+            $data['category'] = implode(',', $request->input('category', []));
+
+            // Handle the shop image upload
+            if ($request->hasFile('shop_image')) {
+                $file = $request->file('shop_image');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('assets/shop'), $filename);
+                $data['shop_image'] = $filename;
+            }
+
+            // Save the shop data to the database
+            Shop::create($data);
+
+            return redirect()->back()->with('success', 'Shop Added Successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred while adding the shop.');
+        }
+    }
+
 
     //add filter 
 
-    // public function filter(Request $request)
-    // {
-    //     $query = Shop::query();
 
-    //     if ($request->has('brand') && $request->brand != '') {
-    //         $query->where('brand', $request->brand);
-    //     }
 
-    //     if ($request->has('district') && $request->district != '') {
-    //         $query->where('district_id', $request->district);
-    //     }
-
-    //     if ($request->has('city') && $request->city != '') {
-    //         $query->where('city_id', $request->city);
-    //     }
-
-    //     if ($request->has('price_range')) {
-    //         $query->whereBetween('price', [0, $request->price_range]);
-    //     }
-
-    //     $filteredShops = $query->get();
-
-    //     return view('shop.list', compact('filteredShops'));
-    // }
-
-    // Function to return cities based on the district ID (used in AJAX)
-    // public function getCities($districtId)
-    // {
-    //     $cities = tbl_ds::table('tbl_ds')->where('dis_id', $districtId)->get();
-    //     return response()->json($cities);
-    // }
-    // public function showFilters()
-    // {
-    //     // Fetch brands from the 'brands' table
-    //     $brands = DB::table('brands')->get();
-
-    //     // Fetch districts from the 'tbl_district' table
-    //     $districts = DB::table('tbl_district')->get();
-
-    //     // Pass the data to the view
-    //     return view('filters', compact('brands', 'districts'));
-    // }
 
 }

@@ -180,14 +180,15 @@
                                                     <div class="card">
                                                         <div class="card-body">
                                                             <div class="mb-4">
-                                                                <p class="mg-b-10">Select Your Shops Catogories</p>
+                                                                <p class="mg-b-10">Select Your Shop Categories</p>
                                                                 <select multiple="multiple" name="category[]" class="selectsum1">
+                                                                    <option disabled selected value="">Select categories...</option> <!-- Placeholder option -->
                                                                     @foreach ($category as $cate)
-                                                                        <option value="{{ $cate->name }}">
-                                                                            {{ $cate->name }}</option>
+                                                                        <option value="{{ $cate->name }}">{{ $cate->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
+                                                            
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -247,7 +248,7 @@
                                                               <label class="form-label" for="br">Business Registration</label>
                                                               <input type="text" class="form-control" name="br"
                                                                   id="br" placeholder="Enter Business Registration"
-                                                                  required />
+                                                                   />
                                                               <div class="invalid-feedback">
                                                                   Enter Your Business Registration
                                                               </div>
