@@ -12,6 +12,23 @@
                 <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                     <!-- row -->
                     <div class="col-lg-12 col-md-12">
+                        <!-- Display validation errors in an alert -->
+                        @if ($errors->any())
+                            <script>
+                                let errorMessages = '';
+                                @foreach ($errors->all() as $error)
+                                    errorMessages += "{{ $error }}\n";
+                                @endforeach
+
+                                Swal.fire({
+                                    title: 'Validation Error',
+                                    text: errorMessages,
+                                    icon: 'error',
+                                    confirmButtonText: 'OK'
+                                });
+                            </script>
+                        @endif
+
                         <form id="addShopForm" action="/submitshop" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card">
@@ -37,7 +54,7 @@
                                                 <div class="col-md-6">
                                                     <div class="control-group form-group">
                                                         <label class="form-label" for="email_address">Email Address</label>
-                                                        <input type="email" class="form-control" name="email"
+                                                        <input type="text" class="form-control" name="email"
                                                             id="email_address" placeholder="Email Address" required />
                                                         <div class="invalid-feedback">
                                                             Please enter a valid email address.
@@ -181,14 +198,17 @@
                                                         <div class="card-body">
                                                             <div class="mb-4">
                                                                 <p class="mg-b-10">Select Your Shop Categories</p>
-                                                                <select multiple="multiple" name="category[]" class="selectsum1">
-                                                                    <option disabled selected value="">Select categories...</option> <!-- Placeholder option -->
+                                                                <select multiple="multiple" name="category[]"
+                                                                    class="selectsum1">
+                                                                    <option disabled selected value="">Select
+                                                                        categories...</option> <!-- Placeholder option -->
                                                                     @foreach ($category as $cate)
-                                                                        <option value="{{ $cate->name }}">{{ $cate->name }}</option>
+                                                                        <option value="{{ $cate->name }}">
+                                                                            {{ $cate->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
-                                                            
+
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -236,24 +256,24 @@
                                                                 <label class="form-label" for="fb_link">FaceBook
                                                                     Link</label>
                                                                 <input type="text" class="form-control" name="fb_link"
-                                                                    id="location" placeholder="Enter Location"
-                                                                     />
+                                                                    id="location" placeholder="Enter Location" />
                                                                 <div class="invalid-feedback">
                                                                     Enter Your FaceBook Link
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                          <div class="control-group form-group">
-                                                              <label class="form-label" for="br">Business Registration</label>
-                                                              <input type="text" class="form-control" name="br"
-                                                                  id="br" placeholder="Enter Business Registration"
-                                                                   />
-                                                              <div class="invalid-feedback">
-                                                                  Enter Your Business Registration
-                                                              </div>
-                                                          </div>
-                                                      </div>
+                                                            <div class="control-group form-group">
+                                                                <label class="form-label" for="br">Business
+                                                                    Registration</label>
+                                                                <input type="text" class="form-control" name="br"
+                                                                    id="br"
+                                                                    placeholder="Enter Business Registration" />
+                                                                <div class="invalid-feedback">
+                                                                    Enter Your Business Registration
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <button type="submit" class="btn btn-primary">Submit</button>
                                                     </div>
                                             </div>
