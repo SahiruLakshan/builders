@@ -2,33 +2,36 @@
 @extends('webpages.index')
 @section('content')
 <!-- About Start -->
-<div class="about-section "style="padding-top: 160px;">
+<div class="about-section ">
   <div class="container">
-    <div class="d-flex">
-      <div class="col-lg-6 col-md-12">
-        <div class="about-img animate-fade">
-          <img src="img/about-us.png" alt="About Image" class="img-fluid" />
+    <div class="row d-flex align-items-stretch">
+      <!-- Image Column -->
+      <div class="col-lg-6 col-md-12 d-flex">
+        <div class="about-img animate-fade bg-white p-4 rounded shadow w-100 h-100">
+          <img src="{{ asset('assets/webpage/img/left2.jpg') }}" alt="About Image" class="img-fluid" />
         </div>
       </div>
-      <div class="col-lg-6 col-md-12">
-        <div class="about-text animate-fade-right bg-white p-4 rounded shadow">
-          <h2>ABOUT US</h2>
-          <p>Excellence in the Industry</p>
+  
+      <!-- Text Column -->
+      <div class="col-lg-6 col-md-12 d-flex">
+        <div class="about-text animate-fade-right bg-white p-4 rounded shadow w-100 h-100">
+          <h2><strong>ABOUT US</strong></h2> <!-- Bold the Heading -->
+          <p><strong>Excellence in the Industry</strong></p> <!-- Bold the Sub-heading -->
           <p>
-            A.A.I.C. Business Solutions (Pvt) Ltd is a Company in Sri Lanka that conducts 
+            <strong>A.A.I.C. Business Solutions (Pvt) Ltd</strong> is a Company in Sri Lanka that conducts 
             Accounting services, Marketing promotion services, IT services, and business 
             consulting for the purpose of providing services to organizations.
             As a company that launches operations by identifying new trends in the 
-            business sector, it has been identified that a digital platform is essential to the 
+            business sector, it has been identified that a <strong>digital platform</strong> is essential to the 
             construction industry in Sri Lanka, and in order to create this platform, necessary 
-            steps have been taken to create BUILDERS.LK
-            aiming to create an integrated market.
+            steps have been taken to create <strong>BUILDERS.LK</strong> aiming to create an integrated market.
           </p>
         </div>
-        
       </div>
     </div>
   </div>
+  
+  
 </div>
 <!-- About End -->
 
