@@ -326,24 +326,22 @@
                       </div>
                     </div>
                     <!-- Search Bar -->
-                    <div
-                      class=" mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end"
-                    >
-                      <div class="input-group input-group-sm w-100 w-md-75">
+                    <div class="mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end">
+                      <form action="{{ route('search') }}" method="GET" class="input-group input-group-sm w-100 w-md-75">
                         <input
                           type="search"
+                          name="query"
                           class="form-control"
                           placeholder="Search here"
                           aria-label="Search here"
                         />
-                        <button
-                          class="btn btn-dark btn-search"
-                          type="button"
-                        >
+                        <button class="btn btn-dark btn-search" type="submit">
                           <i class="fa fa-search"></i>
                         </button>
-                      </div>
+                      </form>
                     </div>
+                    
+                  
                     <!-- Second Dropdown -->
                     <div class="col-12 col-md-2 mb-2 mb-md-0">
                       <div class="subnav">
