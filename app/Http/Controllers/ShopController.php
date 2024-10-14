@@ -88,9 +88,9 @@ class ShopController extends Controller
             'shop_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        if ($validator->fails()) {                            // validation check
-            return redirect()->back()->with('error', 'Validation failed.');
-        }
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }                
 
         try {
             $data = $request->only([
@@ -122,7 +122,7 @@ class ShopController extends Controller
 
             return redirect()->back()->with('success', 'Shop Added.');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'An error occurred while adding the shop.');
+            return redirect()->back()->withErrors($e)->withInput();
         }
     }
 

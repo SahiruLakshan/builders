@@ -57,22 +57,15 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
-      /* Common Dropdown Button Styles */
-      .common-dropdown-btn {
-        font-size: 12px; /* Adjust this value as needed */
-      }
+ 
 
-      /* Common Dropdown Menu Items */
-      .common-dropdown-menu .dropdown-item {
-        font-size: 12px; /* Adjust this value as needed */
-      }
     </style>
   </head>
 
   <body class="overflow-x-hidden">
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Builders.lk</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -80,7 +73,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Accordion Item #1
+                Re
               </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -122,7 +115,7 @@
             <!-- Logo Section -->
             <div
               class="col-2 d-flex align-items-center justify-content-center h-100 "
-              style="background-color: blanchedalmond">
+              style="background-color: rgb(224, 156, 54">
               <a href="{{ url('/') }}">
                 <img
                   src="{{ asset('assets/webpage/img/LOGO-01.png') }}"
@@ -141,7 +134,7 @@
               <div id="top-header">
                 <div class="container-fluid">
                   <div class="d-flex justify-content-between">
-                    <div class="d-flex ">
+                    <div class="d-flex">
                       <ul class="header-links float-left">
                         <li>
                           <a href="tel:0112748149"
@@ -154,7 +147,7 @@
                             info@builders.lk</a
                           >
                         </li>
-                        <li>
+                        {{-- <li>
                           <a
                             href="https://www.google.com/maps/search/?api=1&query=No541D,Galawilawaththa,Homagama"
                             target="_blank"
@@ -162,7 +155,7 @@
                             <i class="fa fa-map-marker"></i> No541D,
                             Galawilawaththa, Homagama
                           </a>
-                        </li>
+                        </li> --}}
                         <li><a href="home.html">Home</a></li>
                         <li><a href="{{ url('/aboutus') }}">About Us</a></li>
                         <li><a href="galary.html">Gallery</a></li>
@@ -176,7 +169,7 @@
                     </div>
                     <div class="d-flex">
 
-                          <div class="dropdown px-0">
+                          <div class="dropdown px-2">
                             <button class="btn btn-sm btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 My Account
                             </button>
@@ -210,7 +203,7 @@
               <nav
                 id="navigation"
                 class="navbar navbar-expand p-0"
-                style="background-color: #e3f2fd"
+                style="background-color: #002b49"
               >
                 <div class="container-fluid px-3">
                   <!-- Hamburger Toggler Button -->
@@ -269,7 +262,7 @@
                           data-bs-toggle="dropdown"
                           aria-expanded="false"
                         >
-                          Free Quater
+                          Free Quoter
                         </a>
                       </li>
                       <li class="nav-item dropdown custom-dropdown p-1">
@@ -284,7 +277,7 @@
                         <ul class="dropdown-menu p-1 border">
                           <li>
                             <a
-                              href="/serviceproviders"
+                              href="serviceprovider"
                               class="dropdown-item p-1 border"
                               >Service Providers</a
                             >
@@ -295,12 +288,12 @@
                             >
                           </li>
                           <li>
-                            <a href="/shopSuppliers" class="dropdown-item p-1 border"
+                            <a href="#" class="dropdown-item p-1 border"
                               >Bass</a
                             >
                           </li>
                           <li>
-                            <a href="#" class="dropdown-item p-1 border"
+                            <a href="shopSuppliers" class="dropdown-item p-1 border"
                               >Shops</a
                             >
                           </li>
@@ -316,9 +309,45 @@
                 <div class="container-fluid p-1">
                   <div class="d-flex justify-content-around">
                     <!-- First Dropdown -->
-                    <div class="  mb-2 mb-md-0 p-1">
+                    <div class="  mb-2 mb-md-0 p-0">
+                    
                       <div class="subnav">
-                        <button class="subnavbtn">
+                        <button class="subnavbtn fs-6">
+                          Shops By Category <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="subnav-content" style="height:30vh">
+                            <div class="d-flex flex-wrap flex-column">
+                                  @foreach($shopcats as $shopcat)
+                                      <a href="{{route('category.shop', $shopcat->name)}}">{{$shopcat->name}}</a>
+
+                                  @endforeach
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Search Bar -->
+                    <div
+                      class=" mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end"
+                    >
+                      <div class="input-group input-group-sm w-100 w-md-75">
+                        <input
+                          type="search"
+                          class="form-control"
+                          placeholder="Search here"
+                          aria-label="Search here"
+                        />
+                        <button
+                          class="btn btn-dark btn-search"
+                          type="button"
+                        >
+                          <i class="fa fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- Second Dropdown -->
+                    <div class="col-12 col-md-2 mb-2 mb-md-0">
+                      <div class="subnav">
+                        <button class="subnavbtn fs-6 p-0">
                           Service By Category <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content">
@@ -354,41 +383,6 @@
                             <a href="#">SOLAR POWER</a>
                             <a href="#">OTHERS</a>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Search Bar -->
-                    <div
-                      class=" mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end"
-                    >
-                      <div class="input-group input-group-sm w-100 w-md-75">
-                        <input
-                          type="search"
-                          class="form-control"
-                          placeholder="Search here"
-                          aria-label="Search here"
-                        />
-                        <button
-                          class="btn btn-dark btn-search"
-                          type="button"
-                        >
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <!-- Second Dropdown -->
-                    <div class="col-12 col-md-2 mb-2 mb-md-0">
-                      <div class="subnav">
-                        <button class="subnavbtn">
-                          Shops By Category <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="subnav-content" style="height:50vh">
-                            <div class="d-flex flex-wrap flex-column">
-                                  @foreach($shopcats as $shopcat)
-                                      <a href="{{route('category.shop', $shopcat->name)}}">{{$shopcat->name}}</a>
-
-                                  @endforeach
-                            </div>
                         </div>
                       </div>
                     </div>
@@ -435,7 +429,7 @@
                     <!-- Fourth Dropdown -->
                     <div class="col-12 col-md-2 mb-2 ">
                       <div class="subnav">
-                        <button class="subnavbtn">
+                        <button class="subnavbtn fs-6 p-0">
                           Purchase With Builders.lk
                           <i class="fa fa-caret-down"></i>
                         </button>
@@ -454,8 +448,12 @@
     </header>
 
     <!-- /MAIN HEADER -->
+    <body class="background" >
+      @yield('content')
+
+    </body>
 {{-- content --}}
-@yield('content')
+
     <!-- FOOTER -->
 
     <!-- Footer -->
@@ -466,10 +464,7 @@
         <!-- Section: Text -->
         <section class="mb-4">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-            distinctio earum repellat quaerat voluptatibus placeat nam, commodi
-            optio pariatur est quia magnam eum harum corrupti dicta, aliquam
-            sequi voluptate quas.
+            A.A.I.C. Business Solutions (Pvt) Ltd provides accounting, marketing, IT, and business consulting services in Sri Lanka. Recognizing the need for a digital platform in the construction industry, the company developed BUILDERS.LK to create an integrated market.
           </p>
         </section>
         <!-- Section: Text -->
@@ -501,7 +496,7 @@
 
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Links</h5>
+              <h5 class="text-uppercase">Mail Us</h5>
 
               <ul class="footer-links">
                 <li>
@@ -514,7 +509,7 @@
                   <a href="#!">Link 3</a>
                 </li>
                 <li>
-                  <a href="#!" class="">Link 4</a>
+                  <a href="#!">Link 4</a>
                 </li>
               </ul>
             </div>
@@ -522,7 +517,7 @@
 
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Links</h5>
+              <h5 class="text-uppercase">Policy</h5>
 
               <ul class="footer-links">
                 <li>
@@ -695,9 +690,9 @@
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
 <!-- Owl Carousel JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
-    <script>
+    {{-- <script>
       // JavaScript to handle dropdown functionality
       document.querySelectorAll(".subnavbtn").forEach(function (button) {
         button.addEventListener("mouseenter", function () {
@@ -745,8 +740,39 @@
       document.addEventListener("click", function () {
         closeAllDropdowns();
       });
-    </script>
+    </script> --}}
     <script>
+      // JavaScript to handle dropdown functionality
+document.querySelectorAll(".subnavbtn").forEach(function (button) {
+  const subnavContent = button.nextElementSibling;
+
+  // Show dropdown when hovering over the button
+  button.addEventListener("mouseenter", function () {
+    subnavContent.style.display = "flex"; // Show the dropdown
+  });
+
+  // Hide dropdown when leaving the button, unless cursor is over the dropdown content
+  button.addEventListener("mouseleave", function () {
+    setTimeout(function () {
+      if (!subnavContent.matches(':hover')) {
+        subnavContent.style.display = "none"; // Hide if not hovered over
+      }
+    }, 200); // Slight delay to allow smooth transition
+  });
+
+  // Ensure dropdown stays visible if the user hovers over the dropdown content itself
+  subnavContent.addEventListener("mouseenter", function () {
+    subnavContent.style.display = "flex"; // Keep dropdown visible
+  });
+
+  // Hide dropdown when the cursor leaves the dropdown content
+  subnavContent.addEventListener("mouseleave", function () {
+    setTimeout(function () {
+      subnavContent.style.display = "none"; // Hide dropdown when cursor leaves
+    }, 200); // Slight delay for smooth interaction
+  });
+});
+
       $(document).ready(function () {
         $(".owl-carousel").owlCarousel({
           items: 8,

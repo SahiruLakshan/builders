@@ -11,6 +11,7 @@
                 <th>Contact Number</th>
                 <th>Status</th>
                 <th>Actions</th>
+                <th>Subscriptions</th>
             </tr>
         </thead>
         <tbody>
@@ -43,6 +44,9 @@
                             <a href="{{ url('/shop/delete/' . $shop->id) }}" class="btn btn-warning btn-sm me-2">Delete</a>
                         </div>
 
+                       
+                    </td>
+                    <td>
                         <div class="d-flex align-items-center mt-2">
                             <!-- Shop Approval Buttons -->
                             @if ($shop->shop_approve == null || $shop->cancel_shop == 'Yes')
@@ -62,6 +66,7 @@
                                     onclick="confirmApproval('{{ $shop->id }}', 'cancelProduct')">Cancel Product</button>
                             @endif
                         </div>
+
                     </td>
                 </tr>
             @endforeach
