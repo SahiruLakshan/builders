@@ -3,7 +3,7 @@
 @section('content')
 
   
-  <div class="container " style="margin-top: 165px">
+  <div class="container " >
     <div class="row p-0">
       <!-- Left Vertical Slider -->
       <div class="col-md-3 p-0">
@@ -104,24 +104,48 @@
   <div class="container-fluid">
     <!-- row -->
     <div class="row brandsproduct">
-      <div class="container mt-2">
+      <div class="container mt-2 px-5">
         <div class="row">
           <h5 class="card-title">Brands</h5>
         </div>
         <div class="owl-carousel owl-theme">
           <div class="item">
             <div class="card">
-              <img src="{{ asset('assets/webpage/img/right_image_20241003_111005_WhatsApp Image 2024-08-21 at 09.00.29_609a785a.jpg') }}" class="card-img-top" alt="..." />
+              <img src="{{ asset('assets/webpage/img/Brand Logos Resize Images-11.jpg') }}" class="card-img-top" alt="..." />
             </div>
           </div>
           <div class="item">
             <div class="card">
-              <img src="./img/product09.png" class="card-img-top" alt="..." />
+              <img src="{{ asset('assets/webpage/img/Brand Logos Resize Images-12.jpg') }}" class="card-img-top" alt="..." />
             </div>
           </div>
           <div class="item">
             <div class="card">
-              <img src="./img/product01.png" class="card-img-top" alt="..." />
+              <img src="{{ asset('assets/webpage/img/Brand Logos Resize Images-13.jpg') }}" class="card-img-top" alt="..." />
+            </div>
+          </div>
+          <div class="item">
+            <div class="card">
+              <img src="{{ asset('assets/webpage/img/Brand Logos Resize Images-14.jpg') }}" class="card-img-top" alt="..." />
+            </div>
+          </div> <div class="item">
+            <div class="card">
+              <img src="{{ asset('assets/webpage/img/Brand Logos Resize Images-15.jpg') }}" class="card-img-top" alt="..." />
+            </div>
+          </div>
+          <div class="item">
+            <div class="card">
+              <img src="{{ asset('assets/webpage/img/Brand Logos Resize Images-16.jpg') }}" class="card-img-top" alt="..." />
+            </div>
+          </div>
+          <div class="item">
+            <div class="card">
+              <img src="{{ asset('assets/webpage/img/Brand Logos Resize Images-17.jpg') }}" class="card-img-top" alt="..." />
+            </div>
+          </div>
+          <div class="item">
+            <div class="card">
+              <img src="{{ asset('assets/webpage/img/Brand Logos Resize Images-18.jpg') }}" class="card-img-top" alt="..." />
             </div>
           </div>
         </div>
@@ -129,7 +153,7 @@
     </div>
 
     <div class="row brandsproduct">
-      <div class="container-fluid mt-2">
+      <div class="container-fluid mt-2 px-5">
         <div class="row">
           <h5 class="card-title">Service Providers</h5>
         </div>
@@ -141,14 +165,25 @@
           </div>
           <div class="item">
             <div class="card">
-              <img src="./img/product09.png" class="card-img-top" alt="..." />
+              <img src="{{ asset('assets/webpage/img/left2.jpg') }}" class="card-img-top" alt="..." />
             </div>
           </div>
           <div class="item">
             <div class="card">
-              <img src="./img/product01.png" class="card-img-top" alt="..." />
+              <img src="{{ asset('assets/webpage/img/left2.jpg') }}" class="card-img-top" alt="..." />
             </div>
           </div>
+          <div class="item">
+            <div class="card">
+              <img src="{{ asset('assets/webpage/img/left2.jpg') }}" class="card-img-top" alt="..." />
+            </div>
+          </div>
+          <div class="item">
+            <div class="card">
+              <img src="{{ asset('assets/webpage/img/left2.jpg') }}" class="card-img-top" alt="..." />
+            </div>
+          </div>
+        
           <!-- Add more items as needed -->
         </div>
       </div>
