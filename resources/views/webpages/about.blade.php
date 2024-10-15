@@ -3,18 +3,20 @@
 @section('content')
 <!-- About Start -->
 <div class="about-section ">
-  <div class="container">
-    <div class="row d-flex align-items-stretch">
-      <!-- Image Column -->
-      <div class="col-lg-6 col-md-12 d-flex">
-        <div class="about-img animate-fade bg-white p-4 rounded shadow w-100 h-100">
-          <img src="{{ asset('assets/webpage/img/left2.jpg') }}" alt="About Image" class="img-fluid" />
+  <div class="container position-relative">
+    <!-- Image Column (Full Width) -->
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="about-img bg-white rounded shadow w-100">
+          <img src="{{ asset('assets/webpage/img/aboutus/Picture1.jpg') }}" alt="About Image" class="img-fluid w-100" />
         </div>
       </div>
+    </div>
   
-      <!-- Text Column -->
-      <div class="col-lg-6 col-md-12 d-flex">
-        <div class="about-text animate-fade-right bg-white p-4 rounded shadow w-100 h-100">
+    <!-- Text Column (Over the Image, aligned to the right) -->
+    <div class="row">
+      <div class="col-lg-6 col-md-12 position-absolute top-0 start-0 p-4 px-5">
+        <div class="about-text bg-white p-4 rounded shadow">
           <h2><strong>ABOUT US</strong></h2> <!-- Bold the Heading -->
           <p><strong>Excellence in the Industry</strong></p> <!-- Bold the Sub-heading -->
           <p>
@@ -30,6 +32,8 @@
       </div>
     </div>
   </div>
+  
+  
   
   
 </div>
