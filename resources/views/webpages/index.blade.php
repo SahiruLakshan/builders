@@ -326,24 +326,22 @@
                       </div>
                     </div>
                     <!-- Search Bar -->
-                    <div
-                      class=" mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end"
-                    >
-                      <div class="input-group input-group-sm w-100 w-md-75">
+                    <div class="mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end">
+                      <form action="{{ route('search') }}" method="GET" class="input-group input-group-sm w-100 w-md-75">
                         <input
                           type="search"
+                          name="query"
                           class="form-control"
                           placeholder="Search here"
                           aria-label="Search here"
                         />
-                        <button
-                          class="btn btn-dark btn-search"
-                          type="button"
-                        >
+                        <button class="btn btn-dark btn-search" type="submit">
                           <i class="fa fa-search"></i>
                         </button>
-                      </div>
+                      </form>
                     </div>
+                    
+                  
                     <!-- Second Dropdown -->
                     <div class="col-12 col-md-2 mb-2 mb-md-0">
                       <div class="subnav">
@@ -352,34 +350,34 @@
                         </button>
                         <div class="subnav-content">
                           <div class="col-6 col-md-4">
-                            <a href="#">ARCHITECTURS</a>
+                            <a href="#">ARCHITECTS</a>
                             <a href="#">BUILDING CONTRACTORS</a>
                             <a href="#">INTERIOR DESIGNERS</a>
-                            <a href="#">SRUCTURAL ENGINEERS</a>
-                            <a href="#">QUANTITY SEAVER</a>
-                            <a href="#">MEP CONSULTANT</a>
-                            <a href="#">FIRE CONSULTANT</a>
+                            <a href="#">STRUCTURAL ENGINEERS</a>
+                            <a href="#">QUANTITY SURVEYORS</a>
+                            <a href="#">MEP CONSULTANTS</a>
+                            <a href="#">FIRE CONSULTANTS</a>
                           </div>
                           <div class="col-6 col-md-4">
-                            <a href="#">ALUMINIUM FABRICATIORS</a>
-                            <a href="#">ELECTRITIONS</a>
+                            <a href="#">ALUMINIUM FABRICATORS</a>
+                            <a href="#">ELECTRICIANS</a>
                             <a href="#">PLUMBERS</a>
                             <a href="#">STEEL FABRICATORS</a>
                             <a href="#">STAINLESS STEEL FABRICATORS</a>
-                            <a href="#">TIMBER CONTRACTOR</a>
+                            <a href="#">TIMBER CONTRACTORS</a>
                           </div>
                           <div class="col-6 col-md-4">
-                            <a href="#">MESENS</a>
-                            <a href="#">TILING TECHNETION</a>
-                            <a href="#">LANSCAPING</a>
-                            <a href="#">WATER FROOFING</a>
+                            <a href="#">MASONRY</a>
+                            <a href="#">TILING TECHNICIANS</a>
+                            <a href="#">LANDSCAPING</a>
+                            <a href="#">WATERPROOFING</a>
                             <a href="#">MAINTENANCE</a>
                             <a href="#">PAINTERS</a>
                           </div>
                           <div class="col-6 col-md-4">
                             <a href="#">AC CONTRACTORS</a>
-                            <a href="#">ELIVETORS</a>
-                            <a href="#">SWIMMING POOL CONTRACTOR</a>
+                            <a href="#">ELEVATORS</a>
+                            <a href="#">SWIMMING POOL CONTRACTORS</a>
                             <a href="#">SOLAR POWER</a>
                             <a href="#">OTHERS</a>
                           </div>
@@ -435,8 +433,8 @@
                         </button>
                         <div class="subnav-content">
                           <a href="#">As a Service Provider</a>
-                          <a href="#">As a Professional</a>
-                          <a href="#">As a Shop</a>
+                          <a href="#">As a Company</a>
+                          <a href="#">As Brand</a>
                         </div>
                       </div>
                     </div>

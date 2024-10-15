@@ -17,12 +17,17 @@ class Shopproduct extends Model
         'product_id',
         'brand_id',
         'product_category_id',
+        'other_categories',
         'measurement_id',
         'unit_price',
         'quantity',
         'image',
         'color',
         'other'
+    ];
+
+    protected $casts = [
+        'other_categories' => 'array',
     ];
 
     public function product()

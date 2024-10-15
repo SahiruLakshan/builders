@@ -2,7 +2,7 @@
 @section('content')
 
     <!-- /MAIN HEADER -->
-    <div class="container-fluid" style="padding-top:142px ">
+    <div class="container-fluid">
         <div class="row">
             <h3>Select Your Products</h3>
             <aside class="col-md-3 px-0">
@@ -28,9 +28,9 @@
                         
                     </article> --}}
                     <!-- Product Type Filter with Searchable Dropdown -->
-                    <script>
+                    {{-- <script>
                         $(".select2").select2();
-                    </script>
+                    </script> --}}
                     <article class="filter-group">
                         <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_1" aria-expanded="true">
@@ -44,11 +44,11 @@
                                     <label for="product-type">Select Product Type</label>
                                     <select class="form-control select2" id="product-type">
                                         <option>Select Product</option>
-                                        <option value="car">Car</option>
+                                        {{-- <option value="car">Car</option>
                                         <option value="bike">Bike</option>
                                         <option value="scooter">Scooter</option>
                                         <option value="cycle">Cycle</option>
-                                        <option value="horse">Horse</option>
+                                        <option value="horse">Horse</option> --}}
                                     </select>
                                 </form>
                             </div>
@@ -73,69 +73,52 @@
                         </header>
                         <div class="filter-content collapse show" id="collapse_4">
                             <div class="card-body">
-                                <select class="form-select" id="district">
-                                    <option value="">Select District</option>
-                                    <option value="Colombo">Colombo</option>
-                                    <option value="Gampaha">Gampaha</option>
-                                    <option value="Kalutara">Kalutara</option>
-                                    <option value="Kandy">Kandy</option>
-                                    <option value="Matale">Matale</option>
-                                    <option value="Nuwara Eliya">Nuwara Eliya</option>
+                                <label for="district">Select District:</label>
+                                <select id="district" name="district" class="form-select pd-2">
                                 </select>
-                                <br />
-                                <select class="form-select" id="city" disabled>
+                                <label for="city">City:</label>
+                                <select id="city" name="city" class="form-select disabled" disabled>
                                     <option value="">Select City</option>
-                                </select>
+                                  </select>
                                 <script>
-                                    document
-                                        .getElementById("district")
-                                        .addEventListener("change", function() {
-                                            const dist = this.value;
-                                            const cities = {
-                                                Colombo: [
-                                                    "Colombo",
-                                                    "Boralesgamuwa",
-                                                    "Kaduwela",
-                                                    "Maharagama",
-                                                ],
-                                                Gampaha: [
-                                                    "Gampaha",
-                                                    "Negombo",
-                                                    "Ja-Ela",
-                                                    "Katunayake",
-                                                ],
-                                                Kalutara: [
-                                                    "Kalutara",
-                                                    "Panadura",
-                                                    "Bandaragama",
-                                                    "Horana",
-                                                ],
-                                                Kandy: ["Kandy", "Matale", "Nuwara Eliya", "Gampola"],
-                                                Matale: [
-                                                    "Matale",
-                                                    "Dambulla",
-                                                    "Kurunegala",
-                                                    "Nawalapitiya",
-                                                ],
-                                                "Nuwara Eliya": [
-                                                    "Nuwara Eliya",
-                                                    "Badulla",
-                                                    "Haputale",
-                                                    "Bandarawela",
-                                                ],
-                                            };
-                                            const citySelect = document.getElementById("city");
-                                            citySelect.innerHTML = "";
-                                            citySelect.disabled = !dist;
-                                            if (cities[dist]) {
-                                                cities[dist].forEach((city) => {
-                                                    const opt = document.createElement("option");
-                                                    opt.value = city;
-                                                    opt.textContent = city;
-                                                    citySelect.appendChild(opt);
-                                                });
-                                            }
-                                        });
+                                    // select district and city 
+                                    var cities=[
+                                      @forEach($dictricts as $dictrict)
+                                        {
+                                        'districtId':'{{$dictrict->dis_id}}',
+                                        'districtName':'{{$dictrict->dis_name}}',
+                                        'cities':[ 
+                                        @forEach($dictrict->city as $city)
+                                          {
+                                            'cityName':'{{$city->ds_name}}',
+                                            'cityId':{{$city->ds_id}}
+                                          },
+                                        @endforeach
+                                        ]},
+                                      @endforeach
+                                    ];
+                          
+                                    $(document).ready(function(){
+                                      let content='<option value="">Select District</option>';
+                                      cities.forEach((elem) => {
+                                        content+=`<option value="${elem.districtId}">${elem.districtName}</option>`;
+                                      })
+                                      $('#district').html(content);
+                                      $('#district').select2();
+                                      $('#city').select2();
+                          
+                                      $('#district').change(function() {
+                                        $('#city').removeClass('disabled');
+                                        $('#city').removeAttr('disabled');
+                                        // console.log("city:", cities.find((elem) => elem.districtId == $(this).val()));
+                                        let content='<option value="">Select City</option>';
+                                        cities.find((elem) => elem.districtId == $(this).val()).cities.forEach((elem) => {
+                                          content+=`<option value="${elem.cityId}">${elem.cityName}</option>`;
+                                        })
+                                        $('#city').html(content);
+                                        $('#city').select2();
+                                      });
+                                    })
                                 </script>
                             </div>
                         </div>
@@ -151,27 +134,17 @@
                         </header>
                         <div class="filter-content collapse show" id="collapse_2">
                             <div class="card-body">
-                                <label class="form-check">
-                                    <input type="checkbox" class="form-check-input" checked />
-                                    <span class="form-check-label">PE+
-                                        <span class="badge bg-light text-dark float-end">120</span></span>
-                                </label>
-                                <label class="form-check">
-                                    <input type="checkbox" class="form-check-input" checked />
-                                    <span class="form-check-label">Dulux
-                                        <span class="badge bg-light text-dark float-end">15</span></span>
-                                </label>
-                                <label class="form-check">
-                                    <input type="checkbox" class="form-check-input" checked />
-                                    <span class="form-check-label">Alumex
-                                        <span class="badge bg-light text-dark float-end">35</span></span>
-                                </label>
+                                @foreach ($brands as $brand)
+                                    <label class="form-check">
+                                        <input type="checkbox" class="form-check-input"  value="{{ $brand->id }}" />
+                                        <span class="form-check-label">{{ $brand->b_name }}</span>
+                                    </label>
+                                @endforeach
                             </div>
                         </div>
                     </article>
-
                     <!-- Price Range Filter -->
-                    <article class="filter-group">
+                    {{-- <article class="filter-group">
                         <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_3" aria-expanded="true">
                                 <i class="icon-control fa fa-chevron-down"></i>
@@ -195,7 +168,7 @@
                                 <button class="btn btn-warning w-100 mt-2">Apply</button>
                             </div>
                         </div>
-                    </article>
+                    </article> --}}
 
                     <!-- Additional Filters -->
                     <article class="filter-group">
@@ -240,12 +213,10 @@
                                     <div class="card-body d-flex flex-column justify-content-between">
                                         <div>
                                             <h5 class="card-title">{{ $shop->name }}</h5>
-                                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                            {{-- <p class="card-text">
-                        With supporting text below as a natural lead-in to additional content.
-                      </p> --}}
-                                        </div>
+                                            <p class="card-text">{{ $shop->address }} <br>
+                                         {{ $shop->district_name }}, {{ $shop->city_name}}
+                                        <a href="mailto:{{ $shop->email }}">{{ $shop->email }}</a>
+                                        {{ $shop->p_number }}</p>
                                         <a href="tel:{{ $shop->p_number }}" class="btn btn-primary align-self-end">Contact
                                             Us</a>
                                     </div>

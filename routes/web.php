@@ -142,6 +142,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 // Route::get('/front', function(){
 //     return view('webpages.home');
 // });
+//search optoins route 
+Route::get('/search', [WebController::class, 'search'])->name('search');
 
 // get cityes fir the dropdown
 
@@ -150,7 +152,8 @@ Route::get('/product', function () {
 });
 //bass form loarding
 Route::get('/shopSuppliers', [WebController::class, 'shopSuppliers'])->name('shopSuppliers');
-Route::post('/addshopsuppliers', [WebController::class, 'addshopSuppliers'])->name('addshopSuppliers');
+Route::post('/addshopSuppliers', [WebController::class, 'addshopSuppliers'])->name('addshopSuppliers');
+
 //service provider form loading
 Route::get('/serviceprovider', function () {
     return view('webpages.serviceprovider');

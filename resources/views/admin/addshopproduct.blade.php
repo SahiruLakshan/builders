@@ -108,21 +108,27 @@
                                                 placeholder="Enter color" />
                                         </div>
                                     </div>
+
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="color">Image</label>
                                             <input class="form-control" type="file" name="image" id="image"
                                                 accept=".jpg,.jpeg,.png" />
-                                            {{-- <small class="form-text text-muted">
-                                                Upload an image (JPEG or PNG format) representing
-                                                the Product. Optional field.
-                                            </small> --}}
                                         </div>
+
+                                        <!-- Container for dynamically added input fields -->
+                                        <div id="inputFieldsContainer" name="other_categories"></div>
+                                        <button type="button" id="addMoreFieldsBtn" class="btn btn-success">Add More
+                                            Fields</button>
+
+
                                     </div>
+
+
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col">
                                             <div class="form-group">
-                                                <button type="button" id="addProductButton" class="btn btn-success">
+                                                <button type="button" id="addProductButton" class="btn btn-primary">
                                                     Add Product
                                                 </button>
                                             </div>
@@ -153,6 +159,7 @@
                                                                 <th class="wd-25p border-bottom-0">Product Name</th>
                                                                 <th class="wd-15p border-bottom-0">Brand</th>
                                                                 <th class="wd-20p border-bottom-0">Category</th>
+                                                                <th class="wd-20p border-bottom-0">Other Categories</th>
                                                                 <th class="wd-15p border-bottom-0">SubCategory</th>
                                                                 <th class="wd-10p border-bottom-0">Quantity</th>
                                                                 <th class="wd-25p border-bottom-0">Measurement</th>
@@ -209,7 +216,7 @@
         <!-- /Container -->
     </div>
     <script src="
-                        https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
+                                    https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
 
     <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -218,33 +225,32 @@
     <script>
         $(document).ready(function() {
             $('.select2').select2();
-
             let products = [];
 
             $('#addProductButton').on('click', function() {
                 let productName = $('#product').val();
                 let productName2 = $('#product option:selected').text();
-
                 let brand = $('#brand_category').val();
                 let brandName = $('#brand_category option:selected').text();
-
                 let category = $('#product_category').val();
                 let categoryName = $('#product_category option:selected').text();
-
                 let subCategory = $('#sub_category').val();
                 let subCategoryName = $('#sub_category option:selected').text();
-
                 let quantity = $('#quantity').val();
                 let measurement = $('#measurement').val();
                 let measurementName = $('#measurement option:selected').text();
                 let color = $('#color').val();
-                let image = $('#image')[0].files[0]; // Get the file object
+                let image = $('#image')[0].files[0];
+                let otherCategories = [];
+                $('input[name="other_categories[]"]').each(function() {
+                    otherCategories.push($(this).val());
+                });
+
 
                 if (!productName || !brand || !category || !quantity || !measurement) {
                     alert('Please fill in all required fields.');
                     return;
                 }
-
 
                 let product = {
                     productName,
@@ -254,26 +260,27 @@
                     quantity,
                     measurement,
                     color,
-                    image // Add the file object here
+                    image,
+                    otherCategories : otherCategories
                 };
 
                 products.push(product);
 
-                // Append to the table
                 let row = `<tr>
-            <td>${productName2}</td>
-            <td>${brandName}</td>
-            <td>${categoryName}</td>
-            <td>${subCategoryName}</td>
-            <td>${quantity}</td>
-            <td>${measurementName}</td>
-            <td>${color}</td>
-            <td>${image ? image.name : ''}</td>
-            <td><button type="button" class="btn btn-danger btn-sm deleteProduct">Delete</button></td>
-        </tr>`;
+                    <td>${productName2}</td>
+                    <td>${brandName}</td>
+                    <td>${categoryName}</td>
+                    <td>${otherCategories.join(', ')}</td>
+                    <td>${subCategoryName}</td>
+                    <td>${quantity}</td>
+                    <td>${measurementName}</td>
+                    <td>${color}</td>
+                    <td>${image ? image.name : ''}</td>
+                    <td><button type="button" class="btn btn-danger btn-sm deleteProduct">Delete</button></td>
+                </tr>`;
                 $('#basic-datatable tbody').append(row);
 
-                // Reset fields
+                // Clear fields
                 $('#product').val('').trigger('change');
                 $('#brand_category').val('').trigger('change');
                 $('#product_category').val('').trigger('change');
@@ -282,13 +289,14 @@
                 $('#measurement').val('').trigger('change');
                 $('#color').val('');
                 $('#image').val('');
+                $('#inputFieldsContainer').empty(); // Clear other categories
             });
 
             $(document).on('click', '.deleteProduct', function() {
                 let row = $(this).closest('tr');
                 let index = row.index();
-                products.splice(index, 1); // Remove from the products array
-                row.remove(); // Remove row from table
+                products.splice(index, 1);
+                row.remove();
             });
 
             $('#submitProducts').on('click', function() {
@@ -311,17 +319,20 @@
                     formData.append(`products[${index}][measurement]`, product.measurement);
                     formData.append(`products[${index}][color]`, product.color);
                     if (product.image) {
-                        formData.append(`products[${index}][image]`, product
-                            .image); // Attach the file
+                        formData.append(`products[${index}][image]`, product.image);
                     }
+                    product.otherCategories.forEach((category, catIndex) => {
+                        formData.append(`products[${index}][other_categories][${catIndex}]`,
+                            category);
+                    });
                 });
 
                 $.ajax({
                     url: '{{ route('submit.products') }}',
                     method: 'POST',
                     data: formData,
-                    contentType: false, // Important for file upload
-                    processData: false, // Important for file upload
+                    contentType: false,
+                    processData: false,
                     success: function(response) {
                         Swal.fire({
                             title: 'Success!',
@@ -335,7 +346,6 @@
                             }
                         });
                     },
-
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
                         Swal.fire({
@@ -346,9 +356,33 @@
                             confirmButtonText: 'OK'
                         });
                     }
-
                 });
             });
+
+            const inputFieldsContainer = document.getElementById('inputFieldsContainer');
+            const addMoreFieldsBtn = document.getElementById('addMoreFieldsBtn');
+            let fieldCounter = 1;
+
+            function addNewField() {
+                const newFieldHTML = `
+                    <div class="inputFieldGroup" id="fieldGroup${fieldCounter}">
+                        <label for="other_categories[${fieldCounter}]">Other Category ${fieldCounter + 1}:</label>
+                        <input type="text" name="other_categories[]" id="other_categories${fieldCounter}" placeholder="Enter value">
+                        <button type="button" onclick="deleteField(${fieldCounter})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
+                inputFieldsContainer.innerHTML += newFieldHTML;
+                fieldCounter++;
+            }
+
+            function deleteField(counter) {
+                const fieldGroup = document.getElementById(`fieldGroup${counter}`);
+                if (fieldGroup) {
+                    inputFieldsContainer.removeChild(fieldGroup);
+                }
+            }
+
+            addMoreFieldsBtn.addEventListener('click', addNewField);
         });
     </script>
 @endsection
