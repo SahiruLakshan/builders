@@ -152,7 +152,8 @@ Route::get('/product', function () {
 });
 //bass form loarding
 Route::get('/shopSuppliers', [WebController::class, 'shopSuppliers'])->name('shopSuppliers');
-Route::post('/addshopsuppliers', [WebController::class, 'addshopSuppliers'])->name('addshopSuppliers');
+Route::post('/addshopSuppliers', [WebController::class, 'addshopSuppliers'])->name('addshopSuppliers');
+
 //service provider form loading
 Route::get('/serviceprovider', function () {
     return view('webpages.serviceprovider');
