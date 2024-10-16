@@ -94,54 +94,7 @@
                 </div>
               </div>  
               <script>
-                 $(document).ready(function() {
-                      $('#shop_category').select2({
-                        placeholder: "Select a category",
-                        allowClear: true
-                      });
-                      // $('#brand_category').select2({
-                      //   placeholder: "Select a brand",
-                      //   allowClear: true
-                      // });
-                    });
-                // select district and city 
-                var cities=[
-                  @forEach($dictricts as $dictrict)
-                    {
-                    'districtId':'{{$dictrict->dis_id}}',
-                    'districtName':'{{$dictrict->dis_name}}',
-                    'cities':[ 
-                    @forEach($dictrict->city as $city)
-                      {
-                        'cityName':'{{$city->ds_name}}',
-                        'cityId':{{$city->ds_id}}
-                      },
-                    @endforeach
-                    ]},
-                  @endforeach
-                ];
-
-                $(document).ready(function(){
-                  let content='<option value="">Select District</option>';
-                  cities.forEach((elem) => {
-                    content+=`<option value="${elem.districtId}">${elem.districtName}</option>`;
-                  })
-                  $('#district').html(content);
-                  $('#district').select2();
-                  $('#city').select2();
-
-                  $('#district').change(function() {
-                    $('#city').removeClass('disabled');
-                    $('#city').removeAttr('disabled');
-                    // console.log("city:", cities.find((elem) => elem.districtId == $(this).val()));
-                    let content='<option value="">Select City</option>';
-                    cities.find((elem) => elem.districtId == $(this).val()).cities.forEach((elem) => {
-                      content+=`<option value="${elem.cityId}">${elem.cityName}</option>`;
-                    })
-                    $('#city').html(content);
-                    $('#city').select2();
-                  });
-                })
+             
               </script>
 
               <h5>Other Details</h5>
@@ -255,12 +208,12 @@
                 })
               },
               error: function(xhr) {
-                 console.log("🚀 ~ postData ~ xhr:", xhr)
+                //  console.log("🚀 ~ postData ~ xhr:", xhr)
                   var errors = "";
                   $.each(xhr.responseJSON.errors, function(key, value) {
                     errors += value[0] + "\n";
                   });
-                  console.log("🚀 ~ postData ~ errors:", errors)
+                  // console.log("🚀 ~ postData ~ errors:", errors)
                   Swal.fire({
                     icon: 'error',
                     title: 'error',
@@ -282,6 +235,55 @@
             });
         });
 
+        // shop catogory
+        $(document).ready(function() {
+                      $('#shop_category').select2({
+                        placeholder: "Select a category",
+                        allowClear: true
+                      });
+                      // $('#brand_category').select2({
+                      //   placeholder: "Select a brand",
+                      //   allowClear: true
+                      // });
+                    });
+                // select district and city 
+                var cities=[
+                  @forEach($dictricts as $dictrict)
+                    {
+                    'districtId':'{{$dictrict->dis_id}}',
+                    'districtName':'{{$dictrict->dis_name}}',
+                    'cities':[ 
+                    @forEach($dictrict->city as $city)
+                      {
+                        'cityName':'{{$city->ds_name}}',
+                        'cityId':{{$city->ds_id}}
+                      },
+                    @endforeach
+                    ]},
+                  @endforeach
+                ];
+
+                $(document).ready(function(){
+                  let content='<option value="">Select District</option>';
+                  cities.forEach((elem) => {
+                    content+=`<option value="${elem.districtId}">${elem.districtName}</option>`;
+                  })
+                  $('#district').html(content);
+                  $('#district').select2();
+                  $('#city').select2();
+
+                  $('#district').change(function() {
+                    $('#city').removeClass('disabled');
+                    $('#city').removeAttr('disabled');
+                    // console.log("city:", cities.find((elem) => elem.districtId == $(this).val()));
+                    let content='<option value="">Select City</option>';
+                    cities.find((elem) => elem.districtId == $(this).val()).cities.forEach((elem) => {
+                      content+=`<option value="${elem.cityId}">${elem.cityName}</option>`;
+                    })
+                    $('#city').html(content);
+                    $('#city').select2();
+                  });
+                })
 
   
       </script>

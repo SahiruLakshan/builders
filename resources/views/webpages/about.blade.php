@@ -4,33 +4,36 @@
 <!-- About Start -->
 <div class="about-section ">
   <div class="container position-relative">
-    <!-- Image Column (Full Width) -->
     <div class="row">
-      <div class="col-lg-12 col-md-12">
-        <div class="about-img bg-white rounded shadow w-100">
-          <img src="{{ asset('assets/webpage/img/aboutus/Picture1.jpg') }}" alt="About Image" class="img-fluid w-100" />
+      <div class="col-lg-6 col-md-12">
+        <div class="about-section position-relative">
+          <!-- First Box: Text Content -->
+          <div class="about-text bg-white p-4 rounded shadow position-relative">
+            <h2><strong>ABOUT US</strong></h2>
+            <p><strong>Excellence in the Industry</strong></p>
+            <p>
+              <strong>A.A.I.C. Business Solutions (Pvt) Ltd</strong> is a Company in Sri Lanka that conducts 
+              Accounting services, Marketing promotion services, IT services, and business 
+              consulting for the purpose of providing services to organizations.
+              As a company that launches operations by identifying new trends in the 
+              business sector, it has been identified that a <strong>digital platform</strong> is essential to the 
+              construction industry in Sri Lanka, and in order to create this platform, necessary 
+              steps have been taken to create <strong>BUILDERS.LK</strong> aiming to create an integrated market.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="about-section position-relative">
+          <!-- Second Box: Image Content -->
+          <div class="about-image-box position-relative p-4">
+            <img src="{{ asset('assets/webpage/img/aboutus/Picture2.jpg') }}" alt="About Image" class="img-fluid rounded shadow">
+          </div>
         </div>
       </div>
     </div>
-  
-    <!-- Text Column (Over the Image, aligned to the right) -->
-    <div class="row">
-      <div class="col-lg-6 col-md-12 position-absolute top-0 start-0 p-4 px-5">
-        <div class="about-text bg-white p-4 rounded shadow">
-          <h2><strong>ABOUT US</strong></h2> <!-- Bold the Heading -->
-          <p><strong>Excellence in the Industry</strong></p> <!-- Bold the Sub-heading -->
-          <p>
-            <strong>A.A.I.C. Business Solutions (Pvt) Ltd</strong> is a Company in Sri Lanka that conducts 
-            Accounting services, Marketing promotion services, IT services, and business 
-            consulting for the purpose of providing services to organizations.
-            As a company that launches operations by identifying new trends in the 
-            business sector, it has been identified that a <strong>digital platform</strong> is essential to the 
-            construction industry in Sri Lanka, and in order to create this platform, necessary 
-            steps have been taken to create <strong>BUILDERS.LK</strong> aiming to create an integrated market.
-          </p>
-        </div>
-      </div>
-    </div>
+    
+    
   </div>
   
   

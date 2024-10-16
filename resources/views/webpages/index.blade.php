@@ -311,7 +311,7 @@
                     <div class="  mb-2 mb-md-0 p-0">
                     
                       <div class="subnav">
-                        <button class="subnavbtn fs-6">
+                        <button class="subnavbtn fs-6" >
                           Shops By Category <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content" style="height:30vh">
@@ -325,7 +325,7 @@
                       </div>
                     </div>
                     <!-- Search Bar -->
-                    <div class="mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end">
+                    {{-- <div class="mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end">
                       <form action="{{ route('search') }}" method="GET" class="input-group input-group-sm w-100 w-md-75">
                         <input
                           type="search"
@@ -338,7 +338,23 @@
                           <i class="fa fa-search"></i>
                         </button>
                       </form>
+                    </div> --}}
+                    <!-- Search Bar -->
+                    <div class="col-12 col-md-4 mb-2 mb-md-0">
+                      <form action="{{ route('search') }}" method="GET" class="input-group input-group-sm w-100">
+                        <input
+                          type="search"
+                          name="query"
+                          class="form-control"
+                          placeholder="Search here"
+                          aria-label="Search here"
+                        />
+                        <button class="btn btn-dark btn-search" type="submit">
+                          <i class="fa fa-search"></i>
+                        </button>
+                      </form>
                     </div>
+
                     
                   
                     <!-- Second Dropdown -->
@@ -445,7 +461,7 @@
     </header>
 
     <!-- /MAIN HEADER -->
-    <body class="background" >
+    <body>
       @yield('content')
 
     </body>
