@@ -2441,3 +2441,63 @@ textarea.input {
         margin-top: 10px;
     }
 }
+@media (max-width: 768px) {
+    /* On tablets and small screens, stack carousels vertically */
+    .row.p-0 {
+        flex-direction: column;
+    }
+    .col-md-3,
+    .col-md-6 {
+        width: 100%;
+        padding: 0;
+    }
+
+    /* Adjust carousel height for mobile */
+    #leftHorizontalCarousel,
+    #carouselExampleCaptions,
+    #rightHorizontalCarousel {
+        height: auto;
+    }
+
+    /* Ensure images scale properly on smaller screens */
+    .carousel-item img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (min-width: 992px) {
+    /* For larger screens, restore the layout */
+    .row.p-0 {
+        flex-direction: row;
+    }
+
+    .col-md-3,
+    .col-md-6 {
+        width: auto;
+    }
+
+    .carousel-item img {
+        height: 400px;
+        object-fit: cover;
+    }
+}
+@media (max-width: 768px) {
+    .container,
+    .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .container,
+    .container-fluid {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}

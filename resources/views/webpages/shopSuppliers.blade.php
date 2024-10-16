@@ -2,13 +2,14 @@
 @section('content')
     <!-- /MAIN HEADER -->
     <style>
-      /* .border {
-        border: 1px solid #ccc;
+      .border {
+        border: 1px solid #161515;
         border-radius: 5px;
         padding: 10px;
-      } */
+      }
       .custom-form-style {
-        border: 2px solid #f6f2f2;
+        background-color: #ffffff;
+        border: 2px solid #0d0d0d;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         padding: 20px;
         border-radius: 8px; /* Optional: Adds rounded corners */

@@ -9,6 +9,11 @@ use App\Models\City;
 use App\Models\ShopCategory;
 use App\Models\Shopproduct;
 use Illuminate\Http\Request;
+use App\Mail\ShopApproved;
+use App\Mail\CancelApproved;
+use App\Mail\ProductApprove;
+use App\Mail\CancelProduct;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
@@ -90,7 +95,7 @@ class ShopController extends Controller
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
-        }                
+        }
 
         try {
             $data = $request->only([
@@ -221,61 +226,66 @@ class ShopController extends Controller
     }
 
     public function approveShop($id)
-{
-    $shop = Shop::find($id);
-    $shop->shop_approve = Carbon::now(); 
-    $shop->cancel_shop = 'No';
-    $shop->save();
+    {
+        $shop = Shop::find($id);
+        $shop->shop_approve = Carbon::now();
+        $shop->cancel_shop = 'No';
+        $shop->save();
+        
 
-    return response()->json(['message' => 'Shop approved successfully!']);
-}
-
-public function cancelShop($id)
-{
-    $shop = Shop::find($id);
-    $shop->cancel_shop = 'Yes';
-    $shop->save();
-
-    return response()->json(['message' => 'Shop approval canceled successfully!']);
-}
-
-public function approveProduct($id)
-{
-    $shop = Shop::find($id);
-    $shop->product_approve = Carbon::now();
-    $shop->cancel_product = 'No';
-    $shop->save();
-
-    return response()->json(['message' => 'Product approved successfully!']);
-}
-
-public function cancelProduct($id)
-{
-    $shop = Shop::find($id);
-    $shop->cancel_product = 'Yes';
-    $shop->save();
-
-    return response()->json(['message' => 'Product approval canceled successfully!']);
-}
-
-public function approvedshop(Request $request){
-
-    $query = $request->input('query');
-
-    $shops = Shop::where(function($q) use ($query) {
-        $q->where('name', 'like', '%' . $query . '%')
-          ->orWhere('id', 'like', '%' . $query . '%');
-    })
-    ->where('cancel_shop', 'No')
-    ->where('cancel_product', 'No')
-    ->paginate(8);
-
-    if ($request->ajax()) {
-        return view('admin.viewtbl.approvalpagination', compact('shops'))->render();
+        // Send the approval email
+        Mail::to($shop->email)->send(new ShopApproved($shop));
+        return response()->json(['message' => 'Shop approved and email sent successfully!']);
     }
 
-    return view('admin.viewtbl.viewapproval', compact('shops'));
+    public function cancelShop($id)
+    {
+        $shop = Shop::find($id);
+        $shop->cancel_shop = 'Yes';
+        $shop->save();
 
-}
+        Mail::to($shop->email)->send(new CancelApproved($shop));
+        return response()->json(['message' => 'Shop approval canceled successfully!']);
+    }
 
+    public function approveProduct($id)
+    {
+        $shop = Shop::find($id);
+        $shop->product_approve = Carbon::now();
+        $shop->cancel_product = 'No';
+        $shop->save();
+
+        Mail::to($shop->email)->send(new ProductApprove($shop));
+        return response()->json(['message' => 'Product approved successfully!']);
+    }
+
+    public function cancelProduct($id)
+    {
+        $shop = Shop::find($id);
+        $shop->cancel_product = 'Yes';
+        $shop->save();
+
+        Mail::to($shop->email)->send(new CancelProduct($shop));
+        return response()->json(['message' => 'Product approval canceled successfully!']);
+    }
+
+    public function approvedshop(Request $request)
+    {
+
+        $query = $request->input('query');
+
+        $shops = Shop::where(function ($q) use ($query) {
+            $q->where('name', 'like', '%' . $query . '%')
+                ->orWhere('id', 'like', '%' . $query . '%');
+        })
+            ->where('cancel_shop', 'No')
+            ->where('cancel_product', 'No')
+            ->paginate(8);
+
+        if ($request->ajax()) {
+            return view('admin.viewtbl.approvalpagination', compact('shops'))->render();
+        }
+
+        return view('admin.viewtbl.viewapproval', compact('shops'));
+    }
 }
