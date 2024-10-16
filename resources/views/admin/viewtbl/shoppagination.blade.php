@@ -129,9 +129,11 @@
                         Swal.fire('Success', response.message, 'success');
                         location.reload();
                     },
-                    error: function() {
-                        Swal.fire('Error', 'Something went wrong', 'error');
-                    }
+                    error: function(xhr, status, error) {
+    console.log(xhr.responseText);  // Log the error to the console for debugging
+    Swal.fire('Error', 'Something went wrong. Please try again later.', 'error');
+}
+
                 });
             }
         });
