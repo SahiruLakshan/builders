@@ -78,19 +78,47 @@
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <li><a href="{{ url('/') }}">Home</a></li>
+                <li><a href="{{ url('/aboutus') }}">About Us</a></li>
+                <li><a href="galary.html">Gallery</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="career.html">Career</a></li>
+                <li><a href="education.html">Education</a></li>
+            
               </div>
-            </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingTwo">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Accordion Item #2
+                My Account
               </button>
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <div class="dropdown px-2">
+                @auth
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            @guest()
+                                <li><a class="dropdown-item" href="{{route('login')}}">Login</a></li>
+                                <li><a class="dropdown-item" href="{{route('register')}}">Sign up</a></li>
+                                <li><a class="dropdown-item" href="#">Shop Login</a></li>
+                            </ul>
+                            @endguest
+                            @auth
+                            @if (Auth::user()->type==1)
+                            <li><a class="dropdown-item " href="{{route('dashboard')}}">Dashboard</a></li>
+                            @endif
+                                <li>
+                                    <form action="{{route('logout')}}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item btn btn danger"><i></i>
+                                            Logout</button>
+                                    </form>
+                                </li>
+                              </ul>
+                            @endauth
+                          </div>
               </div>
             </div>
           </div>
@@ -125,6 +153,12 @@
               </a>
             </div>
             <div class="d-block d-lg-none w-auto" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+              <div class="d-flex justify-content-center">
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
               <i class="fa-solid fa-bars fs-2 px-4"></i>
             </div>
 
@@ -156,7 +190,7 @@
                             Galawilawaththa, Homagama
                           </a>
                         </li> --}}
-                        <li><a href="home.html">Home</a></li>
+                        <li><a href="#">Home</a></li>
                         <li><a href="{{ url('/aboutus') }}">About Us</a></li>
                         <li><a href="galary.html">Gallery</a></li>
                         <li><a href="publications.html">Publications</a></li>
