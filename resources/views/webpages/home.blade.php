@@ -18,21 +18,21 @@
             <div class="carousel-item active">
               <img
                 src="{{ asset('assets/webpage/img/left.jpg') }}"
-                class="d-block w-100"
+                class="d-block w-100 img-fluid"
                 alt="Left Slide 1"
               />
             </div>
             <div class="carousel-item">
               <img
                 src="{{ asset('assets/webpage/img/left-02-01.jpg') }}"
-                class="d-block w-100"
+                class="d-block w-100 img-fluid"
                 alt="Left Slide 2"
               />
             </div>
             <div class="carousel-item">
               <img
                 src="{{ asset('assets/webpage/img/left2.jpg') }}"
-                class="d-block w-100"
+                class="d-block w-100  img-fluid"
                 alt="Left Slide 3"
               />
             </div>
@@ -50,13 +50,13 @@
         >
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="{{ asset('assets/webpage/img/midle.jpg') }}" class="d-block w-100" alt="..." />
+              <img src="{{ asset('assets/webpage/img/midle.jpg') }}" class="d-block w-100 img-fluid" alt="..." />
             </div>
             <div class="carousel-item">
-              <img src="{{ asset('assets/webpage/img/midle1.jpg') }}" class="d-block w-100" alt="..." />
+              <img src="{{ asset('assets/webpage/img/midle1.jpg') }}" class="d-block w-100 img-fluid" alt="..." />
             </div>
             <div class="carousel-item">
-              <img src="{{ asset('assets/webpage/img/midle2.jpg') }}" class="d-block w-100" alt="..." />
+              <img src="{{ asset('assets/webpage/img/midle2.jpg') }}" class="d-block w-100 img-fluid" alt="..." />
             </div>
           </div>
         </div>
@@ -74,21 +74,21 @@
             <div class="carousel-item active">
               <img
                 src="{{ asset('assets/webpage/img/left.jpg') }}"
-                class="d-block w-100"
+                class="d-block w-100 img-fluid"
                 alt="Left Slide 1"
               />
             </div>
             <div class="carousel-item">
               <img
                 src="{{ asset('assets/webpage/img/left-02-01.jpg') }}"
-                class="d-block w-100"
+                class="d-block w-100 img-fluid"
                 alt="Left Slide 2"
               />
             </div>
             <div class="carousel-item">
               <img
                 src="{{ asset('assets/webpage/img/left2.jpg') }}"
-                class="d-block w-100"
+                class="d-block w-100 img-fluid"
                 alt="Left Slide 3"
               />
             </div>
