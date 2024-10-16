@@ -77,16 +77,8 @@
               </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <li><a href="{{ url('/') }}">Home</a></li>
-                <li><a href="{{ url('/aboutus') }}">About Us</a></li>
-                <li><a href="galary.html">Gallery</a></li>
-                <li><a href="publications.html">Publications</a></li>
-                <li><a href="certifications.html">Certifications</a></li>
-                <li><a href="career.html">Career</a></li>
-                <li><a href="education.html">Education</a></li>
-            
-              </div>
+             
+            </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingTwo">
@@ -96,29 +88,6 @@
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <div class="dropdown px-2">
-                @auth
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            @guest()
-                                <li><a class="dropdown-item" href="{{route('login')}}">Login</a></li>
-                                <li><a class="dropdown-item" href="{{route('register')}}">Sign up</a></li>
-                                <li><a class="dropdown-item" href="#">Shop Login</a></li>
-                            </ul>
-                            @endguest
-                            @auth
-                            @if (Auth::user()->type==1)
-                            <li><a class="dropdown-item " href="{{route('dashboard')}}">Dashboard</a></li>
-                            @endif
-                                <li>
-                                    <form action="{{route('logout')}}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="dropdown-item btn btn danger"><i></i>
-                                            Logout</button>
-                                    </form>
-                                </li>
-                              </ul>
-                            @endauth
-                          </div>
               </div>
             </div>
           </div>
@@ -136,6 +105,8 @@
           </div>
         </div>
       </div>
+            
+          
     </div>
     <!-- HEADER -->
     <header class="nav navbar-expand-lg fixed-top">
@@ -153,12 +124,6 @@
               </a>
             </div>
             <div class="d-block d-lg-none w-auto" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-              <div class="d-flex justify-content-center">
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-              </div>
               <i class="fa-solid fa-bars fs-2 px-4"></i>
             </div>
 
@@ -815,6 +780,17 @@ document.querySelectorAll(".subnavbtn").forEach(function (button) {
           nav: true,
           dots: true,
           rtl: true, // change direction of the flow
+          responsive:{
+        0:{
+            items:2
+        },
+        600:{
+            items:4
+        },
+        1000:{
+            items:8
+        }
+    }
         });
       });
     </script>
