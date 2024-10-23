@@ -27,7 +27,7 @@
         <div class="about-section position-relative">
           <!-- Second Box: Image Content -->
           <div class="about-image-box position-relative p-4">
-            <img src="{{ asset('assets/webpage/img/aboutus/Picture2.jpg') }}" alt="About Image" class="img-fluid rounded shadow">
+            <img src="{{ asset('assets/webpage/img/aboutus/Picture1.jpg') }}" alt="About Image" class="img-fluid rounded shadow">
           </div>
         </div>
       </div>
@@ -120,10 +120,18 @@
     </div>
   </div>
 </div>
-
-  
-
-        
-
-
+<!-- Separate Container for WHO NEEDS BUILDERS.LK -->
+<div class="container mt-4 pt-4 pb-4 pl-4">
+  <div class="p-4 rounded shadow" style="background-color: #ffffff; color: #002b49;">
+    <h4>WHO NEEDS BUILDERS.LK?</h4>
+    <ul>
+      <li>Builders.lk is more important for everyone who is interested in and related to the construction industry in Sri Lanka.</li>
+      <li>Accordingly, it is important to the institutions and people who carry out the production, sale, and distribution of raw materials, tools, and machinery related to the construction industry.</li>
+      <li>To organizations and individuals who provide any kind of construction services, sub-services, and related services.</li>
+      <li>Institutions and individuals who are carrying out or intending to carry out construction work in Sri Lanka.</li>
+      <li>Professionals related to the construction industry and any kind of employees.</li>
+      <li>To those who are studying and training to join the construction industry.</li>
+    </ul>
+  </div>
+</div>
 @endsection
