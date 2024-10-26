@@ -62,6 +62,31 @@ class WebController extends Controller
         return view('webpages.shopSuppliers', compact('shop_catogories', 'brands', 'dictricts'));
 
     }
+    // public function servceproviders(Request $request)
+    // {
+
+    //     $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
+
+
+
+    //     return view('webpages.serviceprovider', compact('dictricts'));
+
+    // }
+    // public function servceproviders(Request $request)
+    // {
+    //     $districts = District::with('city')->select('dis_id', 'dis_name')->get();
+    //     dd($districts);
+    //     return view('webpages.serviceprovider', compact('districts')); // Make sure it's 'districts' here
+    // }
+    public function servceproviders(Request $request)
+    {
+        $districts = District::with('city')->select('dis_id', 'dis_name')->get();
+        return view('webpages.serviceprovider', compact('districts'));
+    }
+
+
+
+
 
     // public function addshopSuppliers(Request $request){
     //     // Validate the form data

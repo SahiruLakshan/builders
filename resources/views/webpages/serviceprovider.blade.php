@@ -8,7 +8,7 @@
         padding: 10px;
       }
     </style>
-    <div class="container-fluid " style="padding-top: 132px" >
+    <div class="container-fluid " >
       <div class="text-center">
         <h3 class="display-4 text-primary font-weight-bold">BUILDERS.LK</h3>
         <h4 class="display-6 text-secondary font-weight-bold">
@@ -56,55 +56,68 @@
             ></textarea>
           </div>
         </div>
+        {{-- get form distrc tble and city table --}}
         <div class="row">
           <div class="col-5">
             <label for="district">Select District:</label>
             <select id="district" name="district" class="form-select">
               <option value="">Select District</option>
-              <option value="Colombo">Colombo</option>
-              <option value="Gampaha">Gampaha</option>
-              <option value="Kalutara">Kalutara</option>
-              <option value="Kandy">Kandy</option>
-              <option value="Matale">Matale</option>
-              <option value="Nuwara Eliya">Nuwara Eliya</option>
             </select>
           </div>
           <div class="col-5">
             <label for="city">City:</label>
-            <select id="city" name="city" class="form-select" disabled>
+            <select id="city" name="city" class="form-select disabled" disabled>
               <option value="">Select City</option>
             </select>
           </div>
         </div>
+        
         <script>
-          const cities = {
-            Colombo: ["Colombo", "Kotahena", "Nugegoda"],
-            Gampaha: ["Gampaha", "Negombo", "Minuwangoda"],
-            Kalutara: ["Kalutara", "Panadura", "Horana"],
-            Kandy: ["Kandy", "Nawalapitiya", "Peradeniya"],
-            Matale: ["Matale", "Dambulla", "Kurunegala"],
-            "Nuwara Eliya": ["Nuwara Eliya", "Hatton", "Bandarawela"],
-          };
-
-          const distSelect = document.getElementById("district");
-          const citySelect = document.getElementById("city");
-
-          distSelect.addEventListener("change", (e) => {
-            const dist = e.target.value;
-            if (cities[dist]) {
-              citySelect.disabled = false;
-              citySelect.innerHTML = "<option value=''>Select City</option>";
-              cities[dist].forEach((city) => {
-                const opt = document.createElement("option");
-                opt.value = city;
-                opt.textContent = city;
-                citySelect.appendChild(opt);
-              });
-            } else {
-              citySelect.disabled = true;
-            }
+          // Prepare district and city data in JavaScript from Blade data
+          var cities = [
+          @foreach($districts as $district)
+            {
+              "districtId": "{{ $district->dis_id }}",
+              "districtName": "{{ $district->dis_name }}",
+              "cities": [
+                @foreach($district->city as $city)
+                  {
+                    "cityName": "{{ $city->ds_name }}",
+                    "cityId": "{{ $city->ds_id }}"
+                  },
+                @endforeach
+              ]
+            },
+          @endforeach
+        ];
+        
+          $(document).ready(function() {
+            // Populate district dropdown
+            let districtOptions = '<option value="">Select District</option>';
+            cities.forEach((elem) => {
+              districtOptions += `<option value="${elem.districtId}">${elem.districtName}</option>`;
+            });
+        
+            $('#district').html(districtOptions).select2(); // Initialize Select2 on the district dropdown
+            $('#city').select2(); // Initialize Select2 on the city dropdown
+        
+            $('#district').change(function() {
+              const selectedDistrict = cities.find((elem) => elem.districtId == $(this).val());
+              
+              if (selectedDistrict) {
+                let cityOptions = '<option value="">Select City</option>';
+                selectedDistrict.cities.forEach((city) => {
+                  cityOptions += `<option value="${city.cityId}">${city.cityName}</option>`;
+                });
+                
+                $('#city').html(cityOptions).prop("disabled", false).removeClass('disabled').select2();
+              } else {
+                $('#city').html('<option value="">Select City</option>').prop("disabled", true).addClass('disabled');
+              }
+            });
           });
         </script>
+        
 
       <h5>Contact Details</h5>
       <div class="row">

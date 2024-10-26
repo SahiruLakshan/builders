@@ -155,9 +155,11 @@ Route::get('/shopSuppliers', [WebController::class, 'shopSuppliers'])->name('sho
 Route::post('/addshopSuppliers', [WebController::class, 'addshopSuppliers'])->name('addshopSuppliers');
 
 //service provider form loading
-Route::get('/serviceprovider', function () {
-    return view('webpages.serviceprovider');
-})->name('serviceprovider');
+// Route::get('/serviceprovider', function () {
+//     return view('webpages.serviceprovider');
+// })->name('serviceprovider');
+Route::get('/serviceprovider', [WebController::class, 'servceproviders'])->name('serviceprovider');
+
 
 Route::name('category.')->group(function () {
     Route::get('product/cat/{name}', [WebController::class, 'shopcategory'])->name('shop');

@@ -155,9 +155,9 @@
                             Galawilawaththa, Homagama
                           </a>
                         </li> --}}
-                        <li><a href="#">Home</a></li>
+                        <li><a href="{{ url('/') }}">Home</a></li>
                         <li><a href="{{ url('/aboutus') }}">About Us</a></li>
-                        <li><a href="galary.html">Gallery</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="publications.html">Publications</a></li>
                         <li>
                           <a href="certifications.html">Certifications</a>
