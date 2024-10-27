@@ -128,8 +128,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     // Route to handle form submission
     Route::post('/addservice', [ServiceController::class, 'store']);
     Route::get('/viewservice', [ServiceController::class, 'viewservice']);
-    Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit'); // Display update form
-    Route::put('service/{id}', [ServiceController::class, 'update'])->name('service.update');  // Handle update request
+    // Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit'); // Display update form
+    // Route::put('service/{id}', [ServiceController::class, 'update'])->name('service.update');  // Handle update request
 
 
 
