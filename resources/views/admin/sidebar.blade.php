@@ -437,7 +437,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="icons.html">Veiw Service</a>
+                                            <a class="slide-item" href="/viewservice">Veiw Service</a>
                                         </li>
                                         <li>
                                             <a class="slide-item" href="/addserviceprovider">Add New Service Provider

@@ -31,7 +31,8 @@ use App\Http\Controllers\ServiceProviderController;
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', function () {
-    return view('webpages.home'); })->name('home');
+    return view('webpages.home');
+})->name('home');
 
 
 
@@ -113,7 +114,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     // Route::get('/addadvertisement', [AdvertisementController::class, 'index'])->name('addadvertisement');
 
     Route::get('/addadvertisement', function () {
-        return view('admin.addadvertisement'); })->name('addadvertisement');
+        return view('admin.addadvertisement');
+    })->name('addadvertisement');
 
     Route::post('/upload', [FileUploadController::class, 'upload'])->name('upload');
 
@@ -126,6 +128,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     // Route to handle form submission
     Route::post('/addservice', [ServiceController::class, 'store']);
     Route::get('/viewservice', [ServiceController::class, 'viewservice']);
+    Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit'); // Display update form
+    Route::put('service/{id}', [ServiceController::class, 'update'])->name('service.update');  // Handle update request
+
 
 
     //  admin panel service poriders
