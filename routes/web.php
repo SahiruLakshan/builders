@@ -26,14 +26,14 @@ use App\Http\Controllers\ServiceProviderController;
 // Route::get('/dashboard', function () {
 //     return view('admin.admindashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/', function () {
-    return view('webpages.home');
-})->name('home');
-
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/', function () {
+    return view('webpages.home'); })->name('home');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -113,8 +113,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     // Route::get('/addadvertisement', [AdvertisementController::class, 'index'])->name('addadvertisement');
 
     Route::get('/addadvertisement', function () {
-        return view('admin.addadvertisement');
-    })->name('addadvertisement');
+        return view('admin.addadvertisement'); })->name('addadvertisement');
 
     Route::post('/upload', [FileUploadController::class, 'upload'])->name('upload');
 
