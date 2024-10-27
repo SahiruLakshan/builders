@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\District;
 use App\Models\Brand;
 use App\Models\Shopproduct;
+use App\Models\Service;
 
 
 
@@ -57,21 +58,10 @@ class WebController extends Controller
         // $citys = City::with('district')->get();
         // dd($citys);
 
-
-
         return view('webpages.shopSuppliers', compact('shop_catogories', 'brands', 'dictricts'));
 
     }
-    // public function servceproviders(Request $request)
-    // {
 
-    //     $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
-
-
-
-    //     return view('webpages.serviceprovider', compact('dictricts'));
-
-    // }
     // public function servceproviders(Request $request)
     // {
     //     $districts = District::with('city')->select('dis_id', 'dis_name')->get();
@@ -81,7 +71,8 @@ class WebController extends Controller
     public function servceproviders(Request $request)
     {
         $districts = District::with('city')->select('dis_id', 'dis_name')->get();
-        return view('webpages.serviceprovider', compact('districts'));
+        $services = Service::select('id', 'servicename')->get();
+        return view('webpages.serviceprovider', compact('districts', 'services'));
     }
 
 

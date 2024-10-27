@@ -38,15 +38,8 @@
         </div>
 
         <div class="row">
-          <div class="col-2">
-            <label for="category">Select Category:</label>
-            <select id="category" name="category" class="form-select">
-              <option value="cat1">Category 1</option>
-              <option value="cat2">Category 2</option>
-              <option value="cat3">Category 3</option>
-            </select>
-          </div>
-          <div class="col-10">
+         
+          <div class="col-12">
             <label for="inputAddress">Address</label>
             <textarea
               class="form-control"
@@ -58,13 +51,22 @@
         </div>
         {{-- get form distrc tble and city table --}}
         <div class="row">
-          <div class="col-5">
+          <div class="col-4">
+            <label for="category">Select Category:</label>
+            <select id="category" name="category" class="form-select">
+              <option value="" disabled selected>Select Your Service Category</option>
+              @foreach($services as $service)
+                <option value="{{ $service->id }}">{{ $service->servicename }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="col-4 pt-2">
             <label for="district">Select District:</label>
             <select id="district" name="district" class="form-select">
               <option value="">Select District</option>
             </select>
           </div>
-          <div class="col-5">
+          <div class="col-4 pt-2">
             <label for="city">City:</label>
             <select id="city" name="city" class="form-select disabled" disabled>
               <option value="">Select City</option>
