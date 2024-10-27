@@ -18,6 +18,7 @@ use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\ServiceProviderController;
 // Route::get('/', function () {
 //     return view('login');
 // });
@@ -126,6 +127,11 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     // Route to handle form submission
     Route::post('/addservice', [ServiceController::class, 'store']);
     Route::get('/viewservice', [ServiceController::class, 'viewservice']);
+
+
+    //  admin panel service poriders
+    // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');
+    Route::get('/addserviceprovider', [ServiceProviderController::class, 'addserviceproviders'])->name('addserviceprovider');
 
 
 });
