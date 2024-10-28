@@ -109,6 +109,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::put('/update/productsubcategory/{id}', [ProductcategoryController::class, 'updatesubProductCategory']);
     Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']);
 
+    Route::post('/addserviceprovider/store', [ServiceProviderController::class, 'store'])->name('addserviceprovider.store');
+
+
 
     //advertisement routes
     // Route::get('/addadvertisement', [AdvertisementController::class, 'index'])->name('addadvertisement');
