@@ -18,6 +18,7 @@ use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\ServiceProviderController;
 // Route::get('/', function () {
 //     return view('login');
 // });
@@ -25,14 +26,15 @@ use App\Http\Controllers\FileUploadController;
 // Route::get('/dashboard', function () {
 //     return view('admin.admindashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', function () {
     return view('webpages.home');
 })->name('home');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -126,6 +128,14 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     // Route to handle form submission
     Route::post('/addservice', [ServiceController::class, 'store']);
     Route::get('/viewservice', [ServiceController::class, 'viewservice']);
+    // Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit'); // Display update form
+    // Route::put('service/{id}', [ServiceController::class, 'update'])->name('service.update');  // Handle update request
+
+
+
+    //  admin panel service poriders
+    // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');
+    Route::get('/addserviceprovider', [ServiceProviderController::class, 'addserviceproviders'])->name('addserviceprovider');
 
 
 });
@@ -155,9 +165,11 @@ Route::get('/shopSuppliers', [WebController::class, 'shopSuppliers'])->name('sho
 Route::post('/addshopSuppliers', [WebController::class, 'addshopSuppliers'])->name('addshopSuppliers');
 
 //service provider form loading
-Route::get('/serviceprovider', function () {
-    return view('webpages.serviceprovider');
-})->name('serviceprovider');
+// Route::get('/serviceprovider', function () {
+//     return view('webpages.serviceprovider');
+// })->name('serviceprovider');
+Route::get('/serviceprovider', [WebController::class, 'servceproviders'])->name('serviceprovider');
+
 
 Route::name('category.')->group(function () {
     Route::get('product/cat/{name}', [WebController::class, 'shopcategory'])->name('shop');

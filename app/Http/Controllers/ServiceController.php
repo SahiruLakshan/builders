@@ -36,5 +36,29 @@ class ServiceController extends Controller
         // Redirect with a success message
         return redirect()->back()->with('success', 'Service added successfully!');
     }
+
+    // // Show the update form with existing data
+    // public function edit($id)
+    // {
+    //     $service = Service::findOrFail($id);
+    //     return view('admin.services.edit', compact('service'));
+    // }
+
+    // // Handle the update request
+    // public function update(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'servicename' => 'required|string|max:255',
+    //         'description' => 'required|string',
+    //     ]);
+
+    //     $service = Service::findOrFail($id);
+    //     $service->update([
+    //         'servicename' => strtoupper($request->servicename),
+    //         'description' => $request->description,
+    //     ]);
+
+    //     return redirect()->route('service.index')->with('success', 'Service updated successfully.');
+    // }
 }
 
