@@ -427,29 +427,20 @@
                                 </li>
                                 <li class="slide">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
-                                            class="side-menu__label">Service</span></a>
+                                            class="side-menu__label">Service Providers</span></a>
                                     <ul class="slide-menu">
                                         <li class="side-menu__label1">
-                                            <a href="javascript:void(0);">Service</a>
+                                            <a href="javascript:void(0);">Service Providers</a>
                                         </li>
                                         <li>
                                             <a class="slide-item" href="/addservice">Add New Service
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="icons.html">Veiw Service</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="slide">
-                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
-                                            class="side-menu__label"> Service Providers</span></a>
-                                    <ul class="slide-menu">
-                                        <li class="side-menu__label1">
-                                            <a href="javascript:void(0);">Add New Service Provider</a>
+                                            <a class="slide-item" href="/viewservice">Veiw Service</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="addServiceProvider.html">Add New Service
+                                            <a class="slide-item" href="/addserviceprovider">Add New Service Provider
                                             </a>
                                         </li>
                                         <li>
@@ -457,6 +448,7 @@
                                         </li>
                                     </ul>
                                 </li>
+                                
                                 <li class="slide">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
                                             class="side-menu__label"> Advertisement</span></a>

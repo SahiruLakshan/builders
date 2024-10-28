@@ -232,8 +232,7 @@ class ShopController extends Controller
         $shop->cancel_shop = 'No';
         $shop->save();
         
-
-        // Send the approval email
+        // Send email
         Mail::to($shop->email)->send(new ShopApproved($shop));
         return response()->json(['message' => 'Shop approved and email sent successfully!']);
     }

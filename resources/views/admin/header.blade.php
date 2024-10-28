@@ -128,7 +128,7 @@
 
 <!-- Internal Form-elements js -->
 <script src="{{ asset('assets/js/advanced-form-elements.js') }}"></script>
-<script src="{{ asset('assets/js/select2.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/select2.js') }}"></script> --}}
 
 <!-- Internal Sumoselect js -->
 <script src="{{ asset('assets/plugins/sumoselect/jquery.sumoselect.js') }}"></script>
