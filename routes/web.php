@@ -167,10 +167,8 @@ Route::get('/product', function () {
 Route::get('/shopSuppliers', [WebController::class, 'shopSuppliers'])->name('shopSuppliers');
 Route::post('/addshopSuppliers', [WebController::class, 'addshopSuppliers'])->name('addshopSuppliers');
 
-//service provider form loading
-// Route::get('/serviceprovider', function () {
-//     return view('webpages.serviceprovider');
-// })->name('serviceprovider');
+
+
 Route::get('/serviceprovider', [WebController::class, 'servceproviders'])->name('serviceprovider');
 
 
@@ -196,4 +194,16 @@ Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
 // Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 //     ->name('logout');
+
+//profile view routes
+// service provider profile
+Route::get('/serviceproviderprofile', function () {
+    return view('serviceproviders.serviceproviderprofile');
+})->name('serviceproviderprofile');
+// shop profile
+Route::get('/shopprofile', function () {
+    return view('shopprofiles.shopprofile');
+})->name('shopprofile');
+
+
 require __DIR__ . '/auth.php';
