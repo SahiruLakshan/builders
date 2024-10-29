@@ -172,7 +172,7 @@
 								</div>
 								<div class="tab-content border border-top-0 p-4 br-dark">
 									<div class="tab-pane active" id="home">
-										<h4 class="tx-15 text-uppercase mb-3">Products</h4>
+										<h4 class="tx-15 text-uppercase mb-3">Our Services List</h4>
 										<div class="card-body">
 											<div class="table-responsive">
 												<table class="table mg-b-0 text-md-nowrap">
