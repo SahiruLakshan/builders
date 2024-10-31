@@ -242,7 +242,7 @@
           alert("Form submitted with project data!");
         });
     </script>
-     <script>
+    <script>
           // Prepare district and city data in JavaScript from Blade data
           var cities = [
           @foreach($districts as $district)
@@ -286,7 +286,7 @@
               }
             });
           });
-      </script>
+    </script>
         
     {{-- <!-- NEWSLETTER -->
 

@@ -383,18 +383,19 @@
                     <div class="  mb-2 mb-md-0 p-0">
                     
                       <div class="subnav">
-                        <button class="subnavbtn fs-6" >
-                          Shops By Category <i class="fa fa-caret-down"></i>
+                        <button class="subnavbtn fs-6 p-0">
+                            Service By Category <i class="fa fa-caret-down"></i>
                         </button>
-                        <div class="subnav-content" style="height:30vh">
-                            <div class="d-flex flex-wrap flex-column">
-                                  @foreach($shopcats as $shopcat)
-                                      <a href="{{route('category.shop', $shopcat->name)}}">{{$shopcat->name}}</a>
-
-                                  @endforeach
+                        <div class="subnav-content" style="height:40vh">
+                            <div class="d-flex flex-wrap">
+                                @foreach($shopcats as $shopcat)
+                                    <div class="col-6 col-md-4 mb-0">
+                                        <a href="{{route('category.shop', $shopcat->name)}}">{{ $shopcat->name }}</a>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
-                      </div>
+                    </div>
                     </div>
                   
                     <!-- Search Bar -->
@@ -501,15 +502,22 @@
                     <div class="col-12 col-md-2 mb-2 ">
                       <div class="subnav">
                         <button class="subnavbtn fs-6 p-0">
-                          Purchase With Builders.lk
-                          <i class="fa fa-caret-down"></i>
+                            Purchase With Builders.lk <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content">
-                          <a href="#">As a Service Provider</a>
-                          <a href="#">As a Company</a>
-                          <a href="#">As Brand</a>
+                            <div class="col-6 col-md-4">
+                                <a href="#">As a Service Provider</a>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <a href="#">As a Company</a>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <a href="#">As Brand</a>
+                            </div>
                         </div>
-                      </div>
+                    </div>
+                    
+                    
                     </div>
                   </div>
                 </div>
