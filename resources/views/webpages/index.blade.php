@@ -56,14 +56,25 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <style>
- 
+<style>
+  .phone-button {
+    background-color: #ffc107; /* Bootstrap warning yellow */
+    color: white;
+    transition: background-color 0.3s ease; /* Smooth color transition */
+}
 
-    </style>
+.phone-button:focus, .phone-button:active {
+    background-color: #002b49; /* Color change on click */
+    color: white; /* Ensures text remains white */
+    outline: none; /* Removes outline for cleaner look */
+}
+
+</style>
+    
   </head>
 
   <body class="overflow-x-hidden">
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    {{-- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasExampleLabel">Builders.lk</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -107,7 +118,81 @@
       </div>
             
           
+    </div> --}}
+    <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Builders.lk</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="accordion" id="accordionExample">
+          <!-- First Accordion Item: Contact Info -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Contact Information
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <a href="tel:0112748149"><i class="fa fa-phone"></i> Tel: 011 274 81 49</a><br>
+                <a href="mailto:info@builders.lk"><i class="fa fa-envelope"></i> info@builders.lk</a>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Second Accordion Item: My Account -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                My Account
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                @guest
+                <a href="{{route('login')}}" class="btn btn-primary border">Login</a>
+                <a href="{{route('register')}}" class="btn btn-primary">Sign up</a>
+                <a href="#" class="btn btn-primary">Shop Login</a>
+                @endguest
+                @auth
+                <a href="{{route('dashboard')}}" class="btn btn-primary">Dashboard</a>
+                <form action="{{route('logout')}}" method="POST">
+                  @csrf
+                  <button type="submit" class="btn btn-primary">Logout</button>
+                </form>
+                @endauth
+
+              </div>
+            </div>
+          </div>
+          
+          <!-- Third Accordion Item: Navigation Links -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Navigation Links
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <a href="{{ url('/') }}">Home</a><br>
+                <a href="{{ url('/aboutus') }}">About Us</a><br>
+                <a href="gallery.html">Gallery</a><br>
+                <a href="publications.html">Publications</a><br>
+                <a href="certifications.html">Certifications</a><br>
+                <a href="career.html">Career</a><br>
+                <a href="education.html">Education</a>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Additional Accordion Items as Needed -->
+          <!-- You can add more accordion items similar to above if you have other dropdown sections -->
+        </div>
+      </div>
     </div>
+    
     <!-- HEADER -->
     <header class="nav navbar-expand-lg fixed-top">
         <div class="row justify-content-between justify-content-lg-start align-items-center align-items-lg-start">
@@ -141,10 +226,10 @@
                           >
                         </li>
                         <li>
-                          <a href="mailto:info@builders.lk"
-                            ><i class="fa fa-envelope-o"></i>
-                            info@builders.lk</a
-                          >
+                          <a href="mailto:info@builders.lk">
+                            <i class="fa fa-envelope"></i>
+                            info@builders.lk
+                          </a>
                         </li>
                         {{-- <li>
                           <a
@@ -282,7 +367,7 @@
                             >
                           </li>
                           <li>
-                            <a href="#" class="dropdown-item p-1 border"
+                            <a href="/professionalsform" class="dropdown-item p-1 border"
                               >Professionals</a
                             >
                           </li>
@@ -311,34 +396,21 @@
                     <div class="  mb-2 mb-md-0 p-0">
                     
                       <div class="subnav">
-                        <button class="subnavbtn fs-6" >
-                          Shops By Category <i class="fa fa-caret-down"></i>
+                        <button class="subnavbtn fs-6 p-0">
+                            Product By Category <i class="fa fa-caret-down"></i>
                         </button>
-                        <div class="subnav-content" style="height:30vh">
-                            <div class="d-flex flex-wrap flex-column">
-                                  @foreach($shopcats as $shopcat)
-                                      <a href="{{route('category.shop', $shopcat->name)}}">{{$shopcat->name}}</a>
-
-                                  @endforeach
+                        <div class="subnav-content" style="height:40vh">
+                            <div class="d-flex flex-wrap">
+                                @foreach($shopcats as $shopcat)
+                                    <div class="col-6 col-md-4 mb-0">
+                                        <a href="{{route('category.shop', $shopcat->name)}}">{{ $shopcat->name }}</a>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
-                      </div>
                     </div>
-                    <!-- Search Bar -->
-                    {{-- <div class="mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end">
-                      <form action="{{ route('search') }}" method="GET" class="input-group input-group-sm w-100 w-md-75">
-                        <input
-                          type="search"
-                          name="query"
-                          class="form-control"
-                          placeholder="Search here"
-                          aria-label="Search here"
-                        />
-                        <button class="btn btn-dark btn-search" type="submit">
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </form>
-                    </div> --}}
+                    </div>
+                  
                     <!-- Search Bar -->
                     <div class="col-12 col-md-4 mb-2 mb-md-0">
                       <form action="{{ route('search') }}" method="GET" class="input-group input-group-sm w-100">
@@ -443,15 +515,22 @@
                     <div class="col-12 col-md-2 mb-2 ">
                       <div class="subnav">
                         <button class="subnavbtn fs-6 p-0">
-                          Purchase With Builders.lk
-                          <i class="fa fa-caret-down"></i>
+                            Purchase With Builders.lk <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content">
-                          <a href="#">As a Service Provider</a>
-                          <a href="#">As a Company</a>
-                          <a href="#">As Brand</a>
+                            <div class="col-6 col-md-4">
+                                <a href="#">As a Service Provider</a>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <a href="#">As a Company</a>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <a href="#">As Brand</a>
+                            </div>
                         </div>
-                      </div>
+                    </div>
+                    
+                    
                     </div>
                   </div>
                 </div>
@@ -480,207 +559,81 @@
             A.A.I.C. Business Solutions (Pvt) Ltd provides accounting, marketing, IT, and business consulting services in Sri Lanka. Recognizing the need for a digital platform in the construction industry, the company developed BUILDERS.LK to create an integrated market.
           </p>
         </section>
-        <!-- Section: Text -->
-
+    
         <!-- Section: Links -->
         <section>
-          <!--Grid row-->
           <div class="row">
-            <!--Grid column-->
+            <!-- Customer Service -->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase footer-title">Contact Us</h5>
-
+              <h5 class="text-uppercase footer-title">Customer Service</h5>
               <ul class="footer-links">
-                <li>
-                  <a href="#!">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!">Link 4</a>
-                </li>
+                <li><a href="#!">My Account</a></li>
+                <li><a href="#!">Track Order</a></li>
+                {{-- <li><a href="#!">FAQs</a></li> --}}
+                <li><a href="#!">Shipping Info</a></li>
+                <li><a href="#!">Return & Refund Policy</a></li>
               </ul>
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
+    
+            <!-- Company Info -->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Mail Us</h5>
-
+              <h5 class="text-uppercase footer-title">Company Info</h5>
               <ul class="footer-links">
-                <li>
-                  <a href="#!">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!">Link 4</a>
-                </li>
+                <li><a href="#!">About Us</a></li>
+                <li><a href="#!">Careers</a></li>
+                <li><a href="#!">Sustainability Efforts</a></li>
+                {{-- <li><a href="#!">Blog</a></li> --}}
+                <li><a href="#!">Media Resources</a></li>
               </ul>
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
+    
+            <!-- Policies -->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Policy</h5>
-
+              <h5 class="text-uppercase footer-title">Policies</h5>
               <ul class="footer-links">
-                <li>
-                  <a href="#!">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!">Link 4</a>
-                </li>
+                <li><a href="#!">Privacy Policy</a></li>
+                <li><a href="#!">Terms of Use</a></li>
+                <li><a href="#!">Cookie Policy</a></li>
+                <li><a href="#!">Data Protection</a></li>
               </ul>
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
+    
+            <!-- Contact & Social Media -->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Information</h5>
-
-              <ul class="footer-links">
-                <li>
-                  <a href="#!">About Us</a>
-                </li>
-                <li>
-                  <a href="#!">Contact Us</a>
-                </li>
-                <li>
-                  <a href="#!">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="#!">Orders and Returns</a>
-                </li>
-                <li>
-                  <a href="#!">Terms & Conditions</a>
-                </li>
-              </ul>
+              <h5 class="text-uppercase footer-title">Contact & Follow Us</h5>
+              <p>Email: contact@builders.lk</p>
+              <p>Phone: +94 11 234 5678</p>
+              <div>
+                <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white me-2"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+              </div>
             </div>
-            <!--Grid column-->
           </div>
-          <!--Grid row-->
         </section>
-        <!-- Section: Links -->
+    
+        <!-- Payment Methods -->
+        <div class="row mt-4">
+          <div class="col text-center">
+            <h5 class="text-uppercase footer-title">We Accept</h5>
+            <img src="path-to-your-visa-icon" alt="Visa" width="40">
+            <img src="path-to-your-mastercard-icon" alt="MasterCard" width="40">
+            <img src="path-to-your-paypal-icon" alt="PayPal" width="40">
+          </div>
+        </div>
       </div>
-      <!-- Grid container -->
-
-      <div id="bottom-footer" class="section">
-        <!-- Copyright -->
-        <span class="copyright text-center">
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;
-          <script>
-            document.write(new Date().getFullYear());
-          </script>
-          All rights reserved | Bilders.lk made with
-          <i class="fa fa-heart-o" aria-hidden="true"></i> by
-          <a href="https://colorlib.com" target="_blank">AAIC</a>
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    
+      <!-- Bottom Footer -->
+      <div id="bottom-footer" class="section text-center mt-4">
+        <span class="copyright">
+          &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | BUILDERS.LK by 
+          <a href="https://newtecgroup.lk" target="_blank" class="text-white">AAIC</a>
         </span>
-        <!-- Copyright -->
       </div>
     </footer>
+    
 
-    <!-- Footer -->
-    <!-- FOOTER -->
-    {{-- <footer id="footer">
-      <!-- top footer -->
-      <div class="section">
-        <!-- container -->
-        <div class="container">
-          <!-- row -->
-          <div class="row">
-            <div class="col-md-3 col-xs-6">
-              <div class="footer">
-                <h3 class="footer-title">About Us</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut.
-                </p>
-                <ul class="footer-links">
-                  <li>
-                    <a href="#"
-                      ><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a
-                    >
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      ><i class="fa fa-envelope-o"></i>email@email.com</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-md-3 col-xs-6">
-              <div class="footer">
-                <h3 class="footer-title">Categories</h3>
-                <ul class="footer-links">
-                  <li><a href="#">Hot deals</a></li>
-                  <li><a href="#">Laptops</a></li>
-                  <li><a href="#">Smartphones</a></li>
-                  <li><a href="#">Cameras</a></li>
-                  <li><a href="#">Accessories</a></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="clearfix visible-xs"></div>
-
-            <div class="col-md-3 col-xs-6">
-              <div class="footer">
-                <h3 class="footer-title">Information</h3>
-                <ul class="footer-links">
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Contact Us</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Orders and Returns</a></li>
-                  <li><a href="#">Terms & Conditions</a></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-md-3 col-xs-6">
-              <div class="footer">
-                <h3 class="footer-title">Service</h3>
-                <ul class="footer-links">
-                  <li><a href="#">My Account</a></li>
-                  <li><a href="#">View Cart</a></li>
-                  <li><a href="#">Wishlist</a></li>
-                  <li><a href="#">Track My Order</a></li>
-                  <li><a href="#">Help</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <!-- /row -->
-        </div>
-        <!-- /container -->
-      </div>
-      <!-- /top footer -->
-
-      <!-- bottom footer -->
-    </footer> --}}
-
-    <!-- /FOOTER -->
 
 
 <!-- Bootstrap JS and dependencies -->
@@ -756,35 +709,35 @@
     </script> --}}
     <script>
       // JavaScript to handle dropdown functionality
-document.querySelectorAll(".subnavbtn").forEach(function (button) {
-  const subnavContent = button.nextElementSibling;
+      document.querySelectorAll(".subnavbtn").forEach(function (button) {
+        const subnavContent = button.nextElementSibling;
 
-  // Show dropdown when hovering over the button
-  button.addEventListener("mouseenter", function () {
-    subnavContent.style.display = "flex"; // Show the dropdown
-  });
+        // Show dropdown when hovering over the button
+        button.addEventListener("mouseenter", function () {
+          subnavContent.style.display = "flex"; // Show the dropdown
+        });
 
-  // Hide dropdown when leaving the button, unless cursor is over the dropdown content
-  button.addEventListener("mouseleave", function () {
-    setTimeout(function () {
-      if (!subnavContent.matches(':hover')) {
-        subnavContent.style.display = "none"; // Hide if not hovered over
-      }
-    }, 200); // Slight delay to allow smooth transition
-  });
+        // Hide dropdown when leaving the button, unless cursor is over the dropdown content
+        button.addEventListener("mouseleave", function () {
+          setTimeout(function () {
+            if (!subnavContent.matches(':hover')) {
+              subnavContent.style.display = "none"; // Hide if not hovered over
+            }
+          }, 200); // Slight delay to allow smooth transition
+        });
 
-  // Ensure dropdown stays visible if the user hovers over the dropdown content itself
-  subnavContent.addEventListener("mouseenter", function () {
-    subnavContent.style.display = "flex"; // Keep dropdown visible
-  });
+        // Ensure dropdown stays visible if the user hovers over the dropdown content itself
+        subnavContent.addEventListener("mouseenter", function () {
+          subnavContent.style.display = "flex"; // Keep dropdown visible
+        });
 
-  // Hide dropdown when the cursor leaves the dropdown content
-  subnavContent.addEventListener("mouseleave", function () {
-    setTimeout(function () {
-      subnavContent.style.display = "none"; // Hide dropdown when cursor leaves
-    }, 200); // Slight delay for smooth interaction
-  });
-});
+        // Hide dropdown when the cursor leaves the dropdown content
+        subnavContent.addEventListener("mouseleave", function () {
+          setTimeout(function () {
+            subnavContent.style.display = "none"; // Hide dropdown when cursor leaves
+          }, 200); // Slight delay for smooth interaction
+        });
+      });
 
       $(document).ready(function () {
         $(".owl-carousel").owlCarousel({

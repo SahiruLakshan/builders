@@ -101,7 +101,7 @@
 
                                             <div class="row">
                                                 <!-- Select District -->
-                                                <div class="col-md-6">
+                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label" for="district">Select District</label>
                                                         <select name="district" id="district"
@@ -140,55 +140,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
                                             </div>
                                         </section>
 
-                                        <!-- <script>
-                                            $(document).ready(function() {
-                                                // When district is selected
-                                                $('#district').change(function() {
-                                                    var districtId = $(this).val();
-                                                    if (districtId) {
-                                                        // AJAX request to get cities
-                                                        $.ajax({
-                                                            url: '/get-cities/' + districtId,
-                                                            type: 'GET',
-                                                            dataType: 'json',
-                                                            success: function(data) {
-                                                                $('#city').empty(); // Clear previous options
-                                                                $('#city').append(
-                                                                    '<option value="" disabled selected>Select City</option>');
-                                                                $.each(data, function(key, value) {
-                                                                    $('#city').append('<option value="' + value.id + '">' +
-                                                                        value.name + '</option>');
-                                                                });
-                                                                $('#city').removeAttr('disabled'); // Enable the city dropdown
-                                                            }
-                                                        });
-                                                    } else {
-                                                        $('#city').empty().attr('disabled', 'disabled');
-                                                    }
-                                                });
 
-                                                // Bootstrap validation
-                                                $('form').on('submit', function(event) {
-                                                    var isValid = true;
-                                                    $(this).find('input, select').each(function() {
-                                                        if (!this.checkValidity()) {
-                                                            isValid = false;
-                                                            $(this).addClass('is-invalid');
-                                                        } else {
-                                                            $(this).removeClass('is-invalid').addClass('is-valid');
-                                                        }
-                                                    });
-
-                                                    if (!isValid) {
-                                                        event.preventDefault();
-                                                        event.stopPropagation();
-                                                    }
-                                                });
-                                            });
-                                        </script> -->
 
                                         <h3>Add Shop Catogories</h3>
                                         <section>
