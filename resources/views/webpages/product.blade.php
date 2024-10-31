@@ -166,7 +166,10 @@
                                         <a href="mailto:{{ $shop->email }}">{{ $shop->email }}</a> <br>
                                         {{ $shop->p_number }}
                                     </p>
-                                    <a href="tel:{{ $shop->p_number }}" class="btn btn-primary align-self-end">Contact Us</a>
+                                    <a href="tel:{{ $shop->p_number }}" class="btn text-white bg-warning shadow phone-button">
+                                        <i class="fas fa-phone"></i>
+                                    </a>
+                                    
                                 </div>
                             </div>
                         </div>

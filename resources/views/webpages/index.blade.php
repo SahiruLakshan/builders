@@ -56,7 +56,20 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<style>
+  .phone-button {
+    background-color: #ffc107; /* Bootstrap warning yellow */
+    color: white;
+    transition: background-color 0.3s ease; /* Smooth color transition */
+}
 
+.phone-button:focus, .phone-button:active {
+    background-color: #002b49; /* Color change on click */
+    color: white; /* Ensures text remains white */
+    outline: none; /* Removes outline for cleaner look */
+}
+
+</style>
     
   </head>
 
@@ -384,7 +397,7 @@
                     
                       <div class="subnav">
                         <button class="subnavbtn fs-6 p-0">
-                            Service By Category <i class="fa fa-caret-down"></i>
+                            Product By Category <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content" style="height:40vh">
                             <div class="d-flex flex-wrap">
