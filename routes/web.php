@@ -205,5 +205,10 @@ Route::get('/shopprofile', function () {
     return view('shopprofiles.shopprofile');
 })->name('shopprofile');
 
+Route::get('/professionalsform', function () {
+    return view('webpages.professionalsform');
+})->name('professionalsform');
+
+
 
 require __DIR__ . '/auth.php';

@@ -1,5 +1,5 @@
-<div class="main-footer ht-45">
-    <div class="container-fluid pd-t-0 ht-100p">
+{{-- <div class="main-footer ht-20">
+    <div class="container-fluid pd-t-0 ht-50p">
       <span>
         Copyright © 2022
         <a href="javascript:void(0);" class="text-primary">Valex</a>.
@@ -8,4 +8,4 @@
         reserved.</span
       >
     </div>
-  </div>
+  </div> --}}

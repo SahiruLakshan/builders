@@ -56,10 +56,8 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <style>
- 
 
-    </style>
+    
   </head>
 
   <body class="overflow-x-hidden">
@@ -141,10 +139,10 @@
                           >
                         </li>
                         <li>
-                          <a href="mailto:info@builders.lk"
-                            ><i class="fa fa-envelope-o"></i>
-                            info@builders.lk</a
-                          >
+                          <a href="mailto:info@builders.lk">
+                            <i class="fa fa-envelope"></i>
+                            info@builders.lk
+                          </a>
                         </li>
                         {{-- <li>
                           <a
@@ -282,7 +280,7 @@
                             >
                           </li>
                           <li>
-                            <a href="#" class="dropdown-item p-1 border"
+                            <a href="/professionalsform" class="dropdown-item p-1 border"
                               >Professionals</a
                             >
                           </li>
@@ -480,121 +478,80 @@
             A.A.I.C. Business Solutions (Pvt) Ltd provides accounting, marketing, IT, and business consulting services in Sri Lanka. Recognizing the need for a digital platform in the construction industry, the company developed BUILDERS.LK to create an integrated market.
           </p>
         </section>
-        <!-- Section: Text -->
-
+    
         <!-- Section: Links -->
         <section>
-          <!--Grid row-->
           <div class="row">
-            <!--Grid column-->
+            <!-- Customer Service -->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase footer-title">Contact Us</h5>
-
+              <h5 class="text-uppercase footer-title">Customer Service</h5>
               <ul class="footer-links">
-                <li>
-                  <a href="#!">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!">Link 4</a>
-                </li>
+                <li><a href="#!">My Account</a></li>
+                <li><a href="#!">Track Order</a></li>
+                {{-- <li><a href="#!">FAQs</a></li> --}}
+                <li><a href="#!">Shipping Info</a></li>
+                <li><a href="#!">Return & Refund Policy</a></li>
               </ul>
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
+    
+            <!-- Company Info -->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Mail Us</h5>
-
+              <h5 class="text-uppercase footer-title">Company Info</h5>
               <ul class="footer-links">
-                <li>
-                  <a href="#!">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!">Link 4</a>
-                </li>
+                <li><a href="#!">About Us</a></li>
+                <li><a href="#!">Careers</a></li>
+                <li><a href="#!">Sustainability Efforts</a></li>
+                {{-- <li><a href="#!">Blog</a></li> --}}
+                <li><a href="#!">Media Resources</a></li>
               </ul>
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
+    
+            <!-- Policies -->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Policy</h5>
-
+              <h5 class="text-uppercase footer-title">Policies</h5>
               <ul class="footer-links">
-                <li>
-                  <a href="#!">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!">Link 4</a>
-                </li>
+                <li><a href="#!">Privacy Policy</a></li>
+                <li><a href="#!">Terms of Use</a></li>
+                <li><a href="#!">Cookie Policy</a></li>
+                <li><a href="#!">Data Protection</a></li>
               </ul>
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
+    
+            <!-- Contact & Social Media -->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Information</h5>
-
-              <ul class="footer-links">
-                <li>
-                  <a href="#!">About Us</a>
-                </li>
-                <li>
-                  <a href="#!">Contact Us</a>
-                </li>
-                <li>
-                  <a href="#!">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="#!">Orders and Returns</a>
-                </li>
-                <li>
-                  <a href="#!">Terms & Conditions</a>
-                </li>
-              </ul>
+              <h5 class="text-uppercase footer-title">Contact & Follow Us</h5>
+              <p>Email: contact@builders.lk</p>
+              <p>Phone: +94 11 234 5678</p>
+              <div>
+                <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white me-2"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+              </div>
             </div>
-            <!--Grid column-->
           </div>
-          <!--Grid row-->
         </section>
-        <!-- Section: Links -->
+    
+        <!-- Payment Methods -->
+        <div class="row mt-4">
+          <div class="col text-center">
+            <h5 class="text-uppercase footer-title">We Accept</h5>
+            <img src="path-to-your-visa-icon" alt="Visa" width="40">
+            <img src="path-to-your-mastercard-icon" alt="MasterCard" width="40">
+            <img src="path-to-your-paypal-icon" alt="PayPal" width="40">
+          </div>
+        </div>
       </div>
-      <!-- Grid container -->
-
-      <div id="bottom-footer" class="section">
-        <!-- Copyright -->
-        <span class="copyright text-center">
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;
-          <script>
-            document.write(new Date().getFullYear());
-          </script>
-          All rights reserved | Bilders.lk made with
-          <i class="fa fa-heart-o" aria-hidden="true"></i> by
-          <a href="https://colorlib.com" target="_blank">AAIC</a>
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    
+      <!-- Bottom Footer -->
+      <div id="bottom-footer" class="section text-center mt-4">
+        <span class="copyright">
+          &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | BUILDERS.LK by 
+          <a href="https://newtecgroup.lk" target="_blank" class="text-white">AAIC</a>
         </span>
-        <!-- Copyright -->
       </div>
     </footer>
+    
 
     <!-- Footer -->
     <!-- FOOTER -->
@@ -756,35 +713,35 @@
     </script> --}}
     <script>
       // JavaScript to handle dropdown functionality
-document.querySelectorAll(".subnavbtn").forEach(function (button) {
-  const subnavContent = button.nextElementSibling;
+      document.querySelectorAll(".subnavbtn").forEach(function (button) {
+        const subnavContent = button.nextElementSibling;
 
-  // Show dropdown when hovering over the button
-  button.addEventListener("mouseenter", function () {
-    subnavContent.style.display = "flex"; // Show the dropdown
-  });
+        // Show dropdown when hovering over the button
+        button.addEventListener("mouseenter", function () {
+          subnavContent.style.display = "flex"; // Show the dropdown
+        });
 
-  // Hide dropdown when leaving the button, unless cursor is over the dropdown content
-  button.addEventListener("mouseleave", function () {
-    setTimeout(function () {
-      if (!subnavContent.matches(':hover')) {
-        subnavContent.style.display = "none"; // Hide if not hovered over
-      }
-    }, 200); // Slight delay to allow smooth transition
-  });
+        // Hide dropdown when leaving the button, unless cursor is over the dropdown content
+        button.addEventListener("mouseleave", function () {
+          setTimeout(function () {
+            if (!subnavContent.matches(':hover')) {
+              subnavContent.style.display = "none"; // Hide if not hovered over
+            }
+          }, 200); // Slight delay to allow smooth transition
+        });
 
-  // Ensure dropdown stays visible if the user hovers over the dropdown content itself
-  subnavContent.addEventListener("mouseenter", function () {
-    subnavContent.style.display = "flex"; // Keep dropdown visible
-  });
+        // Ensure dropdown stays visible if the user hovers over the dropdown content itself
+        subnavContent.addEventListener("mouseenter", function () {
+          subnavContent.style.display = "flex"; // Keep dropdown visible
+        });
 
-  // Hide dropdown when the cursor leaves the dropdown content
-  subnavContent.addEventListener("mouseleave", function () {
-    setTimeout(function () {
-      subnavContent.style.display = "none"; // Hide dropdown when cursor leaves
-    }, 200); // Slight delay for smooth interaction
-  });
-});
+        // Hide dropdown when the cursor leaves the dropdown content
+        subnavContent.addEventListener("mouseleave", function () {
+          setTimeout(function () {
+            subnavContent.style.display = "none"; // Hide dropdown when cursor leaves
+          }, 200); // Slight delay for smooth interaction
+        });
+      });
 
       $(document).ready(function () {
         $(".owl-carousel").owlCarousel({
