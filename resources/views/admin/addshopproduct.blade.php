@@ -88,6 +88,14 @@
                                                 placeholder="Enter quantity" min="1" step="1" />
                                         </div>
                                     </div>
+                                     <!-- Price -->
+                                     <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="price">Enter Product Price</label>
+                                            <input type="number" class="form-control" id="price"
+                                                placeholder="Enter price" min="0.01" step="0.01" />
+                                        </div>
+                                    </div>
 
                                     <!-- Measurement -->
                                     <div class="col-md-2">
@@ -101,6 +109,7 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <!-- Color -->
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="color">Color</label>
@@ -117,9 +126,15 @@
                                         </div>
 
                                         <!-- Container for dynamically added input fields -->
-                                        <div id="inputFieldsContainer" name="other_categories"></div>
-                                        <button type="button" id="addMoreFieldsBtn" class="btn btn-success">Add More
-                                            Fields</button>
+                                        <div class="container mt-3">
+                                            <div id="inputFieldsContainer" class="mb-3"></div> <!-- Bootstrap margin for spacing -->
+                                            
+                                            <!-- Bootstrap button for adding fields -->
+                                            <button type="button" id="addMoreFieldsBtn" class="btn btn-success">
+                                                Add More Fields
+                                            </button>
+                                        </div>
+                                        
 
 
                                     </div>
@@ -134,7 +149,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Color -->
+                                    
 
 
                                     <!-- Add Product Button -->
@@ -359,30 +374,106 @@
                 });
             });
 
-            const inputFieldsContainer = document.getElementById('inputFieldsContainer');
-            const addMoreFieldsBtn = document.getElementById('addMoreFieldsBtn');
-            let fieldCounter = 1;
+            // const inputFieldsContainer = document.getElementById('inputFieldsContainer');
+            // const addMoreFieldsBtn = document.getElementById('addMoreFieldsBtn');
+            // let fieldCounter = 1;
 
-            function addNewField() {
-                const newFieldHTML = `
-                    <div class="inputFieldGroup" id="fieldGroup${fieldCounter}">
-                        <label for="other_categories[${fieldCounter}]">Other Category ${fieldCounter + 1}:</label>
-                        <input type="text" name="other_categories[]" id="other_categories${fieldCounter}" placeholder="Enter value">
-                        <button type="button" onclick="deleteField(${fieldCounter})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
-                    </div>
-                `;
-                inputFieldsContainer.innerHTML += newFieldHTML;
-                fieldCounter++;
-            }
+            // function addNewField() {
+            //     const newFieldHTML = `
+            //         <div class="inputFieldGroup" id="fieldGroup${fieldCounter}">
+            //             <label for="other_categories[${fieldCounter}]">Other Category ${fieldCounter + 1}:</label>
+            //             <input type="text" name="other_categories[]" id="other_categories${fieldCounter}" placeholder="Enter value">
+            //             <button type="button" onclick="deleteField(${fieldCounter})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+            //         </div>
+            //     `;
+            //     inputFieldsContainer.innerHTML += newFieldHTML;
+            //     fieldCounter++;
+            // }
 
-            function deleteField(counter) {
-                const fieldGroup = document.getElementById(`fieldGroup${counter}`);
-                if (fieldGroup) {
-                    inputFieldsContainer.removeChild(fieldGroup);
-                }
-            }
+            // function deleteField(counter) {
+            //     const fieldGroup = document.getElementById(`fieldGroup${counter}`);
+            //     if (fieldGroup) {
+            //         inputFieldsContainer.removeChild(fieldGroup);
+            //     }
+            // }
 
-            addMoreFieldsBtn.addEventListener('click', addNewField);
+//             const inputFieldsContainer = document.getElementById('inputFieldsContainer');
+// const addMoreFieldsBtn = document.getElementById('addMoreFieldsBtn');
+// let fieldCounter = 1;
+// let recycledCounters = []; // Array to track deleted field numbers
+
+// function addNewField() {
+//     // Check if there is a deleted field number to reuse
+//     const currentFieldCounter = recycledCounters.length > 0 ? recycledCounters.shift() : fieldCounter++;
+
+//     const newFieldHTML = `
+//         <div class="inputFieldGroup" id="fieldGroup${currentFieldCounter}">
+//             <label for="other_categories[${currentFieldCounter}]">Other Category ${currentFieldCounter}:</label>
+//             <input type="text" name="other_categories[]" id="other_categories${currentFieldCounter}" placeholder="Enter value">
+//             <button type="button" class="btn btn-danger btn-sm delete-btn">
+//                 <i class="fas fa-trash"></i>
+//             </button>
+//         </div>
+//     `;
+//     inputFieldsContainer.insertAdjacentHTML('beforeend', newFieldHTML);
+// }
+
+// // Event listener for adding fields
+// addMoreFieldsBtn.addEventListener('click', addNewField);
+
+// // Event delegation for delete buttons
+// inputFieldsContainer.addEventListener('click', function (event) {
+//     if (event.target.closest('.delete-btn')) {
+//         const fieldGroup = event.target.closest('.inputFieldGroup');
+//         if (fieldGroup) {
+//             const fieldId = parseInt(fieldGroup.id.replace('fieldGroup', '')); // Extract the number
+//             recycledCounters.push(fieldId); // Add deleted field number to the recycled list
+//             fieldGroup.remove();
+//         }
+//     }
+// });
+const inputFieldsContainer = document.getElementById('inputFieldsContainer');
+const addMoreFieldsBtn = document.getElementById('addMoreFieldsBtn');
+let fieldCounter = 1;
+let recycledCounters = [];
+
+function addNewField() {
+    const currentFieldCounter = recycledCounters.length > 0 ? recycledCounters.shift() : fieldCounter++;
+
+    const newFieldHTML = `
+        <div class="inputFieldGroup row mb-2" id="fieldGroup${currentFieldCounter}">
+            <div class="col-md-8">
+                <label for="other_categories${currentFieldCounter}" class="form-label">Other Category ${currentFieldCounter}:</label>
+                <input type="text" name="other_categories[]" class="form-control" id="other_categories${currentFieldCounter}" placeholder="Enter value">
+            </div>
+            <div class="col-md-4 d-flex align-items-center">
+                <button type="button" class="btn btn-danger btn-sm delete-btn ms-2">
+                    <i class="fas fa-trash"></i> 
+                </button>
+            </div>
+        </div>
+    `;
+    inputFieldsContainer.insertAdjacentHTML('beforeend', newFieldHTML);
+}
+
+// Event listener for adding fields
+addMoreFieldsBtn.addEventListener('click', addNewField);
+
+// Event delegation for delete buttons
+inputFieldsContainer.addEventListener('click', function (event) {
+    if (event.target.closest('.delete-btn')) {
+        const fieldGroup = event.target.closest('.inputFieldGroup');
+        if (fieldGroup) {
+            const fieldId = parseInt(fieldGroup.id.replace('fieldGroup', ''));
+            recycledCounters.push(fieldId);
+            fieldGroup.remove();
+        }
+    }
+});
+
+
+
+
         });
     </script>
 @endsection

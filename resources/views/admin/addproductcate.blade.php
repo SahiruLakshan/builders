@@ -45,19 +45,19 @@
                       </div>
                       
                       <div class="form-group">
-                        <label for="shop_category_name"
-                          >Unit Price</label
+                        <label for="description"
+                          >Description</label
                         >
-                        <input
-                          type="number"
+                        <textarea
                           class="form-control"
-                          id="shop_category_name"
-                          name="unit_price"
-                          placeholder="Enter unit price"
+                          id="description"
+                          name="description"
+                          placeholder="Enter description"
+                          rows="4"
                           required
-                        />
+                        ></textarea>
                         <div class="invalid-feedback">
-                          Please provide a valid Shop Category Name.
+                          Please provide a valid description.
                         </div>
                       </div>
 
