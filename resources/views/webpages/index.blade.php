@@ -61,7 +61,7 @@
   </head>
 
   <body class="overflow-x-hidden">
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    {{-- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasExampleLabel">Builders.lk</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -105,7 +105,81 @@
       </div>
             
           
+    </div> --}}
+    <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Builders.lk</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="accordion" id="accordionExample">
+          <!-- First Accordion Item: Contact Info -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Contact Information
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <a href="tel:0112748149"><i class="fa fa-phone"></i> Tel: 011 274 81 49</a><br>
+                <a href="mailto:info@builders.lk"><i class="fa fa-envelope"></i> info@builders.lk</a>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Second Accordion Item: My Account -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                My Account
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                @guest
+                <a href="{{route('login')}}" class="btn btn-primary border">Login</a>
+                <a href="{{route('register')}}" class="btn btn-primary">Sign up</a>
+                <a href="#" class="btn btn-primary">Shop Login</a>
+                @endguest
+                @auth
+                <a href="{{route('dashboard')}}" class="btn btn-primary">Dashboard</a>
+                <form action="{{route('logout')}}" method="POST">
+                  @csrf
+                  <button type="submit" class="btn btn-primary">Logout</button>
+                </form>
+                @endauth
+
+              </div>
+            </div>
+          </div>
+          
+          <!-- Third Accordion Item: Navigation Links -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Navigation Links
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <a href="{{ url('/') }}">Home</a><br>
+                <a href="{{ url('/aboutus') }}">About Us</a><br>
+                <a href="gallery.html">Gallery</a><br>
+                <a href="publications.html">Publications</a><br>
+                <a href="certifications.html">Certifications</a><br>
+                <a href="career.html">Career</a><br>
+                <a href="education.html">Education</a>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Additional Accordion Items as Needed -->
+          <!-- You can add more accordion items similar to above if you have other dropdown sections -->
+        </div>
+      </div>
     </div>
+    
     <!-- HEADER -->
     <header class="nav navbar-expand-lg fixed-top">
         <div class="row justify-content-between justify-content-lg-start align-items-center align-items-lg-start">
@@ -322,21 +396,7 @@
                         </div>
                       </div>
                     </div>
-                    <!-- Search Bar -->
-                    {{-- <div class="mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end">
-                      <form action="{{ route('search') }}" method="GET" class="input-group input-group-sm w-100 w-md-75">
-                        <input
-                          type="search"
-                          name="query"
-                          class="form-control"
-                          placeholder="Search here"
-                          aria-label="Search here"
-                        />
-                        <button class="btn btn-dark btn-search" type="submit">
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </form>
-                    </div> --}}
+                  
                     <!-- Search Bar -->
                     <div class="col-12 col-md-4 mb-2 mb-md-0">
                       <form action="{{ route('search') }}" method="GET" class="input-group input-group-sm w-100">
@@ -553,91 +613,6 @@
     </footer>
     
 
-    <!-- Footer -->
-    <!-- FOOTER -->
-    {{-- <footer id="footer">
-      <!-- top footer -->
-      <div class="section">
-        <!-- container -->
-        <div class="container">
-          <!-- row -->
-          <div class="row">
-            <div class="col-md-3 col-xs-6">
-              <div class="footer">
-                <h3 class="footer-title">About Us</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut.
-                </p>
-                <ul class="footer-links">
-                  <li>
-                    <a href="#"
-                      ><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a
-                    >
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      ><i class="fa fa-envelope-o"></i>email@email.com</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-md-3 col-xs-6">
-              <div class="footer">
-                <h3 class="footer-title">Categories</h3>
-                <ul class="footer-links">
-                  <li><a href="#">Hot deals</a></li>
-                  <li><a href="#">Laptops</a></li>
-                  <li><a href="#">Smartphones</a></li>
-                  <li><a href="#">Cameras</a></li>
-                  <li><a href="#">Accessories</a></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="clearfix visible-xs"></div>
-
-            <div class="col-md-3 col-xs-6">
-              <div class="footer">
-                <h3 class="footer-title">Information</h3>
-                <ul class="footer-links">
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Contact Us</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Orders and Returns</a></li>
-                  <li><a href="#">Terms & Conditions</a></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-md-3 col-xs-6">
-              <div class="footer">
-                <h3 class="footer-title">Service</h3>
-                <ul class="footer-links">
-                  <li><a href="#">My Account</a></li>
-                  <li><a href="#">View Cart</a></li>
-                  <li><a href="#">Wishlist</a></li>
-                  <li><a href="#">Track My Order</a></li>
-                  <li><a href="#">Help</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <!-- /row -->
-        </div>
-        <!-- /container -->
-      </div>
-      <!-- /top footer -->
-
-      <!-- bottom footer -->
-    </footer> --}}
-
-    <!-- /FOOTER -->
 
 
 <!-- Bootstrap JS and dependencies -->
