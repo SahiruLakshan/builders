@@ -336,7 +336,16 @@
                                             <a class="slide-item" href="/shops">view Shops</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/approvedshops">Pending Full Approval</a>
+                                            <a class="slide-item" href="/approvedshops"> Full Approvaled Shops</a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="/addshopcategory">Add New Shop Catogory
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a class="slide-item" href="/shopcategories">Shop Catogory Veiw
+                                            </a>
                                         </li>
                                     </ul>
                                 </li>
@@ -354,35 +363,6 @@
                                         <li>
                                             <a class="slide-item" href="/products">Veiw Product </a>
                                         </li>
-                                    </ul>
-                                </li>
-
-                                <li class="slide">
-                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
-                                            class="side-menu__label">Shop Catogory</span></a>
-                                    <ul class="slide-menu">
-                                        <li class="side-menu__label1">
-                                            <a href="javascript:void(0);">Shop Catogory</a>
-                                        </li>
-                                        <li>
-                                            <a class="slide-item" href="/addshopcategory">Add New Catogory
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a class="slide-item" href="/shopcategories">Shop Catogory Veiw
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="slide">
-                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
-                                            class="side-menu__label">Product Catogory</span></a>
-                                    <ul class="slide-menu">
-                                        <li class="side-menu__label1">
-                                            <a href="javascript:void(0);">Product Catogory</a>
-                                        </li>
-                                        <li>
                                             <a class="slide-item" href="/addproductcategory">Add New Product Catogory
                                             </a>
                                         </li>
@@ -390,11 +370,6 @@
                                             <a class="slide-item" href="/categories">Veiw Product Catogory</a>
                                         </li>
                                     </ul>
-                                </li>
-
-                                <li class="slide">
-                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
-                                            class="side-menu__label">Product SubCatogory</span></a>
                                     <ul class="slide-menu">
                                         <li class="side-menu__label1">
                                             <a href="javascript:void(0);">Product SubCatogory</a>
@@ -407,11 +382,6 @@
                                             <a class="slide-item" href="/subcategories">Veiw Product SubCatogory</a>
                                         </li>
                                     </ul>
-                                </li>
-
-                                <li class="slide">
-                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
-                                            class="side-menu__label">Product Measurements</span></a>
                                     <ul class="slide-menu">
                                         <li class="side-menu__label1">
                                             <a href="javascript:void(0);">Product Measurements</a>
@@ -425,6 +395,40 @@
                                         </li>
                                     </ul>
                                 </li>
+
+                                {{-- <li class="slide">
+                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
+                                            class="side-menu__label">Shop Catogory</span></a>
+                                    <ul class="slide-menu">
+                                        <li class="side-menu__label1">
+                                            <a href="javascript:void(0);">Shop Catogory</a>
+                                        </li>
+                                  
+                                    </ul>
+                                </li> --}}
+                                {{-- <li class="slide">
+                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
+                                            class="side-menu__label">Product Catogory</span></a>
+                                    <ul class="slide-menu">
+                                        <li class="side-menu__label1">
+                                            <a href="javascript:void(0);">Product Catogory</a>
+                                        </li>
+                                        <li>
+                                       
+                                    </ul>
+                                </li> --}}
+
+                                {{-- <li class="slide">
+                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
+                                            class="side-menu__label">Product SubCatogory</span></a>
+                                   
+                                </li> --}}
+
+                                {{-- <li class="slide">
+                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
+                                            class="side-menu__label">Product Measurements</span></a>
+                                    
+                                </li> --}}
                                 <li class="slide">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
                                             class="side-menu__label">Service Providers</span></a>
