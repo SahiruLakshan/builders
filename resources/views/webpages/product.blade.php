@@ -2,16 +2,8 @@
 
 @section('content')
 <style>
-.text-truncate-two-line {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.h-200{
-    height: 200px;
-}
+    
+
 </style>
 
     <div class="container-fluid">
@@ -160,31 +152,34 @@
 
                 </div>
             @else
-                <div class="col-9">
-                    <div class="row row-cols-2 g-2 mb-4">
+                <div class="col-12 col-md-9">
+                    <div class="d-flex flex-wrap mb-4 ">
                         @foreach ($shops as $shop)
-                            <div class="col mb-3"> <!-- Add mb-3 to apply a margin below each card -->
-                                <div class="card d-flex flex-row">
+                            <div class="col-12 col-md-6 p-2 "> <!-- Add mb-3 to apply a margin below each card -->
+                                <div class="rounded shadow hcard-200 bg-white d-flex flex-row">
                                     <!-- Image on the left side -->
-                                    <img src="{{ asset('assets/shop/' . $shop->shop_img) }}" class="img-fluid" alt="..."
-                                        style="width: 40%;">
-
+                                    <img src="{{ asset('assets/shop/' . $shop->shop_img) }}"  class="d-block col-4 object-fit-cover rounded-start" alt="...">
+                                    {{-- <img src="{{ asset('assets/shop/1730369468_screenshot.png') }}" alt="..."> --}}
                                     <!-- Text and button on the right side -->
-                                    <div class="card-body h-200 d-flex flex-column justify-content-between">
+                                    <div class="col-8 d-flex flex-column  p-4">
                                         <div>
                                             <h5 class="card-title">{{ $shop->name }}</h5>
                                             <p class="card-text p-0 m-0 text-small text-muted boader-bottom  ">
 
                                                 <div class="text-truncate-two-line ">
+                                                    <i class="fas fa-map-marker-alt me-2"></i>
                                                     {{ $shop->address }}
                                                     {{ $shop->district_name }}, {{ $shop->city_name }} 
                                                 </div>
                                                 <div class="d-flex align-items-end">
                                                     <i class="fas fa-envelope d-block me-3"></i> 
-                                                    <a href="mailto:{{ $shop->email }}" class="p-0 m-0 d-block w-100 overflow-elipsis">{{ $shop->email }}</a>
+                                                    <a href="mailto:{{ $shop->email }}" class="p-0 m-0 d-block w-100 text-truncate col">{{ $shop->email }}</a>
                                                 </div>
                                                 <div class="d-flex justify-content-between align-items-start">
-                                                    <div>{{ $shop->p_number }}</div> 
+                                                    <div>
+                                                        <i class="fas fa-phone me-3"></i>
+                                                        {{ $shop->p_number }}
+                                                    </div> 
                                                     <a href="tel:{{ $shop->p_number }}"
                                                         class="btn text-white bg-warning shadow phone-button mt-2 ">
                                                         <i class="fas fa-phone ms-auto"></i>

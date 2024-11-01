@@ -1357,11 +1357,20 @@ textarea.input {
 /*=========================================================
 	07 -> PRODUCTS PAGE
 ===========================================================*/
-
+.text-truncate-two-line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.hcard-200 {
+    height: 200px;
+}
 /*----------------------------*\
 	Aside
 \*----------------------------*/
-
+/* 
 .aside + .aside {
     margin-top: 30px;
 }
@@ -1387,10 +1396,11 @@ textarea.input {
 .checkbox-filter .input-checkbox label small {
     color: #8d99ae;
 }
+*/
 
 /*-- Price Filter --*/
 
-#price-slider {
+/* #price-slider {
     margin-bottom: 15px;
 }
 
@@ -1430,7 +1440,7 @@ textarea.input {
 .price-filter .input-number {
     display: inline-block;
     width: calc(50% - 7px);
-}
+} */
 
 /*----------------------------*\
 	Store

@@ -397,7 +397,7 @@
                     
                       <div class="subnav">
                         <button class="subnavbtn fs-6 p-0">
-                            Product By Category <i class="fa fa-caret-down"></i>
+                            Shop By Category <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content" style="height:40vh">
                             <div class="d-flex flex-wrap">
