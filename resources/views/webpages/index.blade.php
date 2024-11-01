@@ -602,7 +602,7 @@
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
               <h5 class="text-uppercase footer-title">Contact & Follow Us</h5>
               <p>Email: info@builders.lk</p>
-              <p>Phone: +94 11 234 5678</p>
+              <p>Phone: +94 11 274 81 49</p>
               <div>
                 <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
