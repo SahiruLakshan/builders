@@ -1,6 +1,18 @@
 @extends('webpages.index')
 
 @section('content')
+<style>
+.text-truncate-two-line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.h-200{
+    height: 200px;
+}
+</style>
 
     <div class="container-fluid">
         <div class="row">
@@ -158,19 +170,28 @@
                                         style="width: 40%;">
 
                                     <!-- Text and button on the right side -->
-                                    <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="card-body h-200 d-flex flex-column justify-content-between">
                                         <div>
                                             <h5 class="card-title">{{ $shop->name }}</h5>
-                                            <p class="card-text">
-                                                {{ $shop->address }} <br>
-                                                {{ $shop->district_name }}, {{ $shop->city_name }} <br>
-                                                <a href="mailto:{{ $shop->email }}">{{ $shop->email }}</a> <br>
-                                                {{ $shop->p_number }}
+                                            <p class="card-text p-0 m-0 text-small text-muted boader-bottom  ">
+
+                                                <div class="text-truncate-two-line ">
+                                                    {{ $shop->address }}
+                                                    {{ $shop->district_name }}, {{ $shop->city_name }} 
+                                                </div>
+                                                <div class="d-flex align-items-end">
+                                                    <i class="fas fa-envelope d-block me-3"></i> 
+                                                    <a href="mailto:{{ $shop->email }}" class="p-0 m-0 d-block w-100 overflow-elipsis">{{ $shop->email }}</a>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <div>{{ $shop->p_number }}</div> 
+                                                    <a href="tel:{{ $shop->p_number }}"
+                                                        class="btn text-white bg-warning shadow phone-button mt-2 ">
+                                                        <i class="fas fa-phone ms-auto"></i>
+                                                    </a>
+                                                </div>
                                             </p>
-                                            <a href="tel:{{ $shop->p_number }}"
-                                                class="btn text-white bg-warning shadow phone-button">
-                                                <i class="fas fa-phone"></i>
-                                            </a>
+                                           
 
                                         </div>
                                     </div>
