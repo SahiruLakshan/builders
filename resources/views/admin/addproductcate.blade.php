@@ -32,6 +32,7 @@
                           >Product Category Name</label
                         >
                         <input
+                        
                           type="text"
                           class="form-control"
                           id="shop_category_name"
