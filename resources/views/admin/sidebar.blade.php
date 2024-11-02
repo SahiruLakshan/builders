@@ -315,6 +315,9 @@
                                         <li>
                                             <a class="slide-item" href="/brands">Veiw Brand</a>
                                         </li>
+                                        <li>
+                                            <a class="slide-item" href="/brandproduct">Product Related Brand</a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="slide">

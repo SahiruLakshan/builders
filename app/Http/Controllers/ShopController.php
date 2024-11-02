@@ -37,7 +37,8 @@ class ShopController extends Controller
         $category_count = Shopproduct::where('shop_id', $id)->distinct('product_category_id')->count();
 
 
-        $shop_product = Shopproduct::where('shop_id', $id)->with('product', 'category', 'brand')->get();;
+        $shop_product = Shopproduct::where('shop_id', $id)->with('product', 'category', 'brand')->get();
+        ;
         if (!$shop) {
             return response()->json([
                 'message' => 'Shop not found',
@@ -261,33 +262,33 @@ class ShopController extends Controller
     // }
 
     public function approveProduct($id)
-{
-    try {
-        $shop = Shop::find($id);
+    {
+        try {
+            $shop = Shop::find($id);
 
-        if (!$shop) {
-            // Log if shop not found
-            Log::error("Shop not found with ID: {$id}");
-            return response()->json(['message' => 'Shop not found'], 404);
+            if (!$shop) {
+                // Log if shop not found
+                Log::error("Shop not found with ID: {$id}");
+                return response()->json(['message' => 'Shop not found'], 404);
+            }
+
+            // Update product approval and cancellation status
+            $shop->product_approve = Carbon::now();
+            $shop->cancel_product = 'No';
+            $shop->save();
+
+            // Send email and catch any mail exceptions
+            Mail::to($shop->email)->send(new ProductApprove($shop));
+
+            return response()->json(['message' => 'Product approved successfully!']);
+
+        } catch (\Exception $e) {
+            // Log the exception message
+            Log::error("Error approving product for shop ID {$id}: " . $e->getMessage());
+
+            return response()->json(['message' => 'An error occurred while approving the product'], 500);
         }
-
-        // Update product approval and cancellation status
-        $shop->product_approve = Carbon::now();
-        $shop->cancel_product = 'No';
-        $shop->save();
-
-        // Send email and catch any mail exceptions
-        Mail::to($shop->email)->send(new ProductApprove($shop));
-
-        return response()->json(['message' => 'Product approved successfully!']);
-
-    } catch (\Exception $e) {
-        // Log the exception message
-        Log::error("Error approving product for shop ID {$id}: " . $e->getMessage());
-
-        return response()->json(['message' => 'An error occurred while approving the product'], 500);
     }
-}
 
     public function cancelProduct($id)
     {
