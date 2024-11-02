@@ -37,7 +37,8 @@ class ShopController extends Controller
         $category_count = Shopproduct::where('shop_id', $id)->distinct('product_category_id')->count();
 
 
-        $shop_product = Shopproduct::where('shop_id', $id)->with('product', 'category', 'brand')->get();;
+        $shop_product = Shopproduct::where('shop_id', $id)->with('product', 'category', 'brand')->get();
+        ;
         if (!$shop) {
             return response()->json([
                 'message' => 'Shop not found',
@@ -148,61 +149,66 @@ class ShopController extends Controller
 
     public function updateShop(Request $request, $id)
     {
-        $shop = Shop::find($id);
-        if (!$shop) {
-            return redirect()->back()->with('error', 'Shop is not found');
-        }
-
-        // Validate the input data
-        $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [       // data validation
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:shops,email,' . $shop->id, // Ignore the current shop's email
+            'email' => 'required|email|max:255|unique:shops,email,' . $id, // ignore current shop's email
             'address' => 'required|string|max:500',
+            'p_number' => 'required|string|max:255',
             'district' => 'required|string|max:255',
             'city' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
+            'category' => 'required|array',                   // multiple categories
+            'category.*' => 'string|max:255',                 // each category must be a string
+            'location' => 'nullable|string|max:255',
             'start_time' => 'required',
             'end_time' => 'required|after:start_time',
             'fb_link' => 'nullable|url|max:255',
             'br' => 'required|string|max:255',
-            'shop_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Nullable if not changing image
+            'shop_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
-        // If validation fails, return error response
+    
         if ($validator->fails()) {
-            return redirect()->back()->with('error', 'Validation failed.');
+            return redirect()->back()->withErrors($validator)->withInput();
         }
-
+    
         try {
-            $shop->name = $request->input('name');
-            $shop->email = $request->input('email');
-            $shop->address = $request->input('address');
-            $shop->district = $request->input('district');
-            $shop->city = $request->input('city');
-            $shop->p_number = $request->input('p_number');
-            $shop->location = $request->input('location');
-            $shop->start_time = $request->input('start_time');
-            $shop->end_time = $request->input('end_time');
-            $shop->fb_link = $request->input('fb_link');
-            $shop->br = $request->input('br');
-
-
-            if ($request->hasFile('shop_img')) {
+            $shop = Shop::findOrFail($id);                   // find the shop by ID
+    
+            $data = $request->only([
+                'name',
+                'email',
+                'address',
+                'district',
+                'p_number',
+                'city',
+                'location',
+                'start_time',
+                'end_time',
+                'fb_link',
+                'br'
+            ]);
+    
+            // Handle multiple categories
+            $data['category'] = implode(',', $request->input('category')); // convert array to comma-separated string
+    
+            if ($request->hasFile('shop_img')) {             // handle image upload if new file is provided
+                // Delete the old image if it exists
+                if ($shop->shop_img && file_exists(public_path('assets/shop/' . $shop->shop_img))) {
+                    unlink(public_path('assets/shop/' . $shop->shop_img));
+                }
+    
                 $file = $request->file('shop_img');
                 $filename = time() . '_' . $file->getClientOriginalName();
                 $file->move('assets/shop', $filename);
-                $shop->shop_img = $filename;
+                $data['shop_img'] = $filename;
             }
-
-            // Save the updated shop data
-            $shop->save();
-
-            // Return success response
+    
+            $shop->update($data);                            // update shop data
+    
             return redirect()->back()->with('success', 'Shop Updated.');
         } catch (\Exception $e) {
-            // Return error response if something goes wrong
-            return redirect()->back()->with('error', 'An error occurred while adding the measurement.');
+            return redirect()->back()->withErrors($e->getMessage())->withInput();
         }
+    
     }
 
     public function deleteShop($id)
@@ -261,33 +267,33 @@ class ShopController extends Controller
     // }
 
     public function approveProduct($id)
-{
-    try {
-        $shop = Shop::find($id);
+    {
+        try {
+            $shop = Shop::find($id);
 
-        if (!$shop) {
-            // Log if shop not found
-            Log::error("Shop not found with ID: {$id}");
-            return response()->json(['message' => 'Shop not found'], 404);
+            if (!$shop) {
+                // Log if shop not found
+                Log::error("Shop not found with ID: {$id}");
+                return response()->json(['message' => 'Shop not found'], 404);
+            }
+
+            // Update product approval and cancellation status
+            $shop->product_approve = Carbon::now();
+            $shop->cancel_product = 'No';
+            $shop->save();
+
+            // Send email and catch any mail exceptions
+            Mail::to($shop->email)->send(new ProductApprove($shop));
+
+            return response()->json(['message' => 'Product approved successfully!']);
+
+        } catch (\Exception $e) {
+            // Log the exception message
+            Log::error("Error approving product for shop ID {$id}: " . $e->getMessage());
+
+            return response()->json(['message' => 'An error occurred while approving the product'], 500);
         }
-
-        // Update product approval and cancellation status
-        $shop->product_approve = Carbon::now();
-        $shop->cancel_product = 'No';
-        $shop->save();
-
-        // Send email and catch any mail exceptions
-        Mail::to($shop->email)->send(new ProductApprove($shop));
-
-        return response()->json(['message' => 'Product approved successfully!']);
-
-    } catch (\Exception $e) {
-        // Log the exception message
-        Log::error("Error approving product for shop ID {$id}: " . $e->getMessage());
-
-        return response()->json(['message' => 'An error occurred while approving the product'], 500);
     }
-}
 
     public function cancelProduct($id)
     {

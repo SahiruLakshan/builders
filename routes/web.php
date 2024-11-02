@@ -68,7 +68,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/brandupdate/{id}', [BrandController::class, 'update']);
     Route::put('/brand/update/{id}', [BrandController::class, 'updateBrand']);
     Route::get('/brand/delete/{id}', [BrandController::class, 'deleteBrand']);
-
+    //this one for the connect band with product
+    Route::get('/brandproduct', [BrandController::class, 'brandproduct'])->name('brandproduct');
     // //measurement routes
     // Route::get('/addbrand', [MeasurementController::class, 'index']);
     Route::get('/addmeasurement', [MeasurementController::class, 'index']);
@@ -117,13 +118,10 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     // Route::get('/addadvertisement', [AdvertisementController::class, 'index'])->name('addadvertisement');
 
     Route::get('/addadvertisement', function () {
-        return view('admin.addadvertisement'); })->name('addadvertisement');
+        return view('admin.addadvertisement');
+    })->name('addadvertisement');
     Route::post('/upload', [AdvertisementUploadController::class, 'upload'])->name('upload');
 
-    // Route::get('/addservice', function () {
-    //     return view('admin.addservice');
-    // })->name('addservice');
-    // Route to display the add service form (optional)
 
     // Route to handle form submission
     Route::post('/addservice', [ServiceController::class, 'store']);
