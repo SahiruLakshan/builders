@@ -9,15 +9,16 @@
             <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
               <div class="card box-shadow-0">
                 <div class="card-header">
-                  <h4 class="card-title mb-1">Add Product Category</h4>
+                  <h4 class="card-title mb-1">Select Brand Related To Product </h4>
+                 
                 </div>
                 <div class="card-body pt-0">
-                  <form action="/submitproductcategory" method="post" id="shopCategoryForm" novalidate>
+                  <form action="" method="post" id="shopCategoryForm" novalidate>
                     @csrf
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                            <label for="product">Select Product</label>
+                            <label for="product">Select Product </label>
                             <select class="form-control select2" id="product">
                                 <option value="" disabled selected></option>
                                 {{-- @foreach ($products as $product)
@@ -25,14 +26,14 @@
                                 @endforeach --}}
                             </select>
                             <small class="form-text text-muted">
-                              Choose one product for this category. Required field.
+                              Choose one product for this Brand. Required field.
                             </small>
                         </div>
                       </div>
                          <!-- Product Related Brand Field -->
                       <div class="col-md-6">
                         <div class="form-group">
-                            <label for="product">Select Brand Related to this Category </label>
+                            <label for="product">Select Brand  </label>
                             <select class="form-control select2" id="product">
                                 <option value="" disabled selected></option>
                                 {{-- @foreach ($products as $product)
@@ -40,48 +41,12 @@
                                 @endforeach --}}
                             </select>
                             <small class="form-text text-muted">
-                              Choose Brand for this subcategory. Required field.
+                              Choose Brand for this product. Required field.
                             </small>
                         </div>
                       </div>
-                      <!-- Category Name Field -->
-                      <div class="form-group">
-                        <label for="shop_category_name"
-                          >Product Category Name</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="shop_category_name"
-                          name="name"
-                          placeholder="Enter Category Name"
-                          required
-                        />
-                        <div class="invalid-feedback">
-                          Please provide a valid Product Category Name.
-                        </div>
-                      </div>
-                      
-                      <div class="form-group">
-                        <label for="description"
-                          >Description</label
-                        >
-                        <textarea
-                          class="form-control"
-                          id="description"
-                          name="description"
-                          placeholder="Enter description"
-                          rows="4"
-                          required
-                        ></textarea>
-                        <div class="invalid-feedback">
-                          Please provide a valid description.
-                        </div>
-                      </div>
-
-
                       <!-- Action Buttons -->
-                      <div class="form-group">
+                      <div class="form-group justify-content-end">
                         <button type="submit" class="btn btn-primary mt-3 mb-0">
                           Submit
                         </button>

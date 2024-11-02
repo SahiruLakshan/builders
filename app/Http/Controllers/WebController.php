@@ -21,9 +21,9 @@ class WebController extends Controller
     public function shopcategory($name)
     {
         // $shops = Shop::where('category', 'like', '%' . $name . '%')->paginate(20);
-        // $shops = DB::select("SELECT *, tbl_ds.ds_name AS city_name, tbl_district.dis_name AS distric_name FROM `shops`
-        // LEFT JOIN tbl_ds ON tbl_ds.ds_id = shops.city
-        // LEFT JOIN tbl_district ON tbl_district.dis_id = shops.district");
+// $shops = DB::select("SELECT *, tbl_ds.ds_name AS city_name, tbl_district.dis_name AS distric_name FROM `shops`
+// LEFT JOIN tbl_ds ON tbl_ds.ds_id = shops.city
+// LEFT JOIN tbl_district ON tbl_district.dis_id = shops.district");
         $shops = DB::table('shops')
             ->leftJoin('tbl_ds', 'tbl_ds.ds_id', '=', 'shops.city') // Join city table
             ->leftJoin('tbl_district', 'tbl_district.dis_id', '=', 'shops.district') // Join district table
@@ -39,13 +39,8 @@ class WebController extends Controller
         // $brand = Shop::where('category', 'like', '%' . $name . '%')->brand()->get();
 
         return view('webpages.product', compact('shops', 'dictricts', 'brands'));
-
-
-
-
-
-
     }
+
     public function shopSuppliers(Request $request)
     {
         $shop_catogories = ShopCategory::select('id', 'name')->get();
@@ -218,29 +213,52 @@ class WebController extends Controller
     //serach optoins
 
     public function search(Request $request)
+    // {
+    //     $query = $request->input('query');
+
+    //     // Search in the `shops` table
+    //     $shopResults = Shop::where('name', 'like', '%' . $query . '%')
+    //         ->orWhere('category', 'like', '%' . $query . '%')
+    //         ->orWhere('district', 'like', '%' . $query . '%')
+    //         ->get();
+
+    //     // Search in the `shopproducts` table
+    //     $productResults = ShopProduct::where('name', 'like', '%' . $query . '%')
+    //         ->orWhere('description', 'like', '%' . $query . '%')
+    //         ->get();
+
+    //     // Search in the `brands` table
+    //     $brandResults = Brand::where('b_name', 'like', '%' . $query . '%')
+    //         ->get();
+
+    //     // Combine the results into one collection
+    //     $results = $shopResults->concat($productResults)->concat($brandResults);
+
+    //     // Pass the combined results to the view
+    //     return view('search-results', compact('results'));
+    // }
     {
-        // $query = $request->input('query');
+        $term = $request->input('query');
+        $tables = ['shops', 'service_providers', 'brands']; // Add your table names here
+        $results = collect(); // Collection to store all results
 
-        // // Search in the `shops` table
-        // $shopResults = Shop::where('name', 'like', '%' . $query . '%')
-        //     ->orWhere('category', 'like', '%' . $query . '%')
-        //     ->orWhere('district', 'like', '%' . $query . '%')
-        //     ->get();
+        foreach ($tables as $table) {
+            // Get all column names for the table
+            $columns = DB::getSchemaBuilder()->getColumnListing($table);
 
-        // // Search in the `shopproducts` table
-        // $productResults = ShopProduct::where('name', 'like', '%' . $query . '%')
-        //     ->orWhere('description', 'like', '%' . $query . '%')
-        //     ->get();
+            // Build query for each table
+            $query = DB::table($table);
 
-        // // Search in the `brands` table
-        // // $brandResults = Brand::where('b_name', 'like', '%' . $query . '%')
-        // //     ->get();
+            foreach ($columns as $column) {
+                $query->orWhere($column, 'LIKE', "%{$term}%");
+            }
 
-        // // Combine the results into one collection
-        // // $results = $shopResults->concat($productResults)->concat($brandResults);
-
-        // // Pass the combined results to the view
-        // return view('search-results', compact('results'));
+            // Execute query and merge results
+            $results = $results->merge($query->get());
+        }
+        // dd($results);
+        // Return view with all results combined
+        return view('webpages.search', compact('results'));
     }
 
 }

@@ -17,7 +17,7 @@ use App\Models\Productcategory;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\AdvertisementUploadController;
 use App\Http\Controllers\ServiceProviderController;
 // Route::get('/', function () {
 //     return view('login');
@@ -68,7 +68,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/brandupdate/{id}', [BrandController::class, 'update']);
     Route::put('/brand/update/{id}', [BrandController::class, 'updateBrand']);
     Route::get('/brand/delete/{id}', [BrandController::class, 'deleteBrand']);
-
+    //this one for the connect band with product
+    Route::get('/brandproduct', [BrandController::class, 'brandproduct'])->name('brandproduct');
     // //measurement routes
     // Route::get('/addbrand', [MeasurementController::class, 'index']);
     Route::get('/addmeasurement', [MeasurementController::class, 'index']);
@@ -119,17 +120,12 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/addadvertisement', function () {
         return view('admin.addadvertisement');
     })->name('addadvertisement');
+    Route::post('/upload', [AdvertisementUploadController::class, 'upload'])->name('upload');
 
-    Route::post('/upload', [FileUploadController::class, 'upload'])->name('upload');
-
-    // Route::get('/addservice', function () {
-    //     return view('admin.addservice');
-    // })->name('addservice');
-    // Route to display the add service form (optional)
-    Route::get('/addservice', [ServiceController::class, 'create'])->name('addservice');
 
     // Route to handle form submission
     Route::post('/addservice', [ServiceController::class, 'store']);
+    Route::get('/addservice', [ServiceController::class, 'create'])->name('addservice');
     Route::get('/viewservice', [ServiceController::class, 'viewservice']);
     // Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit'); // Display update form
     // Route::put('service/{id}', [ServiceController::class, 'update'])->name('service.update');  // Handle update request
