@@ -34,7 +34,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                             <label for="product">Select Brand  </label>
-                            <select class="form-control select2" id="product">
+                            <select class="form-control select2" id="brand">
                                 <option value="" disabled selected></option>
                                 {{-- @foreach ($products as $product)
                                     <option value="{{ $product->id }}">{{ $product->name }}</option>
@@ -66,5 +66,20 @@
           </div>
         </div>
       </div>
+      <script>
+           $(document).ready(function() {
+            // Initialize select2 for both dropdowns
+         $('#product').select2({
+             placeholder: "Select a product",
+             allowClear: true
+         })
+
+         $('#brand').select2({
+             placeholder: "Select a brand", 
+             allowClear: true
+         })
+      })
+      </script>
+   
           @endsection
       

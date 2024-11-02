@@ -33,6 +33,14 @@
                                   Choose one or more products for this Subcategory. Required field.
                                 </small>
                             </div>
+                          <script>
+                          $(document).ready(function() {
+                            $("#product").select2({
+                              placeholder: "Select Product",
+                              allowClear: true;
+                            })
+                          })       
+                          </script>
                           </div>
                           <!-- Subcategory Name Field -->
                           <div class="form-group  col-md-6">
