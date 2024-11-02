@@ -21,9 +21,9 @@ class WebController extends Controller
     public function shopcategory($name)
     {
         // $shops = Shop::where('category', 'like', '%' . $name . '%')->paginate(20);
-        // $shops = DB::select("SELECT *, tbl_ds.ds_name AS city_name, tbl_district.dis_name AS distric_name FROM `shops`
-        // LEFT JOIN tbl_ds ON tbl_ds.ds_id = shops.city
-        // LEFT JOIN tbl_district ON tbl_district.dis_id = shops.district");
+// $shops = DB::select("SELECT *, tbl_ds.ds_name AS city_name, tbl_district.dis_name AS distric_name FROM `shops`
+// LEFT JOIN tbl_ds ON tbl_ds.ds_id = shops.city
+// LEFT JOIN tbl_district ON tbl_district.dis_id = shops.district");
         $shops = DB::table('shops')
             ->leftJoin('tbl_ds', 'tbl_ds.ds_id', '=', 'shops.city') // Join city table
             ->leftJoin('tbl_district', 'tbl_district.dis_id', '=', 'shops.district') // Join district table
@@ -39,13 +39,8 @@ class WebController extends Controller
         // $brand = Shop::where('category', 'like', '%' . $name . '%')->brand()->get();
 
         return view('webpages.product', compact('shops', 'dictricts', 'brands'));
-
-
-
-
-
-
     }
+
     public function shopSuppliers(Request $request)
     {
         $shop_catogories = ShopCategory::select('id', 'name')->get();
@@ -242,7 +237,6 @@ class WebController extends Controller
     //     // Pass the combined results to the view
     //     return view('search-results', compact('results'));
     // }
-
     {
         $term = $request->input('query');
         $tables = ['shops', 'service_providers', 'brands']; // Add your table names here

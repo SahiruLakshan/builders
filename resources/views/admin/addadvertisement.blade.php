@@ -229,6 +229,10 @@
                                      <div class="dropzone" id="my-dropzone3"></div>
                                      <input type="file" class="form-control mt-2" name="right_image[]" id="right_image" accept=".jpg, .png, .jpeg" multiple>
                                  </div>
+                                 <div>
+                                    <label for="day_count">How Many Day Do You Want To Show</label>
+                                    <input type="number" class="form-control" name="day_count" id="day_count">
+                                 </div>
                              </div>
  
                              <!-- Submit Button -->

@@ -25,6 +25,18 @@
             <form action="/submitbrand" method="POST" class="form-horizontal" enctype="multipart/form-data">
               @csrf
               <div class="row">
+                {{-- <!-- Product Selection Field -->
+                <div class="form-group col-md-6">
+                  <label for="product">Select Product</label>
+                  <select name="product" id="product" class="form-control select2" multiple="multiple" required>
+                    @foreach ($products as $product)
+                      <option value="{{ $product->id }}">{{ $product->name }}</option>
+                    @endforeach
+                  </select>
+                  <small class="form-text text-muted">
+                    Choose one or more products for this brand. Required field.
+                  </small>
+                </div> --}}
                 <!-- Brand Name Field -->
                 <div class="form-group col-md-6">
                   <label for="brand_name">Brand Name</label>
