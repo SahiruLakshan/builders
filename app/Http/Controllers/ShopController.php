@@ -16,6 +16,7 @@ use App\Mail\CancelProduct;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class ShopController extends Controller
 {
@@ -36,7 +37,8 @@ class ShopController extends Controller
         $category_count = Shopproduct::where('shop_id', $id)->distinct('product_category_id')->count();
 
 
-        $shop_product = Shopproduct::where('shop_id', $id)->with('product', 'category', 'brand')->get();;
+        $shop_product = Shopproduct::where('shop_id', $id)->with('product', 'category', 'brand')->get();
+        ;
         if (!$shop) {
             return response()->json([
                 'message' => 'Shop not found',
@@ -231,7 +233,7 @@ class ShopController extends Controller
         $shop->shop_approve = Carbon::now();
         $shop->cancel_shop = 'No';
         $shop->save();
-        
+
         // Send email
         Mail::to($shop->email)->send(new ShopApproved($shop));
         return response()->json(['message' => 'Shop approved and email sent successfully!']);
@@ -247,15 +249,45 @@ class ShopController extends Controller
         return response()->json(['message' => 'Shop approval canceled successfully!']);
     }
 
+    // public function approveProduct($id)
+    // {
+    //     $shop = Shop::find($id);
+    //     $shop->product_approve = Carbon::now();
+    //     $shop->cancel_product = 'No';
+    //     $shop->save();
+
+    //     Mail::to($shop->email)->send(new ProductApprove($shop));
+
+    //     return response()->json(['message' => 'Product approved successfully!']);
+    // }
+
     public function approveProduct($id)
     {
-        $shop = Shop::find($id);
-        $shop->product_approve = Carbon::now();
-        $shop->cancel_product = 'No';
-        $shop->save();
+        try {
+            $shop = Shop::find($id);
 
-        Mail::to($shop->email)->send(new ProductApprove($shop));
-        return response()->json(['message' => 'Product approved successfully!']);
+            if (!$shop) {
+                // Log if shop not found
+                Log::error("Shop not found with ID: {$id}");
+                return response()->json(['message' => 'Shop not found'], 404);
+            }
+
+            // Update product approval and cancellation status
+            $shop->product_approve = Carbon::now();
+            $shop->cancel_product = 'No';
+            $shop->save();
+
+            // Send email and catch any mail exceptions
+            Mail::to($shop->email)->send(new ProductApprove($shop));
+
+            return response()->json(['message' => 'Product approved successfully!']);
+
+        } catch (\Exception $e) {
+            // Log the exception message
+            Log::error("Error approving product for shop ID {$id}: " . $e->getMessage());
+
+            return response()->json(['message' => 'An error occurred while approving the product'], 500);
+        }
     }
 
     public function cancelProduct($id)
