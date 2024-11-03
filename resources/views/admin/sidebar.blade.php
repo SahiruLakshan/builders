@@ -472,11 +472,6 @@
                                         </li>
                                     </ul>
                                 </li>
-
-
-
-
-
                                 <li class="side-item side-item-category">REGISTER  </li>
                                 <li class="slide">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
@@ -494,10 +489,6 @@
                                         </li> --}}
                                     </ul>
                                 </li>
-
-
-
-
 
                             </ul>
                             <div class="slide-right" id="slide-right">

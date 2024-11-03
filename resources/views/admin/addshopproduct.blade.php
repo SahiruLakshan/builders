@@ -8,12 +8,18 @@
                 <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                     <div class="card box-shadow-0">
                         <div class="card-header">
-                            <h4 class="card-title mb-1">Add Shop Product</h4>
-                            <p class="mb-2">Enter the details of the product you want to add</p>
-                        </div>
+                            <h4 class="card-title mb-1">Add Shop Items</h4>
+                            <p class="mb-2">Enter the details of the Item you want to add</p>
+                        </div>                       
                         <div class="card-body pt-0">
+
+                           
+
+                            
+                            
                             <!-- Shop Selection -->
                             <form class="form-horizontal" id="addShopProduct">
+
                                 <div class="row">
                                     <!-- Shop Name Field -->
                                     <div class="col-md-3">
@@ -26,11 +32,64 @@
                                     </div>
 
                                 </div>
-                                <h4>ADD PRODUCTS</h4>
+                                <h4>ADD SHOP ITEMS</h4>
+                                <div class="row">
+                                    <div class="row" >
+                                        <div>
+                                              <!-- Button to trigger modal -->
+                                              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemModal">
+                                                Add Shop Items
+                                            </button>
+                                        </div>
+                                       
+                                        <!-- Modal Structure -->
+                                            <div class="modal fade  " id="addItemModal" tabindex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="addItemModalLabel">Add Shop Items</h5>
+                                                            {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
+                                                            {{-- <button type="button" class="btn-close" aria-label="Close"></button> --}}
+                                                        </div>
+                                                        <div class="modal-body " style="width: 100%;">
+                                                            <!-- Select2 dropdown and fields -->
+                                                            <form id="addItemForm">
+                                                                <label for="itemSelect">Select Item</label>
+                                                                <select id="itemSelect" class="form-control" style="width: 100%;">
+                                                                    <option value="" disabled selected></option>
+                                                                    <!-- Options will be populated dynamically if needed -->
+                                                                </select>
+                                                                
+                                                                <label for="itemPrice" class="mt-3">Price</label>
+                                                                <input type="number" id="itemPrice" class="form-control" placeholder="Enter price">
+                                                                
+                                                                <button type="button" class="btn btn-success mt-3" id="addItemBtn">Add Item</button>
+                                                        
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script>
+                                                // Initialize Select2 when modal is shown
+                                                $('#addItemModal').on('shown.bs.modal', function () {
+                                                    $('#itemSelect').select2({
+                                                        placeholder: "Select a product",
+                                                        allowClear: true,
+                                                        width: '100%'  // Ensures it takes the full width in the modal
+                                                    });
+                                                });
+                                            </script>
+                                    </div>
+                                </div>
+
+                                <hr>
+
                                 <!-- Product Details -->
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <div class="form-group">
+                                        <div class="form-group ">
                                             <label for="product">Select Product</label>
                                             <select class="form-control select2" id="product">
                                                 <option value="" disabled selected></option>
@@ -40,7 +99,7 @@
                                             </select>
                                         </div>
                                     </div>
-
+                                    
                                     <!-- Brand -->
                                     <div class="col-md-2">
                                         <div class="form-group">
@@ -80,7 +139,9 @@
                                         </div>
                                     </div>
 
-                                    <!-- Quantity -->
+                                  
+                                
+                                      <!-- Quantity -->
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="quantity">Enter Product Quantity</label>
@@ -88,15 +149,6 @@
                                                 placeholder="Enter quantity" min="1" step="1" />
                                         </div>
                                     </div>
-                                     <!-- Price -->
-                                     <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="price">Enter Product Price</label>
-                                            <input type="number" class="form-control" id="price"
-                                                placeholder="Enter price" min="0.01" step="0.01" />
-                                        </div>
-                                    </div>
-
                                     <!-- Measurement -->
                                     <div class="col-md-2">
                                         <div class="form-group">
@@ -109,6 +161,14 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <!-- Price -->
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="price">Enter Product Price</label>
+                                            <input type="number" class="form-control" id="price"
+                                                placeholder="Enter price" min="0.01" step="0.01" />
+                                        </div>
+                                    </div>                                        
                                     <!-- Color -->
                                     <div class="col-md-2">
                                         <div class="form-group">
@@ -125,29 +185,34 @@
                                                 accept=".jpg,.jpeg,.png" />
                                         </div>
 
-                                        <!-- Container for dynamically added input fields -->
-                                        <div class="container mt-3">
-                                            <div id="inputFieldsContainer" class="mb-3"></div> <!-- Bootstrap margin for spacing -->
-                                            
-                                            <!-- Bootstrap button for adding fields -->
-                                            <button type="button" id="addMoreFieldsBtn" class="btn btn-success">
-                                                Add More Fields
-                                            </button>
-                                        </div>
-                                        
-
+     
 
                                     </div>
 
-
+                                    
                                     <div class="row">
-                                        <div class="col">
+                                        <div class="form-group">
+                                            <div id="inputFieldsContainer" class="d-flex flex-wrap p-2 pb-3">  
+                                            </div>
+                                            <!-- Container for dynamically added input fields -->
+                                           <div class="container mt-3">
+                                                <!-- Bootstrap margin for spacing -->
+                                               <!-- Bootstrap button for adding fields -->
+                                               <button type="button" id="addMoreFieldsBtn" class="btn btn-success">
+                                                   Add More Fields
+                                               </button>
+                                           </div>
+                                       </div>
+                                    </div>
+                                    <div class="row">
+                                            {{-- <div id="inputFieldsContainer" class="container">
+                                                </div>                                         --}}
                                             <div class="form-group">
                                                 <button type="button" id="addProductButton" class="btn btn-primary">
                                                     Add Product
                                                 </button>
                                             </div>
-                                        </div>
+                                      
                                     </div>
                                     
 
@@ -192,10 +257,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Include DataTables CSS and JS -->
-                                <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"
-                                    rel="stylesheet" />
-                                <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+                         
 
                                 <!-- Initialize DataTable -->
                                 <script>
@@ -212,6 +274,28 @@
                                             ]
                                         });
                                     });
+                                    $('#addItemBtn').click(function() {
+                                    const itemId = $('#itemSelect').val();
+                                    const price = $('#itemPrice').val();
+                                    
+                                    $.ajax({
+                                        url: '/add-shop-item', // Route to handle adding item
+                                        method: 'POST',
+                                        data: {
+                                            item_id: itemId,
+                                            price: price,
+                                            _token: '{{ csrf_token() }}'
+                                        },
+                                        success: function(response) {
+                                            alert('Item added successfully!');
+                                            $('#addItemModal').modal('hide');
+                                            // Optionally, refresh item list or table
+                                        },
+                                        error: function(error) {
+                                            alert('Failed to add item.');
+                                        }
+                                    });
+                                });
                                 </script>
 
                                 <!-- End Row -->
@@ -230,9 +314,10 @@
         </div>
         <!-- /Container -->
     </div>
-    <script src="
-                                    https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
-
+    <!-- Include DataTables CSS and JS -->
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
     <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Include DataTables JS -->
@@ -377,101 +462,136 @@
             // const inputFieldsContainer = document.getElementById('inputFieldsContainer');
             // const addMoreFieldsBtn = document.getElementById('addMoreFieldsBtn');
             // let fieldCounter = 1;
+            // let recycledCounters = [];
 
             // function addNewField() {
+            //     const currentFieldCounter = recycledCounters.length > 0 ? recycledCounters.shift() : fieldCounter++;
+
             //     const newFieldHTML = `
-            //         <div class="inputFieldGroup" id="fieldGroup${fieldCounter}">
-            //             <label for="other_categories[${fieldCounter}]">Other Category ${fieldCounter + 1}:</label>
-            //             <input type="text" name="other_categories[]" id="other_categories${fieldCounter}" placeholder="Enter value">
-            //             <button type="button" onclick="deleteField(${fieldCounter})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+            //     <div class="row">
+            //          <div class="inputFieldGroup row mb-2 p-2" id="fieldGroup${currentFieldCounter}">
+            //             <div class="col-md-10">
+            //                 <label for="other_categories${currentFieldCounter}" class="form-label">Other Category ${currentFieldCounter}:</label>
+            //                 <input type="text" name="other_categories[]" class="form-control" id="other_categories${currentFieldCounter}" placeholder="Enter value">
+            //             </div>
+            //             <div class="col-md-2 mt-4 d-flex justify-content-center">
+            //                 <button type="button" class="btn btn-danger btn-sm delete-btn">
+            //                     <i class="fas fa-trash"></i> 
+            //                 </button>
+            //             </div>
+            //         </div>
+            //     </div>
+                    
+            //     `;
+            // inputFieldsContainer.insertAdjacentHTML('beforeend', newFieldHTML);
+            // }
+
+            // // Event listener for adding fields
+            // addMoreFieldsBtn.addEventListener('click', addNewField);
+
+            // // Event delegation for delete buttons
+            // inputFieldsContainer.addEventListener('click', function (event) {
+            //     if (event.target.closest('.delete-btn')) {
+            //         const fieldGroup = event.target.closest('.inputFieldGroup');
+            //         if (fieldGroup) {
+            //             const fieldId = parseInt(fieldGroup.id.replace('fieldGroup', ''));
+            //             recycledCounters.push(fieldId);
+            //             fieldGroup.remove();
+
+            //             // Check if all fields are removed
+            //             if (inputFieldsContainer.children.length === 0) {
+            //                 fieldCounter = 1;             // Reset the counter
+            //                 recycledCounters = [];         // Clear recycled counters
+            //             }
+            //         }
+            //     }
+            // });
+            // const inputFieldsContainer = document.getElementById('inputFieldsContainer');
+            // const addMoreFieldsBtn = document.getElementById('addMoreFieldsBtn');
+            // let fieldCounter = 1;
+            // let recycledCounters = [];
+
+            // function addNewField() {
+            //     const currentFieldCounter = recycledCounters.length > 0 ? recycledCounters.shift() : fieldCounter++;
+
+            //     const newFieldHTML = `
+            //         <div class="inputFieldGroup row mb-2 p-2 align-items-center" id="fieldGroup${currentFieldCounter}">
+            //             <div class="col-md-10">
+            //                 <label for="other_categories${currentFieldCounter}" class="form-label">Other Category ${currentFieldCounter}:</label>
+            //                 <input type="text" name="other_categories[]" class="form-control" id="other_categories${currentFieldCounter}" placeholder="Enter value">
+            //             </div>
+            //             <div class="col-md-2 d-flex justify-content-center">
+            //                 <button type="button" class="btn btn-danger btn-sm delete-btn mt-4">
+            //                     <i class="fas fa-trash"></i> 
+            //                 </button>
+            //             </div>
             //         </div>
             //     `;
-            //     inputFieldsContainer.innerHTML += newFieldHTML;
-            //     fieldCounter++;
+            //     inputFieldsContainer.insertAdjacentHTML('beforeend', newFieldHTML);
             // }
 
-            // function deleteField(counter) {
-            //     const fieldGroup = document.getElementById(`fieldGroup${counter}`);
-            //     if (fieldGroup) {
-            //         inputFieldsContainer.removeChild(fieldGroup);
+            // // Event listener for adding fields
+            // addMoreFieldsBtn.addEventListener('click', addNewField);
+
+            // // Event delegation for delete buttons
+            // inputFieldsContainer.addEventListener('click', function (event) {
+            //     if (event.target.closest('.delete-btn')) {
+            //         const fieldGroup = event.target.closest('.inputFieldGroup');
+            //         if (fieldGroup) {
+            //             const fieldId = parseInt(fieldGroup.id.replace('fieldGroup', ''));
+            //             recycledCounters.push(fieldId);
+            //             fieldGroup.remove();
+
+            //             // Reset the counter if all fields are removed
+            //             if (inputFieldsContainer.children.length === 0) {
+            //                 fieldCounter = 1; // Reset counter to 1
+            //                 recycledCounters = []; // Clear recycled counters
+            //             }
+            //         }
             //     }
-            // }
+            // });
+            const $inputFieldsContainer = $('#inputFieldsContainer');
+            const $addMoreFieldsBtn = $('#addMoreFieldsBtn');
+            let fieldCounter = 1;
+            let recycledCounters = [];
 
-//             const inputFieldsContainer = document.getElementById('inputFieldsContainer');
-// const addMoreFieldsBtn = document.getElementById('addMoreFieldsBtn');
-// let fieldCounter = 1;
-// let recycledCounters = []; // Array to track deleted field numbers
+            function addNewField() {
+                const currentFieldCounter = recycledCounters.length > 0 ? recycledCounters.shift() : fieldCounter++;
 
-// function addNewField() {
-//     // Check if there is a deleted field number to reuse
-//     const currentFieldCounter = recycledCounters.length > 0 ? recycledCounters.shift() : fieldCounter++;
+                const newFieldHTML = `
+                    <div class="inputFieldGroup row mb-2 p-2 align-items-center" id="fieldGroup${currentFieldCounter}">
+                        <div class="col-md-10">
+                            <label for="other_categories${currentFieldCounter}" class="form-label">Other Category ${currentFieldCounter}:</label>
+                            <input type="text" name="other_categories[]" class="form-control" id="other_categories${currentFieldCounter}" placeholder="Enter value">
+                        </div>
+                        <div class="col-md-2 d-flex justify-content-center">
+                            <button type="button" class="btn btn-danger btn-sm delete-btn mt-4">
+                                <i class="fas fa-trash"></i> 
+                            </button>
+                        </div>
+                    </div>
+                `;
+                $inputFieldsContainer.append(newFieldHTML);
+            }
 
-//     const newFieldHTML = `
-//         <div class="inputFieldGroup" id="fieldGroup${currentFieldCounter}">
-//             <label for="other_categories[${currentFieldCounter}]">Other Category ${currentFieldCounter}:</label>
-//             <input type="text" name="other_categories[]" id="other_categories${currentFieldCounter}" placeholder="Enter value">
-//             <button type="button" class="btn btn-danger btn-sm delete-btn">
-//                 <i class="fas fa-trash"></i>
-//             </button>
-//         </div>
-//     `;
-//     inputFieldsContainer.insertAdjacentHTML('beforeend', newFieldHTML);
-// }
+            // Event listener for adding fields
+            $addMoreFieldsBtn.on('click', addNewField);
 
-// // Event listener for adding fields
-// addMoreFieldsBtn.addEventListener('click', addNewField);
+            // Event delegation for delete buttons
+            $inputFieldsContainer.on('click', '.delete-btn', function() {
+                const $fieldGroup = $(this).closest('.inputFieldGroup');
+                if ($fieldGroup.length) {
+                    const fieldId = parseInt($fieldGroup.attr('id').replace('fieldGroup', ''));
+                    recycledCounters.push(fieldId);
+                    $fieldGroup.remove();
 
-// // Event delegation for delete buttons
-// inputFieldsContainer.addEventListener('click', function (event) {
-//     if (event.target.closest('.delete-btn')) {
-//         const fieldGroup = event.target.closest('.inputFieldGroup');
-//         if (fieldGroup) {
-//             const fieldId = parseInt(fieldGroup.id.replace('fieldGroup', '')); // Extract the number
-//             recycledCounters.push(fieldId); // Add deleted field number to the recycled list
-//             fieldGroup.remove();
-//         }
-//     }
-// });
-const inputFieldsContainer = document.getElementById('inputFieldsContainer');
-const addMoreFieldsBtn = document.getElementById('addMoreFieldsBtn');
-let fieldCounter = 1;
-let recycledCounters = [];
-
-function addNewField() {
-    const currentFieldCounter = recycledCounters.length > 0 ? recycledCounters.shift() : fieldCounter++;
-
-    const newFieldHTML = `
-        <div class="inputFieldGroup row mb-2" id="fieldGroup${currentFieldCounter}">
-            <div class="col-md-8">
-                <label for="other_categories${currentFieldCounter}" class="form-label">Other Category ${currentFieldCounter}:</label>
-                <input type="text" name="other_categories[]" class="form-control" id="other_categories${currentFieldCounter}" placeholder="Enter value">
-            </div>
-            <div class="col-md-4 d-flex align-items-center">
-                <button type="button" class="btn btn-danger btn-sm delete-btn ms-2">
-                    <i class="fas fa-trash"></i> 
-                </button>
-            </div>
-        </div>
-    `;
-    inputFieldsContainer.insertAdjacentHTML('beforeend', newFieldHTML);
-}
-
-// Event listener for adding fields
-addMoreFieldsBtn.addEventListener('click', addNewField);
-
-// Event delegation for delete buttons
-inputFieldsContainer.addEventListener('click', function (event) {
-    if (event.target.closest('.delete-btn')) {
-        const fieldGroup = event.target.closest('.inputFieldGroup');
-        if (fieldGroup) {
-            const fieldId = parseInt(fieldGroup.id.replace('fieldGroup', ''));
-            recycledCounters.push(fieldId);
-            fieldGroup.remove();
-        }
-    }
-});
-
-
+                    // Reset the counter if all fields are removed
+                    if ($inputFieldsContainer.children().length === 0) {
+                        fieldCounter = 1; // Reset counter to 1
+                        recycledCounters = []; // Clear recycled counters
+                    }
+                }
+            });
 
 
         });
