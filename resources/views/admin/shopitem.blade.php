@@ -13,227 +13,174 @@
                         </div>                       
                         <div class="card-body pt-0">
 
-                           
-
-                            
-                            
                             <!-- Shop Selection -->
                             <form class="form-horizontal" id="addShopProduct">
 
-                                {{-- <div class="row">
-                                    <!-- Shop Name Field -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="shop_name">Select Shop Name</label>
-                                            <select class="form-control select2" id="shop_name" name="shop_name">
-                                                <option value="{{ $shops->id }}">{{ $shops->name }}</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                </div> --}}
                                 <h4>ADD SHOP ITEMS</h4>
-                                <div class="row">
-                                    {{-- <div class="row" >
-                                        <div>
-                                              <!-- Button to trigger modal -->
-                                              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemModal">
-                                                Add Shop Items
-                                            </button>
-                                        </div>
-                                       
-                                        <!-- Modal Structure -->
-                                            <div class="modal fade  " id="addItemModal" tabindex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="addItemModalLabel">Add Shop Items</h5>
-                                            
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
-                                                           
-                                                        </div>
-                                                        <div class="modal-body " style="width: 100%;">
-                                                            <!-- Select2 dropdown and fields -->
-                                                            <form id="addItemForm">
-                                                                <label for="itemSelect">Select Item</label>
-                                                                <select id="itemSelect" class="form-control" style="width: 100%;">
-                                                                    <option value="" disabled selected></option>
-                                                                    <!-- Options will be populated dynamically if needed -->
-                                                                </select>
-                                                                
-                                                                <label for="itemPrice" class="mt-3">Price</label>
-                                                                <input type="number" id="itemPrice" class="form-control" placeholder="Enter price">
-                                                                
-                                                                <button type="button" class="btn btn-success mt-3" id="addItemBtn">Add Item</button>
-                                                        
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <script>
-                                                // Initialize Select2 when modal is shown
-                                                $('#addItemModal').on('shown.bs.modal', function () {
-                                                    $('#itemSelect').select2({
-                                                        placeholder: "Select a product",
-                                                        allowClear: true,
-                                                        width: '100%'  // Ensures it takes the full width in the modal
-                                                    });
-                                                });
-                                            </script>
-                                    </div> --}}
-                                </div>
-
                                 <hr>
-
                                 <!-- Product Details -->
                                 <div class="row">
-                                    <!-- ShopItem no -->
-                                    {{-- //this one need to aoutomaticaly fill  --}}
-                                    <div class="col-md-6">
-                                        <div class="form-group ">
-                                            <label for="product">Shop Item No:</label>
-                                           <input type="text" class="form-control" id="shop_item_no" name="shop_item_no">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="color">Image</label>
-                                            <input class="form-control" type="file" name="image" id="image" accept=".jpg,.jpeg,.png" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group ">
-                                            <label for="product">Select Product:</label>
-                                            <select class="form-control select2" id="product">
-                                                <option value="" disabled selected></option>
-                                                {{-- @foreach ($products as $product)
-                                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
-                                                @endforeach --}}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Brand -->
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="brand_category">Select Brand</label>
-                                            <select class="form-control select2" id="brand_category">
-                                                <option value="" disabled selected></option>
-                                                {{-- @foreach ($brand as $brands)
-                                                    <option value="{{ $brands->id }}">{{ $brands->b_name }}</option>
-                                                @endforeach --}}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- Category -->
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="product_category">Select Product Category</label>
-                                            <select class="form-control select2" id="product_category">
-                                                <option value="" disabled selected></option>
-                                                {{-- @foreach ($pc as $pc)
-                                                    <option value="{{ $pc->id }}">{{ $pc->name }}</option>
-                                                @endforeach --}}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- SubCategory -->
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="sub_category">Select Product SubCategory</label>
-                                            <select class="form-control select2" id="sub_category">
-                                                <option value="" disabled selected></option>
-                                                {{-- @foreach ($sub as $sub)
-                                                    <option value="{{ $sub->id }}">{{ $sub->name }}</option>
-                                                @endforeach --}}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- Color -->
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="color">Color</label>
-                                            <input type="text" class="form-control" id="color"
-                                                placeholder="Enter color" />
-                                        </div>
-                                    </div>
-
-                                     <!-- Quantity -->
-                                     <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="quantity"> Product Quantitiy</label>
-                                            <input type="number" class="form-control" id="quantity"
-                                                placeholder="Enter quantity" min="1" step="1" />
-                                        </div>
-                                    </div> 
-                                   
-                                    <!-- Measurement -->
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="measurement">Select Measurement</label>
-                                            <select class="form-control select2" id="measurement">
-                                                {{-- @foreach ($measurement as $measurements)
-                                                    <option value="{{ $measurements->id }}">{{ $measurements->unit }}
-                                                    </option>
-                                                @endforeach --}}
-                                            </select>
-                                        </div>
-                                    </div>
-                                   
-                                    <!-- Price -->
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="price"> Unit Price</label>
-                                            <input type="number" class="form-control" id="price"
-                                                placeholder="Enter price" min="0.01" step="0.01" />
-                                        </div>
-                                    </div> 
-                                    
-                                      <!-- Vander -->
-                                      <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="Vander">Vander</label>
-                                                <select class="form-control" id="vander">
-                                                        <option value="manufacturer">MANUFACTURER</option>
-                                                        <option value="importer">IMPORTER</option>
-                                                        <option value="distributer">DISTRIBUTER</option>
-                                                </select>
+                                    <div class="row">
+                                        <!-- Shop Item No (Automatically filled) -->
+                                        <div class="col-md-6">
+                                            <div class="form-group ">
+                                                <label for="product">Shop Item No:</label>
+                                                <input type="text" class="form-control" id="shop_item_no" name="shop_item_no" readonly>
+                                                <small class="form-text text-muted">Automatically generated shop item number.</small>
                                             </div>
                                         </div>
-                                    <div class="col-md-4" >
-                                        <div class="form-group">
-                                            <label for="discount">Discount</label>
-                                            <input type="number" class="form-control" id="discount" placeholder="Enter Discount"
-                                            min="0.1%" step="0.1%" >
+                                        
+                                        <!-- Image -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="color">Image</label>
+                                                <input class="form-control" type="file" name="image" id="image" accept=".jpg,.jpeg,.png" />
+                                                <small class="form-text text-muted">Upload a clear image in JPG, JPEG, or PNG format.</small>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4" >
-                                        <div class="form-group">
-                                            <label for="cost">Cost</label>
-                                            <input type="number" class="form-control" id="cost" placeholder="Enter Discount"
-                                            min="0.1%" >
+                                        
+                                        <!-- Select Product -->
+                                        <div class="col-md-6">
+                                            <div class="form-group ">
+                                                <label for="product">Select Product:</label>
+                                                <select class="form-control select2" id="product">
+                                                    <option value="" disabled selected></option>
+                                                    {{-- Dynamically filled product options --}}
+                                                </select>
+                                                <small class="form-text text-muted">Choose a product from the list.</small>
+                                            </div>
                                         </div>
-
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="color">Attachment</label>
-                                            <input class="form-control" type="file" name="attachment" id="attachment" accept=".jpg,.jpeg,.png" />
+                                        
+                                        <!-- Select Brand -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="brand_category">Select Brand</label>
+                                                <select class="form-control select2" id="brand_category">
+                                                    <option value="" disabled selected></option>
+                                                    {{-- Dynamically filled brand options --}}
+                                                </select>
+                                                <small class="form-text text-muted">Select the brand associated with the product.</small>
+                                            </div>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="col-md-6" >
-                                        <div class="form-group">
-                                            <label for="Discriptoin">Discriptions</label>
-                                            <textarea class="form-control" id="descriptoins" rows="5 " name="description" placeholder="Enter discriptoin"></textarea>
+                                        
+                                        <!-- Select Product Category -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="product_category">Select Product Category</label>
+                                                <select class="form-control select2" id="product_category">
+                                                    <option value="" disabled selected></option>
+                                                    {{-- Dynamically filled product category options --}}
+                                                </select>
+                                                <small class="form-text text-muted">Choose the appropriate category for this product.</small>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6" >
-                                        <div class="form-group">
-                                            <label for="Discriptoin">Aplications</label>
-                                            <textarea class="form-control" id="aplication" rows="5 " name="aplication" placeholder="Enter discriptoin"></textarea>
+                                        
+                                        <!-- Select Product Subcategory -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="sub_category">Select Product Subcategory</label>
+                                                <select class="form-control select2" id="sub_category">
+                                                    <option value="" disabled selected></option>
+                                                    {{-- Dynamically filled subcategory options --}}
+                                                </select>
+                                                <small class="form-text text-muted">Select a subcategory if applicable.</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Color -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="color">Color</label>
+                                                <input type="text" class="form-control" id="color" placeholder="Enter color" />
+                                                <small class="form-text text-muted">Specify the color (e.g., Red, Blue).</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Quantity -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="quantity">Product Quantity</label>
+                                                <input type="number" class="form-control" id="quantity" placeholder="Enter quantity" min="1" step="1" />
+                                                <small class="form-text text-muted">Enter the quantity in stock.</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Select Measurement -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="measurement">Select Measurement</label>
+                                                <select class="form-control select2" id="measurement">
+                                                    {{-- Dynamically filled measurement options --}}
+                                                </select>
+                                                <small class="form-text text-muted">Choose the measurement unit for this product.</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Unit Price -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="price">Unit Price</label>
+                                                <input type="number" class="form-control" id="price" placeholder="Enter price" min="0.01" step="0.01" />
+                                                <small class="form-text text-muted">Specify the unit price in the local currency.</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Vendor Type -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="vander">Vendor</label>
+                                                <select class="form-control" id="vander">
+                                                    <option value="manufacturer">Manufacturer</option>
+                                                    <option value="importer">Importer</option>
+                                                    <option value="distributer">Distributor</option>
+                                                </select>
+                                                <small class="form-text text-muted">Select the vendor type for this product.</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Discount -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="discount">Discount</label>
+                                                <input type="number" class="form-control" id="discount" placeholder="Enter discount" min="0.1" step="0.1" />
+                                                <small class="form-text text-muted">Enter any applicable discount in percentage.</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Cost -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="cost">Cost</label>
+                                                <input type="number" class="form-control" id="cost" placeholder="Enter cost" min="0.1" />
+                                                <small class="form-text text-muted">Specify the cost to the vendor.</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Attachment -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="attachment">Attachment</label>
+                                                <input class="form-control" type="file" name="attachment" id="attachment" accept=".jpg,.jpeg,.png" />
+                                                <small class="form-text text-muted">Upload an attachment if needed in JPG, JPEG, or PNG format.</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Description -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="descriptoins">Description</label>
+                                                <textarea class="form-control" id="descriptoins" rows="5" name="description" placeholder="Enter description"></textarea>
+                                                <small class="form-text ">Provide a detailed description of the product.</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Applications -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="aplication">Applications</label>
+                                                <textarea class="form-control" id="aplication" rows="5" name="aplication" placeholder="Enter applications"></textarea>
+                                                <small class="form-text text-muted">Describe the product's applications or uses.</small>
+                                            </div>
                                         </div>
                                     </div>
                                     
