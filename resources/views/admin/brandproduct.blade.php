@@ -67,7 +67,7 @@
         </div>
       </div>
       <script>
-           $(document).ready(function() {
+      $(document).ready(function() {
             // Initialize select2 for both dropdowns
          $('#product').select2({
              placeholder: "Select a product",

@@ -25,10 +25,10 @@
                                     <select class="form-control select2" id="product-type">
                                         <option>Select Product</option>
                                         {{-- <option value="car">Car</option>
-                                    <option value="bike">Bike</option>
-                                    <option value="scooter">Scooter</option>
-                                    <option value="cycle">Cycle</option>
-                                    <option value="horse">Horse</option> --}}
+                                        <option value="bike">Bike</option>
+                                        <option value="scooter">Scooter</option>
+                                        <option value="cycle">Cycle</option>
+                                        <option value="horse">Horse</option> --}}
                                     </select>
                                 </form>
                             </div>

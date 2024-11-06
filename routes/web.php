@@ -136,7 +136,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');
     Route::get('/addserviceprovider', [ServiceProviderController::class, 'addserviceproviders'])->name('addserviceprovider');
 
-
+    Route::get('/shopitem', function () {
+        return view('admin.shopitem');
+    })->name('shopitem');
 });
 
 // routes/web.php
