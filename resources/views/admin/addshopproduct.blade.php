@@ -98,6 +98,11 @@
                                         </div>
                                     </div>
                                     <!-- these feild need to loard with alrady added atribute but need to chnage and save the shops tiem table-->
+                                    <hr>
+                                    <div class="col-md-12">
+                                        <h4>This Feild Can Change</h4>
+                                    </div>
+                                    
                                     <div class="col-md-4" >
                                         <div class="form-group">
                                             <label for="discount">Discount</label>
