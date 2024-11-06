@@ -328,13 +328,14 @@
                                             <a href="javascript:void(0);">Shops</a>
                                         </li>
                                         <li>
+                                            <a class="slide-item" href="/shopitem">Add Shops Items
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a class="slide-item" href="/addshop">Add New Shops
                                             </a>
                                         </li>
-                                        {{-- <li>
-                                            <a class="slide-item" href="/addshopproduct">Add Shop Product
-                                            </a>
-                                        </li> --}}
+                                       
                                         <li>
                                             <a class="slide-item" href="/shops">view Shops</a>
                                         </li>

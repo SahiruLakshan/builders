@@ -20,7 +20,7 @@
                             <!-- Shop Selection -->
                             <form class="form-horizontal" id="addShopProduct">
 
-                                <div class="row">
+                                {{-- <div class="row">
                                     <!-- Shop Name Field -->
                                     <div class="col-md-3">
                                         <div class="form-group">
@@ -31,10 +31,10 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                </div> --}}
                                 <h4>ADD SHOP ITEMS</h4>
-                                {{-- <div class="row">
-                                    <div class="row" >
+                                <div class="row">
+                                    {{-- <div class="row" >
                                         <div>
                                               <!-- Button to trigger modal -->
                                               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemModal">
@@ -48,14 +48,24 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="addItemModalLabel">Add Shop Items</h5>
-                                                    
+                                            
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
-                                                 
+                                                           
                                                         </div>
                                                         <div class="modal-body " style="width: 100%;">
                                                             <!-- Select2 dropdown and fields -->
                                                             <form id="addItemForm">
+                                                                <label for="itemSelect">Select Item</label>
+                                                                <select id="itemSelect" class="form-control" style="width: 100%;">
+                                                                    <option value="" disabled selected></option>
+                                                                    <!-- Options will be populated dynamically if needed -->
+                                                                </select>
                                                                 
+                                                                <label for="itemPrice" class="mt-3">Price</label>
+                                                                <input type="number" id="itemPrice" class="form-control" placeholder="Enter price">
+                                                                
+                                                                <button type="button" class="btn btn-success mt-3" id="addItemBtn">Add Item</button>
+                                                        
                                                             </form>
                                                         </div>
                                                     </div>
@@ -71,12 +81,29 @@
                                                     });
                                                 });
                                             </script>
-                                    </div>
-                                </div> --}}
+                                    </div> --}}
+                                </div>
 
                                 <hr>
-                                <div class="d-flex flex-wrap">
-                                    <div class="col-md-4">
+
+                                <!-- Product Details -->
+                                <div class="row">
+                                    <!-- ShopItem no -->
+                                    {{-- //this one need to aoutomaticaly fill  --}}
+                                    <div class="col-md-6">
+                                        <div class="form-group ">
+                                            <label for="product">Shop Item No:</label>
+                                           <input type="text" class="form-control" id="shop_item_no" name="shop_item_no">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="color">Image</label>
+                                            <input class="form-control" type="file" name="image" id="image" accept=".jpg,.jpeg,.png" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
                                         <div class="form-group ">
                                             <label for="product">Select Product:</label>
                                             <select class="form-control select2" id="product">
@@ -87,17 +114,94 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-8" >
-                                        <!-- when we select the product need to show related items for that product -->
+                                    
+                                    <!-- Brand -->
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="itemSelect">Select Item</label>
-                                            <select id="itemSelect" class="form-control">
+                                            <label for="brand_category">Select Brand</label>
+                                            <select class="form-control select2" id="brand_category">
                                                 <option value="" disabled selected></option>
-                                                <!-- Options will be populated dynamically if needed -->
+                                                {{-- @foreach ($brand as $brands)
+                                                    <option value="{{ $brands->id }}">{{ $brands->b_name }}</option>
+                                                @endforeach --}}
                                             </select>
                                         </div>
                                     </div>
-                                    <!-- these feild need to loard with alrady added atribute but need to chnage and save the shops tiem table-->
+                                    <!-- Category -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="product_category">Select Product Category</label>
+                                            <select class="form-control select2" id="product_category">
+                                                <option value="" disabled selected></option>
+                                                {{-- @foreach ($pc as $pc)
+                                                    <option value="{{ $pc->id }}">{{ $pc->name }}</option>
+                                                @endforeach --}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- SubCategory -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="sub_category">Select Product SubCategory</label>
+                                            <select class="form-control select2" id="sub_category">
+                                                <option value="" disabled selected></option>
+                                                {{-- @foreach ($sub as $sub)
+                                                    <option value="{{ $sub->id }}">{{ $sub->name }}</option>
+                                                @endforeach --}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Color -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="color">Color</label>
+                                            <input type="text" class="form-control" id="color"
+                                                placeholder="Enter color" />
+                                        </div>
+                                    </div>
+
+                                     <!-- Quantity -->
+                                     <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="quantity"> Product Quantitiy</label>
+                                            <input type="number" class="form-control" id="quantity"
+                                                placeholder="Enter quantity" min="1" step="1" />
+                                        </div>
+                                    </div> 
+                                   
+                                    <!-- Measurement -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="measurement">Select Measurement</label>
+                                            <select class="form-control select2" id="measurement">
+                                                {{-- @foreach ($measurement as $measurements)
+                                                    <option value="{{ $measurements->id }}">{{ $measurements->unit }}
+                                                    </option>
+                                                @endforeach --}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                   
+                                    <!-- Price -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="price"> Unit Price</label>
+                                            <input type="number" class="form-control" id="price"
+                                                placeholder="Enter price" min="0.01" step="0.01" />
+                                        </div>
+                                    </div> 
+                                    
+                                      <!-- Vander -->
+                                      <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="Vander">Vander</label>
+                                                <select class="form-control" id="vander">
+                                                        <option value="manufacturer">MANUFACTURER</option>
+                                                        <option value="importer">IMPORTER</option>
+                                                        <option value="distributer">DISTRIBUTER</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     <div class="col-md-4" >
                                         <div class="form-group">
                                             <label for="discount">Discount</label>
@@ -105,30 +209,55 @@
                                             min="0.1%" step="0.1%" >
                                         </div>
                                     </div>
-    
                                     <div class="col-md-4" >
                                         <div class="form-group">
-                                            <label for="Units">Units</label>
-                                            <input type="number" class="form-control" id="units" placeholder="Enter Units" min="1">
-                                    
+                                            <label for="cost">Cost</label>
+                                            <input type="number" class="form-control" id="cost" placeholder="Enter Discount"
+                                            min="0.1%" >
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="color">Attachment</label>
+                                            <input class="form-control" type="file" name="attachment" id="attachment" accept=".jpg,.jpeg,.png" />
                                         </div>
                                     </div>
-                                      
-                                    <div class="col-md-4" >
-                                        <label for="price"> Unit Price</label>
-                                        <input type="number" class="form-control" id="price"
-                                            placeholder="Enter price" min="0.01" step="0.01" />
+                                    
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label for="Discriptoin">Discriptions</label>
+                                            <textarea class="form-control" id="descriptoins" rows="5 " name="description" placeholder="Enter discriptoin"></textarea>
+                                        </div>
                                     </div>
-
-                                </div>
-                              
-           
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label for="Discriptoin">Aplications</label>
+                                            <textarea class="form-control" id="aplication" rows="5 " name="aplication" placeholder="Enter discriptoin"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div id="inputFieldsContainer" class="d-flex flex-wrap p-2 pb-3">  
+                                            </div>
+                                            <!-- Container for dynamically added input fields -->
+                                           <div class="container mt-3">
+                                                <!-- Bootstrap margin for spacing -->
+                                               <!-- Bootstrap button for adding fields -->
+                                               <button type="button" id="addMoreFieldsBtn" class="btn btn-success">
+                                                   Add More Fields
+                                               </button>
+                                           </div>
+                                       </div>
+                                    </div>
                                     <div class="row">
                                             {{-- <div id="inputFieldsContainer" class="container">
                                                 </div>                                         --}}
-                                            <div class="form-group mt-3">
+                                            <div class="form-group">
                                                 <button type="button" id="addProductButton" class="btn btn-primary">
-                                                    Add Shop Item
+                                                    Add Shop Items
                                                 </button>
                                             </div>
                                       
@@ -146,7 +275,7 @@
                                     <div class="col-lg-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4>Shop Items</h4>
+                                                <h4>Shop Product</h4>
                                             </div>
                                             <div class="card-body">
                                                 <div class="table-responsive">
@@ -220,7 +349,7 @@
                                 <!-- End Row -->
 
                                 <!-- Submit Button -->
-                                <div class="form-group p-3 justify-content-end">
+                                <div class="form-group mb-0 mt-3 justify-content-end">
                                     <button type="button" id="submitProducts" class="btn btn-primary">Submit All
                                         Products</button>
                                 </div>
