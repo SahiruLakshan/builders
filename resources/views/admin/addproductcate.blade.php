@@ -18,11 +18,11 @@
                       <div class="col-md-6">
                         <div class="form-group">
                             <label for="product">Select Product</label>
-                            <select class="form-control select2" id="product_select">
+                            <select class="form-control select2" name="product" id="product_select">
                                 <option value="" disabled selected></option>
-                                {{-- @foreach ($products as $product)
+                                @foreach ($products as $product)
                                     <option value="{{ $product->id }}">{{ $product->name }}</option>
-                                @endforeach --}}
+                                @endforeach
                             </select>
                             <small class="form-text text-muted">
                               Choose one product for this category. Required field.
@@ -33,11 +33,11 @@
                       <div class="col-md-6">
                         <div class="form-group">
                             <label for="product">Select Brand Related to this Category </label>
-                            <select class="form-control select2" id="brand_select">
+                            <select class="form-control select2" name="brand" id="brand_select">
                                 <option value="" disabled selected></option>
-                                {{-- @foreach ($products as $product)
-                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
-                                @endforeach --}}
+                                @foreach ($brands as $brand)
+                                    <option value="{{ $brand->id }}">{{ $brand->b_name }}</option>
+                                @endforeach
                             </select>
                             <small class="form-text text-muted">
                               Choose Brand for this subcategory. Required field.
