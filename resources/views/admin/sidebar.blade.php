@@ -327,10 +327,7 @@
                                         <li class="side-menu__label1">
                                             <a href="javascript:void(0);">Shops</a>
                                         </li>
-                                        <li>
-                                            <a class="slide-item" href="/shopitem">Add Shops Items
-                                            </a>
-                                        </li>
+                                      
                                         <li>
                                             <a class="slide-item" href="/addshop">Add New Shops
                                             </a>
@@ -359,6 +356,10 @@
                                     <ul class="slide-menu">
                                         <li class="side-menu__label1">
                                             <a href="javascript:void(0);">Product </a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="/shopitem">Add Shops Product
+                                            </a>
                                         </li>
                                         <li>
                                             <a class="slide-item" href="/addproduct">Add New Product

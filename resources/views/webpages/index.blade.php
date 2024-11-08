@@ -242,13 +242,13 @@
                         </li> --}}
                         <li><a href="{{ url('/') }}">Home</a></li>
                         <li><a href="{{ url('/aboutus') }}">About Us</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
-                        <li><a href="publications.html">Publications</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Publications</a></li>
                         <li>
-                          <a href="certifications.html">Certifications</a>
+                          <a href="#">Certifications</a>
                         </li>
-                        <li><a href="career.html">Career</a></li>
-                        <li><a href="education.html">Education</a></li>
+                        <li><a href="#">Career</a></li>
+                        <li><a href="#">Education</a></li>
                       </ul>
                     </div>
                     <div class="d-flex">

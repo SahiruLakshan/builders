@@ -100,7 +100,7 @@
                                     <!-- these feild need to loard with alrady added atribute but need to chnage and save the shops tiem table-->
                                     <hr>
                                     <div class="col-md-12">
-                                        <h4>This Feild Can Change</h4>
+                                        <h4>This Feilds Can Change</h4>
                                     </div>
                                     
                                     <div class="col-md-4" >
@@ -118,16 +118,12 @@
                                     
                                         </div>
                                     </div>
-                                      
                                     <div class="col-md-4" >
                                         <label for="price"> Unit Price</label>
                                         <input type="number" class="form-control" id="price"
                                             placeholder="Enter price" min="0.01" step="0.01" />
                                     </div>
-
                                 </div>
-                              
-           
                                     <div class="row">
                                             {{-- <div id="inputFieldsContainer" class="container">
                                                 </div>                                         --}}
@@ -138,9 +134,6 @@
                                             </div>
                                       
                                     </div>
-                                    
-
-
                                     <!-- Add Product Button -->
 
                                 </div>

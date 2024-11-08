@@ -46,4 +46,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function brandProductsCreated()
+    {
+        return $this->hasMany(BrandProduct::class, 'created_by');
+    }
+
 }

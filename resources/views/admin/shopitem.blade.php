@@ -24,9 +24,9 @@
                                         <!-- Shop Item No (Automatically filled) -->
                                         <div class="col-md-6">
                                             <div class="form-group ">
-                                                <label for="product">Shop Item No:</label>
-                                                <input type="text" class="form-control" id="shop_item_no" name="shop_item_no" readonly>
-                                                <small class="form-text text-muted">Automatically generated shop item number.</small>
+                                                <label for="product">Shop Product No:</label>
+                                                <input type="text" class="form-control" id="shop_item_no" name="shop_product_no" readonly>
+                                                <small class="form-text text-muted">Automatically generated shop Product number.</small>
                                             </div>
                                         </div>
                                         
