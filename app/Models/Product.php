@@ -9,10 +9,16 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $table='product';
-    protected $fillable=[
+    protected $table = 'product';
+    protected $fillable = [
         'name',
         'description',
-        
+
     ];
+
+    public function brandProducts()
+    {
+        return $this->hasMany(BrandProduct::class);
+    }
+
 }

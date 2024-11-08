@@ -19,6 +19,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdvertisementUploadController;
 use App\Http\Controllers\ServiceProviderController;
+use App\Http\Controllers\BrandProductController;
 // Route::get('/', function () {
 //     return view('login');
 // });
@@ -68,8 +69,20 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/brandupdate/{id}', [BrandController::class, 'update']);
     Route::put('/brand/update/{id}', [BrandController::class, 'updateBrand']);
     Route::get('/brand/delete/{id}', [BrandController::class, 'deleteBrand']);
+
     //this one for the connect band with product
-    Route::get('/brandproduct', [BrandController::class, 'brandproduct'])->name('brandproduct');
+
+    Route::get('/brandproduct', [BrandProductController::class, 'showForm'])->name('brandproduct.form');
+
+    // Route to fetch brands (for AJAX)
+    Route::get('/fetch-brands', [BrandProductController::class, 'fetchBrands'])->name('fetch.brands');
+
+    // Route to fetch products (for AJAX)
+    Route::get('/fetch-products', [BrandProductController::class, 'fetchProducts'])->name('fetch.products');
+
+    // Route to save the brand-product connection
+    Route::post('/save-brand-product', [BrandProductController::class, 'store'])->name('save.brandproduct');
+
     // //measurement routes
     // Route::get('/addbrand', [MeasurementController::class, 'index']);
     Route::get('/addmeasurement', [MeasurementController::class, 'index']);

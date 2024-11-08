@@ -1,145 +1,135 @@
-<!-- ShopItem no -->
-{{-- //this one need to aoutomaticaly fill --}}
-<div class="col-md-6">
-    <div class="form-group ">
-        <label for="product">Shop Item No:</label>
-        <input type="text" class="form-control" id="shop_item_no" name="shop_item_no">
-    </div>
-</div>
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="color">Image</label>
-        <input class="form-control" type="file" name="image" id="image" accept=".jpg,.jpeg,.png" />
-    </div>
-</div>
+@extends('admin.sidebar')
+@section('content')
+<!-- main-content -->
+<div class="main-content app-content">
+    <!-- container -->
+    <div class="main-container container-fluid">
+        <!-- row -->
+        <div class="row row-sm mt-5 d-flex justify-content-center align-items-center">
+            <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
+                <div class="card box-shadow-0">
+                    <div class="card-header">
+                        <h4 class="card-title mb-1">Select Brand Related To Product </h4>
 
-<div class="col-md-6">
-    <div class="form-group ">
-        <label for="product">Select Product:</label>
-        <select class="form-control select2" id="product">
-            <option value="" disabled selected></option>
-            {{-- @foreach ($products as $product)
-            <option value="{{ $product->id }}">{{ $product->name }}</option>
-            @endforeach --}}
-        </select>
-    </div>
-</div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <form action="{{ route('save.brandproduct') }}" method="POST" id="shopCategoryForm" novalidate>
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="product">Select Product</label>
+                                        <select class="form-control select2" id="product" name="product">
+                                            <option value="" disabled selected></option>
+                                        </select>
+                                        <small class="form-text text-muted">
+                                            Choose one product for this Brand. Required field.
+                                        </small>
+                                    </div>
+                                </div>
+                                {{-- <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="product">Select Product </label>
+                                        <select class="form-control select2" id="product">
+                                            <option value="" disabled selected></option>
+                                            @foreach ($products as $product)
+                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                            @endforeach
+                                        </select>
 
-<!-- Brand -->
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="brand_category">Select Brand</label>
-        <select class="form-control select2" id="brand_category">
-            <option value="" disabled selected></option>
-            {{-- @foreach ($brand as $brands)
-            <option value="{{ $brands->id }}">{{ $brands->b_name }}</option>
-            @endforeach --}}
-        </select>
+                                    </div>
+                                </div> --}}
+                                <!-- Product Related Brand Field -->
+                                {{-- <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="product">Select Brand </label>
+                                        <select class="form-control select2" id="brand">
+                                            <option value="" disabled selected></option>
+                                            @foreach ($products as $product)
+                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <small class="form-text text-muted">
+                                            Choose Brand for this product. Required field.
+                                        </small>
+                                    </div>
+                                </div> --}}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="brand">Select Brand</label>
+                                        <select class="form-control select2" id="brand" name="brand">
+                                            <option value="" disabled selected></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Action Buttons -->
+                                <div class="form-group justify-content-end">
+                                    <button type="submit" class="btn btn-primary mt-3 mb-0">
+                                        Submit
+                                    </button>
+                                    <button type="button" class="btn btn-secondary mt-3 mb-0"
+                                        onclick="window.location.href='your_cancel_url_here'">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<!-- Category -->
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="product_category">Select Product Category</label>
-        <select class="form-control select2" id="product_category">
-            <option value="" disabled selected></option>
-            {{-- @foreach ($pc as $pc)
-            <option value="{{ $pc->id }}">{{ $pc->name }}</option>
-            @endforeach --}}
-        </select>
-    </div>
 </div>
-<!-- SubCategory -->
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="sub_category">Select Product SubCategory</label>
-        <select class="form-control select2" id="sub_category">
-            <option value="" disabled selected></option>
-            {{-- @foreach ($sub as $sub)
-            <option value="{{ $sub->id }}">{{ $sub->name }}</option>
-            @endforeach --}}
-        </select>
-    </div>
 </div>
-<!-- Color -->
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="color">Color</label>
-        <input type="text" class="form-control" id="color" placeholder="Enter color" />
-    </div>
-</div>
+<script>
+    $(document).ready(function () {
+        // Initialize Select2 for Product with AJAX
+        $('#product').select2({
+            placeholder: "Select a product",
+            allowClear: true,
+            ajax: {
+                url: '{{ route("fetch.products") }}',
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        query: params.term
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return { id: item.id, text: item.name };
+                        })
+                    };
+                }
+            }
+        });
 
-<!-- Quantity -->
-<div class="col-md-4">
-    <div class="form-group">
-        <label for="quantity"> Product Quantitiy</label>
-        <input type="number" class="form-control" id="quantity" placeholder="Enter quantity" min="1" step="1" />
-    </div>
-</div>
+        // Initialize Select2 for Brand with AJAX
+        $('#brand').select2({
+            placeholder: "Select a brand",
+            allowClear: true,
+            ajax: {
+                url: '{{ route("fetch.brands") }}',
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        query: params.term
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return { id: item.id, text: item.b_name };
+                        })
+                    };
+                }
+            }
+        });
+    });
+</script>
 
-<!-- Measurement -->
-<div class="col-md-4">
-    <div class="form-group">
-        <label for="measurement">Select Measurement</label>
-        <select class="form-control select2" id="measurement">
-            {{-- @foreach ($measurement as $measurements)
-            <option value="{{ $measurements->id }}">{{ $measurements->unit }}
-            </option>
-            @endforeach --}}
-        </select>
-    </div>
-</div>
-
-<!-- Price -->
-<div class="col-md-4">
-    <div class="form-group">
-        <label for="price"> Unit Price</label>
-        <input type="number" class="form-control" id="price" placeholder="Enter price" min="0.01" step="0.01" />
-    </div>
-</div>
-
-<!-- Vander -->
-<div class="col-md-4">
-    <div class="form-group">
-        <label for="Vander">Vander</label>
-        <select class="form-control" id="vander">
-            <option value="manufacturer">MANUFACTURER</option>
-            <option value="importer">IMPORTER</option>
-            <option value="distributer">DISTRIBUTER</option>
-        </select>
-    </div>
-</div>
-<div class="col-md-4">
-    <div class="form-group">
-        <label for="discount">Discount</label>
-        <input type="number" class="form-control" id="discount" placeholder="Enter Discount" min="0.1%" step="0.1%">
-    </div>
-</div>
-<div class="col-md-4">
-    <div class="form-group">
-        <label for="cost">Cost</label>
-        <input type="number" class="form-control" id="cost" placeholder="Enter Discount" min="0.1%">
-    </div>
-
-</div>
-<div class="col-md-4">
-    <div class="form-group">
-        <label for="color">Attachment</label>
-        <input class="form-control" type="file" name="attachment" id="attachment" accept=".jpg,.jpeg,.png" />
-    </div>
-</div>
-
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="Discriptoin">Discriptions</label>
-        <textarea class="form-control" id="descriptoins" rows="5 " name="description"
-            placeholder="Enter discriptoin"></textarea>
-    </div>
-</div>
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="Discriptoin">Aplications</label>
-        <textarea class="form-control" id="aplication" rows="5 " name="aplication"
-            placeholder="Enter discriptoin"></textarea>
-    </div>
-</div>
+@endsection
