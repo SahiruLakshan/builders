@@ -19,6 +19,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdvertisementUploadController;
 use App\Http\Controllers\ServiceProviderController;
+use App\Http\Controllers\BrandProductController;
 // Route::get('/', function () {
 //     return view('login');
 // });
@@ -68,9 +69,17 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/brandupdate/{id}', [BrandController::class, 'update']);
     Route::put('/brand/update/{id}', [BrandController::class, 'updateBrand']);
     Route::get('/brand/delete/{id}', [BrandController::class, 'deleteBrand']);
+
     //this one for the connect band with product
-    Route::get('/brandproduct', [BrandController::class, 'brandproduct'])->name('brandproduct');
-    // //measurement routes
+
+    Route::get('/brandproduct', [BrandProductController::class, 'showForm'])->name('brandproduct.form');
+    // Route to save the brand-product connection
+    // Route::post('/save-brand-product', [BrandProductController::class, 'store'])->name('save.brandproduct');
+    // Route to handle the form submission and store data in the brandproduct table
+    // Route::post('/brandproduct/store', [BrandProductController::class, 'store'])->name('brandproduct.store');
+    Route::post('/admin/brandproduct/store', [BrandProductController::class, 'store'])->name('brandproduct.store');
+
+    // // //measurement routes
     // Route::get('/addbrand', [MeasurementController::class, 'index']);
     Route::get('/addmeasurement', [MeasurementController::class, 'index']);
     Route::post('/submitmeasurement', [MeasurementController::class, 'addMeasurement']);
@@ -109,7 +118,6 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/getsubcategory/{id}', [ProductcategoryController::class, 'getsubcategory']);
     Route::put('/update/productsubcategory/{id}', [ProductcategoryController::class, 'updatesubProductCategory']);
     Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']);
-
     Route::post('/addserviceprovider/store', [ServiceProviderController::class, 'store'])->name('addserviceprovider.store');
 
 
@@ -136,7 +144,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');
     Route::get('/addserviceprovider', [ServiceProviderController::class, 'addserviceproviders'])->name('addserviceprovider');
 
-
+    Route::get('/shopitem', function () {
+        return view('admin.shopitem');
+    })->name('shopitem');
 });
 
 // routes/web.php
@@ -197,9 +207,9 @@ Route::get('/serviceproviderprofile', function () {
     return view('serviceproviders.serviceproviderprofile');
 })->name('serviceproviderprofile');
 // shop profile
-Route::get('/shopprofile', function () {
-    return view('shopprofiles.shopprofile');
-})->name('shopprofile');
+// Route::get('/shopprofile', function () {
+//     return view('shopprofiles.shopprofile');
+// })->name('shopprofile');
 
 Route::get('/professionalsform', function () {
     return view('webpages.professionalsform');

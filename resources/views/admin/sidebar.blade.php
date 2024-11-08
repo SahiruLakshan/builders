@@ -327,14 +327,12 @@
                                         <li class="side-menu__label1">
                                             <a href="javascript:void(0);">Shops</a>
                                         </li>
+                                      
                                         <li>
                                             <a class="slide-item" href="/addshop">Add New Shops
                                             </a>
                                         </li>
-                                        {{-- <li>
-                                            <a class="slide-item" href="/addshopproduct">Add Shop Product
-                                            </a>
-                                        </li> --}}
+                                       
                                         <li>
                                             <a class="slide-item" href="/shops">view Shops</a>
                                         </li>
@@ -358,6 +356,10 @@
                                     <ul class="slide-menu">
                                         <li class="side-menu__label1">
                                             <a href="javascript:void(0);">Product </a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="/shopitem">Add Shops Product
+                                            </a>
                                         </li>
                                         <li>
                                             <a class="slide-item" href="/addproduct">Add New Product
@@ -472,11 +474,6 @@
                                         </li>
                                     </ul>
                                 </li>
-
-
-
-
-
                                 <li class="side-item side-item-category">REGISTER  </li>
                                 <li class="slide">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
@@ -494,10 +491,6 @@
                                         </li> --}}
                                     </ul>
                                 </li>
-
-
-
-
 
                             </ul>
                             <div class="slide-right" id="slide-right">

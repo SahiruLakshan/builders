@@ -9,8 +9,8 @@ class Brand extends Model
 {
     use HasFactory;
 
-    protected $table='brands';
-    protected $fillable=[
+    protected $table = 'brands';
+    protected $fillable = [
         'b_name',
         'company_name',
         'address',
@@ -21,4 +21,8 @@ class Brand extends Model
         'email',
         'brand_img'
     ];
+    public function brandProducts()
+    {
+        return $this->hasMany(BrandProduct::class);
+    }
 }
