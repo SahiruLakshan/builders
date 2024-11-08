@@ -34,8 +34,6 @@ class CreateServiceProvidersTable extends Migration
             });
         }
     }
-
-
     /**
      * Reverse the migrations.
      *

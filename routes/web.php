@@ -74,9 +74,12 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
     Route::get('/brandproduct', [BrandProductController::class, 'showForm'])->name('brandproduct.form');
     // Route to save the brand-product connection
-    Route::post('/save-brand-product', [BrandProductController::class, 'store'])->name('save.brandproduct');
+    // Route::post('/save-brand-product', [BrandProductController::class, 'store'])->name('save.brandproduct');
+    // Route to handle the form submission and store data in the brandproduct table
+    // Route::post('/brandproduct/store', [BrandProductController::class, 'store'])->name('brandproduct.store');
+    Route::post('/admin/brandproduct/store', [BrandProductController::class, 'store'])->name('brandproduct.store');
 
-    // //measurement routes
+    // // //measurement routes
     // Route::get('/addbrand', [MeasurementController::class, 'index']);
     Route::get('/addmeasurement', [MeasurementController::class, 'index']);
     Route::post('/submitmeasurement', [MeasurementController::class, 'addMeasurement']);
@@ -115,7 +118,6 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/getsubcategory/{id}', [ProductcategoryController::class, 'getsubcategory']);
     Route::put('/update/productsubcategory/{id}', [ProductcategoryController::class, 'updatesubProductCategory']);
     Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']);
-
     Route::post('/addserviceprovider/store', [ServiceProviderController::class, 'store'])->name('addserviceprovider.store');
 
 
@@ -205,9 +207,9 @@ Route::get('/serviceproviderprofile', function () {
     return view('serviceproviders.serviceproviderprofile');
 })->name('serviceproviderprofile');
 // shop profile
-Route::get('/shopprofile', function () {
-    return view('shopprofiles.shopprofile');
-})->name('shopprofile');
+// Route::get('/shopprofile', function () {
+//     return view('shopprofiles.shopprofile');
+// })->name('shopprofile');
 
 Route::get('/professionalsform', function () {
     return view('webpages.professionalsform');

@@ -9,7 +9,7 @@
                         <h4 class="card-title mb-1">Select Brand Related To Product </h4>
                     </div>
                     <div class="card-body pt-0">
-                        <form action="{{ route('save.brandproduct') }}" method="POST" id="shopCategoryForm" novalidate>
+                        <form action="{{ route('brandproduct.store') }}" method="POST" id="shopCategoryForm" novalidate>
                             @csrf
                             <div class="row">
                                 <!-- Product Select Dropdown -->

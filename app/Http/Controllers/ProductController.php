@@ -12,7 +12,6 @@ class ProductController extends Controller
         return view('admin.addproduct');
     }
 
-
     public function submitproducts(Request $request)
     {
         $validator = Validator::make($request->all(), [
