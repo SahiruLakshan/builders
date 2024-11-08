@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Brandproduct;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class BrandProductController extends Controller
 {
@@ -20,6 +21,25 @@ class BrandProductController extends Controller
         return view('admin.brandproduct', compact('products', 'brands'));
     }
 
+    public function store(Request $request)
+    {
+        // Validate the incoming request
+        $validated = $request->validate([
+            'brand_id' => 'required|exists:brands,id',
+            'product_id' => 'required|exists:products,id',
+        ]);
+
+        // Create and save the new BrandProduct record
+        BrandProduct::create([
+            'brand_id' => $validated['brand_id'],
+            'product_id' => $validated['product_id'],
+            'created_by' => Auth::id(),  // Save the authenticated user's ID
+        ]);
+
+        // Redirect back to the form with success message
+        return redirect()->route('brandproduct.create')->with('success', 'BrandProduct saved successfully.');
+    }
+}
 
     // public function store(Request $request)
     // {
@@ -40,24 +60,25 @@ class BrandProductController extends Controller
 
     //     return redirect()->route('brandproduct.form')->with('success', 'Brand-Product connection created successfully!');
     // }
+//in here sweet alert error show but not save in the database 
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'brand_id' => 'required|exists:brands,id',
-            'product_id' => 'required|exists:products,id',
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'brand_id' => 'required|exists:brands,id',
+    //         'product_id' => 'required|exists:products,id',
 
-        ]);
+    //     ]);
 
-        DB::table('brandproduct')->insert([
-            'brand_id' => $request->input('brand_id'),
-            'product_id' => $request->input('product_id'),
-            //'created_by' => auth()->id(), // Ensure user is authenticated
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        return redirect()->route('brandproduct.form')->with('success', 'Brand-Product connection created successfully!');
-    }
+    //     DB::table('brandproduct')->insert([
+    //         'brand_id' => $request->input('brand_id'),
+    //         'product_id' => $request->input('product_id'),
+    //         //'created_by' => auth()->id(), // Ensure user is authenticated
+    //         'created_at' => now(),
+    //         'updated_at' => now(),
+    //     ]);
+    //     return redirect()->route('brandproduct.form')->with('success', 'Brand-Product connection created successfully!');
+    // }
 
 
     // public function store(Request $request)

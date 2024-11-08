@@ -10,7 +10,7 @@
                     </div>
                     <div class="card-body pt-0">
                         <form action="{{ route('brandproduct.store') }}" method="POST" id="shopCategoryForm" novalidate>
-                            @csrf
+                          @csrf
                             <div class="row">
                                 <!-- Product Select Dropdown -->
                                 <div class="col-md-6">
