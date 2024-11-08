@@ -25,19 +25,19 @@ class BrandProductController extends Controller
     {
         // Validate the incoming request
         $validated = $request->validate([
-            'brand_id' => 'required|exists:brands,id',
-            'product_id' => 'required|exists:products,id',
+            'product' => 'required',
+            'brand' => 'required',
         ]);
 
         // Create and save the new BrandProduct record
         BrandProduct::create([
-            'brand_id' => $validated['brand_id'],
-            'product_id' => $validated['product_id'],
+            'brand_id' => $validated['brand'],
+            'product_id' => $validated['product'],
             'created_by' => Auth::id(),  // Save the authenticated user's ID
         ]);
 
         // Redirect back to the form with success message
-        return redirect()->route('brandproduct.create')->with('success', 'BrandProduct saved successfully.');
+        return redirect()->back()->with('success', 'BrandProduct saved successfully.');
     }
 }
 
@@ -139,4 +139,4 @@ class BrandProductController extends Controller
     // }
 
 
-}
+
