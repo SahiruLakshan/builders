@@ -73,13 +73,6 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     //this one for the connect band with product
 
     Route::get('/brandproduct', [BrandProductController::class, 'showForm'])->name('brandproduct.form');
-
-    // Route to fetch brands (for AJAX)
-    Route::get('/fetch-brands', [BrandProductController::class, 'fetchBrands'])->name('fetch.brands');
-
-    // Route to fetch products (for AJAX)
-    Route::get('/fetch-products', [BrandProductController::class, 'fetchProducts'])->name('fetch.products');
-
     // Route to save the brand-product connection
     Route::post('/save-brand-product', [BrandProductController::class, 'store'])->name('save.brandproduct');
 
