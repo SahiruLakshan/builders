@@ -141,7 +141,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     //professionals routes
     // Route::get('/addprofessionalscategory', ProfessionalController::class, 'index')->name('addprofessionalscategory');
 
-    Route::get('/addprofessionalscategory', [ProfessionalController::class, 'index'])->name('addprofessionalscategory');
+    Route::get('/addprofessionalsCategory', [ProfessionalController::class, 'index'])->name('addprofessionalsCategory');
 
     //  admin panel service poriders
     // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');

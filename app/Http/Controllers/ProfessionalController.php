@@ -11,7 +11,7 @@ class ProfessionalController extends Controller
 {
     public function index()
     {
-        return view('admin.addprofessionalform');
+        return view('admin.addprofessionalsCategory');
     }
 
     // public function webprofessional(Request $request)

@@ -466,7 +466,7 @@
                                             <a href="javascript:void(0);">Professional</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/addservice">Add New Professional Category
+                                            <a class="slide-item" href="addprofessionalsCategory">Add New Professional Category
                                             </a>
                                         </li>
                                         <li>
