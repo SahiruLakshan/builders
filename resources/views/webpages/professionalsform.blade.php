@@ -250,6 +250,11 @@
           <!-- Personal Information -->
           <h4>Personal Information</h4>
           <hr>
+          {{-- this one need to auto fill from our side like that PR00001 --}}
+          {{-- <div class=" mb-3">
+            <label for="fullName" class="form-label">Professional Number</label>
+            <input type="text" class="form-control" id="professionalNumber" name="professionalNumber" >
+          </div> --}}
           <div class="mb-3">
             <label for="fullName" class="form-label">Full Name</label>
             <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter full name" required>
@@ -311,6 +316,7 @@
 
           <!-- Professional Details -->
           <h4>Professional Details</h4>
+          <hr>
           <div class="mb-3">
             <label for="jobTitle" class="form-label">Job Title/Role</label>
             <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="e.g., Architect, Engineer" required>
@@ -370,6 +376,7 @@
 
           <!-- Submit Button -->
           <button type="submit" class="btn btn-primary mt-3 mb-2">Submit</button>
+          <button type="reset" class="btn btn-secondary mt-3 mb-2" > Cancel</button>
         </form>
 
       </div>

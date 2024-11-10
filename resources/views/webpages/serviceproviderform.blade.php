@@ -21,6 +21,7 @@
         <h4 class="display-6 text-secondary font-weight-bold">
           Constructions Service Provides Registration 
         </h4>
+        <hr>
       </div>
       <div class="custom-form-style  px-5 ">
         <form class="border p-4">
@@ -108,6 +109,7 @@
 
 
           <h5>Company Details</h5>
+          <hr>
           <div class="row align-items-space-between">
             <div class="col">
               <label for="inputPassword6" class="col-form-label">Name :</label>
@@ -134,6 +136,7 @@
             </div>
           </div>
           <h5>Project History</h5>
+          <hr>
           <div class="table-responsive">
             <table class="table" id="projectTable">
               <thead>

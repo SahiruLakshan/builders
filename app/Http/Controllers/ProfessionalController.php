@@ -9,6 +9,11 @@ use App\Models\Service;
 
 class ProfessionalController extends Controller
 {
+    public function index()
+    {
+        return view('admin.addprofessionalform');
+    }
+
     // public function webprofessional(Request $request)
     // {
     //     $districts = District::with('city')->select('dis_id', 'dis_name')->get();

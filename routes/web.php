@@ -138,8 +138,10 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/viewservice', [ServiceController::class, 'viewservice']);
     // Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit'); // Display update form
     // Route::put('service/{id}', [ServiceController::class, 'update'])->name('service.update');  // Handle update request
+    //professionals routes
+    // Route::get('/addprofessionalscategory', ProfessionalController::class, 'index')->name('addprofessionalscategory');
 
-
+    Route::get('/addprofessionalscategory', [ProfessionalController::class, 'index'])->name('addprofessionalscategory');
 
     //  admin panel service poriders
     // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');
