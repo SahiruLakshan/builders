@@ -67,12 +67,8 @@ class WebController extends Controller
     {
         $districts = District::with('city')->select('dis_id', 'dis_name')->get();
         $services = Service::select('id', 'servicename')->get();
-        return view('webpages.serviceprovider', compact('districts', 'services'));
+        return view('webpages.serviceproviderform', compact('districts', 'services'));
     }
-
-
-
-
 
     // public function addshopSuppliers(Request $request){
     //     // Validate the form data

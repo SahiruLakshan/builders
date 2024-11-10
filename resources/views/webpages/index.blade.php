@@ -361,7 +361,7 @@
                         <ul class="dropdown-menu p-1 border">
                           <li>
                             <a
-                              href="serviceprovider"
+                              href="serviceproviderform"
                               class="dropdown-item p-1 border"
                               >Service Providers</a
                             >
@@ -396,7 +396,7 @@
                     <div class="  mb-2 mb-md-0 p-0">
                     
                       <div class="subnav">
-                        <button class="subnavbtn fs-6 p-0">
+                        <button class="subnavbtn fs-6 ">
                             Shop By Category <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content" style="height:40vh">
@@ -411,9 +411,9 @@
                     </div>
                     </div>
                     <!-- Third Dropdown -->
-                    <div class="col-12 col-md-2 mb-2 mb-md-0">
+                    <div class="col-md-2 mb-2 mb-md-0 p-0">
                       <div class="subnav">
-                        <button class="subnavbtn">
+                        <button class="subnavbtn fs-6 ">
                           Product By Category <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content">
@@ -470,9 +470,9 @@
                     
                   
                     <!-- Second Dropdown -->
-                    <div class="col-12 col-md-2 mb-2 mb-md-0">
+                    <div class="col-12 col-md-2 mb-2 mb-md-0 p-0">
                       <div class="subnav">
-                        <button class="subnavbtn fs-6 p-0">
+                        <button class="subnavbtn fs-6 ">
                           Service By Category <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content">
@@ -513,9 +513,9 @@
                     </div>
                     
                     <!-- Fourth Dropdown -->
-                    <div class="col-12 col-md-2 mb-2 ">
+                    <div class=" col-md-2 mb-2  p-0">
                       <div class="subnav">
-                        <button class="subnavbtn fs-6 p-0">
+                        <button class="subnavbtn fs-6 ">
                             Purchase With Builders.lk <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content">

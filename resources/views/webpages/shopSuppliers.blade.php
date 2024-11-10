@@ -14,16 +14,30 @@
         padding: 20px;
         border-radius: 8px; /* Optional: Adds rounded corners */
       }
+      .preview-box {
+      width: 100px;
+      height: 100px;
+      border: 2px dashed #060404;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+     
+    }
+    .preview-box img {
+      width: 100%;
+      height: auto;
+    }
 
     </style>
-    <div class="container-fluid " >      
+    <div class="container-fluid justify-content-center" >      
       <div class="text-center">
         <h3 class="display-4 text-primary font-weight-bold">BUILDERS.LK</h3>
         <h4 class="display-6 text-secondary font-weight-bold">
           Constructions Materials Suppliers/Shop Registration 
         </h4>
       </div>
-      <div class="custom-form-style border px-5">
+      <div class="custom-form-style border p-5">
                     {{-- <form class="custom-form-style border p-4"   >  --}}
               @csrf
               <div class="row">
@@ -93,13 +107,12 @@
                   </select>
                 </div>
               </div>  
-              <script>
-             
-              </script>
+              
 
-              <h5>Other Details</h5>
+              <h5 class="mt-4">Other Details</h5>
+              <hr>
               <div class="row">
-              <div class="col-md-6">
+              {{-- <div class="col-md-6">
                 <div class="form-group">
                   <label for="shop_image" class="col-form-label">Shop Image :</label>
                   <input type="file" name="shop_image" id="shop_image" class="form-control-file">
@@ -108,6 +121,13 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <img src="" id="preview-image" style="max-width: 150px; max-height: 150px;">
+                </div>
+              </div> --}}
+              <div class="mb-3 d-flex">
+                <label for="profileImage" class="form-label">Shop Image :</label>
+                <input type="file" id="shop_image" name="shop_image" accept="image/*" onchange="previewImage()" required>
+                <div class="preview-box" id="imagePreview">
+                  <span>Image Preview</span>
                 </div>
               </div>
             
@@ -224,16 +244,16 @@
         }
 
        
-        $(document).ready(function() {  
+        // $(document).ready(function() {  
 
-            $('#shop_image').change(function() {
-                let reader = new FileReader();
-                reader.onload = (e) => {
-                    $('#preview-image').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(this.files[0]);
-            });
-        });
+        //     $('#shop_image').change(function() {
+        //         let reader = new FileReader();
+        //         reader.onload = (e) => {
+        //             $('#preview-image').attr('src', e.target.result);
+        //         }
+        //         reader.readAsDataURL(this.files[0]);
+        //     });
+        // });
 
         // shop catogory
         $(document).ready(function() {
@@ -284,6 +304,24 @@
                     $('#city').select2();
                   });
                 })
+
+                function previewImage() {
+                      const file = document.getElementById("shop_image").files[0];
+                      const previewBox = document.getElementById("imagePreview");
+                      previewBox.innerHTML = ""; // Clear any existing content
+
+                      if (file) {
+                          const reader = new FileReader();
+                          reader.onload = function(e) {
+                              const img = document.createElement("img");
+                              img.src = e.target.result;
+                              previewBox.appendChild(img);
+                          };
+                          reader.readAsDataURL(file);
+                      } else {
+                          previewBox.innerHTML = "<span>Image Preview</span>";
+                      }
+                  }
 
   
       </script>

@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdvertisementUploadController;
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\BrandProductController;
+use App\Http\Controllers\ProfessionalController;
 // Route::get('/', function () {
 //     return view('login');
 // });
@@ -169,13 +170,14 @@ Route::get('/search', [WebController::class, 'search'])->name('search');
 Route::get('/product', function () {
     return view('webpages.product');
 });
+
 //bass form loarding
 Route::get('/shopSuppliers', [WebController::class, 'shopSuppliers'])->name('shopSuppliers');
 Route::post('/addshopSuppliers', [WebController::class, 'addshopSuppliers'])->name('addshopSuppliers');
 
 
 
-Route::get('/serviceprovider', [WebController::class, 'servceproviders'])->name('serviceprovider');
+Route::get('/serviceproviderform', [WebController::class, 'servceproviders'])->name('serviceproviderform');
 
 
 Route::name('category.')->group(function () {
@@ -208,12 +210,12 @@ Route::get('/serviceproviderprofile', function () {
 })->name('serviceproviderprofile');
 // shop profile
 // Route::get('/shopprofile', function () {
-//     return view('shopprofiles.shopprofile');
+//     return view('webpages.shopprofile');
 // })->name('shopprofile');
 
-Route::get('/professionalsform', function () {
-    return view('webpages.professionalsform');
-})->name('professionalsform');
+// Route::get('/professionalsform', [ProfessionalController::class, 'webprofessional'])->name('professionalsform');
+
+Route::get('/professionalsform', [ProfessionalController::class, 'professionalForm'])->name('professionalsform');
 
 
 
