@@ -1,5 +1,21 @@
 @extends('admin.sidebar')
 @section('content')
+<style>
+   .preview-box {
+      width: 100px;
+      height: 100px;
+      border: 2px dashed #060404;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+     
+    }
+    .preview-box img {
+      width: 100%;
+      height: auto;
+    }
+</style>
 <div class="main-content app-content">
     <!-- container -->
     <div class="main-container container-fluid">
@@ -7,75 +23,154 @@
             <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                 <div class="card box-shadow-0">
                     <div class="card-header">
-                        <h4 class="card-title mb-1">Add New Services Provider </h4>
+                        <h4 class="card-title mb-1">Add New Professionals </h4>
                         <p class="mb-2">
-                            Enter the name of the Service Provider you want to add
+                            Enter the name of the Professionals you want to add
                         </p>
                     </div>
                     <div class="card-body pt-0">
                         {{-- <form class="border p-4" method="POST" action="{{ route('addserviceprovider.store') }}"> --}}
-                            <form class="p-4" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                            <form class=" border p-4" method="POST" action="" enctype="multipart/form-data">
                                 <!-- Personal Information -->
                                 <h4>Personal Information</h4>
                                 <hr>
                                 {{-- this one need to auto fill from our side like that PR00001 --}}
-                                {{-- <div class=" mb-3">
-                                  <label for="fullName" class="form-label">Professional Number</label>
-                                  <input type="text" class="form-control" id="professionalNumber" name="professionalNumber" >
-                                </div> --}}
-                                <div class="mb-3">
-                                  <label for="fullName" class="form-label">Full Name</label>
-                                  <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter full name" required>
-                                </div>
-                                
-                                <div class="mb-3 d-flex">
-                                  <label for="profileImage" class="form-label">Profile Image:</label>
-                                  <input type="file" id="profileImage" name="profileImage" accept="image/*" onchange="previewImage()" required>
-                                  <div class="preview-box" id="imagePreview">
-                                    <span>Image Preview</span>
-                                  </div>
-                                </div>
-                                
-                                <div class="row mb-3">
-                                  <div class="col-12 col-md-6">
-                                    <label for="phoneNumber" class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter phone number" required>
-                                  </div>
-                                  <div class="col-12 col-md-6">
-                                    <label for="email" class="form-label">Email Address</label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" required>
-                                  </div>
-                                </div>
-                            
-                                <div class="mb-3">
-                                  <label for="address" class="form-label">Address</label>
-                                  <input type="text" class="form-control" id="address" name="address" placeholder="Street Address">
-                                </div>
-                            
-                                <div class="row mb-3">
-                                  <div class="row">
-                                    <div class="col-5">
-                                      <label for="district">Select District:</label>
-                                      <select id="district" name="district" class="form-select">
-                                      </select>
+                                <div class="d-flex">
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <div class=" mb-3">
+                                        <label for="fullName" class="form-label">Professional Number</label>
+                                        <input type="text" class="form-control" id="professionalNumber" name="professionalNumber" >
+                                      </div>
                                     </div>
-                                    <div class="col-5">
-                                      <label for="city">City:</label>
-                                      <select id="city" name="city" class="form-select disabled" disabled>
+                                   
+                                  </div>
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <div class="mb-3">
+                                        <label for="fullName" class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" id="fullName" name="p_Name" placeholder="Enter full name" required>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="mb-3  d-flex">
+                                      <label for="profileImage" class="form-label">Profile Image:</label>
+                                      <input type="file" id="profileImage" name="profileImage" accept="image/*" onchange="previewImage()" required>
+                                    <div class="preview-box" id="imagePreview">
+                                      <span>Image Preview</span>
+                                    </div>
+                                 
+                                </div>
+                                <div class="d-flex">
+                                  <div class="col">
+                                      <div class="form-group">
+                                          <label for="phoneNumber">Phone Number</label>
+                                          <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
+                                              placeholder="Enter Phone Number" />
+                                      </div>
+                                  </div>
+                                  <div class="col">
+                                      <div class="form-group">
+                                          <label for="email">Email Address</label>
+                                          <input type="text" class="form-control" id="email" name="p_email"
+                                              placeholder="Enter Email Address" />
+                                      </div>
+                                  </div>
+                                 
+                                 
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <textarea rows="3" class="form-control" id="address" name="p_address" placeholder="Street Address"></textarea>
+
+                                </div>
+                              </div>
+                              
+                            
+                                <div class="d-flex mb-3">
+                                  <div class="col-6 pt-2">
+                                    <label for="district">Select District:</label>
+                                    <select id="district" name="district" class="form-select">
+                                        <option value="">Select District</option>
+                                    </select>
+                                </div>
+                                <div class="col-6 pt-2">
+                                    <label for="city">City:</label>
+                                    <select id="city" name="city" class="form-select disabled" disabled>
                                         <option value="">Select City</option>
-                                      </select>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <script>
+                                // Prepare district and city data in JavaScript from Blade data
+                                var cities = [
+                                    @foreach ($dictricts as $district)
+                                        {
+                                            "districtId": "{{ $district->dis_id }}",
+                                            "districtName": "{{ $district->dis_name }}",
+                                            "cities": [
+                                                @foreach ($district->city as $city)
+                                                    {
+                                                        "cityName": "{{ $city->ds_name }}",
+                                                        "cityId": "{{ $city->ds_id }}"
+                                                    },
+                                                @endforeach
+                                            ]
+                                        },
+                                    @endforeach
+                                ];
+                                console.log("🚀 ~ $district:", cities)
+    
+                                $(document).ready(function() {
+    
+                                    // Populate district dropdown
+                                    let districtOptions = '<option value="">Select District</option>';
+                                    cities.forEach((elem) => {
+                                        districtOptions += `<option value="${elem.districtId}">${elem.districtName}</option>`;
+                                    });
+                                    console.log("🚀 ~ $ ~ districtOptions:", $('#district'))
+    
+                                    $('#district').html(districtOptions); // Initialize Select2 on the district dropdown
+                                    $('#district').select2(); // Initialize Select2 on the district dropdown
+                                    $('#city').select2(); // Initialize Select2 on the city dropdown
+    
+                                    $('#district').change(function() {
+                                        const selectedDistrict = cities.find((elem) => elem.districtId == $(this).val());
+    
+                                        if (selectedDistrict) {
+                                            let cityOptions = '<option value="">Select City</option>';
+                                            selectedDistrict.cities.forEach((city) => {
+                                                cityOptions += `<option value="${city.cityId}">${city.cityName}</option>`;
+                                            });
+    
+                                            $('#city').html(cityOptions).prop("disabled", false).removeClass('disabled').select2();
+                                        } else {
+                                            $('#city').html('<option value="">Select City</option>').prop("disabled", true)
+                                                .addClass('disabled');
+                                        }
+                                    });
+                                });
+                            </script>
+                            <div class="d-flex">
+                              <div class="col-md-4">
+                                <label for="zip" class="form-label">Zip Code</label>
+                                <input type="text" class="form-control" id="zip" name="zip" placeholder="Zip Code">
+                              </div>
+                              
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                      <label for="dob" class="form-label">Date of Birth</label>
+                                      <input type="date" class="form-control" id="dob" name="dob">
                                     </div>
-                                  </div> 
-                                  <div class="col-md-4">
-                                    <label for="zip" class="form-label">Zip Code</label>
-                                    <input type="text" class="form-control" id="zip" name="zip" placeholder="Zip Code">
-                                  </div>
                                 </div>
+                            </div> 
+                                  
+                                
                             
-                                <div class="col-12-mb-3">
-                                  <label for="dob" class="form-label">Date of Birth</label>
-                                  <input type="date" class="form-control" id="dob" name="dob">
-                                </div>
+                            
                             
                                 <div class="mb-3">
                                   <label for="linkedin" class="form-label">LinkedIn Profile or Professional Website</label>

@@ -16,17 +16,23 @@
                         {{-- <form class="border p-4" method="POST" action="{{ route('addserviceprovider.store') }}"> --}}
                         <form class="border p-4" method="POST" action="/addserviceprovider/store">
                             @csrf
-                            <div class="row">
-                                <div class="form-group col">
-                                    <label for="inputPassword4">Name</label>
-                                    <input type="text" class="form-control" id="s_name" name="s_name"
-                                        placeholder="Name Of The Service Provider" />
+                            <div class="d-flex">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Name</label>
+                                        <input type="text" class="form-control" id="s_name" name="s_name"
+                                            placeholder="Name Of The Service Provider" />
+                                    </div>
                                 </div>
                                 <div class="col">
-                                    <label for="maxProjectValue">Grade </label>
-                                    <input type="text" class="form-control" id="grade" name="grade"
-                                        placeholder="Grade Of The Service Provider" />
+                                    <div class="form-group">
+                                        <label for="maxProjectValue">Grade </label>
+                                        <input type="text" class="form-control" id="grade" name="grade"
+                                            placeholder="Grade Of The Service Provider" />
+                                    </div>
                                 </div>
+                               
+                               
                             </div>
     
                             <div class="row">
