@@ -473,7 +473,7 @@
                                             <a class="slide-item" href="/viewservice">View Professional Category</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/addserviceprovider">Add New Professional
+                                            <a class="slide-item" href="addprofessionals">Add New Professional
                                             </a>
                                         </li>
                                         <li>
