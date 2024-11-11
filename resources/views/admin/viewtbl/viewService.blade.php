@@ -8,9 +8,6 @@
     </div>
 
     <div class="table-responsive" id="pagination-data" style="margin-left:300px; margin-top:20px; width: 800px;">
-
-
-
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

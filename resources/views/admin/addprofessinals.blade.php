@@ -160,14 +160,14 @@
                                 <input type="text" class="form-control" id="zip" name="zip" placeholder="Zip Code">
                               </div>
                               
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                       <label for="dob" class="form-label">Date of Birth</label>
                                       <input type="date" class="form-control" id="dob" name="dob">
                                     </div>
                                 </div>
                             </div> 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                               <div class="form-group">
                                 <div class="mb-3">
                                   <label for="linkedin" class="form-label">LinkedIn Profile or Professional Website</label>
@@ -215,7 +215,7 @@
                                       <div class="mb-3">
                                         <label for="specializations" class="form-label">Specializations</label>
                                         <select multiple="multiple" name="specialization[]" class="form-select selectsum1">
-                                         
+                                          
                                           <option value="Civil Engineering">Civil Engineering</option>
                                           <option value="Electrical Work">Electrical Work</option>
                                           <option value="Structural Analysis">Structural Analysis</option>
@@ -274,7 +274,7 @@
     $('.selectsum1').select2({
         placeholder: "Select specializations...", // Sets the placeholder text
         allowClear: true // Allows users to clear the selection if desired
-    });
+    }).val(null).trigger('change');
 });
 
   $(document).ready(function() {

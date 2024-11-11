@@ -17,6 +17,10 @@
                         <form class="border p-4" method="POST" action="/addserviceprovider/store">
                             @csrf
                             <div class="d-flex">
+                                <div class="form-group">
+                                    <label for="serviceProviderNumber">ServiceProvider Number </label>
+                                    <input type="text" class="form-control" id="s_number" name="s_number" placeholder=" Service Provider No.." />
+                                </div>
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="inputPassword4">Name</label>
