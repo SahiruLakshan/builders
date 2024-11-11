@@ -167,79 +167,101 @@
                                     </div>
                                 </div>
                             </div> 
-                                  
-                                
-                            
-                            
-                            
+                            <div class="col-md-6">
+                              <div class="form-group">
                                 <div class="mb-3">
                                   <label for="linkedin" class="form-label">LinkedIn Profile or Professional Website</label>
                                   <input type="url" class="form-control" id="linkedin" name="linkedin" placeholder="URL to profile">
                                 </div>
+                              </div>
+
+                            </div>
                             
                                 <!-- Professional Details -->
                                 <h4>Professional Details</h4>
                                 <hr>
-                                <div class="mb-3">
-                                  <label for="jobTitle" class="form-label">Job Title/Role</label>
-                                  <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="e.g., Architect, Engineer" required>
+                                <div class="d-flex flex-wrap">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <div class="mb-3">
+                                        <label for="jobTitle" class="form-label">Job Title/Role</label>
+                                        <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="e.g., Architect, Engineer" required>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <div class="mb-3">
+                                        <label for="experienceLevel" class="form-label">Experience Level</label>
+                                        <select class="form-select" id="experienceLevel" name="experienceLevel" required>
+                                          <option value="" disabled selected>Select experience level</option>
+                                          <option value="Junior">Junior</option>
+                                          <option value="Mid-level">Mid-level</option>
+                                          <option value="Senior">Senior</option>
+                                        </select>
+                                      </div>
+                                    </div>  
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <div class="mb-3">
+                                        <label for="yearsOfExperience" class="form-label">Years of Experience</label>
+                                        <input type="number" class="form-control" id="yearsOfExperience" name="yearsOfExperience" placeholder="Enter number of years">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <div class="mb-3">
+                                        <label for="specializations" class="form-label">Specializations</label>
+                                        <select multiple="multiple" name="specialization[]" class="form-select selectsum1">
+                                         
+                                          <option value="Civil Engineering">Civil Engineering</option>
+                                          <option value="Electrical Work">Electrical Work</option>
+                                          <option value="Structural Analysis">Structural Analysis</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
-                            
-                                <div class="mb-3">
-                                  <label for="experienceLevel" class="form-label">Experience Level</label>
-                                  <select class="form-select" id="experienceLevel" name="experienceLevel" required>
-                                    <option value="" disabled selected>Select experience level</option>
-                                    <option value="Junior">Junior</option>
-                                    <option value="Mid-level">Mid-level</option>
-                                    <option value="Senior">Senior</option>
-                                  </select>
-                                </div>
-                            
-                                <div class="mb-3">
-                                  <label for="yearsOfExperience" class="form-label">Years of Experience</label>
-                                  <input type="number" class="form-control" id="yearsOfExperience" name="yearsOfExperience" placeholder="Enter number of years">
-                                </div>
-                            
-                                <div class="mb-3">
-                                  <label for="specializations" class="form-label">Specializations</label>
-                                  <select multiple class="form-select select2" id="specializations" name="specializations[]">
-                                    <option value="Civil Engineering">Civil Engineering</option>
-                                    <option value="Electrical Work">Electrical Work</option>
-                                    <option value="Structural Analysis">Structural Analysis</option>
-                                  </select>
-                                </div>
-                            
-                                <div class="mb-3">
+                                <div class="col-md-12 mb-3">
                                   <label for="skills" class="form-label">Skills</label>
                                   <textarea class="form-control" id="skills" name="skills" rows="3" placeholder="List skills like CAD, project management, etc."></textarea>
                                 </div>
                             
-                                <div class="mb-3">
+                                <div class="col-md-12 mb-3">
                                   <label class="form-label">Certifications</label>
-                                  <div class="row">
-                                    <div class="col-md-4">
-                                      <input type="text" class="form-control mb-2" name="certificationName" placeholder="Certification Name">
-                                    </div>
-                                    <div class="col-md-4">
-                                      <input type="text" class="form-control mb-2" name="issuingAuthority" placeholder="Issuing Authority">
-                                    </div>
-                                    <div class="col-md-2">
-                                      <input type="date" class="form-control mb-2" name="dateIssued" placeholder="Date Issued">
-                                    </div>
-                                    <div class="col-md-2">
-                                      <input type="date" class="form-control mb-2" name="expirationDate" placeholder="Expiration Date">
+                                  <div id="certifications">
+                                    <div class="row certification-row">
+                                      <div class="col-md-4">
+                                        <input type="text" class="form-control mb-2" name="certificationName[]" placeholder="Certification Name">
+                                      </div>
+                                      <div class="col-md-4">
+                                        <input type="text" class="form-control mb-2" name="issuingAuthority[]" placeholder="Issuing Authority">
+                                      </div>
+                                      <div class="col-md-2">
+                                        <input type="date" class="form-control mb-2" name="dateIssued[]" placeholder="Date Issued">
+                                      </div>
+                                      <div class="col-md-2">
+                                        <input type="date" class="form-control mb-2" name="expirationDate[]" placeholder="Expiration Date">
+                                      </div>
+                                      <div class="col-md-12 text-end">
+                                        <button type="button" class="btn btn-danger btn-sm delete-certification">Delete</button>
+                                      </div>
                                     </div>
                                   </div>
+                                  <button type="button" class="btn btn-primary mt-2" id="addCertification">Add More Certification</button>
+                                </div>
+                                <div class="form-group col-md-12">
+                                  <div class="mb-3">
+                                    <label for="licenseNumber" class="form-label">Professional License Number</label>
+                                    <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" placeholder="License Number (if applicable)">
+                                  </div>
+                                  <!-- Submit Button -->
+                                  <button type="submit" class="btn btn-primary mt-3 mb-2">Submit</button>
+                                  <button type="reset" class="btn btn-secondary mt-3 mb-2" > Cancel</button>
                                 </div>
                             
-                                <div class="mb-3">
-                                  <label for="licenseNumber" class="form-label">Professional License Number</label>
-                                  <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" placeholder="License Number (if applicable)">
-                                </div>
-                            
-                                <!-- Submit Button -->
-                                <button type="submit" class="btn btn-primary mt-3 mb-2">Submit</button>
-                                <button type="reset" class="btn btn-secondary mt-3 mb-2" > Cancel</button>
                             </form>
                     </div>
                 </div>
@@ -247,6 +269,37 @@
         </div>
     </div>
 </div>
+<script>
+  $(document).ready(function() {
+    $('.selectsum1').select2({
+        placeholder: "Select specializations...", // Sets the placeholder text
+        allowClear: true // Allows users to clear the selection if desired
+    });
+});
+
+  $(document).ready(function() {
+ 
+ 
+    // Add new certification row
+    $('#addCertification').click(function() {
+        // Clone the first certification row
+        let newCertification = $('.certification-row:first').clone();
+
+        // Clear the input fields in the cloned row
+        newCertification.find('input').val('');
+
+        // Append the cloned row to the certifications container
+        $('#certifications').append(newCertification);
+    });
+
+    // Delete a specific certification row
+    $(document).on('click', '.delete-certification', function() {
+        // Remove the certification row
+        $(this).closest('.certification-row').remove();
+    });
+});
+
+</script>
     
 
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
