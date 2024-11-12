@@ -340,6 +340,8 @@
           </div>
 
           <div class="mb-3">
+            {{-- in here also need to show professional Catogery get form data base 
+             --}}
             <label for="specializations" class="form-label">Specializations</label>
             <select multiple class="form-select select2" id="specializations" name="specializations[]">
               <option value="Civil Engineering">Civil Engineering</option>
