@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Productcategory;
 use App\Models\Productsub;
+use App\Models\Product;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class ProductcategoryController extends Controller
@@ -11,7 +13,9 @@ class ProductcategoryController extends Controller
 
     public function index()
     {
-        return view('admin.addproductcate');
+        $products = Product::all();
+        $brands = Brand::all();
+        return view('admin.addproductcate',compact('products','brands'));
     }
 
     public function index2()
@@ -23,13 +27,17 @@ class ProductcategoryController extends Controller
     {
 
         $request->validate([
+            'product' => 'required',
+            'brand' => 'required',
             'name' => 'required|string|max:255',
-            'unit_price' => 'required|numeric',
+            
         ]);
 
         Productcategory::create([
+            'product'=>$request->product,
+            'brand'=>$request->brand,
             'name' => $request->name,
-            'unit_price' => $request->unit_price,
+            'description' => $request->description,
         ]);
 
         return redirect()->back()->with('success', 'Product Category Added.');

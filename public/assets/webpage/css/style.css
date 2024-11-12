@@ -76,7 +76,6 @@ Table OF Contents
     border: 1px solid #ebbc00; /* Optional: Add border for better visibility */
     --bs-dropdown-zindex: 99999;
 }
-
 /* Style for dropdown menu links */
 .dropdown-menu a {
     color: black; /* Default text color for dropdown items */
@@ -96,11 +95,15 @@ Table OF Contents
 }
 
 body {
-    /* font-family: "Montserrat", sans-serif; */
-    font-weight: 400;
+    /* font-family: "Montserrat", sans-serif; 
+     font-weight: 400;
     color: #333;
-}
+    background-color: #eae7dc; */
+    background-color: #eae7dc;
 
+    margin-top: 160px;
+}
+/*
 h1,
 h2,
 h3,
@@ -538,12 +541,12 @@ textarea.input {
 /*----------------------------*\
 	Logo
 \*----------------------------*/
-
+/* <!-- Third Row: Search Bar and Dropdowns --> */
 /* The CSS you shared */
 #header {
     padding-top: 4px;
     padding-bottom: 4px;
-    background-color: blanchedalmond;
+    background-color: rgb(224, 156, 54);
 }
 
 .navbar {
@@ -559,9 +562,11 @@ textarea.input {
     text-decoration: none;
 }
 
+/* General styles for desktop */
 .subnav {
     float: left;
     overflow: hidden;
+    border: 1px solid rgb(224, 156, 54);
 }
 
 .subnav .subnavbtn {
@@ -587,7 +592,7 @@ textarea.input {
     position: absolute;
     left: 0;
     background-color: rgb(173, 172, 164);
-    width: 100%; /* Full width */
+    width: 100%;
     z-index: 99;
 }
 
@@ -603,6 +608,12 @@ textarea.input {
     background-color: #eee;
     color: black;
 }
+
+/* Open dropdown on hover */
+.subnav:hover .subnav-content {
+    display: block;
+}
+
 /* .container {
   padding-top: 132px;
 }  */
@@ -650,7 +661,7 @@ textarea.input {
 	Cart
 \*----------------------------*/
 
-.header-ctn {
+/* .header-ctn {
     float: right;
     padding: 2px 0px;
 }
@@ -678,7 +689,7 @@ textarea.input {
 
 .header-ctn > div > a > span {
     font-size: 12px;
-}
+} */
 
 /* .header-ctn > div > a > .qty {
   position: absolute;
@@ -694,11 +705,11 @@ textarea.input {
   background-color: #ffc107;
 } */
 
-.header-ctn .menu-toggle {
+/* .header-ctn .menu-toggle {
     display: none;
-}
+} */
 
-.cart-dropdown {
+/* .cart-dropdown {
     position: absolute;
     width: 300px;
     background: #fff;
@@ -709,8 +720,8 @@ textarea.input {
     right: 0;
     opacity: 0;
     visibility: hidden;
-}
-
+} */
+/* 
 .dropdown.open > .cart-dropdown {
     opacity: 1;
     visibility: visible;
@@ -770,7 +781,7 @@ textarea.input {
     border-top: 1px solid #e4e7ed;
     padding-top: 15px;
     padding-bottom: 15px;
-}
+} */
 
 /*=========================================================
 	03 -> Navigation
@@ -843,54 +854,6 @@ textarea.input {
 
 .header-ctn li.nav-toggle {
     display: none;
-}
-
-/*----------------------------*\
-	responsive nav
-\*----------------------------*/
-
-@media only screen and (max-width: 991px) {
-    .header-ctn .menu-toggle {
-        display: inline-block;
-    }
-    #responsive-nav {
-        position: fixed;
-        left: 0;
-        top: 0;
-        background: #15161d;
-        height: 100vh;
-        max-width: 250px;
-        width: 0%;
-        overflow: hidden;
-        z-index: 22;
-        padding-top: 60px;
-        -webkit-transform: translateX(-100%);
-        -ms-transform: translateX(-100%);
-        transform: translateX(-100%);
-        -webkit-transition: 0.2s all;
-        transition: 0.2s all;
-    }
-    #responsive-nav.active {
-        -webkit-transform: translateX(0%);
-        -ms-transform: translateX(0%);
-        transform: translateX(0%);
-        width: 100%;
-    }
-    .main-nav {
-        margin: 0px;
-        float: none;
-    }
-    .main-nav > li {
-        display: block;
-        float: none;
-    }
-    .main-nav > li + li {
-        margin-left: 0px;
-    }
-    .main-nav > li > a {
-        padding: 15px;
-        color: #fff;
-    }
 }
 
 /*=========================================================
@@ -1394,11 +1357,20 @@ textarea.input {
 /*=========================================================
 	07 -> PRODUCTS PAGE
 ===========================================================*/
-
+.text-truncate-two-line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.hcard-200 {
+    height: 200px;
+}
 /*----------------------------*\
 	Aside
 \*----------------------------*/
-
+/* 
 .aside + .aside {
     margin-top: 30px;
 }
@@ -1424,10 +1396,11 @@ textarea.input {
 .checkbox-filter .input-checkbox label small {
     color: #8d99ae;
 }
+*/
 
 /*-- Price Filter --*/
 
-#price-slider {
+/* #price-slider {
     margin-bottom: 15px;
 }
 
@@ -1467,7 +1440,7 @@ textarea.input {
 .price-filter .input-number {
     display: inline-block;
     width: calc(50% - 7px);
-}
+} */
 
 /*----------------------------*\
 	Store
@@ -2341,17 +2314,142 @@ textarea.input {
     position: static;
     margin: 15px 0px;
 }
-
-/*=========================================================
-	13 -> RESPONSIVE
-===========================================================*/
 /* Increase font size */
 .custom-dropdown .nav-link {
     font-size: 15px; /* Adjust this value as needed */
     color: black;
 }
+/* Common Dropdown Button Styles */
+.common-dropdown-btn {
+    font-size: 12px; /* Adjust this value as needed */
+}
 
+/* Common Dropdown Menu Items */
+.common-dropdown-menu .dropdown-item {
+    font-size: 12px; /* Adjust this value as needed */
+}
+
+/* Initial button colors */
+.navbar-nav .nav-item .nav-link {
+    background-color: #007bff; /* Set the button background color */
+    color: #ffffff; /* Set the text color */
+    border-radius: 5px; /* Optional: Add border radius for better appearance */
+    padding: 5px 10px;
+}
+
+/* Hover effect to change color to white */
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: #ffffff; /* Change background to white on hover */
+    color: #007bff; /* Change text color to your primary color */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Add smooth transition */
+}
+
+/* Optional: Style for dropdown items */
+.navbar-nav .dropdown-menu .dropdown-item {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.navbar-nav .dropdown-menu .dropdown-item:hover {
+    background-color: #ffffff;
+    color: #007bff;
+}
+/* aboutus page */
+.about-section {
+    position: relative;
+    .about-section {
+        position: relative;
+        background-size: cover; /* Ensures the image covers the entire div */
+        background-position: center center; /* Centers the background image */
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        height: 100vh; /* Full height of the viewport */
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .about-text {
+        max-width: 600px; /* Limits the text width */
+    }
+
+    background-size: cover; /* Ensures the image covers the entire div */
+    background-position: center center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 100vh; /* Full height of the viewport */
+    width: 100%;
+    overflow: hidden;
+}
+
+.about-text {
+    max-width: 600px; /* Limits the text width */
+}
+
+/*=========================================================
+	13 -> RESPONSIVE
+===========================================================*/
+
+@media only screen and (max-width: 480px) {
+    [class*="col-xs"] {
+        width: 100%;
+    }
+    .store-grid {
+        float: none;
+        margin-top: 10px;
+    }
+    .store-pagination {
+        float: none;
+        margin-top: 10px;
+    }
+}
+/* @media (max-width: 576px) {
+    .about-section {
+        background-size: cover;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .about-text,
+    .about-image-box {
+        padding: 1rem;
+        max-width: 100%;
+        z-index: 2;
+    }
+} */
 @media (max-width: 768px) {
+    /* searchbar */
+    .input-group {
+        width: 100% !important; /* Full width on small screens */
+        flex-wrap: nowrap; /* Keep form inline */
+    }
+    .form-control {
+        font-size: 11px;
+        padding: 10px;
+    }
+    .btn-search {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+    /* For tablets and medium screens */
+    .subnav {
+        width: 100%; /* Full width */
+        float: none;
+    }
+
+    .subnavbtn {
+        width: 100%; /* Full width for buttons */
+        text-align: left;
+        font-size: 11px; /* Increase font size for better readability */
+        padding: 10px; /* Increase padding for easier interaction on touchscreens */
+    }
+
+    .subnav-content {
+        position: relative;
+        width: 100%;
+        padding: 10px; /* Add padding for spacing */
+    }
+
+    .subnav-content a {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
     /* #header .header-logo img {
     width: 150px; 
   }  */
@@ -2377,6 +2475,28 @@ textarea.input {
         width: auto; /* Optional: set to '100%' if you want it to fill the width */
         max-width: 100%; /* Ensures the image doesn't overflow the card */
     }
+    /* On tablets and small screens, stack carousels vertically */
+    .row.p-0 {
+        flex-direction: column;
+    }
+    .col-md-3,
+    .col-md-6 {
+        width: 100%;
+        padding: 0;
+    }
+
+    /* Adjust carousel height for mobile */
+    #leftHorizontalCarousel,
+    #carouselExampleCaptions,
+    #rightHorizontalCarousel {
+        height: auto;
+    }
+
+    /* Ensure images scale properly on smaller screens */
+    .carousel-item img {
+        width: 100%;
+        height: auto;
+    }
 }
 
 @media (min-width: 769px) {
@@ -2384,17 +2504,51 @@ textarea.input {
         flex-direction: row;
     }
 }
+/*----------------------------*\
+	responsive nav
+\*----------------------------*/
 
-@media only screen and (max-width: 480px) {
-    [class*="col-xs"] {
+@media only screen and (max-width: 991px) {
+    .header-ctn .menu-toggle {
+        display: inline-block;
+    }
+    #responsive-nav {
+        position: fixed;
+        left: 0;
+        top: 0;
+        background: #15161d;
+        height: 100vh;
+        max-width: 250px;
+        width: 0%;
+        overflow: hidden;
+        z-index: 22;
+        padding-top: 60px;
+        -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        transform: translateX(-100%);
+        -webkit-transition: 0.2s all;
+        transition: 0.2s all;
+    }
+    #responsive-nav.active {
+        -webkit-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        transform: translateX(0%);
         width: 100%;
     }
-    .store-grid {
+    .main-nav {
+        margin: 0px;
         float: none;
-        margin-top: 10px;
     }
-    .store-pagination {
+    .main-nav > li {
+        display: block;
         float: none;
-        margin-top: 10px;
+    }
+    .main-nav > li + li {
+        margin-left: 0px;
+    }
+    .main-nav > li > a {
+        padding: 15px;
+        color: #fff;
     }
 }
+/*  */

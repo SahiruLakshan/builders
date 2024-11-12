@@ -56,23 +56,27 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <style>
-      /* Common Dropdown Button Styles */
-      .common-dropdown-btn {
-        font-size: 12px; /* Adjust this value as needed */
-      }
+<style>
+  .phone-button {
+    background-color: #ffc107; /* Bootstrap warning yellow */
+    color: white;
+    transition: background-color 0.3s ease; /* Smooth color transition */
+}
 
-      /* Common Dropdown Menu Items */
-      .common-dropdown-menu .dropdown-item {
-        font-size: 12px; /* Adjust this value as needed */
-      }
-    </style>
+.phone-button:focus, .phone-button:active {
+    background-color: #002b49; /* Color change on click */
+    color: white; /* Ensures text remains white */
+    outline: none; /* Removes outline for cleaner look */
+}
+
+</style>
+    
   </head>
 
   <body class="overflow-x-hidden">
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    {{-- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Builders.lk</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -80,24 +84,21 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Accordion Item #1
+                Re
               </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
+             
             </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingTwo">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Accordion Item #2
+                My Account
               </button>
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
               </div>
             </div>
           </div>
@@ -115,14 +116,90 @@
           </div>
         </div>
       </div>
+            
+          
+    </div> --}}
+    <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Builders.lk</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="accordion" id="accordionExample">
+          <!-- First Accordion Item: Contact Info -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Contact Information
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <a href="tel:0112748149"><i class="fa fa-phone"></i> Tel: 011 274 81 49</a><br>
+                <a href="mailto:info@builders.lk"><i class="fa fa-envelope"></i> info@builders.lk</a>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Second Accordion Item: My Account -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                My Account
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                @guest
+                <a href="{{route('login')}}" class="btn btn-primary border">Login</a>
+                <a href="{{route('register')}}" class="btn btn-primary">Sign up</a>
+                <a href="#" class="btn btn-primary">Shop Login</a>
+                @endguest
+                @auth
+                <a href="{{route('dashboard')}}" class="btn btn-primary">Dashboard</a>
+                <form action="{{route('logout')}}" method="POST">
+                  @csrf
+                  <button type="submit" class="btn btn-primary">Logout</button>
+                </form>
+                @endauth
+
+              </div>
+            </div>
+          </div>
+          
+          <!-- Third Accordion Item: Navigation Links -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Navigation Links
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <a href="{{ url('/') }}">Home</a><br>
+                <a href="{{ url('/aboutus') }}">About Us</a><br>
+                <a href="gallery.html">Gallery</a><br>
+                <a href="publications.html">Publications</a><br>
+                <a href="certifications.html">Certifications</a><br>
+                <a href="career.html">Career</a><br>
+                <a href="education.html">Education</a>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Additional Accordion Items as Needed -->
+          <!-- You can add more accordion items similar to above if you have other dropdown sections -->
+        </div>
+      </div>
     </div>
+    
     <!-- HEADER -->
     <header class="nav navbar-expand-lg fixed-top">
         <div class="row justify-content-between justify-content-lg-start align-items-center align-items-lg-start">
             <!-- Logo Section -->
             <div
               class="col-2 d-flex align-items-center justify-content-center h-100 "
-              style="background-color: blanchedalmond">
+              style="background-color: rgb(224, 156, 54">
               <a href="{{ url('/') }}">
                 <img
                   src="{{ asset('assets/webpage/img/LOGO-01.png') }}"
@@ -141,7 +218,7 @@
               <div id="top-header">
                 <div class="container-fluid">
                   <div class="d-flex justify-content-between">
-                    <div class="d-flex ">
+                    <div class="d-flex">
                       <ul class="header-links float-left">
                         <li>
                           <a href="tel:0112748149"
@@ -149,12 +226,12 @@
                           >
                         </li>
                         <li>
-                          <a href="mailto:info@builders.lk"
-                            ><i class="fa fa-envelope-o"></i>
-                            info@builders.lk</a
-                          >
+                          <a href="mailto:info@builders.lk">
+                            <i class="fa fa-envelope"></i>
+                            info@builders.lk
+                          </a>
                         </li>
-                        <li>
+                        {{-- <li>
                           <a
                             href="https://www.google.com/maps/search/?api=1&query=No541D,Galawilawaththa,Homagama"
                             target="_blank"
@@ -162,21 +239,21 @@
                             <i class="fa fa-map-marker"></i> No541D,
                             Galawilawaththa, Homagama
                           </a>
-                        </li>
-                        <li><a href="home.html">Home</a></li>
+                        </li> --}}
+                        <li><a href="{{ url('/') }}">Home</a></li>
                         <li><a href="{{ url('/aboutus') }}">About Us</a></li>
-                        <li><a href="galary.html">Gallery</a></li>
-                        <li><a href="publications.html">Publications</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Publications</a></li>
                         <li>
-                          <a href="certifications.html">Certifications</a>
+                          <a href="#">Certifications</a>
                         </li>
-                        <li><a href="career.html">Career</a></li>
-                        <li><a href="education.html">Education</a></li>
+                        <li><a href="#">Career</a></li>
+                        <li><a href="#">Education</a></li>
                       </ul>
                     </div>
                     <div class="d-flex">
 
-                          <div class="dropdown px-0">
+                          <div class="dropdown px-2">
                             <button class="btn btn-sm btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 My Account
                             </button>
@@ -210,7 +287,7 @@
               <nav
                 id="navigation"
                 class="navbar navbar-expand p-0"
-                style="background-color: #e3f2fd"
+                style="background-color: #002b49"
               >
                 <div class="container-fluid px-3">
                   <!-- Hamburger Toggler Button -->
@@ -269,7 +346,7 @@
                           data-bs-toggle="dropdown"
                           aria-expanded="false"
                         >
-                          Free Quater
+                          Free Quoter
                         </a>
                       </li>
                       <li class="nav-item dropdown custom-dropdown p-1">
@@ -284,23 +361,23 @@
                         <ul class="dropdown-menu p-1 border">
                           <li>
                             <a
-                              href="/serviceproviders"
+                              href="serviceproviderform"
                               class="dropdown-item p-1 border"
                               >Service Providers</a
                             >
                           </li>
                           <li>
-                            <a href="#" class="dropdown-item p-1 border"
+                            <a href="/professionalsform" class="dropdown-item p-1 border"
                               >Professionals</a
                             >
                           </li>
                           <li>
-                            <a href="/shopSuppliers" class="dropdown-item p-1 border"
+                            <a href="#" class="dropdown-item p-1 border"
                               >Bass</a
                             >
                           </li>
                           <li>
-                            <a href="#" class="dropdown-item p-1 border"
+                            <a href="shopSuppliers" class="dropdown-item p-1 border"
                               >Shops</a
                             >
                           </li>
@@ -316,88 +393,27 @@
                 <div class="container-fluid p-1">
                   <div class="d-flex justify-content-around">
                     <!-- First Dropdown -->
-                    <div class="  mb-2 mb-md-0 p-1">
+                    <div class="  mb-2 mb-md-0 p-0">
+                    
                       <div class="subnav">
-                        <button class="subnavbtn">
-                          Service By Category <i class="fa fa-caret-down"></i>
+                        <button class="subnavbtn fs-6 ">
+                            Shop By Category <i class="fa fa-caret-down"></i>
                         </button>
-                        
-
-                        <div class="subnav-content">
-                          <div class="col-6 col-md-4">
-                            <a href="#">ARCHITECTURS</a>
-                            <a href="#">BUILDING CONTRACTORS</a>
-                            <a href="#">INTERIOR DESIGNERS</a>
-                            <a href="#">SRUCTURAL ENGINEERS</a>
-                            <a href="#">QUANTITY SEAVER</a>
-                            <a href="#">MEP CONSULTANT</a>
-                            <a href="#">FIRE CONSULTANT</a>
-                          </div>
-                          <div class="col-6 col-md-4">
-                            <a href="#">ALUMINIUM FABRICATIORS</a>
-                            <a href="#">ELECTRITIONS</a>
-                            <a href="#">PLUMBERS</a>
-                            <a href="#">STEEL FABRICATORS</a>
-                            <a href="#">STAINLESS STEEL FABRICATORS</a>
-                            <a href="#">TIMBER CONTRACTOR</a>
-                          </div>
-                          <div class="col-6 col-md-4">
-                            <a href="#">MESENS</a>
-                            <a href="#">TILING TECHNETION</a>
-                            <a href="#">LANSCAPING</a>
-                            <a href="#">WATER FROOFING</a>
-                            <a href="#">MAINTENANCE</a>
-                            <a href="#">PAINTERS</a>
-                          </div>
-                          <div class="col-6 col-md-4">
-                            <a href="#">AC CONTRACTORS</a>
-                            <a href="#">ELIVETORS</a>
-                            <a href="#">SWIMMING POOL CONTRACTOR</a>
-                            <a href="#">SOLAR POWER</a>
-                            <a href="#">OTHERS</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Search Bar -->
-                    <div
-                      class=" mb-2 mb-md-0 d-flex justify-content-center justify-content-md-end"
-                    >
-                      <div class="input-group input-group-sm w-100 w-md-75">
-                        <input
-                          type="search"
-                          class="form-control"
-                          placeholder="Search here"
-                          aria-label="Search here"
-                        />
-                        <button
-                          class="btn btn-dark btn-search"
-                          type="button"
-                        >
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <!-- Second Dropdown -->
-                    <div class="col-12 col-md-2 mb-2 mb-md-0">
-                      <div class="subnav">
-                        <button class="subnavbtn">
-                          Shops By Category <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="subnav-content" style="height:50vh">
-                            <div class="d-flex flex-wrap flex-column">
-                                  @foreach($shopcats as $shopcat)
-                                      <a href="{{route('category.shop', $shopcat->name)}}">{{$shopcat->name}}</a>
-
-                                  @endforeach
+                        <div class="subnav-content" style="height:40vh">
+                            <div class="d-flex flex-wrap">
+                                @foreach($shopcats as $shopcat)
+                                    <div class="col-6 col-md-4 mb-0">
+                                        <a href="{{route('category.shop', $shopcat->name)}}">{{ $shopcat->name }}</a>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
-                      </div>
+                    </div>
                     </div>
                     <!-- Third Dropdown -->
-                    {{-- <div class="col-12 col-md-2 mb-2 mb-md-0">
+                    <div class="col-md-2 mb-2 mb-md-0 p-0">
                       <div class="subnav">
-                        <button class="subnavbtn">
+                        <button class="subnavbtn fs-6 ">
                           Product By Category <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content">
@@ -433,20 +449,89 @@
                           </div>
                         </div>
                       </div>
-                    </div> --}}
-                    <!-- Fourth Dropdown -->
-                    <div class="col-12 col-md-2 mb-2 ">
+                    </div>
+                  
+                    <!-- Search Bar -->
+                    <div class="col-12 col-md-4 mb-2 mb-md-0">
+                      <form action="{{ route('search') }}" method="GET" class="input-group input-group-sm w-80">
+                        <input
+                          type="search"
+                          name="query"
+                          class="form-control"
+                          placeholder="Search here"
+                          aria-label="Search here"
+                        />
+                        <button class="btn btn-dark btn-search" type="submit">
+                          <i class="fa fa-search"></i>
+                        </button>
+                      </form>
+                    </div>
+
+                    
+                  
+                    <!-- Second Dropdown -->
+                    <div class="col-12 col-md-2 mb-2 mb-md-0 p-0">
                       <div class="subnav">
-                        <button class="subnavbtn">
-                          Purchase With Builders.lk
-                          <i class="fa fa-caret-down"></i>
+                        <button class="subnavbtn fs-6 ">
+                          Service By Category <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content">
-                          <a href="#">As a Service Provider</a>
-                          <a href="#">As a Professional</a>
-                          <a href="#">As a Shop</a>
+                          <div class="col-6 col-md-4">
+                            <a href="#">ARCHITECTS</a>
+                            <a href="#">BUILDING CONTRACTORS</a>
+                            <a href="#">INTERIOR DESIGNERS</a>
+                            <a href="#">STRUCTURAL ENGINEERS</a>
+                            <a href="#">QUANTITY SURVEYORS</a>
+                            <a href="#">MEP CONSULTANTS</a>
+                            <a href="#">FIRE CONSULTANTS</a>
+                          </div>
+                          <div class="col-6 col-md-4">
+                            <a href="#">ALUMINIUM FABRICATORS</a>
+                            <a href="#">ELECTRICIANS</a>
+                            <a href="#">PLUMBERS</a>
+                            <a href="#">STEEL FABRICATORS</a>
+                            <a href="#">STAINLESS STEEL FABRICATORS</a>
+                            <a href="#">TIMBER CONTRACTORS</a>
+                          </div>
+                          <div class="col-6 col-md-4">
+                            <a href="#">MASONRY</a>
+                            <a href="#">TILING TECHNICIANS</a>
+                            <a href="#">LANDSCAPING</a>
+                            <a href="#">WATERPROOFING</a>
+                            <a href="#">MAINTENANCE</a>
+                            <a href="#">PAINTERS</a>
+                          </div>
+                          <div class="col-6 col-md-4">
+                            <a href="#">AC CONTRACTORS</a>
+                            <a href="#">ELEVATORS</a>
+                            <a href="#">SWIMMING POOL CONTRACTORS</a>
+                            <a href="#">SOLAR POWER</a>
+                            <a href="#">OTHERS</a>
+                          </div>
                         </div>
                       </div>
+                    </div>
+                    
+                    <!-- Fourth Dropdown -->
+                    <div class=" col-md-2 mb-2  p-0">
+                      <div class="subnav">
+                        <button class="subnavbtn fs-6 ">
+                            Purchase With Builders.lk <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="subnav-content">
+                            <div class="col-6 col-md-4">
+                                <a href="#">As a Service Provider</a>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <a href="#">As a Company</a>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <a href="#">As Brand</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
                     </div>
                   </div>
                 </div>
@@ -456,8 +541,12 @@
     </header>
 
     <!-- /MAIN HEADER -->
+    <body>
+      @yield('content')
+
+    </body>
 {{-- content --}}
-@yield('content')
+
     <!-- FOOTER -->
 
     <!-- Footer -->
@@ -468,213 +557,84 @@
         <!-- Section: Text -->
         <section class="mb-4">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-            distinctio earum repellat quaerat voluptatibus placeat nam, commodi
-            optio pariatur est quia magnam eum harum corrupti dicta, aliquam
-            sequi voluptate quas.
+            A.A.I.C. Business Solutions (Pvt) Ltd provides accounting, marketing, IT, and business consulting services in Sri Lanka. Recognizing the need for a digital platform in the construction industry, the company developed BUILDERS.LK to create an integrated market.
           </p>
         </section>
-        <!-- Section: Text -->
-
+    
         <!-- Section: Links -->
         <section>
-          <!--Grid row-->
           <div class="row">
-            <!--Grid column-->
+            <!-- Customer Service -->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase footer-title">Contact Us</h5>
-
+              <h5 class="text-uppercase footer-title">Customer Service</h5>
               <ul class="footer-links">
-                <li>
-                  <a href="#!">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!">Link 4</a>
-                </li>
+                <li><a href="#!">My Account</a></li>
+                <li><a href="#!">Track Order</a></li>
+                {{-- <li><a href="#!">FAQs</a></li> --}}
+                <li><a href="#!">Shipping Info</a></li>
+                <li><a href="#!">Return & Refund Policy</a></li>
               </ul>
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
+    
+            <!-- Company Info -->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Links</h5>
-
+              <h5 class="text-uppercase footer-title">Company Info</h5>
               <ul class="footer-links">
-                <li>
-                  <a href="#!">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!" class="">Link 4</a>
-                </li>
+                <li><a href="#!">About Us</a></li>
+                <li><a href="#!">Careers</a></li>
+                <li><a href="#!">Sustainability Efforts</a></li>
+                {{-- <li><a href="#!">Blog</a></li> --}}
+                <li><a href="#!">Media Resources</a></li>
               </ul>
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
+    
+            <!-- Policies -->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Links</h5>
-
+              <h5 class="text-uppercase footer-title">Policies</h5>
               <ul class="footer-links">
-                <li>
-                  <a href="#!">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!">Link 4</a>
-                </li>
+                <li><a href="#!">Privacy Policy</a></li>
+                <li><a href="#!">Terms of Use</a></li>
+                <li><a href="#!">Cookie Policy</a></li>
+                <li><a href="#!">Data Protection</a></li>
               </ul>
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
+    
+            <!-- Contact & Social Media -->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Information</h5>
-
-              <ul class="footer-links">
-                <li>
-                  <a href="#!">About Us</a>
-                </li>
-                <li>
-                  <a href="#!">Contact Us</a>
-                </li>
-                <li>
-                  <a href="#!">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="#!">Orders and Returns</a>
-                </li>
-                <li>
-                  <a href="#!">Terms & Conditions</a>
-                </li>
-              </ul>
+              <h5 class="text-uppercase footer-title">Contact & Follow Us</h5>
+              <p>Email: info@builders.lk</p>
+              <p>Phone: +94 11 274 81 49</p>
+              <div>
+                <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white me-2"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+              </div>
             </div>
-            <!--Grid column-->
           </div>
-          <!--Grid row-->
         </section>
-        <!-- Section: Links -->
+    
+        <!-- Payment Methods -->
+        <div class="row mt-4">
+          <div class="col text-center">
+            <h5 class="text-uppercase footer-title">We Accept</h5>
+            <img src="path-to-your-visa-icon" alt="Visa" width="40">
+            <img src="path-to-your-mastercard-icon" alt="MasterCard" width="40">
+            <img src="path-to-your-paypal-icon" alt="PayPal" width="40">
+          </div>
+        </div>
       </div>
-      <!-- Grid container -->
-
-      <div id="bottom-footer" class="section">
-        <!-- Copyright -->
-        <span class="copyright text-center">
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;
-          <script>
-            document.write(new Date().getFullYear());
-          </script>
-          All rights reserved | Bilders.lk made with
-          <i class="fa fa-heart-o" aria-hidden="true"></i> by
-          <a href="https://colorlib.com" target="_blank">AAIC</a>
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    
+      <!-- Bottom Footer -->
+      <div id="bottom-footer" class="section text-center mt-4">
+        <span class="copyright">
+          &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | BUILDERS.LK by 
+          <a href="https://newtecgroup.lk" target="_blank" class="text-white">AAIC</a>
         </span>
-        <!-- Copyright -->
       </div>
     </footer>
+    
 
-    <!-- Footer -->
-    <!-- FOOTER -->
-    {{-- <footer id="footer">
-      <!-- top footer -->
-      <div class="section">
-        <!-- container -->
-        <div class="container">
-          <!-- row -->
-          <div class="row">
-            <div class="col-md-3 col-xs-6">
-              <div class="footer">
-                <h3 class="footer-title">About Us</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut.
-                </p>
-                <ul class="footer-links">
-                  <li>
-                    <a href="#"
-                      ><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a
-                    >
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      ><i class="fa fa-envelope-o"></i>email@email.com</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-md-3 col-xs-6">
-              <div class="footer">
-                <h3 class="footer-title">Categories</h3>
-                <ul class="footer-links">
-                  <li><a href="#">Hot deals</a></li>
-                  <li><a href="#">Laptops</a></li>
-                  <li><a href="#">Smartphones</a></li>
-                  <li><a href="#">Cameras</a></li>
-                  <li><a href="#">Accessories</a></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="clearfix visible-xs"></div>
-
-            <div class="col-md-3 col-xs-6">
-              <div class="footer">
-                <h3 class="footer-title">Information</h3>
-                <ul class="footer-links">
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Contact Us</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Orders and Returns</a></li>
-                  <li><a href="#">Terms & Conditions</a></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-md-3 col-xs-6">
-              <div class="footer">
-                <h3 class="footer-title">Service</h3>
-                <ul class="footer-links">
-                  <li><a href="#">My Account</a></li>
-                  <li><a href="#">View Cart</a></li>
-                  <li><a href="#">Wishlist</a></li>
-                  <li><a href="#">Track My Order</a></li>
-                  <li><a href="#">Help</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <!-- /row -->
-        </div>
-        <!-- /container -->
-      </div>
-      <!-- /top footer -->
-
-      <!-- bottom footer -->
-    </footer> --}}
-
-    <!-- /FOOTER -->
 
 
 <!-- Bootstrap JS and dependencies -->
@@ -697,9 +657,9 @@
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
 <!-- Owl Carousel JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
-    <script>
+    {{-- <script>
       // JavaScript to handle dropdown functionality
       document.querySelectorAll(".subnavbtn").forEach(function (button) {
         button.addEventListener("mouseenter", function () {
@@ -747,8 +707,39 @@
       document.addEventListener("click", function () {
         closeAllDropdowns();
       });
-    </script>
+    </script> --}}
     <script>
+      // JavaScript to handle dropdown functionality
+      document.querySelectorAll(".subnavbtn").forEach(function (button) {
+        const subnavContent = button.nextElementSibling;
+
+        // Show dropdown when hovering over the button
+        button.addEventListener("mouseenter", function () {
+          subnavContent.style.display = "flex"; // Show the dropdown
+        });
+
+        // Hide dropdown when leaving the button, unless cursor is over the dropdown content
+        button.addEventListener("mouseleave", function () {
+          setTimeout(function () {
+            if (!subnavContent.matches(':hover')) {
+              subnavContent.style.display = "none"; // Hide if not hovered over
+            }
+          }, 200); // Slight delay to allow smooth transition
+        });
+
+        // Ensure dropdown stays visible if the user hovers over the dropdown content itself
+        subnavContent.addEventListener("mouseenter", function () {
+          subnavContent.style.display = "flex"; // Keep dropdown visible
+        });
+
+        // Hide dropdown when the cursor leaves the dropdown content
+        subnavContent.addEventListener("mouseleave", function () {
+          setTimeout(function () {
+            subnavContent.style.display = "none"; // Hide dropdown when cursor leaves
+          }, 200); // Slight delay for smooth interaction
+        });
+      });
+
       $(document).ready(function () {
         $(".owl-carousel").owlCarousel({
           items: 8,
@@ -759,6 +750,17 @@
           nav: true,
           dots: true,
           rtl: true, // change direction of the flow
+          responsive:{
+        0:{
+            items:2
+        },
+        600:{
+            items:4
+        },
+        1000:{
+            items:8
+        }
+    }
         });
       });
     </script>

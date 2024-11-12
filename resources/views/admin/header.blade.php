@@ -54,6 +54,7 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
   </head>
 
@@ -128,7 +129,7 @@
 
 <!-- Internal Form-elements js -->
 <script src="{{ asset('assets/js/advanced-form-elements.js') }}"></script>
-<script src="{{ asset('assets/js/select2.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/select2.js') }}"></script> --}}
 
 <!-- Internal Sumoselect js -->
 <script src="{{ asset('assets/plugins/sumoselect/jquery.sumoselect.js') }}"></script>

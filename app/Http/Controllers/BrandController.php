@@ -14,12 +14,18 @@ class BrandController extends Controller
     {
         return view('admin.addbrand');
     }
+    //for the connect product with Brand
+    public function brandproduct()
+    {
+        return view('admin.brandproduct');
+    }
+
 
     public function brands(Request $request)
     {
         $query = $request->input('query');
 
-        $brands= Brand::where('b_name', 'like', '%' . $query . '%')->orWhere('id', 'like', '%' . $query . '%')->paginate(8);
+        $brands = Brand::where('b_name', 'like', '%' . $query . '%')->orWhere('id', 'like', '%' . $query . '%')->paginate(8);
 
         if ($request->ajax()) {
             return view('admin.viewtbl.brandpagination', compact('brands'))->render();
@@ -85,7 +91,7 @@ class BrandController extends Controller
         if (!$brand) {
             return redirect()->back()->with('error', 'Brand is not found');
         }
-        return view('admin.updateforms.updatebrand',compact('brand'));
+        return view('admin.updateforms.updatebrand', compact('brand'));
     }
 
     public function updateBrand(Request $request, $id)
@@ -107,7 +113,7 @@ class BrandController extends Controller
             'production' => 'required|string|max:255',
             'brand_contact_number' => 'required|regex:/^[0-9]{10}$/',
             'email' => 'required|email|max:255|unique:brands,email,' . $brand->id, // Ignore current brand's email for uniqueness check
-            
+
         ]);
 
         if ($validator->fails()) {
@@ -135,13 +141,13 @@ class BrandController extends Controller
                 $file = $request->file('brand_img');
                 $filename = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path('assets/brand'), $filename); // Move to the 'assets/brand' directory
-    
+
                 $data['brand_img'] = $filename;
             }
-            
+
             // Update other brand data if necessary
             $brand->update($data); // Assuming $data contains other fields too
-            
+
 
             // Update the brand
             $brand->update($data);

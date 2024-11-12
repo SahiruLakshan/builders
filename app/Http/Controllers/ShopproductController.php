@@ -28,7 +28,7 @@ class ShopproductController extends Controller
     public function submitProducts(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'shop_name' => 'required|exists:shops,id', // Ensure the shop exists in the database
+            'shop_name' => 'required|exists:shops,id',
             'products.*.productName' => 'required|string',
             'products.*.brand' => 'required|string',
             'products.*.category' => 'required|string',
@@ -36,7 +36,8 @@ class ShopproductController extends Controller
             'products.*.quantity' => 'required|integer|min:1',
             'products.*.measurement' => 'required|string',
             'products.*.color' => 'nullable|string',
-            'products.*.image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Image validation
+            'products.*.image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'products.*.other_categories' => 'nullable|array', // Validate as array
         ]);
 
         if ($validator->fails()) {
@@ -45,15 +46,12 @@ class ShopproductController extends Controller
 
         try {
             foreach ($request->products as $product) {
-                // Handle the image upload
                 $imageName = null;
                 if (isset($product['image'])) {
-                    // Save the image in public/assets/shopproduct folder
                     $imageName = time() . '_' . $product['image']->getClientOriginalName();
-                    $product['image']->move(public_path('assets/shopproduct'), $imageName); // Store image in folder
+                    $product['image']->move(public_path('assets/shopproduct'), $imageName);
                 }
 
-                // Store product in the database for the given shop
                 Shopproduct::create([
                     'shop_id' => $request->shop_name,
                     'product_id' => $product['productName'],
@@ -63,7 +61,8 @@ class ShopproductController extends Controller
                     'quantity' => $product['quantity'],
                     'measurement_id' => $product['measurement'],
                     'color' => $product['color'] ?? null,
-                    'image' => $imageName, // Only store image name in the database
+                    'image' => $imageName,
+                    'other_categories' => $product['other_categories'] ?? [], // Reference from product array
                 ]);
             }
 

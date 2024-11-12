@@ -3,333 +3,330 @@
     <!-- /MAIN HEADER -->
     <style>
       .border {
-        border: 1px solid #ccc;
+        border: 1px solid #161515;
         border-radius: 5px;
         padding: 10px;
       }
+      .custom-form-style {
+        background-color: #ffffff;
+        border: 2px solid #0d0d0d;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 8px; /* Optional: Adds rounded corners */
+      }
+      .preview-box {
+      width: 100px;
+      height: 100px;
+      border: 2px dashed #060404;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+     
+    }
+    .preview-box img {
+      width: 100%;
+      height: auto;
+    }
+
     </style>
-    <div class="container-fluid " style="padding-top: 132px" >
+    <div class="container-fluid justify-content-center" >      
       <div class="text-center">
         <h3 class="display-4 text-primary font-weight-bold">BUILDERS.LK</h3>
         <h4 class="display-6 text-secondary font-weight-bold">
-          Constructions Materials Suppliers/Shop Registration form
+          Constructions Materials Suppliers/Shop Registration 
         </h4>
       </div>
-      <form class="border p-4">
-        <div class="row">
-          <div class="form-group col">
-            <label for="inputPassword4">Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="supplier_name"
-              placeholder="Name Of The Suppliers/Shop"
-            />
-          </div>
-          <div class="col">
-            <label for="inputAddress">Address</label>
-            <textarea
-              class="form-control"
-              id="inputAddress"
-              rows="3"
-              placeholder="Address Of The Service Provider"
-            ></textarea>
-          </div>
-        </div>
+      <div class="custom-form-style border p-5">
+                    {{-- <form class="custom-form-style border p-4"   >  --}}
+              @csrf
+              <div class="row">
+                <div class="form-group col">
+                  <label for="inputPassword4">Shop Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="supplier_name"
+                    placeholder="Name Of The Suppliers/Shop"
+                    name="shop_name"
+                  />
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress">Address</label>
+                  <textarea
+                    class="form-control"
+                    id="inputAddress"
+                    rows="2" name="address"
+                    placeholder="Address Of The Service Provider"
+                  ></textarea>
+                </div>
+              </div>
 
-        <div class="row">
-          <div class="col-2">
-            <label for="category">Select Category:</label>
-            <select id="category" name="category" class="form-select">
-              <option value="cat1">Category 1</option>
-              <option value="cat2">Category 2</option>
-              <option value="cat3">Category 3</option>
-            </select>
-          </div>
-          <div class="col-10">
-     
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-5">
-            <label for="district">Select District:</label>
-            <select id="district" name="district" class="form-select">
-              <option value="">Select District</option>
-              <option value="Colombo">Colombo</option>
-              <option value="Gampaha">Gampaha</option>
-              <option value="Kalutara">Kalutara</option>
-              <option value="Kandy">Kandy</option>
-              <option value="Matale">Matale</option>
-              <option value="Nuwara Eliya">Nuwara Eliya</option>
-            </select>
-          </div>
-          <div class="col-5">
-            <label for="city">City:</label>
-            <select id="city" name="city" class="form-select" disabled>
-              <option value="">Select City</option>
-            </select>
-          </div>
-        </div>
-        <script>
-          const cities = {
-            Colombo: ["Colombo", "Kotahena", "Nugegoda"],
-            Gampaha: ["Gampaha", "Negombo", "Minuwangoda"],
-            Kalutara: ["Kalutara", "Panadura", "Horana"],
-            Kandy: ["Kandy", "Nawalapitiya", "Peradeniya"],
-            Matale: ["Matale", "Dambulla", "Kurunegala"],
-            "Nuwara Eliya": ["Nuwara Eliya", "Hatton", "Bandarawela"],
-          };
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-group" >
+                    <label for="category">Select Shop Category:</label>
+                  <select id="shop_category" name="shop_category[]" class="form-select select2" multiple="multiple">
+                      {{-- Populating categories dynamically from the controller --}}
+                      @foreach ($shop_catogories as $shop_catogory)
+                          <option value="{{ $shop_catogory->id }}">{{ $shop_catogory->name }}</option>
+                      @endforeach
+                  </select>
+                  </div>
+                  
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="location" class="col-form-label">Location :</label>
+                  <input type="text" name="location" id="location" class="form-control" aria-describedby="locationHelp">
+                </div>
+              </div>
+                  {{-- <div class="col-4">
+                  <label for="category">Select Selling Brands:</label>
+                  <select id="brand_category" name="brand" class="form-select select2">
+                    @foreach ($brands as $brand)
+                      <option value="{{ $brand->id }}">{{ $brand->b_name }}</option>
+                    @endforeach
+                    
+                  </select>
+                </div> --}}
+                {{-- <div class="col-10">
 
-          const distSelect = document.getElementById("district");
-          const citySelect = document.getElementById("city");
+                </div> --}}
+              </div>
+              <div class="row">
+                <div class="col-5">
+                  <label for="district">Select District:</label>
+                  <select id="district" name="district" class="form-select">
+                  </select>
+                </div>
+                <div class="col-5">
+                  <label for="city">City:</label>
+                  <select id="city" name="city" class="form-select disabled" disabled>
+                    <option value="">Select City</option>
+                  </select>
+                </div>
+              </div>  
+              
 
-          distSelect.addEventListener("change", (e) => {
-            const dist = e.target.value;
-            if (cities[dist]) {
-              citySelect.disabled = false;
-              citySelect.innerHTML = "<option value=''>Select City</option>";
-              cities[dist].forEach((city) => {
-                const opt = document.createElement("option");
-                opt.value = city;
-                opt.textContent = city;
-                citySelect.appendChild(opt);
-              });
-            } else {
-              citySelect.disabled = true;
-            }
-          });
-        </script>
+              <h5 class="mt-4">Other Details</h5>
+              <hr>
+              <div class="row">
+              {{-- <div class="col-md-6">
+                <div class="form-group">
+                  <label for="shop_image" class="col-form-label">Shop Image :</label>
+                  <input type="file" name="shop_image" id="shop_image" class="form-control-file">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <img src="" id="preview-image" style="max-width: 150px; max-height: 150px;">
+                </div>
+              </div> --}}
+              <div class="mb-3 d-flex">
+                <label for="profileImage" class="form-label">Shop Image :</label>
+                <input type="file" id="shop_image" name="shop_image" accept="image/*" onchange="previewImage()" required>
+                <div class="preview-box" id="imagePreview">
+                  <span>Image Preview</span>
+                </div>
+              </div>
+            
 
-      <h5>Contact Details</h5>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="telephone" class="col-form-label">Telephone :</label>
-            <input type="tel" id="telephone" class="form-control" aria-describedby="telephoneHelp">
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="mobile" class="col-form-label">Mobile :</label>
-            <input type="tel" id="mobile" class="form-control" aria-describedby="mobileHelp">
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="whatsapp" class="col-form-label">WhatsApp :</label>
-            <input type="tel" id="whatsapp" class="form-control" aria-describedby="whatsappHelp">
-          </div>
-        </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="telephone" class="col-form-label">Telephone :</label>
+                  <input type="tel" name="telephone" id="telephone" class="form-control" aria-describedby="telephoneHelp">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="mobile" class="col-form-label">Mobile :</label>
+                  <input type="tel"  name="mobile" id="mobile" class="form-control" aria-describedby="mobileHelp">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="whatsapp" class="col-form-label">WhatsApp :</label>
+                  <input type="tel" name="whatsapp" id="whatsapp" class="form-control" aria-describedby="whatsappHelp">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="facebook" class="col-form-label">FaceBook Link :</label>
+                  <input type="text" name="fb_link" id="fb_link" class="form-control" aria-describedby="telephoneHelp">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="start_time" class="col-form-label">Start Time :</label>
+                  <input type="time" name="start_time" id="start_time" class="form-control" aria-describedby="start_timeHelp">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="end_time" class="col-form-label">End Time :</label>
+                  <input type="time" name="end_time" id="end_time" class="form-control" aria-describedby="end_timeHelp">
+                </div>
+              </div>
+              <div class="col-md-4 mt-3">
+                <label for="bussiness_reg_no" class="col-form-label">Business Registration No :</label>
+                <input type="text" name="bussiness_reg_no" id="bussiness_reg_no" class="form-control" aria-describedby="telephoneHelp">
+              </div>
+              </div>
+
+
+              <div class="mt-3 mb-3">
+                <button onclick="postData()" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='{{ url()->previous() }}'">Cancel</button>
+              </div>
+{{-- </form> --}}
       </div>
-
-
-        <h5>Company Details</h5>
-        <div class="row align-items-space-between">
-          <div class="col">
-            <label for="inputPassword6" class="col-form-label">Name :</label>
-            <input type="Telephone" id="telephone" class="form-control" aria-describedby="telephoneHelp">
-          </div>
-          <div class="col">
-            <label for="inputPassword6" class="col-form-label">Business Registration No :</label>
-            <input type="Telephone" id="mobile" class="form-control" aria-describedby="telephoneHelp">
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-4">
-            <label for="noOfEmp" class="col-form-label">Number of Employees :</label>
-            <input type="number" id="noOfEmp" class="form-control" aria-describedby="noOfEmpHelp">
-          </div>
-          <div class="col-4">
-            <label for="employeesQualification" class="col-form-label">Employees Qualification :</label>
-            <input type="text" id="employeesQualification" class="form-control" aria-describedby="employeesQualificationHelp">
-          </div>
-          <div class="col-4">
-            <label for="maxProjectValue" class="col-form-label">Maximum Project Value :</label>
-            <input type="text" id="maxProjectValue" class="form-control" aria-describedby="maxProjectValueHelp">
-          </div>
-        </div>
-        <h5>Project History</h5>
-        <table class="table" id="projectTable">
-          <thead>
-            <tr>
-              <th>Project Name</th>
-              <th>Location</th>
-              <th>Value</th>
-              <th>Contact Person</th>
-              <th>Contact Number</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="projectHistory">
-            <tr>
-              <td>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="projectName[]"
-                  placeholder="Project Name"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="projectLocation[]"
-                  placeholder="Location"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="projectValue[]"
-                  placeholder="Value"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="contactPerson[]"
-                  placeholder="Contact Person"
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="contactNumber[]"
-                  placeholder="Contact Number"
-                />
-              </td>
-              <td>
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  onclick="removeRow(this)"
-                >
-                  Remove
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <button type="button" class="btn btn-success" onclick="addProjectRow()">
-          Add Project
-        </button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      
     </div>
 
+    @if ($message = Session::get('success'))
+
     <script>
-      // Function to add a new project row
-      function addProjectRow() {
-        const tableBody = document.getElementById("projectHistory");
-        const newRow = `
-            <tr>
-              <td><input type="text" class="form-control" name="projectName[]" placeholder="Project Name" /></td>
-              <td><input type="text" class="form-control" name="projectLocation[]" placeholder="Location" /></td>
-              <td><input type="text" class="form-control" name="projectValue[]" placeholder="Value" /></td>
-              <td><input type="text" class="form-control" name="contactPerson[]" placeholder="Contact Person" /></td>
-              <td><input type="text" class="form-control" name="contactNumber[]" placeholder="Contact Number" /></td>
-              <td><button type="button" class="btn btn-danger" onclick="removeRow(this)">Remove</button></td>
-            </tr>
-          `;
-        tableBody.insertAdjacentHTML("beforeend", newRow);
-      }
-
-      // Function to remove a project row
-      function removeRow(button) {
-        button.closest("tr").remove();
-      }
-
-      // Handle form submission
-      document
-        .getElementById("builderForm")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
-          // Gather form data for submission here (can use FormData for AJAX submission)
-          alert("Form submitted with project data!");
-        });
+      $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
     </script>
-    {{-- <!-- NEWSLETTER -->
 
-    <div id="newsletter" class="section">
-      <!-- container -->
-      <div class="container">
-        <!-- row -->
-        <div class="row">
-          <div class="col-md-12">
-            <div class="newsletter">
-              <p>Sign Up for the <strong>NEWSLETTER</strong></p>
-              <form>
-                <input
-                  class="input"
-                  type="email"
-                  placeholder="Enter Your Email"
-                />
-                <button class="newsletter-btn">
-                  <i class="fa fa-envelope"></i> Subscribe
-                </button>
-              </form>
-              <!-- Section: Social media -->
-              <section class="mb-4">
-                <!-- Facebook -->
-                <a
-                  class="btn btn-outline-light btn-floating m-1"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
 
-                <!-- Twitter -->
-                <a
-                  class="btn btn-warning btn-floating m-1"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-twitter"></i
-                ></a>
+    @endif
+      <script>
 
-                <!-- Google -->
-                <a
-                  class="btn btn-warning btn-floating m-1"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-google"></i
-                ></a>
+        function postData() {
+          var formData = new FormData();
+          formData.append('_token', '{{ csrf_token() }}');
+          formData.append('shop_name', $('#supplier_name').val());
+          formData.append('address', $('#address').val());
+          formData.append('location', $('#location').val());
+          formData.append('telephone', $('#telephone').val());
+          formData.append('mobile', $('#mobile').val());
+          formData.append('whatsapp', $('#whatsapp').val());
+          formData.append('fb_link', $('#fb_link').val());
+          formData.append('start_time', $('#start_time').val());
+          formData.append('end_time', $('#end_time').val());
+          formData.append('bussiness_reg_no', $('#bussiness_reg_no').val());
+          formData.append('shop_image', $('#shop_image')[0].files[0]);
+          formData.append('shop_category', $('#shop_category').val());
+          formData.append('district', $('#district').val());
+          formData.append('city', $('#city').val());
 
-                <!-- Instagram -->
-                <a
-                  class="btn btn-warning btn-floating m-1"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-instagram"></i
-                ></a>
+          $.ajax({
+              url: "/addshopSuppliers",
+              method: "POST",
+              data: formData,
+              contentType: false,
+              processData: false,
+              success: function(response) {
+              console.log("🚀 ~ postData ~ response:", response)
 
-                <!-- Linkedin -->
-                <a
-                  class="btn btn-warning btn-floating m-1"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Success',
+                  text: response.message
+                })
+              },
+              error: function(xhr) {
+                //  console.log("🚀 ~ postData ~ xhr:", xhr)
+                  var errors = "";
+                  $.each(xhr.responseJSON.errors, function(key, value) {
+                    errors += value[0] + "\n";
+                  });
+                  // console.log("🚀 ~ postData ~ errors:", errors)
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'error',
+                    text: errors
+                  })
+              }
+          });
+        }
 
-                <!-- Github -->
-                <a
-                  class="btn btn-warning btn-floating m-1"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-github"></i
-                ></a>
-              </section>
-              <!-- Section: Social media -->
-            </div>
-          </div>
-        </div>
-        <!-- /row -->
-      </div>
-      <!-- /container -->
-    </div> --}}
+       
+        // $(document).ready(function() {  
+
+        //     $('#shop_image').change(function() {
+        //         let reader = new FileReader();
+        //         reader.onload = (e) => {
+        //             $('#preview-image').attr('src', e.target.result);
+        //         }
+        //         reader.readAsDataURL(this.files[0]);
+        //     });
+        // });
+
+        // shop catogory
+        $(document).ready(function() {
+                      $('#shop_category').select2({
+                        placeholder: "Select a category",
+                        allowClear: true
+                      });
+                      // $('#brand_category').select2({
+                      //   placeholder: "Select a brand",
+                      //   allowClear: true
+                      // });
+                    });
+                // select district and city 
+                var cities=[
+                  @forEach($dictricts as $dictrict)
+                    {
+                    'districtId':'{{$dictrict->dis_id}}',
+                    'districtName':'{{$dictrict->dis_name}}',
+                    'cities':[ 
+                    @forEach($dictrict->city as $city)
+                      {
+                        'cityName':'{{$city->ds_name}}',
+                        'cityId':{{$city->ds_id}}
+                      },
+                    @endforeach
+                    ]},
+                  @endforeach
+                ];
+
+                $(document).ready(function(){
+                  let content='<option value="">Select District</option>';
+                  cities.forEach((elem) => {
+                    content+=`<option value="${elem.districtId}">${elem.districtName}</option>`;
+                  })
+                  $('#district').html(content);
+                  $('#district').select2();
+                  $('#city').select2();
+
+                  $('#district').change(function() {
+                    $('#city').removeClass('disabled');
+                    $('#city').removeAttr('disabled');
+                    // console.log("city:", cities.find((elem) => elem.districtId == $(this).val()));
+                    let content='<option value="">Select City</option>';
+                    cities.find((elem) => elem.districtId == $(this).val()).cities.forEach((elem) => {
+                      content+=`<option value="${elem.cityId}">${elem.cityName}</option>`;
+                    })
+                    $('#city').html(content);
+                    $('#city').select2();
+                  });
+                })
+
+                function previewImage() {
+                      const file = document.getElementById("shop_image").files[0];
+                      const previewBox = document.getElementById("imagePreview");
+                      previewBox.innerHTML = ""; // Clear any existing content
+
+                      if (file) {
+                          const reader = new FileReader();
+                          reader.onload = function(e) {
+                              const img = document.createElement("img");
+                              img.src = e.target.result;
+                              previewBox.appendChild(img);
+                          };
+                          reader.readAsDataURL(file);
+                      } else {
+                          previewBox.innerHTML = "<span>Image Preview</span>";
+                      }
+                  }
+
+  
+      </script>
+
+
+
+  
 @endsection

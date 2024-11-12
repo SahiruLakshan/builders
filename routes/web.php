@@ -17,7 +17,10 @@ use App\Models\Productcategory;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\AdvertisementUploadController;
+use App\Http\Controllers\ServiceProviderController;
+use App\Http\Controllers\BrandProductController;
+use App\Http\Controllers\ProfessionalController;
 // Route::get('/', function () {
 //     return view('login');
 // });
@@ -25,14 +28,15 @@ use App\Http\Controllers\FileUploadController;
 // Route::get('/dashboard', function () {
 //     return view('admin.admindashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', function () {
     return view('webpages.home');
 })->name('home');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -67,7 +71,16 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::put('/brand/update/{id}', [BrandController::class, 'updateBrand']);
     Route::get('/brand/delete/{id}', [BrandController::class, 'deleteBrand']);
 
-    // //measurement routes
+    //this one for the connect band with product
+
+    Route::get('/brandproduct', [BrandProductController::class, 'showForm'])->name('brandproduct.form');
+    // Route to save the brand-product connection
+    // Route::post('/save-brand-product', [BrandProductController::class, 'store'])->name('save.brandproduct');
+    // Route to handle the form submission and store data in the brandproduct table
+    // Route::post('/brandproduct/store', [BrandProductController::class, 'store'])->name('brandproduct.store');
+    Route::post('/admin/brandproduct/store', [BrandProductController::class, 'store'])->name('brandproduct.store');
+
+    // // //measurement routes
     // Route::get('/addbrand', [MeasurementController::class, 'index']);
     Route::get('/addmeasurement', [MeasurementController::class, 'index']);
     Route::post('/submitmeasurement', [MeasurementController::class, 'addMeasurement']);
@@ -106,6 +119,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/getsubcategory/{id}', [ProductcategoryController::class, 'getsubcategory']);
     Route::put('/update/productsubcategory/{id}', [ProductcategoryController::class, 'updatesubProductCategory']);
     Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']);
+    Route::post('/addserviceprovider/store', [ServiceProviderController::class, 'store'])->name('addserviceprovider.store');
+
 
 
     //advertisement routes
@@ -114,22 +129,27 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/addadvertisement', function () {
         return view('admin.addadvertisement');
     })->name('addadvertisement');
+    Route::post('/upload', [AdvertisementUploadController::class, 'upload'])->name('upload');
 
-    Route::post('/upload', [FileUploadController::class, 'upload'])->name('upload');
-
-    // Route::get('/addservice', function () {
-    //     return view('admin.addservice');
-    // })->name('addservice');
-    // Route to display the add service form (optional)
-    Route::get('/addservice', [ServiceController::class, 'create'])->name('addservice');
 
     // Route to handle form submission
-    Route::post('/addservice', [ServiceController::class, 'store'])->name('storeservice');
-    Route::get('/viewservice', [ServiceController::class, 'viewservice'])->name('viewservice');
-    Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy'); // Delete service
-    Route::get('/services/{id}/edit', [ServiceController::class, 'edit'])->name('services.edit'); // Show edit form
-    Route::put('/services/{id}', [ServiceController::class, 'update'])->name('services.update'); // Update service
-    // Route::get('/indexse', [ServiceController::class, 'viewservice'])->name('viewservice');
+    Route::post('/addservice', [ServiceController::class, 'store']);
+    Route::get('/addservice', [ServiceController::class, 'create'])->name('addservice');
+    Route::get('/viewservice', [ServiceController::class, 'viewservice']);
+    // Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit'); // Display update form
+    // Route::put('service/{id}', [ServiceController::class, 'update'])->name('service.update');  // Handle update request
+    //professionals routes
+    // Route::get('/addprofessionalscategory', ProfessionalController::class, 'index')->name('addprofessionalscategory');
+
+    Route::get('/addprofessionalsCategory', [ProfessionalController::class, 'index'])->name('addprofessionalsCategory');
+
+    //  admin panel service poriders
+    // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');
+    Route::get('/addserviceprovider', [ServiceProviderController::class, 'addserviceproviders'])->name('addserviceprovider');
+
+    Route::get('/shopitem', function () {
+        return view('admin.shopitem');
+    })->name('shopitem');
 });
 
 // routes/web.php
@@ -144,17 +164,23 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 // Route::get('/front', function(){
 //     return view('webpages.home');
 // });
+//search optoins route 
+Route::get('/search', [WebController::class, 'search'])->name('search');
+
+// get cityes fir the dropdown
+
 Route::get('/product', function () {
     return view('webpages.product');
 });
+
 //bass form loarding
-Route::get('/shopSuppliers', function () {
-    return view('webpages.shopSuppliers');
-})->name('shopSuppliers');
-//service provider form loading
-Route::get('/serviceprovider', function () {
-    return view('webpages.serviceprovider');
-})->name('serviceprovider');
+Route::get('/shopSuppliers', [WebController::class, 'shopSuppliers'])->name('shopSuppliers');
+Route::post('/addshopSuppliers', [WebController::class, 'addshopSuppliers'])->name('addshopSuppliers');
+
+
+
+Route::get('/serviceproviderform', [WebController::class, 'servceproviders'])->name('serviceproviderform');
+
 
 Route::name('category.')->group(function () {
     Route::get('product/cat/{name}', [WebController::class, 'shopcategory'])->name('shop');
@@ -178,4 +204,21 @@ Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
 // Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 //     ->name('logout');
+
+//profile view routes
+// service provider profile
+Route::get('/serviceproviderprofile', function () {
+    return view('serviceproviders.serviceproviderprofile');
+})->name('serviceproviderprofile');
+// shop profile
+// Route::get('/shopprofile', function () {
+//     return view('webpages.shopprofile');
+// })->name('shopprofile');
+
+// Route::get('/professionalsform', [ProfessionalController::class, 'webprofessional'])->name('professionalsform');
+
+Route::get('/professionalsform', [ProfessionalController::class, 'professionalForm'])->name('professionalsform');
+
+
+
 require __DIR__ . '/auth.php';
