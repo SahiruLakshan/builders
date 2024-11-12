@@ -246,21 +246,46 @@
                                       <div class="col-md-2">
                                         <input type="date" class="form-control mb-2" name="expirationDate[]" placeholder="Expiration Date">
                                       </div>
+                                     
+                                        <div class="col-md-6">
+                            
+                                            <label for="certificationPdf" class="form-label">Certification PDF (if applicable)</label>
+                                            <input type="file" class="form-control" id="certificationPdf" name="certificationPdf[]" multiple placeholder="Upload PDF(s)">
+                                        
+                                        </div>
+                                
                                       <div class="col-md-12 text-end">
                                         <button type="button" class="btn btn-danger btn-sm delete-certification">Delete</button>
                                       </div>
                                     </div>
                                   </div>
                                   <button type="button" class="btn btn-primary mt-2" id="addCertification">Add More Certification</button>
-                                </div>
-                                <div class="form-group col-md-12">
-                                  <div class="mb-3">
-                                    <label for="licenseNumber" class="form-label">Professional License Number</label>
-                                    <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" placeholder="License Number (if applicable)">
+                                  {{-- <div class="form-group">
+                                    <div class="col-md-6">
+                        
+                                        <label for="certificationPdf" class="form-label">Certification PDF (if applicable)</label>
+                                        <input type="file" class="form-control" id="certificationPdf" name="certificationPdf[]" multiple placeholder="Upload PDF(s)">
+                                    
+                                    </div>
+                                  </div> --}}
+                                  <div class="form-group mt-3">
+                                    <div class="col-md-6 ">
+                                
+                                        <label for="licenseNumber" class="form-label">Professional License Number</label>
+                                        <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" placeholder="License Number (if applicable)">
+                                  
+                                    </div>
                                   </div>
-                                  <!-- Submit Button -->
-                                  <button type="submit" class="btn btn-primary mt-3 mb-2">Submit</button>
-                                  <button type="reset" class="btn btn-secondary mt-3 mb-2" > Cancel</button>
+                                </div>
+                          
+
+                              
+                            
+
+                                <div class="col-md-12">
+                                     <!-- Submit Button -->
+                                     <button type="submit" class="btn btn-primary mt-3 mb-2">Submit</button>
+                                     <button type="reset" class="btn btn-secondary mt-3 mb-2" > Cancel</button>
                                 </div>
                             
                             </form>
