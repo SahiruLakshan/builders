@@ -19,6 +19,7 @@
                             <div class="d-flex">
                                 <div class="col">
                                     <div class="form-group">
+                                        {{-- in here also need to shoiw this number for it Service provider:SP00001 --}}
                                         <label for="serviceProviderNumber">ServiceProvider Number </label>
                                         <input type="text" class="form-control" id="s_number" name="s_number"
                                             placeholder="Number Of The Service Provider" />
@@ -181,7 +182,9 @@
                                         aria-describedby="maxProjectValueHelp">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                            
+                            <button type="submit" class="btn btn-primary mt-3">Update</button>
+                            <button type="reset" class="btn btn-secondary mt-3">Cancel</button>
                         </form>
                     </div>
                 </div>
