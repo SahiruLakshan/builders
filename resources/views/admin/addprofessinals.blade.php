@@ -213,6 +213,7 @@
                                   <div class="col-md-6">
                                     <div class="form-group">
                                       <div class="mb-3">
+                                        {{-- Professional Category neet to shgow in here this one get form professinalCategory tyble it need to create contoller also --}}
                                         <label for="specializations" class="form-label">Specializations</label>
                                         <select multiple="multiple" name="specialization[]" class="form-select selectsum1">
                                           

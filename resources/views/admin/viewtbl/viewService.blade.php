@@ -19,7 +19,7 @@
                                 <th>ID</th>
                                 <th>Service Name</th>
                                 <th>Description</th>
-                                {{-- <th>Actions</th> --}}
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
