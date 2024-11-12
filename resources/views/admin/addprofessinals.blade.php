@@ -260,28 +260,16 @@
                                     </div>
                                   </div>
                                   <button type="button" class="btn btn-primary mt-2" id="addCertification">Add More Certification</button>
-                                  {{-- <div class="form-group">
-                                    <div class="col-md-6">
-                        
-                                        <label for="certificationPdf" class="form-label">Certification PDF (if applicable)</label>
-                                        <input type="file" class="form-control" id="certificationPdf" name="certificationPdf[]" multiple placeholder="Upload PDF(s)">
-                                    
-                                    </div>
-                                  </div> --}}
-                                  <div class="form-group mt-3">
-                                    <div class="col-md-6 ">
                                 
-                                        <label for="licenseNumber" class="form-label">Professional License Number</label>
-                                        <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" placeholder="License Number (if applicable)">
-                                  
-                                    </div>
+                                </div>
+                                <div class="form-group mt-3">
+                                  <div class="col-md-12 ">
+                              
+                                      <label for="licenseNumber" class="form-label">Professional License Number</label>
+                                      <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" placeholder="License Number (if applicable)">
+                                
                                   </div>
                                 </div>
-                          
-
-                              
-                            
-
                                 <div class="col-md-12">
                                      <!-- Submit Button -->
                                      <button type="submit" class="btn btn-primary mt-3 mb-2">Submit</button>
