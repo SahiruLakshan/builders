@@ -43,7 +43,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+Route::middleware(['auth'])->group(function () {
+    Route::resource('services', ServiceController::class);
+});
 
 //Admin routes
 Route::middleware([AdminMiddleware::class])->group(function () {
@@ -119,6 +121,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/getsubcategory/{id}', [ProductcategoryController::class, 'getsubcategory']);
     Route::put('/update/productsubcategory/{id}', [ProductcategoryController::class, 'updatesubProductCategory']);
     Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']);
+
+
     Route::post('/addserviceprovider/store', [ServiceProviderController::class, 'store'])->name('addserviceprovider.store');
 
 
@@ -133,12 +137,14 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
 
     // Route to handle form submission
-    Route::post('/addservice', [ServiceController::class, 'store']);
+    // Route::post('/addservice', [ServiceController::class, 'store']);
     Route::get('/addservice', [ServiceController::class, 'create'])->name('addservice');
     Route::get('/viewservice', [ServiceController::class, 'viewservice']);
     // Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit'); // Display update form
     // Route::put('service/{id}', [ServiceController::class, 'update'])->name('service.update');  // Handle update request
-
+    Route::post('/service', [ServiceController::class, 'store'])->name('service.store');
+    Route::put('/service/{id}', [ServiceController::class, 'update'])->name('service.update');
+    Route::delete('/service/{id}', [ServiceController::class, 'delete'])->name('service.delete');
     //professionals routes
 
     Route::get('/addprofessionalsCategory', [ProfessionalController::class, 'index'])->name('addprofessionalsCategory');
@@ -149,7 +155,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/addserviceprovider', [ServiceProviderController::class, 'addserviceproviders'])->name('addserviceprovider');
 
     Route::get('/shopitem', function () {
-        return view('admin.shopitem'); })->name('shopitem');
+        return view('admin.shopitem');
+    })->name('shopitem');
 });
 
 // routes/web.php

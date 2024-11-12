@@ -1,10 +1,10 @@
-{{-- @extends('admin.sidebar')
+@extends('admin.sidebar')
 @section('content')
 <div class="row row-sm mt-5 d-flex justify-content-center align-items-center">
     <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12">
         <div class="card box-shadow-0">
             <div class="card-header">
-                <h4 class="card-title mb-1">Edit Service</h4>
+                <h4 class="card-title mb-1">Update Service</h4>
                 <p class="mb-2">Update the service details below</p>
             </div>
             <div class="card-body pt-0">
@@ -42,4 +42,4 @@
         </div>
     </div>
 </div>
-@endsection --}}
+@endsection
