@@ -16,7 +16,6 @@
                            
 
                             
-                            
                             <!-- Shop Selection -->
                             <form class="form-horizontal" id="addShopProduct">
 

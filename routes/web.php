@@ -96,7 +96,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::put('/shopcategory/update/{id}', [ShopCategoryController::class, 'updateShopCategory']);
     Route::get('/shopcategory/delete/{id}', [ShopCategoryController::class, 'deleteShopCategory']);
     Route::get('/addshopproduct/{id}', [ShopproductController::class, 'index']);
-    Route::post('/submitshopproduct', [ShopproductController::class, 'submitProducts'])->name('submit.products');
+    // Route::post('/submitshopproduct', [ShopproductController::class, 'submitProducts'])->name('submit.products');
+    Route::post('/submitshopitem', [ShopproductController::class, 'submitProducts'])->name('submit.shopitem');
+    Route::get('/shopitem', [ShopproductController::class, 'shopitem'])->name('shopitem');
 
     Route::get('/addproduct', [ProductController::class, 'index']);
     Route::get('/products', [ProductController::class, 'products']);
@@ -144,9 +146,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');
     Route::get('/addserviceprovider', [ServiceProviderController::class, 'addserviceproviders'])->name('addserviceprovider');
 
-    Route::get('/shopitem', function () {
-        return view('admin.shopitem');
-    })->name('shopitem');
+    
+
+
 });
 
 // routes/web.php

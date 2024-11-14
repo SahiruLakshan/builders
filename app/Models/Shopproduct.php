@@ -11,10 +11,9 @@ class Shopproduct extends Model
 
     protected $table='shop_product';
     protected $fillable=[
-        'shop_id',
-        'product_name',
-        'subcategory_id',
+        'pro_no',
         'product_id',
+        'subcategory_id',
         'brand_id',
         'product_category_id',
         'other_categories',
@@ -23,6 +22,12 @@ class Shopproduct extends Model
         'quantity',
         'image',
         'color',
+        'vendor',
+        'discount',
+        'cost',
+        'attachment',
+        'description',
+        'applications',
         'other'
     ];
 
