@@ -43,7 +43,6 @@
                                         <input type="text" class="form-control" id="professionalNumber" name="professionalNumber" >
                                       </div>
                                     </div>
-                                   
                                   </div>
                                   <div class="col">
                                     <div class="form-group">
