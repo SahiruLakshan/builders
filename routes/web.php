@@ -99,6 +99,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     // Route::post('/submitshopproduct', [ShopproductController::class, 'submitProducts'])->name('submit.products');
     Route::post('/submitshopitem', [ShopproductController::class, 'submitProducts'])->name('submit.shopitem');
     Route::get('/shopitem', [ShopproductController::class, 'shopitem'])->name('shopitem');
+    Route::get('/check-pro-no-unique', [ShopproductController::class, 'checkProNoUnique']);
 
     Route::get('/addproduct', [ProductController::class, 'index']);
     Route::get('/products', [ProductController::class, 'products']);

@@ -23,13 +23,13 @@
                                     <div class="row">
                                         <!-- Shop Item No (Automatically filled) -->
                                         <div class="col-md-6">
-                                            {{-- <div class="form-group ">
+                                            <div class="form-group ">
                                                 <label for="product">Shop Product No:</label>
                                                 <input type="text" class="form-control" id="pro_no" name="pro_no"
                                                     readonly>
                                                 <small class="form-text text-muted">Automatically generated shop Product
                                                     number.</small>
-                                            </div> --}}
+                                            </div>
                                         </div>
 
                                         <!-- Image -->
@@ -149,8 +149,9 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="price">Unit Price</label>
-                                                <input type="number" class="form-control" name="unit_price" id="price"
-                                                    placeholder="Enter price" min="0.01" step="0.01" />
+                                                <input type="number" class="form-control" name="unit_price"
+                                                    id="price" placeholder="Enter price" min="0.01"
+                                                    step="0.01" />
                                                 <small class="form-text text-muted">Specify the unit price in the local
                                                     currency.</small>
                                             </div>
@@ -229,17 +230,53 @@
                                     <div class="row">
                                         <div class="form-group">
                                             <div id="inputFieldsContainer" class="d-flex flex-wrap p-2 pb-3">
+                                                <!-- Dynamically added input fields with delete buttons will appear here -->
                                             </div>
-                                            <!-- Container for dynamically added input fields -->
                                             <div class="container mt-3">
-                                                <!-- Bootstrap margin for spacing -->
-                                                <!-- Bootstrap button for adding fields -->
                                                 <button type="button" id="addMoreFieldsBtn" class="btn btn-success">
                                                     Add More Fields
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <script>
+                                        document.getElementById("addMoreFieldsBtn").addEventListener("click", function() {
+                                            // Create a new div for the input field and delete button
+                                            const newFieldDiv = document.createElement("div");
+                                            newFieldDiv.classList.add("form-group", "mb-2", "d-flex", "align-items-center");
+
+                                            // Create a new input field
+                                            const newInput = document.createElement("input");
+                                            newInput.type = "text";
+                                            newInput.classList.add("form-control", "mr-2");
+                                            newInput.name = "additionalField[]"; // Array name for handling multiple fields
+
+                                            // Create a delete button
+                                            // Create a delete button
+                                            const deleteBtn = document.createElement("button");
+                                            deleteBtn.type = "button";
+                                            deleteBtn.classList.add("btn", "btn-danger");
+
+                                            // Add the trash icon to the button text
+                                            deleteBtn.innerHTML = '<i class="bi bi-trash"></i>';
+
+
+                                            // Attach click event to delete the current field
+                                            deleteBtn.addEventListener("click", function() {
+                                                newFieldDiv.remove();
+                                            });
+
+                                            // Append the input and delete button to the div
+                                            newFieldDiv.appendChild(newInput);
+                                            newFieldDiv.appendChild(deleteBtn);
+
+                                            // Append the new div to the input fields container
+                                            document.getElementById("inputFieldsContainer").appendChild(newFieldDiv);
+                                        });
+                                    </script>
+
+
                                     <div class="row">
                                         {{-- <div id="inputFieldsContainer" class="container">
                                                 </div>                                         --}}
@@ -269,6 +306,7 @@
                                                         id="basic-datatable">
                                                         <thead>
                                                             <tr>
+                                                                <th class="wd-25p border-bottom-0">Product No</th>
                                                                 <th class="wd-25p border-bottom-0">Product Name</th>
                                                                 <th class="wd-15p border-bottom-0">Brand</th>
                                                                 <th class="wd-20p border-bottom-0">Category</th>
@@ -284,9 +322,9 @@
                                                                 <th class="wd-25p border-bottom-0">Attachment</th>
                                                                 <th class="wd-25p border-bottom-0">Description</th>
                                                                 <th class="wd-25p border-bottom-0">Applications</th>
+                                                                <th class="wd-25p border-bottom-0">Other Categories</th>
                                                                 <th class="wd-25p border-bottom-0">Actions</th>
                                                             </tr>
-
                                                         </thead>
                                                         <tbody>
                                                             <!-- Data will be added dynamically via AJAX or JS -->
@@ -367,81 +405,191 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Include DataTables JS -->
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
     <script>
-        let products = []; // Array to hold product data temporarily
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to generate a random ID in the format SHP000001
+            function generateRandomId() {
+                const randomNumber = Math.floor(Math.random() * 1000000); // Generate a number between 0 and 999999
+                return 'SHP' + String(randomNumber).padStart(6, '0'); // Format as SHP000001
+            }
 
-        $("#addProductButton").click(function() {
-            // Collect product details from form inputs
-            let product = {
-                pro_no: $("#pro_no").val(),
-                image: $("#image").prop("files")[0], // File object for image
-                product_id: $("#product_id option:selected").val(),
-                brand_id: $("#brand_id option:selected").val(),
-                product_category_id: $("#product_category option:selected").val(),
-                subcategory_id: $("#sub_category option:selected").val(),
-                color: $("#color").val(),
-                quantity: $("#quantity").val(),
-                measurement_id: $("#measurement option:selected").val(),
-                unit_price: $("#price").val(),
-                vendor: $("#vender").val(),
-                discount: $("#discount").val(),
-                cost: $("#cost").val(),
-                attachment: $("#attachment").prop("files")[0], // File object for attachment
-                description: $("#descriptoins").val(),
-                applications: $("#applications").val()
-            };
+            // Function to check if the generated ID already exists in the database
+            function checkProNoUniqueness(proNo) {
+                return new Promise((resolve, reject) => {
+                    $.ajax({
+                        url: "/check-pro-no-unique", // The route to check uniqueness
+                        type: "GET",
+                        data: {
+                            pro_no: proNo
+                        }, // Send the generated pro_no
+                        success: function(response) {
+                            if (response.exists) {
+                                // If the ID exists, resolve to regenerate
+                                resolve(false);
+                            } else {
+                                // If the ID is unique, resolve
+                                resolve(true);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            reject(error); // Handle errors
+                        }
+                    });
+                });
+            }
 
-            products.push(product); // Add product to array
+            // Initialize products array to hold product details
+            let products = [];
 
-            // Append product details to table
-            $("#basic-datatable tbody").append(`
-                <tr>
-                    <td>${$("#product_id option:selected").text()}</td>
-                    <td>${$("#brand_id option:selected").text()}</td>
-                    <td>${$("#product_category option:selected").text()}</td>
-                    <td>${$("#sub_category option:selected").text()}</td>
-                    <td>${product.quantity}</td>
-                    <td>${$("#measurement option:selected").text()}</td>
-                    <td>${product.color}</td>
-                    <td><img src="${URL.createObjectURL(product.image)}" alt="Product Image" width="50"></td>
-                    <td>${product.unit_price}</td>
-                    <td>${product.vendor}</td>
-                    <td>${product.discount}</td>
-                    <td>${product.cost}</td>
-                    <td><img src="${URL.createObjectURL(product.attachment)}" alt="Attachment" width="50"></td>
-                    <td>${product.description}</td>
-                    <td>${product.applications}</td>
-                    <td><button class="btn btn-danger remove-product" data-index="${products.length - 1}">Remove</button></td>
-                </tr>
-            `);
+            // Initial pro_no population
+            const proNoField = document.getElementById('pro_no');
+            if (proNoField) {
+                proNoField.value = generateRandomId(); // Set the initial random ID
+            }
 
-        });
+            // Add product to table and generate a new unique product number
+            $("#addProductButton").click(async function() {
+                let productNoUnique = false;
+                let proNo;
 
-        $("#submitAllProductsButton").click(function() {
-            let formData = new FormData();
-            formData.append("products", JSON.stringify(products)); // Serialize to JSON
-            formData.append("_token", "{{ csrf_token() }}"); // Add CSRF token
+                // Keep generating and checking the product number until it's unique
+                while (!productNoUnique) {
+                    proNo = generateRandomId();
+                    productNoUnique = await checkProNoUniqueness(proNo);
+                }
 
-            products.forEach((product, index) => {
-                if (product.image) formData.append(`image_${index}`, product.image);
-                if (product.attachment) formData.append(`attachment_${index}`, product.attachment);
+                // Set the unique product number in the pro_no field
+                $("#pro_no").val(proNo);
+
+                // Collect dynamically added other categories
+                let otherCategories = [];
+                $("#inputFieldsContainer input[name='additionalField[]']").each(function() {
+                    if ($(this).val().trim() !== "") {
+                        otherCategories.push($(this).val().trim());
+                    }
+                });
+
+                // Collect product details from form inputs
+                let product = {
+                    pro_no: $("#pro_no").val(),
+                    image: $("#image").prop("files")[0], // File object for image
+                    product_id: $("#product_id option:selected").val(),
+                    brand_id: $("#brand_id option:selected").val(),
+                    product_category_id: $("#product_category option:selected").val(),
+                    subcategory_id: $("#sub_category option:selected").val(),
+                    color: $("#color").val(),
+                    quantity: $("#quantity").val(),
+                    measurement_id: $("#measurement option:selected").val(),
+                    unit_price: $("#price").val(),
+                    vendor: $("#vender").val(),
+                    discount: $("#discount").val(),
+                    cost: $("#cost").val(),
+                    attachment: $("#attachment").prop("files")[0], // File object for attachment
+                    description: $("#descriptoins").val(),
+                    applications: $("#applications").val(),
+                    other_categories: otherCategories // Add the dynamically collected values
+                };
+
+                // Add product to the products array
+                products.push(product);
+
+                // Append product details to table
+                $("#basic-datatable tbody").append(`
+                    <tr data-index="${products.length - 1}">
+                        <td>${product.pro_no}</td>
+                        <td>${$("#product_id option:selected").text()}</td>
+                        <td>${$("#brand_id option:selected").text()}</td>
+                        <td>${$("#product_category option:selected").text()}</td>
+                        <td>${$("#sub_category option:selected").text()}</td>
+                        <td>${product.quantity}</td>
+                        <td>${$("#measurement option:selected").text()}</td>
+                        <td>${product.color}</td>
+                        <td><img src="${URL.createObjectURL(product.image)}" alt="Product Image" width="50"></td>
+                        <td>${product.unit_price}</td>
+                        <td>${product.vendor}</td>
+                        <td>${product.discount}</td>
+                        <td>${product.cost}</td>
+                        <td><img src="${URL.createObjectURL(product.attachment)}" alt="Attachment" width="50"></td>
+                        <td>${product.description}</td>
+                        <td>${product.applications}</td>
+                        <td>${product.other_categories.join(", ")}</td> <!-- Show Other Categories -->
+                        <td><button class="btn btn-danger remove-product">Remove</button></td>
+                    </tr>
+                `);
+
+                // Clear dynamically added fields after adding the product
+                $("#inputFieldsContainer").empty();
+
+                // Generate a new product number for the next product
+                proNoField.value = generateRandomId();
             });
 
-            $.ajax({
-                url: "/submitshopitem",
-                type: "POST",
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    alert("Products submitted successfully!");
-                    products = [];
-                    $("#basic-datatable tbody").empty();
-                },
-                error: function(xhr, status, error) {
-                    console.log(xhr.responseText); // Log the response text for detailed errors
-                    alert("An error occurred. Please try again.");
-                }
+            // Handle remove button click
+            $("#basic-datatable").on("click", ".remove-product", function() {
+                const row = $(this).closest('tr'); // Get the row that contains the button
+                const index = row.data("index"); // Get the index of the product to remove
+
+                // Remove the product from the products array
+                products.splice(index, 1);
+
+                // Remove the row from the table
+                row.remove();
+
+                // Re-index the products array and update the table indices
+                $("#basic-datatable tbody tr").each(function(index) {
+                    $(this).data("index", index); // Update the data-index attribute
+                    $(this).find(".remove-product").data("index",
+                    index); // Update remove button index
+                });
+            });
+
+            // Handle submit all products
+            $("#submitAllProductsButton").click(function() {
+                let formData = new FormData();
+                formData.append("products", JSON.stringify(products)); // Serialize to JSON
+                formData.append("_token", "{{ csrf_token() }}"); // Add CSRF token
+
+                // Append product files
+                products.forEach((product, index) => {
+                    if (product.image) formData.append(`image_${index}`, product.image);
+                    if (product.attachment) formData.append(`attachment_${index}`, product
+                        .attachment);
+                });
+
+                $.ajax({
+                    url: "/submitshopitem",
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                    
+                        // products = [];
+                        // $("#basic-datatable tbody").empty();
+
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Products added successfully!',
+                            icon: 'success',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.reload();
+                            }
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        Swal.fire({
+                            title: 'Error!',  
+                            text: xhr.responseText,
+                            icon: 'error',
+                            confirmButtonColor: '#d33',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
             });
         });
     </script>
