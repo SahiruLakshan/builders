@@ -155,8 +155,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     //  admin panel service poriders
     // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');
     Route::get('/addserviceprovider', [ServiceProviderController::class, 'addserviceproviders'])->name('addserviceprovider');
+    Route::get('/viewserviceproviders', [ServiceProviderController::class, 'viewserviceproviders']);
 
-    
 
 
 });
@@ -227,6 +227,10 @@ Route::get('/serviceproviderprofile', function () {
 // Route::get('/professionalsform', [ProfessionalController::class, 'webprofessional'])->name('professionalsform');
 
 Route::get('/professionalsform', [ProfessionalController::class, 'professionalForm'])->name('professionalsform');
+
+Route::get('/viewprofile', function () {
+    return view('webpages.viewprofiles');
+});
 
 
 
