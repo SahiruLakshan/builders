@@ -121,8 +121,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/getsubcategory/{id}', [ProductcategoryController::class, 'getsubcategory']);
     Route::put('/update/productsubcategory/{id}', [ProductcategoryController::class, 'updatesubProductCategory']);
     Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']);
+    Route::get('/addserviceprovider', [ServiceProviderController::class, 'addserviceproviders'])->name('addserviceprovider');
     Route::post('/addserviceprovider/store', [ServiceProviderController::class, 'store'])->name('addserviceprovider.store');
-
+    Route::get('/serviceproviders', [ServiceProviderController::class, 'view'])->name('serviceproviders.show');
 
 
     //advertisement routes
@@ -145,7 +146,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
     //  admin panel service poriders
     // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');
-    Route::get('/addserviceprovider', [ServiceProviderController::class, 'addserviceproviders'])->name('addserviceprovider');
+    
 
     
 
