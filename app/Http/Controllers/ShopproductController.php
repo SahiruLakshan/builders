@@ -35,6 +35,16 @@ class ShopproductController extends Controller
         return view('admin.shopitem', compact('products', 'sub', 'pc', 'brands', 'measurements'));
     }
 
+    public function checkProNoUnique(Request $request)
+    {
+        $proNo = $request->input('pro_no');
+
+        // Check if the pro_no already exists in the database
+        $exists = Shopproduct::query()->where('pro_no', $proNo)->exists();
+
+        return response()->json(['exists' => $exists]);
+    }
+
     public function submitProducts(Request $request)
     {
         $products = json_decode($request->products, true);
@@ -46,7 +56,7 @@ class ShopproductController extends Controller
             'products.*.quantity' => 'required|integer|min:1',
             'products.*.measurement_id' => 'required',
             'products.*.color' => 'nullable|string',
-            'products.*.other_categories' => 'nullable|array',
+            'products.*.other_categories' => 'nullable|array', // Validate as an array
             'products.*.description' => 'nullable|string',
             'products.*.unit_price' => 'required|numeric|min:0',
             'products.*.vendor' => 'nullable|string',
@@ -78,7 +88,9 @@ class ShopproductController extends Controller
                     $attachment->move(public_path('assets/shopattachments'), $attachmentName);
                 }
 
+                // Store the product
                 Shopproduct::create([
+                    'pro_no' => $product['pro_no'],
                     'product_id' => $product['product_id'],
                     'brand_id' => $product['brand_id'],
                     'product_category_id' => $product['product_category_id'],
@@ -87,7 +99,7 @@ class ShopproductController extends Controller
                     'measurement_id' => $product['measurement_id'],
                     'color' => $product['color'] ?? null,
                     'image' => $filename,
-                    'other_categories' => $product['other_categories'] ?? [],
+                    'other_categories' => $product['other_categories'] ?? [], // Ensure it's stored as JSON
                     'description' => $product['description'] ?? null,
                     'unit_price' => $product['unit_price'],
                     'vendor' => $product['vendor'] ?? null,
