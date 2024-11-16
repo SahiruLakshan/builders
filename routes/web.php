@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdvertisementUploadController;
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\BrandProductController;
+use App\Http\Controllers\ProfessionalController;
 // Route::get('/', function () {
 //     return view('login');
 // });
@@ -42,7 +43,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+Route::middleware(['auth'])->group(function () {
+    Route::resource('services', ServiceController::class);
+});
 
 //Admin routes
 Route::middleware([AdminMiddleware::class])->group(function () {
@@ -121,7 +124,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/getsubcategory/{id}', [ProductcategoryController::class, 'getsubcategory']);
     Route::put('/update/productsubcategory/{id}', [ProductcategoryController::class, 'updatesubProductCategory']);
     Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']);
+
     Route::get('/addserviceprovider', [ServiceProviderController::class, 'addserviceproviders'])->name('addserviceprovider');
+
     Route::post('/addserviceprovider/store', [ServiceProviderController::class, 'store'])->name('addserviceprovider.store');
     Route::get('/serviceproviders', [ServiceProviderController::class, 'view'])->name('serviceproviders.show');
 
@@ -136,19 +141,24 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
 
     // Route to handle form submission
-    Route::post('/addservice', [ServiceController::class, 'store']);
+    // Route::post('/addservice', [ServiceController::class, 'store']);
     Route::get('/addservice', [ServiceController::class, 'create'])->name('addservice');
     Route::get('/viewservice', [ServiceController::class, 'viewservice']);
     // Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit'); // Display update form
     // Route::put('service/{id}', [ServiceController::class, 'update'])->name('service.update');  // Handle update request
+    Route::post('/service', [ServiceController::class, 'store'])->name('service.store');
+    Route::put('/service/{id}', [ServiceController::class, 'update'])->name('service.update');
+    Route::delete('/service/{id}', [ServiceController::class, 'delete'])->name('service.delete');
+    //professionals routes
 
-
+    Route::get('/addprofessionalsCategory', [ProfessionalController::class, 'index'])->name('addprofessionalsCategory');
+    Route::get('/addprofessionals', [ProfessionalController::class, 'addadminprofessionals'])->name('addprofessionals');
 
     //  admin panel service poriders
     // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');
-    
 
-    
+
+
 
 
 });
@@ -173,13 +183,14 @@ Route::get('/search', [WebController::class, 'search'])->name('search');
 Route::get('/product', function () {
     return view('webpages.product');
 });
+
 //bass form loarding
 Route::get('/shopSuppliers', [WebController::class, 'shopSuppliers'])->name('shopSuppliers');
 Route::post('/addshopSuppliers', [WebController::class, 'addshopSuppliers'])->name('addshopSuppliers');
 
 
 
-Route::get('/serviceprovider', [WebController::class, 'servceproviders'])->name('serviceprovider');
+Route::get('/serviceproviderform', [WebController::class, 'servceproviders'])->name('serviceproviderform');
 
 
 Route::name('category.')->group(function () {
@@ -212,12 +223,16 @@ Route::get('/serviceproviderprofile', function () {
 })->name('serviceproviderprofile');
 // shop profile
 // Route::get('/shopprofile', function () {
-//     return view('shopprofiles.shopprofile');
+//     return view('webpages.shopprofile');
 // })->name('shopprofile');
 
-Route::get('/professionalsform', function () {
-    return view('webpages.professionalsform');
-})->name('professionalsform');
+// Route::get('/professionalsform', [ProfessionalController::class, 'webprofessional'])->name('professionalsform');
+
+Route::get('/professionalsform', [ProfessionalController::class, 'professionalForm'])->name('professionalsform');
+
+Route::get('/viewprofile', function () {
+    return view('webpages.viewprofiles');
+});
 
 
 

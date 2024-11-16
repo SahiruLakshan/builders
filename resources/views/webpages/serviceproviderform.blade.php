@@ -9,7 +9,7 @@
       }
       .custom-form-style {
         background-color: #ffffff;
-        border: 2px solid #0d0d0d;
+        border: 2px solid #e6e0e0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         padding: 20px;
         border-radius: 8px; /* Optional: Adds rounded corners */
@@ -19,10 +19,11 @@
       <div class="text-center">
         <h3 class="display-4 text-primary font-weight-bold">BUILDERS.LK</h3>
         <h4 class="display-6 text-secondary font-weight-bold">
-          Constructions Service Provides Registration form
+          Constructions Service Provides Registration 
         </h4>
+        <hr>
       </div>
-      <div class="custom-form-style border px-5 ">
+      <div class="custom-form-style  px-5 ">
         <form class="border p-4">
           <div class="row">
             <div class="form-group col">
@@ -108,6 +109,7 @@
 
 
           <h5>Company Details</h5>
+          <hr>
           <div class="row align-items-space-between">
             <div class="col">
               <label for="inputPassword6" class="col-form-label">Name :</label>
@@ -134,6 +136,7 @@
             </div>
           </div>
           <h5>Project History</h5>
+          <hr>
           <div class="table-responsive">
             <table class="table" id="projectTable">
               <thead>
@@ -206,7 +209,7 @@
             Add Project
           </button>
           <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+        </form>
       </div>
       
     </div>

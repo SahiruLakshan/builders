@@ -361,7 +361,7 @@
                         <ul class="dropdown-menu p-1 border">
                           <li>
                             <a
-                              href="serviceprovider"
+                              href="serviceproviderform"
                               class="dropdown-item p-1 border"
                               >Service Providers</a
                             >
@@ -396,7 +396,7 @@
                     <div class="  mb-2 mb-md-0 p-0">
                     
                       <div class="subnav">
-                        <button class="subnavbtn fs-6 p-0">
+                        <button class="subnavbtn fs-6 ">
                             Shop By Category <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content" style="height:40vh">
@@ -410,10 +410,50 @@
                         </div>
                     </div>
                     </div>
+                    <!-- Third Dropdown -->
+                    <div class="col-md-2 mb-2 mb-md-0 p-0">
+                      <div class="subnav">
+                        <button class="subnavbtn fs-6 ">
+                          Product By Category <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="subnav-content">
+                          <div class="row">
+                            <div class="col-6 col-md-4">
+                              <a href="#">ALUMINIUM EXCRUTIONS & ACCESSORIES</a>
+                              <a href="#">CEILINGS</a>
+                              <a href="#">DOOR LOCKS & BRASS ITEMS</a>
+                              <a href="#">LIGHTS & ELECTRICAL</a>
+                              <a href="#">TILE & BATH WARE ACCOSERIES</a>
+                              <a href="#">ROOFING</a>
+                            </div>
+                            <div class="col-6 col-md-4">
+                              <a href="#">TIMBR</a>
+                              <a href="#">PLUMBING MATERIAL</a>
+                              <a href="#">STEEL</a>
+                              <a href="#">SAND</a>
+                              <a href="#">METAL</a>
+                              <a href="#">GRANITE & MARBLES</a>
+                              <a href="#">HARDWARE ITEMS</a>
+                            </div>
+                            <div class="col-6 col-md-4">
+                              <a href="#">TOOLS</a>
+                              <a href="#">PAINTS AND ANSILARIES</a>
+                              <a href="#">NUT AND BOLTS</a>
+                              <a href="#">BRICKS & BLOCKS</a>
+                              <a href="#">CARPET & FLOORING</a>
+                              <a href="#">CONSTRUCTION CHEMICALS</a>
+                              <a href="#">SATAINLESS STEEL</a>
+                              <a href="#">CONCREATE PRODUCTS</a>
+                              <a href="#">GLASS</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   
                     <!-- Search Bar -->
                     <div class="col-12 col-md-4 mb-2 mb-md-0">
-                      <form action="{{ route('search') }}" method="GET" class="input-group input-group-sm w-100">
+                      <form action="{{ route('search') }}" method="GET" class="input-group input-group-sm w-80">
                         <input
                           type="search"
                           name="query"
@@ -430,9 +470,9 @@
                     
                   
                     <!-- Second Dropdown -->
-                    <div class="col-12 col-md-2 mb-2 mb-md-0">
+                    <div class="col-12 col-md-2 mb-2 mb-md-0 p-0">
                       <div class="subnav">
-                        <button class="subnavbtn fs-6 p-0">
+                        <button class="subnavbtn fs-6 ">
                           Service By Category <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content">
@@ -471,50 +511,11 @@
                         </div>
                       </div>
                     </div>
-                    <!-- Third Dropdown -->
-                    {{-- <div class="col-12 col-md-2 mb-2 mb-md-0">
-                      <div class="subnav">
-                        <button class="subnavbtn">
-                          Product By Category <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="subnav-content">
-                          <div class="row">
-                            <div class="col-6 col-md-4">
-                              <a href="#">ALUMINIUM EXCRUTIONS & ACCESSORIES</a>
-                              <a href="#">CEILINGS</a>
-                              <a href="#">DOOR LOCKS & BRASS ITEMS</a>
-                              <a href="#">LIGHTS & ELECTRICAL</a>
-                              <a href="#">TILE & BATH WARE ACCOSERIES</a>
-                              <a href="#">ROOFING</a>
-                            </div>
-                            <div class="col-6 col-md-4">
-                              <a href="#">TIMBR</a>
-                              <a href="#">PLUMBING MATERIAL</a>
-                              <a href="#">STEEL</a>
-                              <a href="#">SAND</a>
-                              <a href="#">METAL</a>
-                              <a href="#">GRANITE & MARBLES</a>
-                              <a href="#">HARDWARE ITEMS</a>
-                            </div>
-                            <div class="col-6 col-md-4">
-                              <a href="#">TOOLS</a>
-                              <a href="#">PAINTS AND ANSILARIES</a>
-                              <a href="#">NUT AND BOLTS</a>
-                              <a href="#">BRICKS & BLOCKS</a>
-                              <a href="#">CARPET & FLOORING</a>
-                              <a href="#">CONSTRUCTION CHEMICALS</a>
-                              <a href="#">SATAINLESS STEEL</a>
-                              <a href="#">CONCREATE PRODUCTS</a>
-                              <a href="#">GLASS</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> --}}
+                    
                     <!-- Fourth Dropdown -->
-                    <div class="col-12 col-md-2 mb-2 ">
+                    <div class=" col-md-2 mb-2  p-0">
                       <div class="subnav">
-                        <button class="subnavbtn fs-6 p-0">
+                        <button class="subnavbtn fs-6 ">
                             Purchase With Builders.lk <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="subnav-content">

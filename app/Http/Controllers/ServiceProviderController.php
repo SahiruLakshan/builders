@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
 
 class ServiceProviderController extends Controller
 {
+
+    // public function viewserviceproviders()
+    // {
+    //     // $services = Service::all();
+    //     $services = Service::paginate(10);
+    //     return view('admin.viewtbl.viewServiceProviders', compact('services')); // Blade file to display the form
+    // }
+
     public function addserviceproviders(Request $request)
     {
         $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
@@ -18,6 +26,7 @@ class ServiceProviderController extends Controller
         // dd($dictricts);
         return view('admin.addserviceprovider', compact('dictricts', 'services'));
     }
+
 
     public function store(Request $request)
     {
@@ -54,7 +63,6 @@ class ServiceProviderController extends Controller
             $serviceProvider->no_of_employees = $validated['noOfEmp'];
             $serviceProvider->employees_qualification = $validated['employeesQualification'];
             $serviceProvider->max_project_value = $validated['maxProjectValue'];
-
             $serviceProvider->save();
 
             return redirect()->back()->with('success', 'Service Provider added successfully!');

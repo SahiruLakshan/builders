@@ -13,6 +13,9 @@ class Service extends Model
     protected $table = 'services';
 
     // Fields that are mass assignable
-    protected $fillable = ['servicename', 'description'];
+    protected $fillable = ['servicename', 'description', 'status', 'updated_by'];
+
+    public $timestamps = true;
+
 }
 

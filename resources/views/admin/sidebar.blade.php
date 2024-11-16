@@ -313,7 +313,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/brands">Veiw Brand</a>
+                                            <a class="slide-item" href="/brands">View Brand</a>
                                         </li>
                                         <li>
                                             <a class="slide-item" href="/brandproduct">Product Related Brand</a>
@@ -329,23 +329,23 @@
                                         </li>
                                       
                                         <li>
-                                            <a class="slide-item" href="/addshop">Add New Shops
+                                            <a class="slide-item" href="/addshop">Add New Shop
                                             </a>
                                         </li>
                                        
                                         <li>
-                                            <a class="slide-item" href="/shops">view Shops</a>
+                                            <a class="slide-item" href="/shops">View Shops</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/approvedshops"> Full Approvaled Shops</a>
+                                            <a class="slide-item" href="/approvedshops"> Fully Approved Shops</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/addshopcategory">Add New Shop Catogory
+                                            <a class="slide-item" href="/addshopcategory">Add New Shop Category
                                             </a>
                                         </li>
 
                                         <li>
-                                            <a class="slide-item" href="/shopcategories">Shop Catogory Veiw
+                                            <a class="slide-item" href="/shopcategories">View Shop Category
                                             </a>
                                         </li>
                                     </ul>
@@ -358,7 +358,7 @@
                                             <a href="javascript:void(0);">Product </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/shopitem">Add Shops Product
+                                            <a class="slide-item" href="/shopitem">Add Shop Product
                                             </a>
                                         </li>
                                         <li>
@@ -366,25 +366,26 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/products">Veiw Product </a>
+                                            <a class="slide-item" href="/products">View Product </a>
                                         </li>
-                                            <a class="slide-item" href="/addproductcategory">Add New Product Catogory
+                                        <li>
+                                            <a class="slide-item" href="/addproductcategory">Add New Product Category
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/categories">Veiw Product Catogory</a>
+                                            <a class="slide-item" href="/categories">View Product Category</a>
                                         </li>
                                     </ul>
                                     <ul class="slide-menu">
                                         <li class="side-menu__label1">
-                                            <a href="javascript:void(0);">Product SubCatogory</a>
+                                            <a href="javascript:void(0);">Product Subcategory</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/addproductsub">Add New Product SubCatogory
+                                            <a class="slide-item" href="/addproductsub">Add New Product Subcategory
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/subcategories">Veiw Product SubCatogory</a>
+                                            <a class="slide-item" href="/subcategories">View Product Subcategory</a>
                                         </li>
                                     </ul>
                                     <ul class="slide-menu">
@@ -396,7 +397,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/measurements">Veiw Product Measurement</a>
+                                            <a class="slide-item" href="/measurements">View Product Measurement</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -446,14 +447,37 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/viewservice">Veiw Service</a>
+                                            <a class="slide-item" href="/viewservice">View Service</a>
                                         </li>
                                         <li>
                                             <a class="slide-item" href="/addserviceprovider">Add New Service Provider
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="icons.html">Veiw Service Provider</a>
+                                            <a class="slide-item" href="icons.html">View Service Provider</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="slide">
+                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
+                                            class="side-menu__label">Professional</span></a>
+                                    <ul class="slide-menu">
+                                        <li class="side-menu__label1">
+                                            <a href="javascript:void(0);">Professional</a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="addprofessionalsCategory">Add New Professional Category
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="viewprofessionalCategory">View Professional Category</a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="addprofessionals">Add New Professional
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="#">View Professional</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -463,14 +487,14 @@
                                             class="side-menu__label"> Advertisement</span></a>
                                     <ul class="slide-menu">
                                         <li class="side-menu__label1">
-                                            <a href="javascript:void(0);">Adedvertisement</a>
+                                            <a href="javascript:void(0);">Advertisement</a>
                                         </li>
                                         <li>
                                             <a class="slide-item" href="/addadvertisement">Add New Main Advertisement
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="icons.html">Veiw Advertisement</a>
+                                            <a class="slide-item" href="icons.html">View Advertisement</a>
                                         </li>
                                     </ul>
                                 </li>
