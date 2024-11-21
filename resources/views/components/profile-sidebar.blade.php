@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <div class="row">
         <!-- Sidebar Profile Card -->
-        <div class="col-lg-3 col-md-4 col-sm-12 pt-2 pb-2">
-            <div class="card shadow-lg border-0 rounded-3">
+        <div class="col-lg-2 col-md-4 col-sm-12 pt-2 pb-2">
+            <div class="card shadow-lg border-0">
                 <div class="card-body p-4">
                     <div class="text-center">
                         <!-- Profile Image -->

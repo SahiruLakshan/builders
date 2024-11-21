@@ -76,5 +76,8 @@
                 </div>
             </div>
         </div>
+        <div class="row flex-wrap">
+            <x-items-card/>
+        </div>
     </div>
 </div>
