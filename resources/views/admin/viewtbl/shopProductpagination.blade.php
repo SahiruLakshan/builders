@@ -20,7 +20,7 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    {{-- <tbody>
                         @foreach ($services as $service)
                             <tr>
                                 <td>{{ $service->id }}</td>
@@ -36,11 +36,11 @@
                                 </td>
                             </tr>
                         @endforeach
-                    </tbody>
+                    </tbody> --}}
                 </table>
 
                 <div class="d-flex justify-content-center mt-4">
-                    {{ $services->onEachSide(1)->links('pagination::bootstrap-4') }}
+                    {{-- {{ $services->onEachSide(1)->links('pagination::bootstrap-4') }} --}}
                 </div>
             </div>
         </div>
