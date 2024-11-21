@@ -13,6 +13,12 @@ class ProfessionalController extends Controller
     {
         return view('admin.addprofessionalsCategory');
     }
+    public function addadminprofessionals(Request $request)
+    {
+        $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
+        // dd($dictricts);
+        return view('admin/addprofessinals', compact('dictricts', ));
+    }
 
     // public function webprofessional(Request $request)
     // {

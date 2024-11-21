@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfessionalmanageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\MeasurementController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\AdvertisementUploadController;
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\BrandProductController;
 use App\Http\Controllers\ProfessionalController;
+use App\Http\Controllers\ProfessionalCategoryController;
 // Route::get('/', function () {
 //     return view('login');
 // });
@@ -121,7 +123,14 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/delete/productsubcategory/{id}', [ProductcategoryController::class, 'destroy']);
     Route::post('/addserviceprovider/store', [ServiceProviderController::class, 'store'])->name('addserviceprovider.store');
 
-
+    Route::get('/categories', [ProfessionalCategoryController::class, 'index'])->name('categories.index');
+    Route::get('/categories/create', [ProfessionalCategoryController::class, 'create'])->name('categories.create');
+    Route::post('/categories/store', [ProfessionalCategoryController::class, 'store'])->name('categories.store');
+    Route::get('/categories/edit/{id}', [ProfessionalCategoryController::class, 'edit'])->name('categories.edit');
+    Route::post('/categories/update/{id}', [ProfessionalCategoryController::class, 'update'])->name('categories.update');
+    Route::get('/categories/delete/{id}', [ProfessionalCategoryController::class, 'destroy'])->name('categories.destroy');
+    
+    
 
     //advertisement routes
     // Route::get('/addadvertisement', [AdvertisementController::class, 'index'])->name('addadvertisement');
@@ -138,18 +147,18 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/viewservice', [ServiceController::class, 'viewservice']);
     // Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit'); // Display update form
     // Route::put('service/{id}', [ServiceController::class, 'update'])->name('service.update');  // Handle update request
+
     //professionals routes
-    // Route::get('/addprofessionalscategory', ProfessionalController::class, 'index')->name('addprofessionalscategory');
 
     Route::get('/addprofessionalsCategory', [ProfessionalController::class, 'index'])->name('addprofessionalsCategory');
+    Route::get('/addprofessionals', [ProfessionalController::class, 'addadminprofessionals'])->name('addprofessionals');
 
     //  admin panel service poriders
     // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');
     Route::get('/addserviceprovider', [ServiceProviderController::class, 'addserviceproviders'])->name('addserviceprovider');
 
     Route::get('/shopitem', function () {
-        return view('admin.shopitem');
-    })->name('shopitem');
+        return view('admin.shopitem'); })->name('shopitem');
 });
 
 // routes/web.php
@@ -218,6 +227,26 @@ Route::get('/serviceproviderprofile', function () {
 // Route::get('/professionalsform', [ProfessionalController::class, 'webprofessional'])->name('professionalsform');
 
 Route::get('/professionalsform', [ProfessionalController::class, 'professionalForm'])->name('professionalsform');
+
+
+
+Route::get('/professionalssho', [ProfessionalmanageController::class, 'index'])->name('professionals.index');           // Display all professionals
+Route::get('/professionals/create', [ProfessionalmanageController::class, 'create'])->name('professionals.create');   // Show form to add new professional
+Route::post('/professionals', [ProfessionalmanageController::class, 'store'])->name('professionals.store');          // Save new professional
+Route::get('/professionals/{id}', [ProfessionalmanageController::class, 'show'])->name('professionals.show');         // Display single professional
+Route::get('/professionals/{id}/edit', [ProfessionalmanageController::class, 'edit'])->name('professionals.edit');    // Show form to edit professional
+Route::put('/professionals/{id}', [ProfessionalmanageController::class, 'update'])->name('professionals.update');     // Update professional
+Route::delete('/professionals/{id}', [ProfessionalmanageController::class, 'destroy'])->name('professionals.destroy');// Delete professional
+
+
+
+
+
+
+
+
+
+
 
 
 

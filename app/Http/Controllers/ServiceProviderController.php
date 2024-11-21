@@ -54,7 +54,6 @@ class ServiceProviderController extends Controller
             $serviceProvider->no_of_employees = $validated['noOfEmp'];
             $serviceProvider->employees_qualification = $validated['employeesQualification'];
             $serviceProvider->max_project_value = $validated['maxProjectValue'];
-
             $serviceProvider->save();
 
             return redirect()->back()->with('success', 'Service Provider added successfully!');

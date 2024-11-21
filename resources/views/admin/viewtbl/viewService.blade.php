@@ -7,48 +7,43 @@
     <input type="text" id="search-input" class="form-control" placeholder="Search products by Brand Name or Id...">
 </div>
 
-<div class="table-responsive" id="pagination-data" style="margin-left:300px; margin-top:20px; width: 800px;">
-
-
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Services</h1>
-                {{-- <a href="{{ route('services.create') }}" class="btn btn-primary">Add New Service</a> --}}
-                <table class="table mt-4">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Service Name</th>
-                            <th>Description</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($services as $service)
+    <div class="table-responsive" id="pagination-data" style="margin-left:300px; margin-top:20px; width: 800px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Services</h1>
+                    {{-- <a href="{{ route('services.create') }}" class="btn btn-primary">Add New Service</a> --}}
+                    <table class="table mt-4">
+                        <thead>
                             <tr>
-                                <td>{{ $service->id }}</td>
-                                <td>{{ $service->service_name }}</td>
-                                <td>{{ $service->service_description }}</td>
-                                <td>
-                                <a href="{{ route('services.edit', $service->id) }}" class="btn btn-success">Edit</a>
-                                </td>
-                                <td> <form action="{{ route('services.destroy', $service->id) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this service?');">
-                                        Delete
-                                    </button>
-                                </form></td>
+                                <th>ID</th>
+                                <th>Service Name</th>
+                                <th>Description</th>
+                                <th>Actions</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($services as $service)
+                                <tr>
+                                    <td>{{ $service->id }}</td>
+                                    <td>{{ $service->servicename }}</td>
+                                    <td>{{ $service->description }}</td>
+                                    {{-- <td>
+                                        <a href="{{ route('services.edit', $service->id) }}" class="btn btn-warning">Edit</a>
+                                        <form action="{{ route('services.destroy', $service->id) }}" method="POST" style="display:inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td> --}}
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 {{-- @section('scripts')

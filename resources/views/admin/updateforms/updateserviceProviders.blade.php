@@ -7,7 +7,7 @@
             <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                 <div class="card box-shadow-0">
                     <div class="card-header">
-                        <h4 class="card-title mb-1">Add New Services Provider </h4>
+                        <h4 class="card-title mb-1">Update Services Provider </h4>
                         <p class="mb-2">
                             Enter the name of the Service Provider you want to add
                         </p>
@@ -17,11 +17,13 @@
                         <form class="border p-4" method="POST" action="/addserviceprovider/store">
                             @csrf
                             <div class="d-flex">
-                                <div class="form-group">
-                                    <label for="serviceProviderNumber">ServiceProvider Number </label>
-                                    <input type="text" class="form-control" id="s_number" name="s_number" placeholder=" Service Provider No.." />
-                                </div>
                                 <div class="col">
+                                    <div class="form-group">
+                                        {{-- in here also need to shoiw this number for it Service provider:SP00001 --}}
+                                        <label for="serviceProviderNumber">ServiceProvider Number </label>
+                                        <input type="text" class="form-control" id="s_number" name="s_number"
+                                            placeholder="Number Of The Service Provider" />
+                                    </div>
                                     <div class="form-group">
                                         <label for="inputPassword4">Name</label>
                                         <input type="text" class="form-control" id="s_name" name="s_name"
@@ -180,7 +182,9 @@
                                         aria-describedby="maxProjectValueHelp">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                            
+                            <button type="submit" class="btn btn-primary mt-3">Update</button>
+                            <button type="reset" class="btn btn-secondary mt-3">Cancel</button>
                         </form>
                     </div>
                 </div>

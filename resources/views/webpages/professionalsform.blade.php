@@ -286,28 +286,30 @@
 
           <div class="row mb-3">
             <div class="row">
-              <div class="col-5">
+              <div class="col-6">
                 <label for="district">Select District:</label>
                 <select id="district" name="district" class="form-select">
                 </select>
               </div>
-              <div class="col-5">
+              <div class="col-6 ">
                 <label for="city">City:</label>
                 <select id="city" name="city" class="form-select disabled" disabled>
                   <option value="">Select City</option>
                 </select>
               </div>
             </div> 
-            <div class="col-md-4">
+            <div class="col-md-6">
               <label for="zip" class="form-label">Zip Code</label>
               <input type="text" class="form-control" id="zip" name="zip" placeholder="Zip Code">
             </div>
+
+            <div class="col-md-6 col-mb-3">
+              <label for="dob" class="form-label">Date of Birth</label>
+              <input type="date" class="form-control" id="dob" name="dob">
+            </div>
           </div>
 
-          <div class="col-12-mb-3">
-            <label for="dob" class="form-label">Date of Birth</label>
-            <input type="date" class="form-control" id="dob" name="dob">
-          </div>
+          
 
           <div class="mb-3">
             <label for="linkedin" class="form-label">LinkedIn Profile or Professional Website</label>
@@ -338,6 +340,8 @@
           </div>
 
           <div class="mb-3">
+            {{-- in here also need to show professional Catogery get form data base 
+             --}}
             <label for="specializations" class="form-label">Specializations</label>
             <select multiple class="form-select select2" id="specializations" name="specializations[]">
               <option value="Civil Engineering">Civil Engineering</option>
@@ -351,27 +355,46 @@
             <textarea class="form-control" id="skills" name="skills" rows="3" placeholder="List skills like CAD, project management, etc."></textarea>
           </div>
 
-          <div class="mb-3">
+          <div class="col-md-12 mb-3">
             <label class="form-label">Certifications</label>
-            <div class="row">
-              <div class="col-md-4">
-                <input type="text" class="form-control mb-2" name="certificationName" placeholder="Certification Name">
-              </div>
-              <div class="col-md-4">
-                <input type="text" class="form-control mb-2" name="issuingAuthority" placeholder="Issuing Authority">
-              </div>
-              <div class="col-md-2">
-                <input type="date" class="form-control mb-2" name="dateIssued" placeholder="Date Issued">
-              </div>
-              <div class="col-md-2">
-                <input type="date" class="form-control mb-2" name="expirationDate" placeholder="Expiration Date">
+            <div id="certifications">
+              <div class="row certification-row">
+                <div class="col-md-4">
+                  <input type="text" class="form-control mb-2" name="certificationName[]" placeholder="Certification Name">
+                </div>
+                <div class="col-md-4">
+                  <input type="text" class="form-control mb-2" name="issuingAuthority[]" placeholder="Issuing Authority">
+                </div>
+                <div class="col-md-2">
+                  <input type="date" class="form-control mb-2" name="dateIssued[]" placeholder="Date Issued">
+                </div>
+                <div class="col-md-2">
+                  <input type="date" class="form-control mb-2" name="expirationDate[]" placeholder="Expiration Date">
+                </div>
+               
+                  <div class="col-md-6">
+      
+                      <label for="certificationPdf" class="form-label">Certification PDF (if applicable)</label>
+                      <input type="file" class="form-control" id="certificationPdf" name="certificationPdf[]" multiple placeholder="Upload PDF(s)">
+                  
+                  </div>
+          
+                <div class="col-md-12 text-end">
+                  <button type="button" class="btn btn-danger btn-sm delete-certification">Delete</button>
+                </div>
               </div>
             </div>
+            <button type="button" class="btn btn-primary mt-2" id="addCertification">Add More Certification</button>
+          
           </div>
 
-          <div class="mb-3">
-            <label for="licenseNumber" class="form-label">Professional License Number</label>
-            <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" placeholder="License Number (if applicable)">
+          <div class="form-group mt-3">
+            <div class="col-md-12 ">
+        
+                <label for="licenseNumber" class="form-label">Professional License Number</label>
+                <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" placeholder="License Number (if applicable)">
+          
+            </div>
           </div>
 
           <!-- Submit Button -->
