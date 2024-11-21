@@ -17,7 +17,7 @@ class ProfessionalController extends Controller
     {
         $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
         // dd($dictricts);
-        return view('admin.addprofessinals', compact('dictricts', ));
+        return view('admin/addprofessinals', compact('dictricts', ));
     }
 
     // public function webprofessional(Request $request)
