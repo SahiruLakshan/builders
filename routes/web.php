@@ -230,9 +230,12 @@ Route::get('/serviceproviderprofile', function () {
 
 Route::get('/professionalsform', [ProfessionalController::class, 'professionalForm'])->name('professionalsform');
 
-Route::get('/viewprofile', function () {
-    return view('webpages.viewprofiles');
-});
+// Route::get('/viewprofile', function () {
+//     return view('webpages.viewprofiles');
+// });
+
+Route::get('/view_Shop_profile/{id}', [WebController::class, 'view_Shop_profile'])->name('view_Shop_profile');
+
 
 
 

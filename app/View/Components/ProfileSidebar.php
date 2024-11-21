@@ -6,14 +6,16 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ProfileCard extends Component
+class ProfileSidebar extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $shop;
+    public function __construct($shop)
     {
-        //
+        $this->shop = json_decode(str_replace('&quot;', '"', $shop));
+        // dd($this->shop);
     }
 
     /**
@@ -21,6 +23,7 @@ class ProfileCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.profile-card');
+
+        return view('components.profile-sidebar');
     }
 }

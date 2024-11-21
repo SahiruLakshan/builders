@@ -1,14 +1,4 @@
-@extends('webpages.index')
-
-@section('content')
-<style>
-    .media-icon {
-        width: 40px;
-        height: 40px;
-    }
-</style>
-
-{{-- <div class="container-fluid">
+<div class="container-fluid">
     <div class="row">
         <!-- Sidebar Profile Card -->
         <div class="col-lg-3 col-md-4 col-sm-12 pt-2 pb-2">
@@ -24,7 +14,7 @@
                         </div>
 
                         <!-- Shop Name -->
-                        <h5 class="main-profile-name mb-3">{{ $shop->name }}</h5>
+                        <h5 class="main-profile-name mb-3">{{$shop->name}}</h5>
 
                         <hr class="my-4">
 
@@ -37,7 +27,7 @@
                                 </div>
                                 <div class="media-body">
                                     <span class="fw-bold">Email</span>
-                                    <p><a href="mailto:shopname@example.com" class="text-decoration-none text-muted">shopname@example.com</a></p>
+                                    <p><a href="mailto:shopname@example.com" class="text-decoration-none text-muted">{{$shop->email}}</a></p>
                                 </div>
                             </div>
 
@@ -48,7 +38,7 @@
                                 </div>
                                 <div class="media-body">
                                     <span class="fw-bold">Phone</span>
-                                    <p><a href="tel:+94 76 88 55 987" class="text-decoration-none text-muted">+94 76 88 55 987</a></p>
+                                    <p><a href="tel:+94 76 88 55 987" class="text-decoration-none text-muted">{{$shop->p_number}}</a></p>
                                 </div>
                             </div>
 
@@ -59,7 +49,7 @@
                                 </div>
                                 <div class="media-body">
                                     <span class="fw-bold">Address</span>
-                                    <p class="text-muted">1st street, Colombo</p>
+                                    <p class="text-muted">{{$shop->address}}</p>
                                 </div>
                             </div>
 
@@ -70,7 +60,7 @@
                                 </div>
                                 <div class="media-body">
                                     <span class="fw-bold">District</span>
-                                    <p class="text-muted">Colombo</p>
+                                    <p class="text-muted">{{$shop->location}}</p>
                                 </div>
                             </div>
 
@@ -91,7 +81,7 @@
         </div>
 
         <!-- Main Content -->
-        <div class="col-lg-9 col-md-8 col-sm-12 pt-2 pb-2">
+        {{-- <div class="col-lg-9 col-md-8 col-sm-12 pt-2 pb-2">
             <div class="container">
                 <!-- Row to display counters -->
                 <div class="row">
@@ -168,9 +158,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+        <x-mainProfileCards/>
     </div>
-</div> --}}
-<x-profile-sidebar shop="{{ $shop }}" /> 
-//echo json_encode($profileCard); ?>
-@endsection
+</div>

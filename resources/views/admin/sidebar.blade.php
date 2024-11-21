@@ -362,6 +362,10 @@
                                             </a>
                                         </li>
                                         <li>
+                                            <a class="slide-item" href="/viewshopProduct">View Shop Products
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a class="slide-item" href="/addproduct">Add New Product
                                             </a>
                                         </li>

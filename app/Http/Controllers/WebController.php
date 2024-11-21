@@ -256,5 +256,13 @@ class WebController extends Controller
         // Return view with all results combined
         return view('webpages.search', compact('results'));
     }
+    public function view_Shop_profile($id)
+    {
+
+        $shop = Shop::find($id);
+        $shopJson = json_encode($shop);
+        // dd($shop);
+        return view('webpages.viewprofiles', compact('shop'));
+    }
 
 }
