@@ -12,7 +12,7 @@
             <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12">
               <div class="card box-shadow-0">
                 <div class="card-header">
-                  <h4 class="card-title mb-1">Add New Product Subcategory</h4>
+                  <h4 class="card-title mb-1">Update Product Subcategory</h4>
                   <p class="mb-2">
                     Enter the name of the subcategory you want to add
                   </p>

@@ -340,6 +340,8 @@
           </div>
 
           <div class="mb-3">
+            {{-- in here also need to show professional Catogery get form data base 
+             --}}
             <label for="specializations" class="form-label">Specializations</label>
             <select multiple class="form-select select2" id="specializations" name="specializations[]">
               <option value="Civil Engineering">Civil Engineering</option>
@@ -353,27 +355,46 @@
             <textarea class="form-control" id="skills" name="skills" rows="3" placeholder="List skills like CAD, project management, etc."></textarea>
           </div>
 
-          <div class="mb-3">
+          <div class="col-md-12 mb-3">
             <label class="form-label">Certifications</label>
-            <div class="row">
-              <div class="col-md-4">
-                <input type="text" class="form-control mb-2" name="certificationName" placeholder="Certification Name">
-              </div>
-              <div class="col-md-4">
-                <input type="text" class="form-control mb-2" name="issuingAuthority" placeholder="Issuing Authority">
-              </div>
-              <div class="col-md-2">
-                <input type="date" class="form-control mb-2" name="dateIssued" placeholder="Date Issued">
-              </div>
-              <div class="col-md-2">
-                <input type="date" class="form-control mb-2" name="expirationDate" placeholder="Expiration Date">
+            <div id="certifications">
+              <div class="row certification-row">
+                <div class="col-md-4">
+                  <input type="text" class="form-control mb-2" name="certificationName[]" placeholder="Certification Name">
+                </div>
+                <div class="col-md-4">
+                  <input type="text" class="form-control mb-2" name="issuingAuthority[]" placeholder="Issuing Authority">
+                </div>
+                <div class="col-md-2">
+                  <input type="date" class="form-control mb-2" name="dateIssued[]" placeholder="Date Issued">
+                </div>
+                <div class="col-md-2">
+                  <input type="date" class="form-control mb-2" name="expirationDate[]" placeholder="Expiration Date">
+                </div>
+               
+                  <div class="col-md-6">
+      
+                      <label for="certificationPdf" class="form-label">Certification PDF (if applicable)</label>
+                      <input type="file" class="form-control" id="certificationPdf" name="certificationPdf[]" multiple placeholder="Upload PDF(s)">
+                  
+                  </div>
+          
+                <div class="col-md-12 text-end">
+                  <button type="button" class="btn btn-danger btn-sm delete-certification">Delete</button>
+                </div>
               </div>
             </div>
+            <button type="button" class="btn btn-primary mt-2" id="addCertification">Add More Certification</button>
+          
           </div>
 
-          <div class="mb-3">
-            <label for="licenseNumber" class="form-label">Professional License Number</label>
-            <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" placeholder="License Number (if applicable)">
+          <div class="form-group mt-3">
+            <div class="col-md-12 ">
+        
+                <label for="licenseNumber" class="form-label">Professional License Number</label>
+                <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" placeholder="License Number (if applicable)">
+          
+            </div>
           </div>
 
           <!-- Submit Button -->

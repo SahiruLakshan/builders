@@ -362,6 +362,10 @@
                                             </a>
                                         </li>
                                         <li>
+                                            <a class="slide-item" href="/viewshopProducts">View Shop Products
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a class="slide-item" href="/addproduct">Add New Product
                                             </a>
                                         </li>
@@ -470,14 +474,14 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/viewservice">View Professional Category</a>
+                                            <a class="slide-item" href="viewprofessionalCategory">View Professional Category</a>
                                         </li>
                                         <li>
                                             <a class="slide-item" href="addprofessionals">Add New Professional
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="icons.html">View Professional</a>
+                                            <a class="slide-item" href="#">View Professional</a>
                                         </li>
                                     </ul>
                                 </li>
