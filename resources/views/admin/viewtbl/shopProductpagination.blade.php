@@ -1,22 +1,28 @@
 <div class="table-responsive">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 "style="margin-left:100px;width:800px;">
+            <div class="col-md-12 "style="margin-left:200px;width:800px;">
                 <h1>Shop Products</h1>
                 <table class="table table-bordered border text-nowrap mb-0 mt-3" >
                     <thead>
                         <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th>Shop Product No</th>
+                            <th>Image</th>
+                            <th> Product</th>
+                            <th> Brand</th>
+                            <th>Product Category</th>
+                            <th>Product Subcategory</th>
+                            <th>Color</th>
+                            <th>Product Quantity</th>
+                            <th>Measurement</th>
+                            <th>Unit Price</th>
+                            <th>Vendor</th>
+                            <th>Discount</th>
+                            <th>Cost</th>
+                            <th>Attachment</th>
+                            <th>Description</th>
+                            <th>Applications</th>
+                            <th>Other Categories</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
