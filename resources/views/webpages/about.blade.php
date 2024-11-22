@@ -23,10 +23,11 @@
     <div class="col">
       <div class="d-flex align-items-center">
         <div class="bg-white position-relative p-5">
-          <h3>OUR VISION</h3>
-          <div>
-            To become the most efficient digital marketplace to meet buyers and sellers related to the construction industry in Sri Lanka.
-          </div>
+          <h3>OUR MISSION</h3>
+          <div>To become the most efficient digital 
+            marketplace to meet buyers and 
+            sellers related to the construction 
+            industry in Sri Lanka.</div>
         </div>
         <img src="{{asset('assets/webpage/aboutus/Picture1.jpg')}}" class="d-block object-fit-cover" width="200" height="250" alt="">
       </div>
@@ -35,8 +36,7 @@
         <div class="bg-white position-relative p-5">
           <h3>OUR VISION</h3>
           <div>
-            To become the most efficient digital marketplace to meet buyers and sellers related to the construction industry in Sri Lanka.
-          </div>
+            Becoming a pioneer in the Sri Lankan construction industry.</div>
         </div>
       </div>
 
@@ -44,8 +44,19 @@
     <div class="col">
       <div class="d-flex " style="height: 600px">
         <div class="col-9 bg-white">
-          To become the most efficient digital marketplace to meet buyers and sellers related to the construction industry in Sri Lanka.
-        </div>
+          "It is my expectation to see
+          Builders.lk operating as an intermediary 
+         in the Sri Lankan construction industry 
+         OUR VISION 
+          Becoming a pioneer in the 
+         Sri Lankan constructionindustry.
+          by recognizing the global market trends 
+         and creating a favorable situation 
+         for both customers and suppliers in the 
+         process of providing high quality 
+         goods and services. This will 
+         revolutionize the Sri Lankan 
+         construction market"</div>
         <div class="col-3 h-100 d-flex">
           <div class="h-100 bg-white col-8 d-flex align-items-center">
             <img class="d-block object-fit-cover" src="{{asset('assets/webpage/aboutus/Picture1.jpg ')}}" width="180" height="500" alt="">

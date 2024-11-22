@@ -8,7 +8,7 @@
                 <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                     <div class="card box-shadow-0">
                         <div class="card-header">
-                            <h4 class="card-title mb-1">Add Shop Items</h4>
+                            <h4 class="card-title mb-1">Update Shop Items</h4>
                             <p class="mb-2">Enter the details of the Item you want to add</p>
                         </div>
                         <div class="card-body pt-0">

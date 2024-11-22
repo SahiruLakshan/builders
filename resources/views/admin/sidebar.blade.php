@@ -358,7 +358,7 @@
                                             <a href="javascript:void(0);">Product </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/shopitem">Add Shop Product
+                                            <a class="slide-item" href="/shopitem">Add  Product Item
                                             </a>
                                         </li>
                                         <li>
