@@ -69,31 +69,7 @@
                                 </div> --}}
                                 <hr>
                                 <div class="row">
-                                     <!-- Editable Data Table -->
-                                        {{-- <div class="col-12">
-                                            <table class="table table-bordered">
-                                                <thead class="table-dark">
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="editableTable">
-                                                    <!-- Example Row -->
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td contenteditable="true">John Doe</td>
-                                                        <td contenteditable="true">johndoe@example.com</td>
-                                                        <td>
-                                                            <button class="btn btn-sm btn-success save-btn">Save</button>
-                                                            <button class="btn btn-sm btn-danger delete-btn">Delete</button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>        --}}
+                                     <!-- Editable Data Table -->                                    
                                 </div>
                                 <hr>
                                 <div class="d-flex flex-wrap">
