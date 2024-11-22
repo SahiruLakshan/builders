@@ -127,7 +127,7 @@
 <!-- About End -->
 
 <!-- Facts Start -->
-<div class="facts-section pt-5 pb-5">
+{{-- <div class="facts-section pt-5 pb-5">
   <div class="container">
     <div class="row">
       <!-- Mission and Vision Section -->
@@ -167,10 +167,10 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 
 <!-- Facts End -->
-<div class="fact-box bg-image text-white p-4 rounded shadow" style="background-image: url('your-background-image.jpg'); background-size: cover; background-position: center;">
+{{-- <div class="fact-box bg-image text-white p-4 rounded shadow" style="background-image: url('your-background-image.jpg'); background-size: cover; background-position: center;">
   <div class="container">
     <div class="row d-flex align-items-center">
       <!-- Left side: Paragraph -->
@@ -203,7 +203,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 <!-- Separate Container for WHO NEEDS BUILDERS.LK -->
 <div class="container mt-4 pt-4 pb-4 pl-4">
   <div class="p-4 rounded shadow" style="background-color: #ffffff; color: #002b49;">

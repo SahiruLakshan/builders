@@ -2,10 +2,6 @@
 
 @section('content')
 <style>
-    .media-icon {
-        width: 40px;
-        height: 40px;
-    }
 </style>
 
 {{-- <div class="container-fluid">
@@ -172,5 +168,5 @@
     </div>
 </div> --}}
 <x-profile-sidebar shop="{{ $shop }}" /> 
-//echo json_encode($profileCard); ?>
+{{-- //echo json_encode($profileCard); ?> --}}
 @endsection

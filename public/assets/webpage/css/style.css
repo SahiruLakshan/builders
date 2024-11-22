@@ -393,17 +393,17 @@ textarea.input {
     padding-bottom: 30px;
 }
 
-/* .section-title {
-  position: relative;
-  margin-bottom: 30px;
-  margin-top: 15px;
-} */
+.section-title {
+    position: relative;
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
 
-/* .section-title .title {
-  display: inline-block;
-  text-transform: uppercase;
-  margin: 0px;
-} */
+.section-title .title {
+    display: inline-block;
+    text-transform: uppercase;
+    margin: 0px;
+}
 
 .section-title .section-nav {
     float: right;
@@ -2382,7 +2382,14 @@ textarea.input {
 .about-text {
     max-width: 600px; /* Limits the text width */
 }
+/*=========================================================
+	14 ->PROFILEVIEW
+===========================================================*/
 
+.media-icon {
+    width: 40px;
+    height: 40px;
+}
 /*=========================================================
 	13 -> RESPONSIVE
 ===========================================================*/
