@@ -2,15 +2,15 @@
     <div class="row">
         <!-- Sidebar Profile Card -->
         <div class="col-lg-2 col-md-4 col-sm-12 pt-2 pb-2">
-            <div class="card shadow-lg border-0">
+            <div class="bg-white shadow-lg border-0">
                 <div class="card-body p-4">
                     <div class="text-center">
                         <!-- Profile Image -->
                         <div class="main-img-user profile-user mb-4">
                             <img alt="Profile Image" src="../assets/img/faces/6.jpg"
                                 class="img-fluid rounded-circle border border-5 border-white">
-                            <a class="fas fa-camera profile-edit position-absolute top-50 start-50 translate-middle"
-                                href="JavaScript:void(0);" style="color: #fff;"></a>
+                            {{-- <a class="fas fa-camera profile-edit position-absolute top-50 start-50 translate-middle"
+                                href="JavaScript:void(0);" style="color: #fff;"></a> --}}
                         </div>
 
                         <!-- Shop Name -->

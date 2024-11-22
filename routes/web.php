@@ -21,6 +21,7 @@ use App\Http\Controllers\AdvertisementUploadController;
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\BrandProductController;
 use App\Http\Controllers\ProfessionalController;
+use App\Http\Controllers\ProfessionalCategoryController;
 // Route::get('/', function () {
 //     return view('login');
 // });
@@ -131,6 +132,12 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/addserviceprovider/store', [ServiceProviderController::class, 'store'])->name('addserviceprovider.store');
     Route::get('/serviceproviders', [ServiceProviderController::class, 'view'])->name('serviceproviders.show');
 
+    Route::get('/categories', [ProfessionalCategoryController::class, 'index'])->name('categories.index');
+    Route::get('/categories/create', [ProfessionalCategoryController::class, 'create'])->name('categories.create');
+    Route::post('/categories/store', [ProfessionalCategoryController::class, 'store'])->name('categories.store');
+    Route::get('/categories/edit/{id}', [ProfessionalCategoryController::class, 'edit'])->name('categories.edit');
+    Route::post('/categories/update/{id}', [ProfessionalCategoryController::class, 'update'])->name('categories.update');
+    Route::get('/categories/delete/{id}', [ProfessionalCategoryController::class, 'destroy'])->name('categories.destroy');
 
     //advertisement routes
     // Route::get('/addadvertisement', [AdvertisementController::class, 'index'])->name('addadvertisement');
