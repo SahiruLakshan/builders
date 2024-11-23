@@ -188,8 +188,8 @@ Route::get('/search', [WebController::class, 'search'])->name('search');
 
 
 
-Route::get('/product', function () {
-    return view('webpages.product');
+Route::get('/shops', function () {
+    return view('webpages.shops');
 });
 
 //bass form loarding

@@ -38,7 +38,7 @@ class WebController extends Controller
         // dd($shops);
         // $brand = Shop::where('category', 'like', '%' . $name . '%')->brand()->get();
 
-        return view('webpages.product', compact('shops', 'dictricts', 'brands'));
+        return view('webpages.shops', compact('shops', 'dictricts', 'brands'));
     }
 
     public function shopSuppliers(Request $request)
