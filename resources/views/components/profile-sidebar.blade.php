@@ -140,7 +140,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion-item">
+                                {{-- <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingAnotherSection">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAnotherSection" aria-expanded="true" aria-controls="collapseAnotherSection" style="background-color: #002b49; color: white;">
                                             Another Section
@@ -152,7 +152,7 @@
                                            <x-offerings/>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 
                                 
                             </div>
