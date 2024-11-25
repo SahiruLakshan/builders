@@ -52,4 +52,8 @@ class Professionalmanage extends Model
         return \Carbon\Carbon::parse($value)->format('d-m-Y H:i:s');
     }
 
+    public function certifications()
+    {
+        return $this->hasMany(Certification::class, 'professional_id', 'professional_number');
+    }
 }
