@@ -197,7 +197,7 @@
                                                       </div>
                                                       <button type="submit" class="btn btn-primary">Save Location</button>
                                                     <div id="map" class="mt-3 boder-2"></div>
-                                                  </div>
+                                                </div>
                                                   
                                                     
                                                 

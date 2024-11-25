@@ -118,7 +118,7 @@
                                       </div>
                                       <button type="submit" class="btn btn-primary">Save Location</button>
                                     <div id="map" class="mt-3 boder-2"></div>
-                                  </div>
+                                </div>
                                       <!-- Leaflet JS -->
                                     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
                                     <script>
