@@ -278,8 +278,8 @@
                       <div class="col-md-6">
 
                         <label for="certificationPdf" class="form-label">Certification PDF (if applicable)</label>
-                        <input type="file" class="form-control" id="certificationPdf" name="certification_pdf[]"
-                          multiple placeholder="Upload PDF(s)">
+                        <input type="file" class="form-control" id="certificationPdf" name="certification_pdf[]" placeholder="Upload PDF" multiple>
+
 
                       </div>
 
