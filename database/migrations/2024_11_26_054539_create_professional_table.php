@@ -9,9 +9,9 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('professionals', function (Blueprint $table) {
+        Schema::create('professional', function (Blueprint $table) {
             $table->id();
             $table->string('professional_number')->unique();
             $table->string('name');
@@ -24,21 +24,23 @@ return new class extends Migration
             $table->string('zip')->nullable();
             $table->date('dob')->nullable();
             $table->string('linkedin')->nullable();
-            $table->string('job_title');
-            $table->string('experience_level');
+            $table->string('job_title')->nullable();
+            $table->string('experience_level')->nullable();
             $table->integer('years_of_experience')->nullable();
+            $table->text('specializations')->nullable(); // Store as JSON
             $table->text('skills')->nullable();
+            $table->text('certifications')->nullable(); // Store as JSON
             $table->string('license_number')->nullable();
             $table->timestamps();
         });
-        
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('professionals');
+        Schema::dropIfExists('professional');
     }
 };

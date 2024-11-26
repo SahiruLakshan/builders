@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Professional extends Model
 {
+
+    use HasFactory;
+
+    protected $table='professional';
+
     protected $fillable = [
         'professional_number',
         'name',
@@ -22,17 +27,10 @@ class Professional extends Model
         'job_title',
         'experience_level',
         'years_of_experience',
+        'specializations',
         'skills',
+        'certifications',
+        'certificates',
         'license_number',
-    ];
-
-    public function certifications()
-    {
-        return $this->hasMany(Certification::class);
-    }
-
-    public function specializations()
-    {
-        return $this->belongsToMany(Specialization::class, 'professional_specialization');
-    }
+    ];    
 }

@@ -216,10 +216,9 @@
                                         {{-- Professional Category neet to shgow in here this one get form professinalCategory tyble it need to create contoller also --}}
                                         <label for="specializations" class="form-label">Specializations</label>
                                         <select multiple="multiple" name="specialization[]" class="form-select selectsum1">
-                                          
-                                          <option value="1">Civil Engineering</option>
-                                          <option value="2">Electrical Work</option>
-                                          <option value="3">Structural Analysis</option>
+                                          <option value="Civil Engineering">Civil Engineering</option>
+                                          <option value="Electrical Work">Electrical Work</option>
+                                          <option value="Structural Analysis">Structural Analysis</option>
                                         </select>
                                       </div>
                                     </div>
@@ -248,10 +247,8 @@
                                       </div>
                                      
                                         <div class="col-md-6">
-                            
                                             <label for="certificationPdf" class="form-label">Certification PDF (if applicable)</label>
-                                            <input type="file" class="form-control" id="certificationPdf" name="certificationPdf[]" multiple placeholder="Upload PDF(s)">
-                                        
+                                            <input type="file" class="form-control" id="certificationPdf" name="certificates[]" multiple placeholder="Upload PDF(s)">
                                         </div>
                                 
                                       <div class="col-md-12 text-end">
