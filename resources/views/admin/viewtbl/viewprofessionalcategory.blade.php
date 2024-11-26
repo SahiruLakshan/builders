@@ -1,11 +1,11 @@
 @extends('admin.sidebar')
 
 @section('content')
-    <h1 style="margin-left:300px; margin-top:20px;">Professionals Categories Details</h1>
+    {{-- <h1 style="margin-left:300px; margin-top:20px;">Professionals Categories Details</h1>
 
     <div class="search-bar" style="margin-left:300px; margin-top:20px; width: 800px;">
         <input type="text" id="search-input" class="form-control" placeholder="Search products by Brand Name or Id...">
-    </div>
+    </div> --}}
 
     <div class="table-responsive" id="pagination-data" style="margin-left:300px; margin-top:20px; width: 800px;">
         <div class="container">
@@ -17,21 +17,24 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Professional Name</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th>Actions</th>
+                                <th>Category Name</th>
+                                <th>Description</th>
+                                {{-- <th>Actions</th> --}}
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($services as $service)
+                            @php
+                                $i = 0;
+                            @endphp
+                            @foreach ($prof_cate as $cate)
+                                @php
+                                    $i++;
+                                @endphp
                                 <tr>
-                                    <td>{{ $service->id }}</td>
-                                    <td>{{ $service->servicename }}</td>
-                                    <td>{{ $service->description }}</td>
+                                    <td>{{ $i }}</td>
+                                    <td>{{ $cate->name }}</td>
+                                    <td>{{ $cate->description }}</td>
+                
                                     {{-- <td>
                                         <a href="{{ route('services.edit', $service->id) }}" class="btn btn-warning">Edit</a>
                                         <form action="{{ route('services.destroy', $service->id) }}" method="POST" style="display:inline-block;">

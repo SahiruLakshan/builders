@@ -30,7 +30,8 @@
                     </div>
                     <div class="card-body pt-0">
                         {{-- <form class="border p-4" method="POST" action="{{ route('addserviceprovider.store') }}"> --}}
-                            <form class=" border p-4" method="POST" action="" enctype="multipart/form-data">
+                          <form class="border p-4" method="POST" action="{{ route('submitprofessionals') }}" enctype="multipart/form-data">
+                              @csrf
                                 <!-- Personal Information -->
                                 <h4>Personal Information</h4>
                                 <hr>
@@ -216,9 +217,9 @@
                                         <label for="specializations" class="form-label">Specializations</label>
                                         <select multiple="multiple" name="specialization[]" class="form-select selectsum1">
                                           
-                                          <option value="Civil Engineering">Civil Engineering</option>
-                                          <option value="Electrical Work">Electrical Work</option>
-                                          <option value="Structural Analysis">Structural Analysis</option>
+                                          <option value="1">Civil Engineering</option>
+                                          <option value="2">Electrical Work</option>
+                                          <option value="3">Structural Analysis</option>
                                         </select>
                                       </div>
                                     </div>
