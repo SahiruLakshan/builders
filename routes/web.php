@@ -195,11 +195,7 @@ Route::get('/shops', function () {
 //bass form loarding
 Route::get('/shopSuppliers', [WebController::class, 'shopSuppliers'])->name('shopSuppliers');
 Route::post('/addshopSuppliers', [WebController::class, 'addshopSuppliers'])->name('addshopSuppliers');
-
-
-
 Route::get('/serviceproviderform', [WebController::class, 'servceproviders'])->name('serviceproviderform');
-
 
 Route::name('category.')->group(function () {
     Route::get('product/cat/{name}', [WebController::class, 'shopcategory'])->name('shop');
