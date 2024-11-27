@@ -473,11 +473,11 @@
                                             <a class="slide-item" href="/viewprofessionalsCategory">View Professional Category</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="addprofessionals">Add New Professional
+                                            <a class="slide-item" href="/addprofessionals">Add New Professional
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="#">View Professional</a>
+                                            <a class="slide-item" href="/professionals">View Professional</a>
                                         </li>
                                     </ul>
                                 </li>
