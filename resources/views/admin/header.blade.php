@@ -42,6 +42,11 @@
 
     <!--- Animations css-->
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet" />
+     <!-- Leaflet CSS (Free Mapping Library) -->
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+ <!-- Leaflet Geocoder CSS -->
+ <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
     <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

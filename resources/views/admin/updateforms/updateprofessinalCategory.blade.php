@@ -10,20 +10,20 @@
                     </p>
                 </div>
                 <div class="card-body pt-0">
-                    <form action="#" method="POST" class="form-horizontal" id="addporfessionalscategory">
+                    <form action="/categories/update/{{ $category->id }}" method="POST" class="form-horizontal" id="addporfessionalscategory">
                         @csrf
                         <!-- Professional Name Field -->
                         <div class="form-group">
                             <label for="product_name">Professional Category Name</label>
-                            <input type="text" class="form-control" name="professionalsname" placeholder="Professional Category Name" required onchange="this.value = this.value.toUpperCase();" />
+                            <input type="text" class="form-control" name="name" value="{{ $category->name }}" placeholder="Professional Category Name" required onchange="this.value = this.value.toUpperCase();" />
                             <small class="form-text text-muted">Enter the Professional Category name. This field is
                                 required.</small>
                         </div>
                         <!-- Professional Description Field -->
                         <div class="form-group">
                             <label for="description">Category Description</label>
-                            <textarea class="form-control" name="professionaldescription" id="description" placeholder="Enter a description about the Category" rows="3"
-                                required></textarea>
+                            <textarea class="form-control" name="description" id="description" placeholder="Enter a description about the Category" rows="3"
+                                required>{{ $category->description }}</textarea>
                             <small class="form-text text-muted">Enter a brief description about the Professional Category. This field
                                 is required.</small>
                         </div>

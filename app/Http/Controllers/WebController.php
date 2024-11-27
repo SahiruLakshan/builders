@@ -38,7 +38,7 @@ class WebController extends Controller
         // dd($shops);
         // $brand = Shop::where('category', 'like', '%' . $name . '%')->brand()->get();
 
-        return view('webpages.product', compact('shops', 'dictricts', 'brands'));
+        return view('webpages.shops', compact('shops', 'dictricts', 'brands'));
     }
 
     public function shopSuppliers(Request $request)
@@ -255,6 +255,14 @@ class WebController extends Controller
         // dd($results);
         // Return view with all results combined
         return view('webpages.search', compact('results'));
+    }
+    public function view_Shop_profile($id)
+    {
+
+        $shop = Shop::find($id);
+        $shopJson = json_encode($shop);
+        // dd($shop);
+        return view('webpages.viewprofiles', compact('shop'));
     }
 
 }
