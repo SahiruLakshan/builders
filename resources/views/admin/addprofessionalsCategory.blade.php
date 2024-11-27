@@ -10,7 +10,7 @@
                     </p>
                 </div>
                 <div class="card-body pt-0">
-                    <form action="{{route('categories.store')}}" method="POST" class="form-horizontal" id="addporfessionalscategory">
+                    <form action="/addprofessioncateory" method="POST" class="form-horizontal" id="addporfessionalscategory">
                         @csrf
                         <!-- Professional Name Field -->
                         <div class="form-group">

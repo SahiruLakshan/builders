@@ -69,6 +69,8 @@ class ServiceProviderController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('An error occurred: ' . $e->getMessage());
         }
+
+        
     }
 
     
