@@ -37,6 +37,8 @@ class ServiceProviderController extends Controller
                 'grade' => 'required|string|max:50',
                 'inputAddress' => 'required|string|max:500',
                 'category' => 'required|integer',
+                'latitude' => 'required',
+                'longitude' => 'required',
                 'district' => 'required|integer',
                 'city' => 'required|integer',
                 'telephone' => 'nullable|string|max:15',
@@ -55,6 +57,8 @@ class ServiceProviderController extends Controller
             $serviceProvider->grade = $validated['grade'];
             $serviceProvider->address = $validated['inputAddress'];
             $serviceProvider->category_id = $validated['category'];
+            $serviceProvider->latitude = $validated['latitude'];
+            $serviceProvider->longitude = $validated['longitude'];
             $serviceProvider->district_id = $validated['district'];
             $serviceProvider->city_id = $validated['city'];
             $serviceProvider->telephone = $validated['telephone'];
