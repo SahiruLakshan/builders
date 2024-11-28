@@ -32,6 +32,7 @@ class ServiceProviderController extends Controller
     {
         try {
             $validated = $request->validate([
+                'number' => 'required|string',
                 's_name' => 'required|string|max:255',
                 'grade' => 'required|string|max:50',
                 'inputAddress' => 'required|string|max:500',
@@ -49,6 +50,7 @@ class ServiceProviderController extends Controller
             ]);
 
             $serviceProvider = new ServiceProvider();
+            $serviceProvider->number = $validated['number'];
             $serviceProvider->s_name = $validated['s_name'];
             $serviceProvider->grade = $validated['grade'];
             $serviceProvider->address = $validated['inputAddress'];

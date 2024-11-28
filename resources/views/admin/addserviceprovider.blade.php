@@ -18,9 +18,22 @@
                             @csrf
                             <div class="d-flex">
                                 <div class="form-group">
-                                    <label for="serviceProviderNumber">ServiceProvider Number </label>
-                                    <input type="text" class="form-control" id="s_number" name="s_number" placeholder=" Service Provider No.." />
+                                    <label for="serviceProviderNumber">ServiceProvider Number</label>
+                                    <input type="text" class="form-control" id="number" name="number" placeholder="Service Provider No.." readonly>
                                 </div>
+                                
+                                <script>
+                                    function generateServiceProviderNumber() {
+                                        const prefix = 'SP';
+                                        const randomNumber = Math.floor(Math.random() * 1000000); 
+                                        const formattedNumber = prefix + randomNumber.toString().padStart(6, '0');
+                                        document.getElementById('number').value = formattedNumber;
+                                    }
+                                
+                                    // Call the function to set the value when the page loads
+                                    window.onload = generateServiceProviderNumber;
+                                </script>
+                                
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="inputPassword4">Name</label>
