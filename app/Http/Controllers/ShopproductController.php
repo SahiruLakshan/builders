@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ShopproductController extends Controller
 {
+    public function viewshopProducts()
+    {
+
+        return view('admin.viewtbl.viewshopProducts');
+    }
     public function index($id)
     {
         $shops = Shop::find($id);

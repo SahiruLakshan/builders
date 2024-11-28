@@ -25,7 +25,7 @@ jobs:
             nvm use 20
             # node -v
             # pwd
-          
+
             # Navigate to the directory where the project is located or clone it if it doesn't exist
             if [ ! -d "/home/local/builders/" ]; then
               git clone https://${{secrets.pat}}@github.com/SahiruLakshan/builders.git /home/local/builders/

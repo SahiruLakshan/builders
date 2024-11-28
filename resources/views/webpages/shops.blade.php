@@ -1,10 +1,6 @@
 @extends('webpages.index')
 
 @section('content')
-<style>
-    
-
-</style>
 
     <div class="container-fluid">
         <div class="row">
@@ -155,8 +151,10 @@
                 <div class="col-12 col-md-9">
                     <div class="d-flex flex-wrap mb-4 ">
                         @foreach ($shops as $shop)
-                            <div class="col-12 col-md-6 p-2 "> <!-- Add mb-3 to apply a margin below each card -->
-                                <div class="rounded shadow hcard-200 bg-white d-flex flex-row">
+                       
+                        <div  class="col-12 col-md-6 p-2 "> <!-- Add mb-3 to apply a margin below each card -->
+                            <a href="{{route('view_Shop_profile', $shop->id) }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">
+                                <div class=" shadow hcard-200 bg-white d-flex flex-row">
                                     <!-- Image on the left side -->
                                     <img src="{{ asset('assets/shop/' . $shop->shop_img) }}"  class="d-block col-4 object-fit-cover rounded-start" alt="...">
                                     {{-- <img src="{{ asset('assets/shop/1730369468_screenshot.png') }}" alt="..."> --}}
@@ -184,6 +182,12 @@
                                                         class="btn text-white bg-warning shadow phone-button mt-2 ">
                                                         <i class="fas fa-phone ms-auto"></i>
                                                     </a>
+
+                                                    <a href="{{ route('view_Shop_profile', $shop->id) }}"
+                                                        class="btn text-white bg-warning shadow phone-button mt-2 ">
+                                                        <i class="fas fa-user ms-auto"></i>
+                                                    </a>
+                                                    {{-- {{$shop->id}} --}}
                                                 </div>
                                             </p>
                                            
@@ -191,6 +195,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </a>
                             </div>
                         @endforeach
             @endif

@@ -358,7 +358,11 @@
                                             <a href="javascript:void(0);">Product </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/shopitem">Add Shop Product
+                                            <a class="slide-item" href="/shopitem">Add  Product Item
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="/viewshopProducts">View Shop Products
                                             </a>
                                         </li>
                                         <li>
@@ -454,7 +458,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="icons.html">View Service Provider</a>
+                                            <a class="slide-item" href="">View Service Provider</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -470,7 +474,9 @@
                                             </a>
                                         </li>
                                         <li>
+
                                             <a class="slide-item" href="/viewprofessionalsCategory">View Professional Category</a>
+
                                         </li>
                                         <li>
                                             <a class="slide-item" href="/addprofessionals">Add New Professional
@@ -481,7 +487,29 @@
                                         </li>
                                     </ul>
                                 </li>
-                                
+                                <li class="slide">
+                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
+                                            class="side-menu__label">Bass</span></a>
+                                    <ul class="slide-menu">
+                                        <li class="side-menu__label1">
+                                            <a href="javascript:void(0);">Bass</a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="addprofessionalsCategory">Add New Bass Category
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="/categories">View Bass Category</a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="addprofessionals">Add New Bass
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="slide-item" href="#">View Bass</a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="slide">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
                                             class="side-menu__label"> Advertisement</span></a>
@@ -494,7 +522,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="icons.html">View Advertisement</a>
+                                            <a class="slide-item" href="#">View Advertisement</a>
                                         </li>
                                     </ul>
                                 </li>

@@ -21,6 +21,7 @@ use App\Http\Controllers\AdvertisementUploadController;
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\BrandProductController;
 use App\Http\Controllers\ProfessionalController;
+use App\Http\Controllers\ProfessionalCategoryController;
 // Route::get('/', function () {
 //     return view('login');
 // });
@@ -99,6 +100,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::put('/shopcategory/update/{id}', [ShopCategoryController::class, 'updateShopCategory']);
     Route::get('/shopcategory/delete/{id}', [ShopCategoryController::class, 'deleteShopCategory']);
     Route::get('/addshopproduct/{id}', [ShopproductController::class, 'index']);
+    Route::get('/viewshopProducts', [ShopproductController::class, 'viewshopProducts']);
     // Route::post('/submitshopproduct', [ShopproductController::class, 'submitProducts'])->name('submit.products');
     Route::post('/submitshopitem', [ShopproductController::class, 'submitProducts'])->name('submit.shopitem');
     Route::get('/shopitem', [ShopproductController::class, 'shopitem'])->name('shopitem');
@@ -130,6 +132,12 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/addserviceprovider/store', [ServiceProviderController::class, 'store'])->name('addserviceprovider.store');
     Route::get('/serviceproviders', [ServiceProviderController::class, 'view'])->name('serviceproviders.show');
 
+    Route::get('/categories', [ProfessionalCategoryController::class, 'index'])->name('categories.index');
+    Route::get('/categories/create', [ProfessionalCategoryController::class, 'create'])->name('categories.create');
+    Route::post('/categories/store', [ProfessionalCategoryController::class, 'store'])->name('categories.store');
+    Route::get('/categories/edit/{id}', [ProfessionalCategoryController::class, 'edit'])->name('categories.edit');
+    Route::post('/categories/update/{id}', [ProfessionalCategoryController::class, 'update'])->name('categories.update');
+    Route::get('/categories/delete/{id}', [ProfessionalCategoryController::class, 'destroy'])->name('categories.destroy');
 
     //advertisement routes
     // Route::get('/addadvertisement', [AdvertisementController::class, 'index'])->name('addadvertisement');
@@ -182,10 +190,10 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 //search optoins route 
 Route::get('/search', [WebController::class, 'search'])->name('search');
 
-// get cityes fir the dropdown
 
-Route::get('/product', function () {
-    return view('webpages.product');
+
+Route::get('/shops', function () {
+    return view('webpages.shops');
 });
 
 //bass form loarding
@@ -234,9 +242,12 @@ Route::get('/serviceproviderprofile', function () {
 
 Route::get('/professionalsform', [ProfessionalController::class, 'professionalForm'])->name('professionalsform');
 
-Route::get('/viewprofile', function () {
-    return view('webpages.viewprofiles');
-});
+// Route::get('/viewprofile', function () {
+//     return view('webpages.viewprofiles');
+// });
+
+Route::get('/view_Shop_profile/{id}', [WebController::class, 'view_Shop_profile'])->name('view_Shop_profile');
+
 
 
 

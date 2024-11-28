@@ -12,13 +12,8 @@
                             <p class="mb-2">Enter the details of the Item you want to add</p>
                         </div>                       
                         <div class="card-body pt-0">
-
-                           
-
-                            
                             <!-- Shop Selection -->
                             <form class="form-horizontal" id="addShopProduct">
-
                                 <div class="row">
                                     <!-- Shop Name Field -->
                                     <div class="col-md-3">
@@ -29,9 +24,9 @@
                                             </select>
                                         </div>
                                     </div>
-
                                 </div>
                                 <h4>ADD SHOP ITEMS</h4>
+
                                 {{-- <div class="row">
                                     <div class="row" >
                                         <div>
@@ -72,7 +67,10 @@
                                             </script>
                                     </div>
                                 </div> --}}
-
+                                <hr>
+                                <div class="row">
+                                     <!-- Editable Data Table -->                                    
+                                </div>
                                 <hr>
                                 <div class="d-flex flex-wrap">
                                     <div class="col-md-4">
@@ -131,10 +129,8 @@
                                                     Add Shop Item
                                                 </button>
                                             </div>
-                                      
                                     </div>
                                     <!-- Add Product Button -->
-
                                 </div>
 
                                 <!-- Product Table -->
@@ -173,8 +169,6 @@
                                         </div>
                                     </div>
                                 </div>
-                         
-
                                 <!-- Initialize DataTable -->
                                 <script>
                                     $(document).ready(function() {
@@ -213,9 +207,7 @@
                                     });
                                 });
                                 </script>
-
                                 <!-- End Row -->
-
                                 <!-- Submit Button -->
                                 <div class="form-group p-3 justify-content-end">
                                     <button type="button" id="submitProducts" class="btn btn-primary">Submit All
@@ -230,14 +222,7 @@
         </div>
         <!-- /Container -->
     </div>
-    <!-- Include DataTables CSS and JS -->
-    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
-    <!-- Include jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Include DataTables JS -->
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  
     <script>
         $(document).ready(function() {
             $('.select2').select2();
@@ -512,4 +497,12 @@
 
         });
     </script>
+      <!-- Include DataTables CSS and JS -->
+      <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
+      <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
+      <!-- Include jQuery -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <!-- Include DataTables JS -->
+      <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 @endsection
