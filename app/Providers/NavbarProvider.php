@@ -23,8 +23,8 @@ class NavbarProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $shopcats = ShopCategory::get('name');
-        view()->share('shopcats', $shopcats);
+        // $shopcats = ShopCategory::get('name');
+        // view()->share('shopcats', $shopcats);
         // dd($shopcats);
         // $services= Service
 
