@@ -9,9 +9,7 @@ use App\Models\District;
 use App\Models\Brand;
 use App\Models\Shopproduct;
 use App\Models\Service;
-
-
-
+use App\Models\ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -263,6 +261,20 @@ class WebController extends Controller
         $shopJson = json_encode($shop);
         // dd($shop);
         return view('webpages.viewprofiles', compact('shop'));
+    }
+
+    public function servicecategory($name)
+    {
+        $serviceProviders = ServiceProvider:: // Eager load the category relationship
+        with('district','city','category')
+        ->whereHas('category', function ($query) use ($name) {
+            $query->where('servicename', 'like', '%' . $name . '%');
+        })
+        ->paginate(20); // Eager load the district relationship;
+        $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
+     // Paginate the results
+        // dd($serviceProviders);
+        return view('webpages.shops', compact('serviceProviders', 'dictricts'));
     }
 
 }
