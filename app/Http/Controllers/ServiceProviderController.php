@@ -75,8 +75,11 @@ class ServiceProviderController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('An error occurred: ' . $e->getMessage());
         }
+    }
 
-        
+    public function view(){
+        $serviceProviders = ServiceProvider::all();
+        return view('admin.viewtbl.viewServiceProvider',compact('serviceProviders'));
     }
 
     
