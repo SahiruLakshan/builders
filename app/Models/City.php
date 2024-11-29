@@ -20,4 +20,5 @@ class City extends Model
     {
         return $this->belongsTo(District::class, 'dis_id', 'dis_id');
     }
+
 }

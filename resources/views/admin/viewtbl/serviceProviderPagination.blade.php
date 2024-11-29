@@ -32,9 +32,9 @@
                                 <td>{{ $service->s_name }}</td>
                                 <td>{{ $service->grade }}</td>
                                 <td>{{ $service->address }}</td>
-                                <td>{{ $service->category->name ?? 'N/A' }}</td>
-                                <td>{{ $service->district->name ?? 'N/A' }}</td>
-                                <td>{{ $service->city->name ?? 'N/A' }}</td>
+                                <td>{{ $service->category_id ?? 'N/A' }}</td>
+                                <td>{{ $service->district_id ?? 'N/A' }}</td>
+                                <td>{{ $service->city_id?? 'N/A' }}</td>
                                 <td>{{ $service->telephone }}</td>
                                 <td>{{ $service->mobile }}</td>
                                 <td>{{ $service->whatsapp }}</td>
