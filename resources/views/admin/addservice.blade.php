@@ -1,5 +1,34 @@
-@extends('admin.sidebar')
+{{-- @extends('admin.sidebar')
 @section('content')
+    <!-- Display success or error messages -->
+    @if(session('success'))
+        <script>
+            Swal.fire({
+                title: 'Success!',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            });
+        </script>
+    @elseif(session('error'))
+        <script>
+            Swal.fire({
+                title: 'Error!',
+                text: '{{ session('error') }}',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            });
+        </script>
+    @endif
+
     <div class="row row-sm  mt-5 d-flex justify-content-center align-items-center">
         <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12">
             <div class="card box-shadow-0">
@@ -10,22 +39,94 @@
                     </p>
                 </div>
                 <div class="card-body pt-0">
-                    <form action="{{url('addservice')}}" method="POST" class="form-horizontal" id="addproduct">
+                    <form action="{{ route('service.store') }}" method="POST" class="form-horizontal" id="addproduct">
                         @csrf
                         <!-- Service Name Field -->
                         <div class="form-group">
                             <label for="product_name">Service Name</label>
-                            <input type="text" class="form-control" name="servicename" placeholder="Service Name" required onchange="this.value = this.value.toUpperCase();" />
+                            <input type="text" class="form-control" name="service_name" placeholder="Service Name" required onchange="this.value = this.value.toUpperCase();" />
                             <small class="form-text text-muted">Enter the Service name. This field is
                                 required.</small>
                         </div>
                         <!-- Service Description Field -->
                         <div class="form-group">
                             <label for="description">Service Description</label>
-                            <textarea class="form-control" name="description" id="description" placeholder="Enter a description about the service" rows="3"
+                            <textarea class="form-control" name="service_description" id="description" placeholder="Enter a description about the service" rows="3"
                                 required></textarea>
                             <small class="form-text text-muted">Enter a brief description about the service. This field
                                 is required.</small>
+                        </div>
+                        <!-- Submit Buttons -->
+                        <div class="form-group mb-0 mt-3 justify-content-end">
+                            <div>
+                                <button type="submit" id="submitButton" class="btn btn-primary">
+                                    Add service
+                                </button>
+
+                                <button type="reset" id="resetButton" class="btn btn-secondary ms-4">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection --}}
+@extends('admin.sidebar')
+
+@section('content')
+    <!-- Display success or error messages -->
+    @if(session('success'))
+        <script>
+            Swal.fire({
+                title: 'Success!',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            });
+        </script>
+    @elseif(session('error'))
+        <script>
+            Swal.fire({
+                title: 'Error!',
+                text: '{{ session('error') }}',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            });
+        </script>
+    @endif
+
+    <div class="row row-sm mt-5 d-flex justify-content-center align-items-center">
+        <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12">
+            <div class="card box-shadow-0">
+                <div class="card-header">
+                    <h4 class="card-title mb-1">Add New Services</h4>
+                    <p class="mb-2">Enter the name of the Service you want to add</p>
+                </div>
+                <div class="card-body pt-0">
+                    <form action="{{ route('service.store') }}" method="POST" class="form-horizontal" id="addproduct">
+                        @csrf
+                        <!-- Service Name Field -->
+                        <div class="form-group">
+                            <label for="product_name">Service Name</label>
+                            <input type="text" class="form-control" name="servicename" placeholder="Service Name" required onchange="this.value = this.value.toUpperCase();" />
+                            <small class="form-text text-muted">Enter the Service name. This field is required.</small>
+                        </div>
+                        <!-- Service Description Field -->
+                        <div class="form-group">
+                            <label for="description">Service Description</label>
+                            <textarea class="form-control" name="description" id="description" placeholder="Enter a description about the service" rows="3" required></textarea>
+                            <small class="form-text text-muted">Enter a brief description about the service. This field is required.</small>
                         </div>
                         <!-- Submit Buttons -->
                         <div class="form-group mb-0 mt-3 justify-content-end">

@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ShopproductController extends Controller
 {
+    public function viewshopProducts()
+    {
+
+        return view('admin.viewtbl.viewshopProducts');
+    }
     public function index($id)
     {
         $shops = Shop::find($id);
@@ -25,50 +30,94 @@ class ShopproductController extends Controller
         return view('admin.addshopproduct', compact('shops', 'brand', 'measurement', 'products', 'pc', 'sub'));
     }
 
+    public function shopitem()
+    {
+        $products = Product::all();
+        $sub = Productsub::all();
+        $pc = Productcategory::all();
+        $brands = Brand::all();
+        $measurements = Measurement::all();
+        return view('admin.shopitem', compact('products', 'sub', 'pc', 'brands', 'measurements'));
+    }
+
+    public function checkProNoUnique(Request $request)
+    {
+        $proNo = $request->input('pro_no');
+
+        // Check if the pro_no already exists in the database
+        $exists = Shopproduct::query()->where('pro_no', $proNo)->exists();
+
+        return response()->json(['exists' => $exists]);
+    }
+
     public function submitProducts(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'shop_name' => 'required|exists:shops,id',
-            'products.*.productName' => 'required|string',
-            'products.*.brand' => 'required|string',
-            'products.*.category' => 'required|string',
-            'products.*.subCategory' => 'nullable|string',
+        $products = json_decode($request->products, true);
+
+        $validator = Validator::make(['products' => $products], [
+            'products.*.brand_id' => 'required',
+            'products.*.product_category_id' => 'required',
+            'products.*.subcategory_id' => 'nullable',
             'products.*.quantity' => 'required|integer|min:1',
-            'products.*.measurement' => 'required|string',
+            'products.*.measurement_id' => 'required',
             'products.*.color' => 'nullable|string',
-            'products.*.image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'products.*.other_categories' => 'nullable|array', // Validate as array
+            'products.*.other_categories' => 'nullable|array', // Validate as an array
+            'products.*.description' => 'nullable|string',
+            'products.*.unit_price' => 'required|numeric|min:0',
+            'products.*.vendor' => 'nullable|string',
+            'products.*.discount' => 'nullable|numeric|min:0',
+            'products.*.cost' => 'nullable|numeric|min:0',
+            'products.*.applications' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->with('error', 'Validation failed.');
+            return response()->json(['errors' => $validator->errors()], 422);
         }
 
         try {
-            foreach ($request->products as $product) {
-                $imageName = null;
-                if (isset($product['image'])) {
-                    $imageName = time() . '_' . $product['image']->getClientOriginalName();
-                    $product['image']->move(public_path('assets/shopproduct'), $imageName);
+            foreach ($products as $index => $product) {
+                $filename = null;
+                $attachmentName = null;
+
+                // Handle image upload with dynamic key
+                if ($request->hasFile("image_$index")) {
+                    $file = $request->file("image_$index");
+                    $filename = time() . '_' . $file->getClientOriginalName();
+                    $file->move('assets/shopproduct', $filename);
                 }
 
+                // Handle attachment upload with dynamic key
+                if ($request->hasFile("attachment_$index")) {
+                    $attachment = $request->file("attachment_$index");
+                    $attachmentName = time() . '_' . $attachment->getClientOriginalName();
+                    $attachment->move(public_path('assets/shopattachments'), $attachmentName);
+                }
+
+                // Store the product
                 Shopproduct::create([
-                    'shop_id' => $request->shop_name,
-                    'product_id' => $product['productName'],
-                    'brand_id' => $product['brand'],
-                    'product_category_id' => $product['category'],
-                    'subcategory_id' => $product['subCategory'] ?? null,
+                    'pro_no' => $product['pro_no'],
+                    'product_id' => $product['product_id'],
+                    'brand_id' => $product['brand_id'],
+                    'product_category_id' => $product['product_category_id'],
+                    'subcategory_id' => $product['subcategory_id'] ?? null,
                     'quantity' => $product['quantity'],
-                    'measurement_id' => $product['measurement'],
+                    'measurement_id' => $product['measurement_id'],
                     'color' => $product['color'] ?? null,
-                    'image' => $imageName,
-                    'other_categories' => $product['other_categories'] ?? [], // Reference from product array
+                    'image' => $filename,
+                    'other_categories' => $product['other_categories'] ?? [], // Ensure it's stored as JSON
+                    'description' => $product['description'] ?? null,
+                    'unit_price' => $product['unit_price'],
+                    'vendor' => $product['vendor'] ?? null,
+                    'discount' => $product['discount'] ?? 0,
+                    'cost' => $product['cost'] ?? null,
+                    'applications' => $product['applications'] ?? null,
+                    'attachment' => $attachmentName,
                 ]);
             }
 
-            return redirect()->back()->with('success', 'Product Added.');
+            return redirect()->back()->with('success', 'Product added successfully.');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'An error occurred while adding the product.');
+            return redirect()->back()->withErrors($e->getMessage())->withInput();
         }
     }
 }

@@ -1,5 +1,20 @@
 @extends('admin.sidebar')
 @section('content')
+
+<style>
+#map {
+    height: 500px;
+    width: 100%;
+    margin-top: 20px;
+}
+#search {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 300px;
+}
+</style>
 <div class="main-content app-content">
     <!-- container -->
     <div class="main-container container-fluid">
@@ -16,17 +31,40 @@
                         {{-- <form class="border p-4" method="POST" action="{{ route('addserviceprovider.store') }}"> --}}
                         <form class="border p-4" method="POST" action="/addserviceprovider/store">
                             @csrf
-                            <div class="row">
-                                <div class="form-group col">
-                                    <label for="inputPassword4">Name</label>
-                                    <input type="text" class="form-control" id="s_name" name="s_name"
-                                        placeholder="Name Of The Service Provider" />
+                            <div class="d-flex">
+                                <div class="form-group">
+                                    <label for="serviceProviderNumber">ServiceProvider Number</label>
+                                    <input type="text" class="form-control" id="number" name="number" placeholder="Service Provider No.." readonly>
+                                </div>
+                                
+                                <script>
+                                    function generateServiceProviderNumber() {
+                                        const prefix = 'SP';
+                                        const randomNumber = Math.floor(Math.random() * 1000000); 
+                                        const formattedNumber = prefix + randomNumber.toString().padStart(6, '0');
+                                        document.getElementById('number').value = formattedNumber;
+                                    }
+                                
+                                    // Call the function to set the value when the page loads
+                                    window.onload = generateServiceProviderNumber;
+                                </script>
+                                
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Name</label>
+                                        <input type="text" class="form-control" id="s_name" name="s_name"
+                                            placeholder="Name Of The Service Provider" />
+                                    </div>
                                 </div>
                                 <div class="col">
-                                    <label for="maxProjectValue">Grade </label>
-                                    <input type="text" class="form-control" id="grade" name="grade"
-                                        placeholder="Grade Of The Service Provider" />
+                                    <div class="form-group">
+                                        <label for="maxProjectValue">Grade </label>
+                                        <input type="text" class="form-control" id="grade" name="grade"
+                                            placeholder="Grade Of The Service Provider" />
+                                    </div>
                                 </div>
+                               
+                               
                             </div>
     
                             <div class="row">
@@ -47,6 +85,7 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                
                                 <div class="col-4 pt-2">
                                     <label for="district">Select District:</label>
                                     <select id="district" name="district" class="form-select">
@@ -59,7 +98,120 @@
                                         <option value="">Select City</option>
                                     </select>
                                 </div>
-                            </div>
+                                <div class="border p-4 mt-3">
+                                    <h5>Search and Select Location</h5>
+                                    <input type="text" id="search" placeholder="Search for a location (e.g., city, address)" />
+                                    
+                                    <div class="d-flex">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="latitude">Latitude:</label>
+                                                <input type="text" id="latitude" name="latitude" class="form-control-plaintext" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="longitude">Longitude:</label>
+                                                <input type="text" id="longitude" name="longitude" class="form-control-plaintext" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="address">Address:</label>
+                                                <input type="text" id="address" name="location1" class="form-control-plaintext" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Location</button>
+                                    <div id="map" class="mt-3 border-2"></div>
+                                </div>
+                                
+                                <!-- Leaflet JS -->
+                                <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+                                <script>
+                                    // Initialize map centered on a default location (Colombo, Sri Lanka)
+                                    const map = L.map('map').setView([6.9271, 79.8612], 13);
+                                
+                                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                        attribution: '© OpenStreetMap contributors'
+                                    }).addTo(map);
+                                
+                                    let marker;
+                                
+                                    // Function to update the marker and input fields
+                                    function updateLocationFields(lat, lng, address = '') {
+                                        if (marker) {
+                                            marker.setLatLng([lat, lng]);
+                                        } else {
+                                            marker = L.marker([lat, lng]).addTo(map);
+                                        }
+                                        map.setView([lat, lng], 13);
+                                
+                                        // Update Latitude and Longitude fields
+                                        document.getElementById('latitude').value = lat;
+                                        document.getElementById('longitude').value = lng;
+                                        document.getElementById('address').value = address || 'Fetching address...';
+                                
+                                        // Fetch address if not provided
+                                        if (!address) {
+                                            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    const display_name = data.display_name || 'Address not found';
+                                                    document.getElementById('address').value = display_name;
+                                                    marker.bindPopup(display_name).openPopup();
+                                                })
+                                                .catch(err => console.error('Error fetching address:', err));
+                                        } else {
+                                            marker.bindPopup(address).openPopup();
+                                        }
+                                    }
+                                
+                                    // Auto-track the user's current location if available
+                                    navigator.geolocation.watchPosition(
+                                        (position) => {
+                                            const lat = position.coords.latitude;
+                                            const lng = position.coords.longitude;
+                                            updateLocationFields(lat, lng, 'Your Current Location');
+                                        },
+                                        () => {
+                                            console.log('Unable to retrieve your location.');
+                                        },
+                                        {
+                                            enableHighAccuracy: true, // Attempt to get a more accurate location
+                                            timeout: 10000, // Wait up to 10 seconds for location data
+                                            maximumAge: 0 // Do not use cached location data
+                                        }
+                                    );
+                                
+                                    // Search for a location and place a marker
+                                    const searchInput = document.getElementById('search');
+                                    searchInput.addEventListener('input', (e) => {
+                                        const query = e.target.value;
+                                        if (query.length > 2) {
+                                            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`)
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    if (data.length > 0) {
+                                                        const { lat, lon, display_name } = data[0];
+                                                        updateLocationFields(lat, lon, display_name);
+                                                    } else {
+                                                        console.log('No results found');
+                                                    }
+                                                })
+                                                .catch(err => console.error('Error fetching location:', err));
+                                        }
+                                    });
+                                
+                                    // Allow user to select a location by clicking on the map
+                                    map.on('click', (e) => {
+                                        const lat = e.latlng.lat;
+                                        const lng = e.latlng.lng;
+                                        updateLocationFields(lat, lng);
+                                    });
+                                </script>
+                                
+                                
     
                             <script>
                                 // Prepare district and city data in JavaScript from Blade data
@@ -79,7 +231,7 @@
                                         },
                                     @endforeach
                                 ];
-                                console.log("🚀 ~ $district:", cities)
+                                // console.log("🚀 ~ $district:", cities)
     
                                 $(document).ready(function() {
     
@@ -88,7 +240,7 @@
                                     cities.forEach((elem) => {
                                         districtOptions += `<option value="${elem.districtId}">${elem.districtName}</option>`;
                                     });
-                                    console.log("🚀 ~ $ ~ districtOptions:", $('#district'))
+                                    // console.log("🚀 ~ $ ~ districtOptions:", $('#district'))
     
                                     $('#district').html(districtOptions); // Initialize Select2 on the district dropdown
                                     $('#district').select2(); // Initialize Select2 on the district dropdown
@@ -181,3 +333,4 @@
 
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 @endsection
+

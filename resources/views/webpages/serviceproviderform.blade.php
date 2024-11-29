@@ -1,20 +1,12 @@
 @extends('webpages.index')
 @section('content')
+ <!-- Leaflet CSS (Free Mapping Library) -->
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+   <!-- Leaflet Geocoder CSS -->
+   <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
     <!-- /MAIN HEADER -->
-    <style>
-      .border {
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 10px;
-      }
-      .custom-form-style {
-        background-color: #ffffff;
-        border: 2px solid #e6e0e0;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        border-radius: 8px; /* Optional: Adds rounded corners */
-      }
-    </style>
+    
     <div class="container-fluid  mt-5 mb-5" >
       <div class="text-center">
         <h3 class="display-4 text-primary font-weight-bold">BUILDERS.LK</h3>
@@ -82,8 +74,7 @@
               </select>
             </div>
           </div>
-      
-   
+          
 
           <h5>Contact Details</h5>
           <div class="row">
@@ -135,6 +126,41 @@
               <input type="text" id="maxProjectValue" class="form-control" aria-describedby="maxProjectValueHelp">
             </div>
           </div>
+          
+          <div class="border p-4">
+            <h5>Search and Select Location</h5>
+            <input type="text" id="search" placeholder="Search for a location (e.g., city, address)" />
+            
+            <!-- Form to Display and Submit Location -->
+            {{-- <form id="locationForm" method="POST" action="/save-location">
+              @csrf <!-- Laravel CSRF Token --> --}}
+              <div class="d-flex">
+                <div class="col-md-4" >
+                  <div class="form-group">
+                    <label for="latitude">Latitude:</label>
+                    <input type="text" id="latitude" name="latitude"  class="form-control-plaintext" />
+                  </div>
+  
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="longitude">Longitude:</label>
+                    <input type="text" id="longitude" name="longitude"  class="form-control-plaintext" />
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address"  class="form-control-plaintext" />
+                  </div>
+
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Save Location</button>
+            <div id="map" class="mt-3 boder-2"></div>
+          </div>
+  
           <h5>Project History</h5>
           <hr>
           <div class="table-responsive">
@@ -213,6 +239,93 @@
       </div>
       
     </div>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+      // Initialize the map
+      const map = L.map('map').setView([6.9271, 79.8612], 13); // Default to Colombo, Sri Lanka
+
+      // Add OpenStreetMap tiles
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+
+      // Initialize a marker variable
+      let marker;
+
+      // Function to add a marker on the map and update form fields
+      function addMarker(lat, lng, address = '') {
+        if (marker) {
+          marker.setLatLng([lat, lng]); // Update the marker position
+        } else {
+          marker = L.marker([lat, lng]).addTo(map); // Create a new marker
+        }
+        map.setView([lat, lng], 13); // Center the map on the selected location
+
+        // Update the form fields
+        document.getElementById('latitude').value = lat;
+        document.getElementById('longitude').value = lng;
+
+        // If address is not provided, clear the address field
+        document.getElementById('address').value = address || 'Fetching address...';
+
+        // Reverse geocode to get the address if not provided
+        if (!address) {
+          fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
+            .then(response => response.json())
+            .then(data => {
+              const display_name = data.display_name || 'Address not found';
+              document.getElementById('address').value = display_name;
+              marker.bindPopup(display_name).openPopup();
+            })
+            .catch(err => console.error('Error fetching address:', err));
+        } else {
+          marker.bindPopup(address).openPopup();
+        }
+      }
+
+      // Set up the search input
+      const searchInput = document.getElementById('search');
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value;
+
+        if (query.length > 2) {
+          // Fetch results from Nominatim (free geocoding API)
+          fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`)
+            .then(response => response.json())
+            .then(data => {
+              if (data.length > 0) {
+                const { lat, lon, display_name } = data[0];
+                addMarker(lat, lon, display_name);
+              } else {
+                console.log('No results found');
+              }
+            })
+            .catch(err => console.error('Error fetching location:', err));
+        }
+      });
+
+      // Geolocation: Detect user location
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          addMarker(lat, lng, 'Your Current Location');
+        },
+        () => {
+          console.log('Unable to retrieve your location.');
+        }
+      );
+
+      // Event listener for map clicks
+      map.on('click', (e) => {
+        const lat = e.latlng.lat;
+        const lng = e.latlng.lng;
+
+        // Add marker and fetch address for clicked location
+        addMarker(lat, lng);
+      });
+    </script>
 
     <script>
       // Function to add a new project row
