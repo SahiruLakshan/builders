@@ -458,7 +458,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="">View Service Provider</a>
+                                            <a class="slide-item" href="/serviceproviders">View Service Provider</a>
                                         </li>
                                     </ul>
                                 </li>
