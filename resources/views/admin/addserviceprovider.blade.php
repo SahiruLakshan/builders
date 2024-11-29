@@ -33,10 +33,22 @@
                             @csrf
                             <div class="d-flex">
                                 <div class="form-group">
-                                    <!--this one need to automaticaly genarate 'SP001' like that -->
-                                    <label for="serviceProviderNumber">ServiceProvider Number </label>
-                                    <input type="text" class="form-control" id="s_number" name="s_number" placeholder=" Service Provider No.." />
+                                    <label for="serviceProviderNumber">ServiceProvider Number</label>
+                                    <input type="text" class="form-control" id="number" name="number" placeholder="Service Provider No.." readonly>
                                 </div>
+                                
+                                <script>
+                                    function generateServiceProviderNumber() {
+                                        const prefix = 'SP';
+                                        const randomNumber = Math.floor(Math.random() * 1000000); 
+                                        const formattedNumber = prefix + randomNumber.toString().padStart(6, '0');
+                                        document.getElementById('number').value = formattedNumber;
+                                    }
+                                
+                                    // Call the function to set the value when the page loads
+                                    window.onload = generateServiceProviderNumber;
+                                </script>
+                                
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="inputPassword4">Name</label>
@@ -90,110 +102,116 @@
                                     <h5>Search and Select Location</h5>
                                     <input type="text" id="search" placeholder="Search for a location (e.g., city, address)" />
                                     
-                                    <!-- Form to Display and Submit Location -->
-                                    {{-- <form id="locationForm" method="POST" action="/save-location">
-                                      @csrf <!-- Laravel CSRF Token --> --}}
-                                      <div class="d-flex">
-                                        <div class="col-md-4" >
-                                          <div class="form-group">
-                                            <label for="latitude">Latitude:</label>
-                                            <input type="text" id="latitude" name="latitude"  class="form-control-plaintext" />
-                                          </div>
-                          
-                                        </div>
-                        
+                                    <div class="d-flex">
                                         <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="longitude">Longitude:</label>
-                                            <input type="text" id="longitude" name="longitude"  class="form-control-plaintext" />
-                                          </div>
+                                            <div class="form-group">
+                                                <label for="latitude">Latitude:</label>
+                                                <input type="text" id="latitude" name="latitude" class="form-control-plaintext" />
+                                            </div>
                                         </div>
                                         <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="address">Address:</label>
-                                            <input type="text" id="address" name="loacatoin1"  class="form-control-plaintext" />
-                                          </div>
-                        
+                                            <div class="form-group">
+                                                <label for="longitude">Longitude:</label>
+                                                <input type="text" id="longitude" name="longitude" class="form-control-plaintext" />
+                                            </div>
                                         </div>
-                                      </div>
-                                      <button type="submit" class="btn btn-primary">Save Location</button>
-                                    <div id="map" class="mt-3 boder-2"></div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="address">Address:</label>
+                                                <input type="text" id="address" name="location1" class="form-control-plaintext" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Location</button>
+                                    <div id="map" class="mt-3 border-2"></div>
                                 </div>
-                                      <!-- Leaflet JS -->
-                                    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-                                    <script>
-                                        const map = L.map('map').setView([6.9271, 79.8612], 13);
-
-                                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                            attribution: '© OpenStreetMap contributors'
-                                        }).addTo(map);
-
-                                        let marker;
-
-                                        function addMarker(lat, lng, address = '') {
-                                            if (marker) {
-                                                marker.setLatLng([lat, lng]);
-                                            } else {
-                                                marker = L.marker([lat, lng]).addTo(map);
-                                            }
-                                            map.setView([lat, lng], 13);
-
-                                            document.getElementById('latitude').value = lat;
-                                            document.getElementById('longitude').value = lng;
-
-                                            document.getElementById('address').value = address || 'Fetching address...';
-
-                                            if (!address) {
-                                                fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
-                                                    .then(response => response.json())
-                                                    .then(data => {
-                                                        const display_name = data.display_name || 'Address not found';
-                                                        document.getElementById('address').value = display_name;
-                                                        marker.bindPopup(display_name).openPopup();
-                                                    })
-                                                    .catch(err => console.error('Error fetching address:', err));
-                                            } else {
-                                                marker.bindPopup(address).openPopup();
-                                            }
+                                
+                                <!-- Leaflet JS -->
+                                <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+                                <script>
+                                    // Initialize map centered on a default location (Colombo, Sri Lanka)
+                                    const map = L.map('map').setView([6.9271, 79.8612], 13);
+                                
+                                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                        attribution: '© OpenStreetMap contributors'
+                                    }).addTo(map);
+                                
+                                    let marker;
+                                
+                                    // Function to update the marker and input fields
+                                    function updateLocationFields(lat, lng, address = '') {
+                                        if (marker) {
+                                            marker.setLatLng([lat, lng]);
+                                        } else {
+                                            marker = L.marker([lat, lng]).addTo(map);
                                         }
-
-                                        const searchInput = document.getElementById('search');
-                                        searchInput.addEventListener('input', (e) => {
-                                            const query = e.target.value;
-
-                                            if (query.length > 2) {
-                                                fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`)
-                                                    .then(response => response.json())
-                                                    .then(data => {
-                                                        if (data.length > 0) {
-                                                            const { lat, lon, display_name } = data[0];
-                                                            addMarker(lat, lon, display_name);
-                                                        } else {
-                                                            console.log('No results found');
-                                                        }
-                                                    })
-                                                    .catch(err => console.error('Error fetching location:', err));
-                                            }
-                                        });
-
-                                        navigator.geolocation.getCurrentPosition(
-                                            (position) => {
-                                                const lat = position.coords.latitude;
-                                                const lng = position.coords.longitude;
-                                                addMarker(lat, lng, 'Your Current Location');
-                                            },
-                                            () => {
-                                                console.log('Unable to retrieve your location.');
-                                            }
-                                        );
-
-                                        map.on('click', (e) => {
-                                            const lat = e.latlng.lat;
-                                            const lng = e.latlng.lng;
-                                            addMarker(lat, lng);
-                                        });
-                                    </script>
-                            </div>
+                                        map.setView([lat, lng], 13);
+                                
+                                        // Update Latitude and Longitude fields
+                                        document.getElementById('latitude').value = lat;
+                                        document.getElementById('longitude').value = lng;
+                                        document.getElementById('address').value = address || 'Fetching address...';
+                                
+                                        // Fetch address if not provided
+                                        if (!address) {
+                                            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    const display_name = data.display_name || 'Address not found';
+                                                    document.getElementById('address').value = display_name;
+                                                    marker.bindPopup(display_name).openPopup();
+                                                })
+                                                .catch(err => console.error('Error fetching address:', err));
+                                        } else {
+                                            marker.bindPopup(address).openPopup();
+                                        }
+                                    }
+                                
+                                    // Auto-track the user's current location if available
+                                    navigator.geolocation.watchPosition(
+                                        (position) => {
+                                            const lat = position.coords.latitude;
+                                            const lng = position.coords.longitude;
+                                            updateLocationFields(lat, lng, 'Your Current Location');
+                                        },
+                                        () => {
+                                            console.log('Unable to retrieve your location.');
+                                        },
+                                        {
+                                            enableHighAccuracy: true, // Attempt to get a more accurate location
+                                            timeout: 10000, // Wait up to 10 seconds for location data
+                                            maximumAge: 0 // Do not use cached location data
+                                        }
+                                    );
+                                
+                                    // Search for a location and place a marker
+                                    const searchInput = document.getElementById('search');
+                                    searchInput.addEventListener('input', (e) => {
+                                        const query = e.target.value;
+                                        if (query.length > 2) {
+                                            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`)
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    if (data.length > 0) {
+                                                        const { lat, lon, display_name } = data[0];
+                                                        updateLocationFields(lat, lon, display_name);
+                                                    } else {
+                                                        console.log('No results found');
+                                                    }
+                                                })
+                                                .catch(err => console.error('Error fetching location:', err));
+                                        }
+                                    });
+                                
+                                    // Allow user to select a location by clicking on the map
+                                    map.on('click', (e) => {
+                                        const lat = e.latlng.lat;
+                                        const lng = e.latlng.lng;
+                                        updateLocationFields(lat, lng);
+                                    });
+                                </script>
+                                
+                                
     
                             <script>
                                 // Prepare district and city data in JavaScript from Blade data
