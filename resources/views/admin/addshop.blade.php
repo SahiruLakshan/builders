@@ -92,6 +92,17 @@
                                                 <div class="col-md-6">
                                                     <div class="control-group form-group">
                                                         <label class="form-label" for="phone_number">Phone Number</label>
+                                                        <input type="tel" class="form-control" name="t_number"
+                                                            id="phone_number" placeholder="Phone Number" required />
+                                                        <div class="invalid-feedback">
+                                                            Please enter a valid phone number.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Phone Number -->
+                                                <div class="col-md-6">
+                                                    <div class="control-group form-group">
+                                                        <label class="form-label" for="phone_number">Mobile </label>
                                                         <input type="tel" class="form-control" name="p_number"
                                                             id="phone_number" placeholder="Phone Number" required />
                                                         <div class="invalid-feedback">
@@ -99,6 +110,18 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!-- Phone Number -->
+                                                <div class="col-md-6">
+                                                    <div class="control-group form-group">
+                                                        <label class="form-label" for="phone_number">WhatsApp Number</label>
+                                                        <input type="tel" class="form-control" name="w_number"
+                                                            id="phone_number" placeholder="Phone Number" required />
+                                                        <div class="invalid-feedback">
+                                                            Please enter a valid phone number.
+                                                        </div>
+                                                    </div>
+                                                </div>
+
 
                                                 <!-- Shop Image -->
                                                 <div class="col-md-6">
