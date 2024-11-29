@@ -6,7 +6,7 @@
         <div class="row">
             <h3>Select Your Products</h3>
             <aside class="col-md-3 px-0">
-                <div class="card">
+                <div class="card ">
                     <article class="filter-group">
                         <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_1" aria-expanded="true">
