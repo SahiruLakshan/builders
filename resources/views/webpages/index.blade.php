@@ -70,7 +70,7 @@
 }
 
 </style>
-    
+
   </head>
 
   <body class="overflow-x-hidden">
@@ -88,7 +88,7 @@
               </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-             
+
             </div>
           </div>
           <div class="accordion-item">
@@ -116,8 +116,8 @@
           </div>
         </div>
       </div>
-            
-          
+
+
     </div> --}}
     <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
       <div class="offcanvas-header">
@@ -140,7 +140,7 @@
               </div>
             </div>
           </div>
-    
+
           <!-- Second Accordion Item: My Account -->
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingTwo">
@@ -166,7 +166,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- Third Accordion Item: Navigation Links -->
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingThree">
@@ -186,13 +186,13 @@
               </div>
             </div>
           </div>
-    
+
           <!-- Additional Accordion Items as Needed -->
           <!-- You can add more accordion items similar to above if you have other dropdown sections -->
         </div>
       </div>
     </div>
-    
+
     <!-- HEADER -->
     <header class="nav navbar-expand-lg fixed-top">
         <div class="row justify-content-between justify-content-lg-start align-items-center align-items-lg-start">
@@ -394,7 +394,7 @@
                   <div class="d-flex justify-content-around">
                     <!-- First Dropdown -->
                     <div class="  mb-2 mb-md-0 p-0">
-                    
+
                       <div class="subnav">
                         <button class="subnavbtn fs-6 ">
                             Shop By Category <i class="fa fa-caret-down"></i>
@@ -450,7 +450,7 @@
                         </div>
                       </div>
                     </div>
-                  
+
                     <!-- Search Bar -->
                     <div class="col-12 col-md-4 mb-2 mb-md-0">
                       <form action="{{ route('search') }}" method="GET" class="input-group input-group-sm w-80">
@@ -467,51 +467,26 @@
                       </form>
                     </div>
 
-                    
-                  
+
+
                     <!-- Second Dropdown -->
                     <div class="col-12 col-md-2 mb-2 mb-md-0 p-0">
-                      <div class="subnav">
-                        <button class="subnavbtn fs-6 ">
-                          Service By Category <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="subnav-content">
-                          <div class="col-6 col-md-4">
-                            <a href="#">ARCHITECTS</a>
-                            <a href="#">BUILDING CONTRACTORS</a>
-                            <a href="#">INTERIOR DESIGNERS</a>
-                            <a href="#">STRUCTURAL ENGINEERS</a>
-                            <a href="#">QUANTITY SURVEYORS</a>
-                            <a href="#">MEP CONSULTANTS</a>
-                            <a href="#">FIRE CONSULTANTS</a>
-                          </div>
-                          <div class="col-6 col-md-4">
-                            <a href="#">ALUMINIUM FABRICATORS</a>
-                            <a href="#">ELECTRICIANS</a>
-                            <a href="#">PLUMBERS</a>
-                            <a href="#">STEEL FABRICATORS</a>
-                            <a href="#">STAINLESS STEEL FABRICATORS</a>
-                            <a href="#">TIMBER CONTRACTORS</a>
-                          </div>
-                          <div class="col-6 col-md-4">
-                            <a href="#">MASONRY</a>
-                            <a href="#">TILING TECHNICIANS</a>
-                            <a href="#">LANDSCAPING</a>
-                            <a href="#">WATERPROOFING</a>
-                            <a href="#">MAINTENANCE</a>
-                            <a href="#">PAINTERS</a>
-                          </div>
-                          <div class="col-6 col-md-4">
-                            <a href="#">AC CONTRACTORS</a>
-                            <a href="#">ELEVATORS</a>
-                            <a href="#">SWIMMING POOL CONTRACTORS</a>
-                            <a href="#">SOLAR POWER</a>
-                            <a href="#">OTHERS</a>
-                          </div>
+                        <div class="subnav">
+                            <button class="subnavbtn fs-6 ">
+                                Service By Category <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="subnav-content" style="height:40vh">
+                                <div class="d-flex flex-wrap">
+                                    @foreach($services as $service)
+                                        <div class="col-6 col-md-4 mb-0">
+                                            <a href="{{route('category.service', $service->servicename)}}">{{ $service->servicename }}</a>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                    
+
                     <!-- Fourth Dropdown -->
                     <div class=" col-md-2 mb-2  p-0">
                       <div class="subnav">
@@ -530,8 +505,8 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
+
+
                     </div>
                   </div>
                 </div>
@@ -560,7 +535,7 @@
             A.A.I.C. Business Solutions (Pvt) Ltd provides accounting, marketing, IT, and business consulting services in Sri Lanka. Recognizing the need for a digital platform in the construction industry, the company developed BUILDERS.LK to create an integrated market.
           </p>
         </section>
-    
+
         <!-- Section: Links -->
         <section>
           <div class="row">
@@ -575,7 +550,7 @@
                 <li><a href="#!">Return & Refund Policy</a></li>
               </ul>
             </div>
-    
+
             <!-- Company Info -->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
               <h5 class="text-uppercase footer-title">Company Info</h5>
@@ -587,7 +562,7 @@
                 <li><a href="#!">Media Resources</a></li>
               </ul>
             </div>
-    
+
             <!-- Policies -->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
               <h5 class="text-uppercase footer-title">Policies</h5>
@@ -598,7 +573,7 @@
                 <li><a href="#!">Data Protection</a></li>
               </ul>
             </div>
-    
+
             <!-- Contact & Social Media -->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
               <h5 class="text-uppercase footer-title">Contact & Follow Us</h5>
@@ -613,7 +588,7 @@
             </div>
           </div>
         </section>
-    
+
         <!-- Payment Methods -->
         <div class="row mt-4">
           <div class="col text-center">
@@ -624,16 +599,16 @@
           </div>
         </div>
       </div>
-    
+
       <!-- Bottom Footer -->
       <div id="bottom-footer" class="section text-center mt-4">
         <span class="copyright">
-          &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | BUILDERS.LK by 
+          &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | BUILDERS.LK by
           <a href="https://newtecgroup.lk" target="_blank" class="text-white">AAIC</a>
         </span>
       </div>
     </footer>
-    
+
 
 
 

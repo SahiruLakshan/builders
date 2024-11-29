@@ -17,5 +17,10 @@ class Service extends Model
 
     public $timestamps = true;
 
+    public function serviceProvider()
+    {
+        return $this->hasMany(ServiceProvider::class, 'category_id');
+    }
+
 }
 
