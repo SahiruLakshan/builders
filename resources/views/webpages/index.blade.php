@@ -428,7 +428,7 @@
 
                             <!-- Second Dropdown -->
                             <div class="col-12 col-md-2 mb-2 mb-md-0 p-0">
-                                <div class="subnav">
+                                {{-- <div class="subnav">
                                     <button class="subnavbtn fs-6 ">
                                         Service By Category <i class="fa fa-caret-down"></i>
                                     </button>
@@ -466,7 +466,21 @@
                                             <a href="#">OTHERS</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
+                                <div class="subnav">
+                                  <button class="subnavbtn fs-6 ">
+                                      Service By Category <i class="fa fa-caret-down"></i>
+                                  </button>
+                                  <div class="subnav-content" style="height:40vh">
+                                      <div class="d-flex flex-wrap">
+                                          @foreach($services as $service)
+                                              <div class="col-6 col-md-4 mb-0">
+                                                  <a href="{{route('category.service', $service->servicename)}}">{{ $service->servicename }}</a>
+                                              </div>
+                                          @endforeach
+                                      </div>
+                                  </div>
+                              </div>
                             </div>
 
                             <!-- Fourth Dropdown -->
