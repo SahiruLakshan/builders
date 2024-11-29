@@ -274,7 +274,7 @@ class WebController extends Controller
         $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
      // Paginate the results
         // dd($serviceProviders);
-        return view('webpages.shops', compact('serviceProviders', 'dictricts'));
+        return view('webpages.service', compact('serviceProviders', 'dictricts'));
     }
 
 }
