@@ -468,7 +468,7 @@
                     </div>
                     <!-- Second Dropdown -->
                     <div class="col-12 col-md-2 mb-2 mb-md-0 p-0">
-                        {{-- <div class="subnav">
+                        <div class="subnav">
                             <button class="subnavbtn fs-6 ">
                                 Service By Category <i class="fa fa-caret-down"></i>
                             </button>
@@ -481,8 +481,8 @@
                                     @endforeach
                                 </div>
                             </div>
-                        </div> --}}
-                        <div class="subnav">
+                        </div>
+                        {{-- <div class="subnav">
                           <button class="subnavbtn fs-6">
                               Service By Category <i class="fa fa-caret-down"></i>
                           </button>
@@ -495,7 +495,30 @@
                                   @endforeach
                               </div>
                           </div>
-                      </div>
+                        </div> --}}
+                        {{-- <div class="col-12 col-md-2 mb-2 mb-md-0 p-0">
+                          <div class="subnav">
+                              <button class="subnavbtn fs-6">
+                                  Service By Category <i class="fa fa-caret-down"></i>
+                              </button>
+                              <div class="subnav-content">
+                                  <div class="d-flex flex-wrap">
+                                      @php
+                                          $chunkSize = ceil(count($services) / 4); // Divide services into 4 columns
+                                          $chunks = $services->chunk($chunkSize);
+                                      @endphp
+                                      @foreach($chunks as $chunk)
+                                          <div class="col-6 col-md-4">
+                                              @foreach($chunk as $service)
+                                                  <a href="{{ route('category.service', $service->servicename) }}">{{ $service->servicename }}</a>
+                                              @endforeach
+                                          </div>
+                                      @endforeach
+                                  </div>
+                              </div>
+                          </div>
+                      </div> --}}
+                      
                       
                     </div>
 
