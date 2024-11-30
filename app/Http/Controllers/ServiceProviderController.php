@@ -82,5 +82,25 @@ class ServiceProviderController extends Controller
         return view('admin.viewtbl.viewServiceProvider',compact('serviceProviders'));
     }
 
+    public function approveServiceProviders(Request $request, $id){
+        $serviceProvider = ServiceProvider::find($id);
+        $serviceProvider->status = 'Approved';
+        $serviceProvider->save();
+        return redirect()->back()->with('success', 'Service Provider approved successfully!');
+    }
+
+    public function rejectServiceProviders(Request $request, $id){
+        $serviceProvider = ServiceProvider::find($id);
+        $serviceProvider->status = 'Rejected';
+        $serviceProvider->save();
+        return redirect()->back()->with('success', 'Service Provider rejected successfully!');
+    }
+
+    public function destroy($id){
+        $serviceProvider = ServiceProvider::find($id);
+        $serviceProvider->delete();
+        return redirect()->back()->with('success', 'Service Provider deleted successfully!');
+    }
+
     
 }

@@ -15,23 +15,21 @@ class ServiceProvider extends Model
     protected $fillable = [
         'number','s_name', 'grade', 'address', 'category_id', 'district_id','longitude', 'latitude', 'city_id', 
         'telephone', 'mobile', 'whatsapp', 'company_name', 'business_reg_no', 
-        'no_of_employees', 'employees_qualification', 'max_project_value',
+        'no_of_employees', 'employees_qualification', 'max_project_value','status'
     ];
 
-    // public function category()
-    // {
-    //     return $this->belongsTo(Service::class, 'category_id');
-    // }
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'district_id', 'dis_id');
+    }
 
-    // // Define relationship to District
-    // public function district()
-    // {
-    //     return $this->belongsTo(District::class, 'district_id');
-    // }
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id', 'ds_id');
+    }
 
-    // // Define relationship to City
-    // public function city()
-    // {
-    //     return $this->belongsTo(City::class, 'city_id');
-    // }
+    public function category()
+    {
+        return $this->belongsTo(Service::class, 'category_id', 'id');
+    }
 }
