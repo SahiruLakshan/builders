@@ -134,6 +134,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/approveserviceprovider/{id}', [ServiceProviderController::class, 'approveServiceProviders'])->name('services.approve');
     Route::post('/rejectserviceprovider/{id}', [ServiceProviderController::class, 'rejectServiceProviders'])->name('services.reject');
     Route::get('/deleteserviceprovider/{id}', [ServiceProviderController::class, 'destroy'])->name('services.destroy');
+    Route::post('/submitproject', [ServiceProviderController::class, 'submitproject'])->name('submit.project');
     
     Route::get('/categories', [ProfessionalCategoryController::class, 'index'])->name('categories.index');
     Route::get('/categories/create', [ProfessionalCategoryController::class, 'create'])->name('categories.create');
