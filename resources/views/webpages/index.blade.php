@@ -69,51 +69,7 @@
 </head>
 
 <body class="overflow-x-hidden">
-    {{-- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Builders.lk</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Re
-              </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-             
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                My Account
-              </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Accordion Item #3
-              </button>
-            </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-            
-          
-    </div> --}}
+    
     <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasExample"
         aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
@@ -198,18 +154,40 @@
     <!-- HEADER -->
     <header class="nav navbar-expand-lg fixed-top">
         <div class="row justify-content-between justify-content-lg-start align-items-center align-items-lg-start">
-            <!-- Logo Section -->
+            {{-- <!-- Logo and Menu Section -->
             <div class="col-2 d-flex align-items-center justify-content-center h-100 "
-                style="background-color: rgb(224, 156, 54">
-                <a href="{{ url('/') }}">
-                    <img src="{{ asset('assets/webpage/img/LOGO-01.png') }}" alt="Description of Image"
-                        class="img-fluid" />
-                </a>
-            </div>
-            <div class="d-block d-lg-none w-auto" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
-                aria-controls="offcanvasExample">
-                <i class="fa-solid fa-bars fs-2 px-4"></i>
-            </div>
+                style="background-color: rgb(224, 156, 54)">
+                <div class="d-flex flex-column">
+                    <a href="{{ url('/') }}">
+                        <img src="{{ asset('assets/webpage/img/LOGO-01.png') }}" alt="Description of Image"
+                            class="img-fluid" />
+                    </a>
+                    <div class="d-block d-lg-none w-auto" data-bs-toggle="offcanvas" href="#offcanvasExample"
+                        role="button" aria-controls="offcanvasExample">
+                        <i class="fa-solid fa-bars fs-2 px-4"></i>
+                    </div>
+                </div>
+            </div> --}}
+            <!-- Logo and Menu Section -->
+                    <div class="col-12 d-flex align-items-center justify-content-between h-100" style="background-color: rgb(224, 156, 54);">
+                        <!-- Logo -->
+                        <div class="d-flex align-items-center">
+                            <a href="{{ url('/') }}">
+                                <img src="{{ asset('assets/webpage/img/LOGO-01.png') }}" alt="Description of Image" class="img-fluid" />
+                            </a>
+                        </div>
+                        <!-- Center Text -->
+                        <div class="text-center flex-grow-1">
+                            <h1 class="mb-0 text-white">Builders.lk</h1>
+                        </div>
+                        <!-- Icon -->
+                        <div class="d-flex align-items-center">
+                            <div class="d-block d-lg-none" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                                <i class="fa-solid fa-bars fs-2 px-4"></i>
+                            </div>
+                        </div>
+                    </div>
+
 
             <!-- Main Content Section -->
             <div class="col-md-10 px-0 d-none d-lg-block">
@@ -353,7 +331,7 @@
                     <div class="container-fluid p-1">
                         <div class="d-flex justify-content-around">
                             <!-- First Dropdown -->
-                            <div class="  mb-2 mb-md-0 p-0">
+                            <div class=" mb-2 mb-md-0 p-0">
 
                                 <div class="subnav">
                                     <button class="subnavbtn fs-6 ">
@@ -427,7 +405,7 @@
 
 
                             <!-- Second Dropdown -->
-                            <div class="col-12 col-md-2 mb-2 mb-md-0 p-0">
+                            <div class=" mb-2 mb-md-0 p-0">
                                 {{-- <div class="subnav">
                                     <button class="subnavbtn fs-6 ">
                                         Service By Category <i class="fa fa-caret-down"></i>
