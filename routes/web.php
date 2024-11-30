@@ -190,7 +190,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 // Route::get('/front', function(){
 //     return view('webpages.home');
 // });
-//search optoins route 
+//search optoins route
 Route::get('/search', [WebController::class, 'search'])->name('search');
 
 
@@ -202,14 +202,11 @@ Route::get('/shops', function () {
 //bass form loarding
 Route::get('/shopSuppliers', [WebController::class, 'shopSuppliers'])->name('shopSuppliers');
 Route::post('/addshopSuppliers', [WebController::class, 'addshopSuppliers'])->name('addshopSuppliers');
-
-
-
 Route::get('/serviceproviderform', [WebController::class, 'servceproviders'])->name('serviceproviderform');
-
 
 Route::name('category.')->group(function () {
     Route::get('product/cat/{name}', [WebController::class, 'shopcategory'])->name('shop');
+    Route::get('service/cat/{name}', [WebController::class, 'serviceprovidercategory'])->name('service');
 });
 
 // about us page route

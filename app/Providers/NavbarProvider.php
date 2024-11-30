@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Service;
+use App\Models\ServiceProvider as ModelsServiceProvider;
 use App\Models\ShopCategory;
 use App\Models\Shopproduct;
 use Illuminate\Contracts\View\View;
@@ -24,8 +25,12 @@ class NavbarProvider extends ServiceProvider
     public function boot(): void
     {
         $shopcats = ShopCategory::get('name');
-        view()->share('shopcats', $shopcats);
-        // dd($shopcats);
+        $services = service::get('servicename');
+        view()->share([
+            'shopcats' => $shopcats,
+            'services' => $services
+        ]);
+        // dd($services);
         // $services= Service
 
     }

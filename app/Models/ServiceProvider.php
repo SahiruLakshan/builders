@@ -10,6 +10,7 @@ class ServiceProvider extends Model
 {
     use HasFactory;
 
+
     protected $table='service_providers';
 
     protected $fillable = [
@@ -31,5 +32,6 @@ class ServiceProvider extends Model
     public function category()
     {
         return $this->belongsTo(Service::class, 'category_id', 'id');
+
     }
 }

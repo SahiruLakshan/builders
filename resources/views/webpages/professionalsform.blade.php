@@ -416,12 +416,12 @@
         }
     });
 
-    $(document).ready(function() {
-        $('#specializations').select2({
-            placeholder: "Select Specializations",
-            allowClear: true
-        });
-    });
+    // $(document).ready(function() {
+    //     $('#specializations').select2({
+    //         placeholder: "Select Specializations",
+    //         allowClear: true
+    //     });
+    // });
 
     function previewImage() {
         const file = document.getElementById("profileImage").files[0];
@@ -525,5 +525,34 @@
             });
           });
 
+//add cetification
+          $(document).ready(function() {
+              $('.selectsum1').select2({
+                  placeholder: "Select specializations...", // Sets the placeholder text
+                  allowClear: true // Allows users to clear the selection if desired
+              }).val(null).trigger('change');
+          });
+
+          $(document).ready(function() {
+
+
+              // Add new certification row
+              $('#addCertification').click(function() {
+                  // Clone the first certification row
+                  let newCertification = $('.certification-row:first').clone();
+
+                  // Clear the input fields in the cloned row
+                  newCertification.find('input').val('');
+
+                  // Append the cloned row to the certifications container
+                  $('#certifications').append(newCertification);
+              });
+
+              // Delete a specific certification row
+              $(document).on('click', '.delete-certification', function() {
+                  // Remove the certification row
+                  $(this).closest('.certification-row').remove();
+              });
+          });
 </script>
 @endsection

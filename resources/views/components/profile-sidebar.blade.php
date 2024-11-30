@@ -79,11 +79,12 @@
                             <div class="accordion" id="profileAccordion">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingProfileDetails">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProfileDetails" aria-expanded="false" aria-controls="collapseProfileDetails" style="background-color: #002b49; color: white;">
+                                        <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#collapseProfileDetails" aria-expanded="false" aria-controls="collapseProfileDetails" style="background-color: #002b49; color: white;">
+                                            {{-- class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAnotherSection" aria-expanded="true" aria-controls="collapseAnotherSection" style="background-color: #002b49; color: white;" --}}
                                             Profile Details
                                         </button>
                                     </h2>
-                                    <div class="main-profile-social-list border shadow-lg text-white" style="background-color: #002b49">
+                                    <div class="main-profile-social-list border- shadow-lg text-white" >
                                         <div id="collapseProfileDetails" class="accordion-collapse collapse" aria-labelledby="headingProfileDetails" data-bs-parent="#profileAccordion">
                                             <div class="accordion-body">
                                                 <!-- Email -->
@@ -130,7 +131,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingAnotherSection">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAnotherSection" aria-expanded="true" aria-controls="collapseAnotherSection" style="background-color: #002b49; color: white;">
-                                            Another Section
+                                            Product Categories
                                         </button>
                                     </h2>
                                     <div id="collapseAnotherSection" class="accordion-collapse collapse show" aria-labelledby="headingAnotherSection" data-bs-parent="#profileAccordion"  style="background-color: #002b49">

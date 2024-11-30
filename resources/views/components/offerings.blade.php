@@ -1,7 +1,7 @@
 <div>
     <div class="media">
         <div class="media-body">
-            <span class="fw-bold text-white">Product Categories</span>
+            <span class="fw-bold text-white"></span>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="check1">
                 <label class="form-check-label text-white" for="check1">

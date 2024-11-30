@@ -77,6 +77,7 @@ class ServiceProviderController extends Controller
         }
     }
 
+
     public function view(){
         $serviceProviders = ServiceProvider::all();
         return view('admin.viewtbl.viewServiceProvider',compact('serviceProviders'));
@@ -100,6 +101,7 @@ class ServiceProviderController extends Controller
         $serviceProvider = ServiceProvider::find($id);
         $serviceProvider->delete();
         return redirect()->back()->with('success', 'Service Provider deleted successfully!');
+
     }
 
     

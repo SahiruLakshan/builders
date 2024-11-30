@@ -2,7 +2,7 @@
 @section('content')
 
     <!-- /MAIN HEADER -->
-    <div class="container-fluid" style="padding-top:142px ">
+    <div class="container-fluid" style="padding-top:145px ">
         <div class="row">
             <h3>Select Your Products</h3>
             <aside class="col-md-3 px-0">
@@ -87,57 +87,7 @@
                                 <select class="form-select" id="city" disabled>
                                     <option value="">Select City</option>
                                 </select>
-                                <script>
-                                    document
-                                        .getElementById("district")
-                                        .addEventListener("change", function() {
-                                            const dist = this.value;
-                                            const cities = {
-                                                Colombo: [
-                                                    "Colombo",
-                                                    "Boralesgamuwa",
-                                                    "Kaduwela",
-                                                    "Maharagama",
-                                                ],
-                                                Gampaha: [
-                                                    "Gampaha",
-                                                    "Negombo",
-                                                    "Ja-Ela",
-                                                    "Katunayake",
-                                                ],
-                                                Kalutara: [
-                                                    "Kalutara",
-                                                    "Panadura",
-                                                    "Bandaragama",
-                                                    "Horana",
-                                                ],
-                                                Kandy: ["Kandy", "Matale", "Nuwara Eliya", "Gampola"],
-                                                Matale: [
-                                                    "Matale",
-                                                    "Dambulla",
-                                                    "Kurunegala",
-                                                    "Nawalapitiya",
-                                                ],
-                                                "Nuwara Eliya": [
-                                                    "Nuwara Eliya",
-                                                    "Badulla",
-                                                    "Haputale",
-                                                    "Bandarawela",
-                                                ],
-                                            };
-                                            const citySelect = document.getElementById("city");
-                                            citySelect.innerHTML = "";
-                                            citySelect.disabled = !dist;
-                                            if (cities[dist]) {
-                                                cities[dist].forEach((city) => {
-                                                    const opt = document.createElement("option");
-                                                    opt.value = city;
-                                                    opt.textContent = city;
-                                                    citySelect.appendChild(opt);
-                                                });
-                                            }
-                                        });
-                                </script>
+                                
                             </div>
                         </div>
                     </article>
