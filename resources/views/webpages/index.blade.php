@@ -214,20 +214,22 @@
                            
                         </div>
                     </div> --}}
-                    <div
-              class="col-2 d-flex align-items-center justify-content-center h-100 "
-              style="background-color: rgb(224, 156, 54">
-              <a href="{{ url('/') }}">
-                <img
-                  src="{{ asset('assets/webpage/img/LOGO-01.png') }}"
-                  alt="Description of Image"
-                  class="img-fluid"
-                />
-              </a>
-            </div>
-            <div class="d-block d-lg-none w-auto" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-              <i class="fa-solid fa-bars fs-2 px-4"></i>
-            </div>
+                <div
+                    class="col-2 d-flex align-items-center justify-content-center h-100 "
+                    style="background-color: rgb(224, 156, 54">
+                    <a href="{{ url('/') }}">
+                        <img
+                        src="{{ asset('assets/webpage/img/LOGO-01.png') }}"
+                        alt="Description of Image"
+                        class="img-fluid"
+                        />
+                    </a>
+                </div>
+                <div class="d-block d-lg-none w-auto" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                    <div style="background-color: rgb(224, 156, 54)">
+                        <i class="fa-solid fa-bars fs-2 px-4"></i>
+                    </div>
+                </div>
 
 
             <!-- Main Content Section -->
