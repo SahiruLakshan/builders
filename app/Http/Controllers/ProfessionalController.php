@@ -85,7 +85,7 @@ class ProfessionalController extends Controller
                 $file = $request->file('profileImage');
                 $ext = $file->getClientOriginalExtension();
                 $filename = time() . '.' . $ext;
-                $file->move('assets/profile', $filename);
+                $file->move('assets/professional', $filename);
             }
 
             $certifications = [];
@@ -136,8 +136,9 @@ class ProfessionalController extends Controller
         }
     }
 
-    public function viewpro(){
+    public function viewpro()
+    {
         $prof = Professional::all();
-        return view('admin.viewtbl.viewprofessionals',compact('prof'));
+        return view('admin.viewtbl.viewprofessionals', compact('prof'));
     }
 }

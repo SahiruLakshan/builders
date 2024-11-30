@@ -320,7 +320,7 @@
                   <img src="{{asset('assets/webpage/img/mechanic.jpeg')}}" alt="" />
                 </div>
                 <div class="shop-body">
-                  <h3>Cameras<br />Collection</h3>
+                  <h3>Machinic <br />Collection</h3>
                   <a href="#" class="cta-btn"
                     >Shop now <i class="fa fa-arrow-circle-right"></i
                   ></a>

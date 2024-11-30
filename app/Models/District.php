@@ -28,4 +28,9 @@ class District extends Model
         return $this->hasMany(City::class, 'dis_id', 'dis_id');
     }
 
+    public function serviceProvider()
+    {
+        return $this->hasMany(ServiceProvider::class, 'id', 'dis_id');
+    }
+
 }
