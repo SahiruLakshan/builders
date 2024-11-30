@@ -203,7 +203,7 @@ Route::get('/serviceproviderform', [WebController::class, 'servceproviders'])->n
 
 Route::name('category.')->group(function () {
     Route::get('product/cat/{name}', [WebController::class, 'shopcategory'])->name('shop');
-    Route::get('service/cat/{name}', [WebController::class, 'servicecategory'])->name('service');
+    Route::get('service/cat/{name}', [WebController::class, 'serviceprovidercategory'])->name('service');
 });
 
 // about us page route

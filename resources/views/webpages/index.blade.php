@@ -178,7 +178,7 @@
     <header class="nav navbar-expand-lg fixed-top">
         <div class="row justify-content-between justify-content-lg-start align-items-center align-items-lg-start">
             <!-- Logo and Menu Section -->
-                    <div class="col-12 d-flex align-items-center justify-content-between h-100 " style="background-color: rgb(224, 156, 54);">
+                    {{-- <div class="col-12 d-flex align-items-center justify-content-between h-100 " style="background-color: rgb(224, 156, 54);">
                         <!-- Logo -->
                         <div class="d-flex align-items-center">
                             <a href="{{ url('/') }}">
@@ -194,6 +194,24 @@
                             <div class="d-block d-lg-none" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                                 <i class="fa-solid fa-bars fs-2 px-4"></i>
                             </div>
+                        </div>
+                    </div> --}}
+                    <!-- Logo and Menu Section -->
+                    <div>
+
+                    </div>
+                    <div class="col-2 d-flex align-items-center justify-content-center h-100 " style="background-color: rgb(224, 156, 54)">
+                        
+                        <div class=" d-flex flex-column ">
+                            <a href="{{ url('/') }}">
+                                <img src="{{ asset('assets/webpage/img/LOGO-01.png') }}" alt="Builders.lk"
+                                    class="img-fluid" />
+                            </a>
+                            <div class="d-block d-lg-none w-auto" data-bs-toggle="offcanvas" href="#offcanvasExample"
+                                role="button" aria-controls="offcanvasExample">
+                                <i class="fa-solid fa-bars fs-2 px-4"></i>
+                            </div>
+                           
                         </div>
                     </div>
 
