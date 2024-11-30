@@ -94,7 +94,30 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Third Accordion Item: Register With Builders.lk -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Register With Builders.lk
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <a href="serviceproviderform" class="dropdown-item p-1 border">Service
+                                Providers</a>
+                     
+                
+                            <a href="/professionalsform" class="dropdown-item p-1 border">Professionals</a>
+                       
+                            <a href="#" class="dropdown-item p-1 border">Bass</a>
+                      
+                     
+                            <a href="shopSuppliers" class="dropdown-item p-1 border">Shops</a>
+                        </div>
+                    </div>
+                </div>
                 <!-- Second Accordion Item: My Account -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
@@ -154,22 +177,8 @@
     <!-- HEADER -->
     <header class="nav navbar-expand-lg fixed-top">
         <div class="row justify-content-between justify-content-lg-start align-items-center align-items-lg-start">
-            {{-- <!-- Logo and Menu Section -->
-            <div class="col-2 d-flex align-items-center justify-content-center h-100 "
-                style="background-color: rgb(224, 156, 54)">
-                <div class="d-flex flex-column">
-                    <a href="{{ url('/') }}">
-                        <img src="{{ asset('assets/webpage/img/LOGO-01.png') }}" alt="Description of Image"
-                            class="img-fluid" />
-                    </a>
-                    <div class="d-block d-lg-none w-auto" data-bs-toggle="offcanvas" href="#offcanvasExample"
-                        role="button" aria-controls="offcanvasExample">
-                        <i class="fa-solid fa-bars fs-2 px-4"></i>
-                    </div>
-                </div>
-            </div> --}}
             <!-- Logo and Menu Section -->
-                    <div class="col-12 d-flex align-items-center justify-content-between h-100" style="background-color: rgb(224, 156, 54);">
+                    <div class="col-12 d-flex align-items-center justify-content-between h-100 " style="background-color: rgb(224, 156, 54);">
                         <!-- Logo -->
                         <div class="d-flex align-items-center">
                             <a href="{{ url('/') }}">

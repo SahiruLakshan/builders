@@ -1,0 +1,261 @@
+{{--
+<div class="container-fluid mt-5 mb-5">
+    <div class="text-center">
+        <h3 class="display-4 text-primary font-weight-bold">BUILDERS.LK</h3>
+        <h4 class="display-6 text-secondary font-weight-bold">
+            Constructions Service Providers Registration
+        </h4>
+        <hr />
+    </div>
+
+    <div class="custom-form-style px-3">
+        <form
+            action="/addserviceprovider/store"
+            method="POST"
+            class="border p-3"
+        >
+            @csrf
+
+            <!-- Service Provider Info -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="serviceProviderNumber"
+                        >ServiceProvider Number</label
+                    >
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="number"
+                        name="number"
+                        placeholder="Service Provider No.."
+                        readonly
+                    />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="s_name">Name</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="s_name"
+                        name="s_name"
+                        placeholder="Name Of The Service Provider"
+                    />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="grade">Grade</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="grade"
+                        name="grade"
+                        placeholder="Grade Of The Service Provider"
+                    />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Address</label>
+                    <textarea
+                        class="form-control"
+                        id="inputAddress"
+                        rows="3"
+                        name="inputAddress"
+                        placeholder="Address Of The Service Provider"
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- Dropdowns -->
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="category">Select Category</label>
+                    <select id="category" name="category" class="form-select">
+                        <option value="" disabled selected>
+                            Select Your Service Category
+                        </option>
+                        @foreach ($services as $service)
+                        <option value="{{ $service->id }}">
+                            {{ $service->servicename }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="district">Select District</label>
+                    <select id="district" name="district" class="form-select">
+                        <option value="">Select District</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="city">City</label>
+                    <select id="city" name="city" class="form-select" disabled>
+                        <option value="">Select City</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Contact Details -->
+            <h5>Contact Details</h5>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="telephone">Telephone</label>
+                    <input
+                        type="tel"
+                        id="telephone"
+                        name="telephone"
+                        class="form-control"
+                    />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="mobile">Mobile</label>
+                    <input
+                        type="tel"
+                        id="mobile"
+                        name="mobile"
+                        class="form-control"
+                    />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="whatsapp">WhatsApp</label>
+                    <input
+                        type="tel"
+                        id="whatsapp"
+                        name="whatsapp"
+                        class="form-control"
+                    />
+                </div>
+            </div>
+
+            <!-- Company Details -->
+            <h5>Company Details</h5>
+            <hr />
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="companyName">Name</label>
+                    <input
+                        type="text"
+                        id="companyName"
+                        name="companyName"
+                        class="form-control"
+                    />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="businessRegNo">Business Registration No</label>
+                    <input
+                        type="text"
+                        id="businessRegNo"
+                        name="businessRegNo"
+                        class="form-control"
+                    />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="noOfEmp">Number of Employees</label>
+                    <input
+                        type="number"
+                        id="noOfEmp"
+                        name="noOfEmp"
+                        class="form-control"
+                    />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="employeesQualification"
+                        >Employees Qualification</label
+                    >
+                    <input
+                        type="text"
+                        id="employeesQualification"
+                        name="employeesQualification"
+                        class="form-control"
+                    />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="maxProjectValue">Maximum Project Value</label>
+                    <input
+                        type="text"
+                        id="maxProjectValue"
+                        name="maxProjectValue"
+                        class="form-control"
+                    />
+                </div>
+            </div>
+
+            <!-- Project History -->
+            <h5>Project History</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Project Name</th>
+                            <th>Location</th>
+                            <th>Value</th>
+                            <th>Contact Person</th>
+                            <th>Contact Number</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="projectHistory">
+                        <tr>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="projectName[]"
+                                />
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="projectLocation[]"
+                                />
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="projectValue[]"
+                                />
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="contactPerson[]"
+                                />
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="contactNumber[]"
+                                />
+                            </td>
+                            <td>
+                                <button
+                                    type="button"
+                                    class="btn btn-danger"
+                                    onclick="removeRow(this)"
+                                >
+                                    Remove
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button
+                type="button"
+                class="btn btn-success"
+                onclick="addProjectRow()"
+            >
+                Add Row
+            </button>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+    </div>
+</div>
+--}}
