@@ -68,11 +68,30 @@ class ProfessionalController extends Controller
         try {
             // Validate incoming data
             $request->validate([
+                'professionalNumber' => 'required',
                 'p_Name' => 'required|string|max:255',
                 'profileImage' => 'nullable|image|max:2048',
+                'phoneNumber' => 'required|digits_between:10,15|regex:/^[0-9]+$/',
+                'p_email' => 'required|email|max:255|unique:professionals,email',
+                'p_address' => 'required|string|max:500',
+                'district' => 'required|string|max:100',
+                'city' => 'required|string|max:100',
+                'zip' => 'required|digits:5',
+                'dob' => 'required|date|before:today',
+                'linkedin' => 'nullable|url|max:255',
+                'jobTitle' => 'required|string|max:100',
+                'experienceLevel' => 'required|in:entry,mid,senior,expert', // Adjust as per your application's levels
+                'yearsOfExperience' => 'required|integer|min:0|max:50',
                 'specialization' => 'nullable|array',
+                'specialization.*' => 'string|max:100', // Each specialization item
+                'skills' => 'nullable|string|max:500',
                 'certificationName' => 'nullable|array',
+                'certificationName.*' => 'string|max:100', // Each certification name
+                'certifications' => 'nullable|array',
+                'certifications.*' => 'string|max:255', // Each certification path
+                'licenseNumber' => 'nullable|string|max:50|unique:professionals,license_number',
             ]);
+            
 
             // Handle file upload
             // $profileImagePath = null;

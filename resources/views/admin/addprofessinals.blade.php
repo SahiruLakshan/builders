@@ -57,10 +57,17 @@
                                             <input type="text"
                                                 class="form-control @error('professionalNumber') is-invalid @enderror"
                                                 id="professionalNumber" name="professionalNumber"
-                                                value="{{ old('professionalNumber') }}">
-                                            @error('professionalNumber')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
+                                                value="{{ old('professionalNumber') }}" readonly>
+                                                <script>
+                                                    function generateServiceProviderNumber() {
+                                                        const prefix = 'PR';
+                                                        const randomNumber = Math.floor(Math.random() * 100000); 
+                                                        const formattedNumber = prefix + randomNumber.toString().padStart(6, '0');
+                                                        document.getElementById('professionalNumber').value = formattedNumber;
+                                                    }
+
+                                                    window.onload = generateServiceProviderNumber;
+                                                </script>
                                         </div>
                                     </div>
                                     <div class="col">
