@@ -134,7 +134,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/approveserviceprovider/{id}', [ServiceProviderController::class, 'approveServiceProviders'])->name('services.approve');
     Route::post('/rejectserviceprovider/{id}', [ServiceProviderController::class, 'rejectServiceProviders'])->name('services.reject');
     Route::get('/deleteserviceprovider/{id}', [ServiceProviderController::class, 'destroy'])->name('services.destroy');
-    
+
     Route::get('/categories', [ProfessionalCategoryController::class, 'index'])->name('categories.index');
     Route::get('/categories/create', [ProfessionalCategoryController::class, 'create'])->name('categories.create');
     Route::post('/categories/store', [ProfessionalCategoryController::class, 'store'])->name('categories.store');
@@ -206,7 +206,7 @@ Route::get('/serviceproviderform', [WebController::class, 'servceproviders'])->n
 
 Route::name('category.')->group(function () {
     Route::get('product/cat/{name}', [WebController::class, 'shopcategory'])->name('shop');
-    Route::get('service/cat/{name}', [WebController::class, 'serviceprovidercategory'])->name('service');
+    Route::get('service/cat/{name}', [WebController::class, 'servicecategory'])->name('service');
 });
 
 // about us page route
