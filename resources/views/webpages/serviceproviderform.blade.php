@@ -6,276 +6,180 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
 
     <!-- /MAIN HEADER -->
- 
-    <div class="container-fluid mt-5 mb-5">
+
+    <div class="container-fluid  mt-5 mb-5">
         <div class="text-center">
             <h3 class="display-4 text-primary font-weight-bold">BUILDERS.LK</h3>
             <h4 class="display-6 text-secondary font-weight-bold">
                 Constructions Service Provides Registration
             </h4>
-            <hr />
+            <hr>
         </div>
-        <div class="custom-form-style px-5">
-            <form
-                action="/addserviceprovider/store"
-                method="POST"
-                class="border p-4"
-            >
+        <div class="custom-form-style  px-5 ">
+            <form action="/addserviceprovider/store" method="POST" class="border p-4">
                 @csrf
                 <div class="row">
-                    <div class="form-group col-12 col-md-6">
+                    <div class="form-group col">
                         <div class="form-group">
-                            <label for="serviceProviderNumber"
-                                >ServiceProvider Number</label
-                            >
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="number"
-                                name="number"
-                                placeholder="Service Provider No.."
-                                readonly
-                            />
+                            <label for="serviceProviderNumber">ServiceProvider Number</label>
+                            <input type="text" class="form-control" id="number" name="number"
+                                placeholder="Service Provider No.." readonly>
                         </div>
+
+                        <script>
+                            function generateServiceProviderNumber() {
+                                const prefix = 'SP';
+                                const randomNumber = Math.floor(Math.random() * 1000000);
+                                const formattedNumber = prefix + randomNumber.toString().padStart(6, '0');
+                                document.getElementById('number').value = formattedNumber;
+                            }
+
+                            // Call the function to set the value when the page loads
+                            window.onload = generateServiceProviderNumber;
+                        </script>
                     </div>
-    
-                    <div class="form-group col-12 col-md-6">
+
+                    <div class="form-group col">
                         <label for="inputPassword4">Name</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="s_name"
-                            name="s_name"
-                            placeholder="Name Of The Service Provider"
-                        />
+                        <input type="text" class="form-control" id="s_name" name="s_name"
+                            placeholder="Name Of The Service Provider" />
                     </div>
                     <div class="col">
                         <label for="maxProjectValue">Grade </label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="grade"
-                            name="grade"
-                            placeholder="Grade Of The Service Provider"
-                        />
+                        <input type="text" class="form-control" id="grade" name="grade"
+                            placeholder="Grade Of The Service Provider" />
                     </div>
                 </div>
-    
+
                 <div class="row">
+
                     <div class="col-12">
                         <label for="inputAddress">Address</label>
-                        <textarea
-                            class="form-control"
-                            id="inputAddress"
-                            rows="3"
-                            name="inputAddress"
-                            placeholder="Address Of The Service Provider"
-                        ></textarea>
+                        <textarea class="form-control" id="inputAddress" rows="3" name="inputAddress"
+                            placeholder="Address Of The Service Provider"></textarea>
                     </div>
                 </div>
                 {{-- get form distrc tble and city table --}}
                 <div class="row">
-                    <div class="col-12 col-md-4">
+                    <div class="col-4">
                         <label for="category">Select Category:</label>
                         <select id="category" name="category" class="form-select">
-                            <option value="" disabled selected>
-                                Select Your Service Category
-                            </option>
+                            <option value="" disabled selected>Select Your Service Category</option>
                             @foreach ($services as $service)
-                            <option value="{{ $service->id }}">
-                                {{ $service->servicename }}
-                            </option>
+                                <option value="{{ $service->id }}">{{ $service->servicename }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-12 col-md-4 pt-2">
+                    <div class="col-4 pt-2">
                         <label for="district">Select District:</label>
                         <select id="district" name="district" class="form-select">
                             <option value="">Select District</option>
                         </select>
                     </div>
-                    <div class="col-12 col-md-4 pt-2">
+                    <div class="col-4 pt-2">
                         <label for="city">City:</label>
-                        <select
-                            id="city"
-                            name="city"
-                            class="form-select disabled"
-                            disabled
-                        >
+                        <select id="city" name="city" class="form-select disabled" disabled>
                             <option value="">Select City</option>
                         </select>
                     </div>
                 </div>
-    
+
+
                 <h5>Contact Details</h5>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="telephone" class="col-form-label"
-                                >Telephone :</label
-                            >
-                            <input
-                                type="tel"
-                                id="telephone"
-                                name="telephone"
-                                class="form-control"
-                                aria-describedby="telephoneHelp"
-                            />
+                            <label for="telephone" class="col-form-label">Telephone :</label>
+                            <input type="tel" id="telephone" name="telephone" class="form-control"
+                                aria-describedby="telephoneHelp">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="mobile" class="col-form-label"
-                                >Mobile :</label
-                            >
-                            <input
-                                type="tel"
-                                id="mobile"
-                                name="mobile"
-                                class="form-control"
-                                aria-describedby="mobileHelp"
-                            />
+                            <label for="mobile" class="col-form-label">Mobile :</label>
+                            <input type="tel" id="mobile" name="mobile" class="form-control"
+                                aria-describedby="mobileHelp">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="whatsapp" class="col-form-label"
-                                >WhatsApp :</label
-                            >
-                            <input
-                                type="tel"
-                                id="whatsapp"
-                                name="whatsapp"
-                                class="form-control"
-                                aria-describedby="whatsappHelp"
-                            />
+                            <label for="whatsapp" class="col-form-label">WhatsApp :</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" class="form-control"
+                                aria-describedby="whatsappHelp">
                         </div>
                     </div>
                 </div>
-    
+
+
                 <h5>Company Details</h5>
-                <hr />
+                <hr>
                 <div class="row align-items-space-between">
-                    <div class="col-sm-12 col-md-6">
-                        <label for="inputPassword6" class="col-form-label"
-                            >Name :</label
-                        >
-                        <input
-                            type="text"
-                            id="companyName"
-                            name="companyName"
-                            class="form-control"
-                            aria-describedby="telephoneHelp"
-                        />
+                    <div class="col">
+                        <label for="inputPassword6" class="col-form-label">Name :</label>
+                        <input type="text" id="companyName" name="companyName" class="form-control"
+                            aria-describedby="telephoneHelp">
                     </div>
-                    <div class="col-sm-12 col-md-6">
-                        <label for="inputPassword6" class="col-form-label"
-                            >Business Registration No :</label
-                        >
-                        <input
-                            type="text"
-                            id="businessRegNoo"
-                            name="businessRegNo"
-                            class="form-control"
-                            aria-describedby="telephoneHelp"
-                        />
+                    <div class="col">
+                        <label for="inputPassword6" class="col-form-label">Business Registration No :</label>
+                        <input type="text" id="businessRegNoo" name="businessRegNo" class="form-control"
+                            aria-describedby="telephoneHelp">
                     </div>
                 </div>
-    
+
                 <div class="row">
-                    <div class="col-sm-12 col-md-4">
-                        <label for="noOfEmp" class="col-form-label"
-                            >Number of Employees :</label
-                        >
-                        <input
-                            type="number"
-                            id="noOfEmp"
-                            name="noOfEmp"
-                            class="form-control"
-                            aria-describedby="noOfEmpHelp"
-                        />
+                    <div class="col-4">
+                        <label for="noOfEmp" class="col-form-label">Number of Employees :</label>
+                        <input type="number" id="noOfEmp" name="noOfEmp" class="form-control"
+                            aria-describedby="noOfEmpHelp">
                     </div>
-                    <div class="col-sm-12 col-md-4">
-                        <label for="employeesQualification" class="col-form-label"
-                            >Employees Qualification :</label
-                        >
-                        <input
-                            type="text"
-                            id="employeesQualification"
-                            name="employeesQualification"
-                            class="form-control"
-                            aria-describedby="employeesQualificationHelp"
-                        />
+                    <div class="col-4">
+                        <label for="employeesQualification" class="col-form-label">Employees Qualification :</label>
+                        <input type="text" id="employeesQualification" name="employeesQualification"
+                            class="form-control" aria-describedby="employeesQualificationHelp">
                     </div>
-                    <div class="col-sm-12 col-md-4">
-                        <label for="maxProjectValue" class="col-form-label"
-                            >Maximum Project Value :</label
-                        >
-                        <input
-                            type="text"
-                            id="maxProjectValue"
-                            name="maxProjectValue"
-                            class="form-control"
-                            aria-describedby="maxProjectValueHelp"
-                        />
+                    <div class="col-4">
+                        <label for="maxProjectValue" class="col-form-label">Maximum Project Value :</label>
+                        <input type="text" id="maxProjectValue" name="maxProjectValue" class="form-control"
+                            aria-describedby="maxProjectValueHelp">
                     </div>
                 </div>
-    
+
                 <div class="border p-4">
                     <h5>Search and Select Location</h5>
-                    <input
-                        type="text"
-                        id="search"
-                        placeholder="Search for a location (e.g., city, address)"
-                        class="form-control"
-                    />
-    
+                    <input type="text" id="search" placeholder="Search for a location (e.g., city, address)" />
+
                     <!-- Form to Display and Submit Location -->
-    
-                    <div class="d-flex flex-wrap">
-                        <div class="col-sm-12 col-md-4">
+                    {{-- <form id="locationForm" method="POST" action="/save-location">
+              @csrf <!-- Laravel CSRF Token --> --}}
+                    <div class="d-flex">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="latitude">Latitude:</label>
-                                <input
-                                    type="text"
-                                    id="latitude"
-                                    name="latitude"
-                                    class="form-control-plaintext"
-                                />
+                                <input type="text" id="latitude" name="latitude" class="form-control-plaintext" />
                             </div>
+
                         </div>
-    
-                        <div class="col-sm-12 col-md-4">
+
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="longitude">Longitude:</label>
-                                <input
-                                    type="text"
-                                    id="longitude"
-                                    name="longitude"
-                                    class="form-control-plaintext"
-                                />
+                                <input type="text" id="longitude" name="longitude" class="form-control-plaintext" />
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-4">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="address">Address:</label>
-                                <input
-                                    type="text"
-                                    id="address"
-                                    name="address"
-                                    class="form-control-plaintext"
-                                />
+                                <input type="text" id="address" name="address" class="form-control-plaintext" />
                             </div>
+
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">
-                        Save Location
-                    </button>
+                    <button type="submit" class="btn btn-primary">Save Location</button>
                     <div id="map" class="mt-3 boder-2"></div>
                 </div>
-    
+
                 <h5>Project History</h5>
-                <hr />
+                <hr>
                 <div class="table-responsive">
                     <table class="table" id="projectTable">
                         <thead>
@@ -291,51 +195,27 @@
                         <tbody id="projectHistory">
                             <tr>
                                 <td>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="projectName[]"
-                                        placeholder="Project Name"
-                                    />
+                                    <input type="text" class="form-control" name="projectName[]"
+                                        placeholder="Project Name" />
                                 </td>
                                 <td>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="projectLocation[]"
-                                        placeholder="Location"
-                                    />
+                                    <input type="text" class="form-control" name="projectLocation[]"
+                                        placeholder="Location" />
                                 </td>
                                 <td>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="projectValue[]"
-                                        placeholder="Value"
-                                    />
+                                    <input type="text" class="form-control" name="projectValue[]"
+                                        placeholder="Value" />
                                 </td>
                                 <td>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="contactPerson[]"
-                                        placeholder="Contact Person"
-                                    />
+                                    <input type="text" class="form-control" name="contactPerson[]"
+                                        placeholder="Contact Person" />
                                 </td>
                                 <td>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="contactNumber[]"
-                                        placeholder="Contact Number"
-                                    />
+                                    <input type="text" class="form-control" name="contactNumber[]"
+                                        placeholder="Contact Number" />
                                 </td>
                                 <td>
-                                    <button
-                                        type="button"
-                                        class="btn btn-danger"
-                                        onclick="removeRow(this)"
-                                    >
+                                    <button type="button" class="btn btn-danger" onclick="removeRow(this)">
                                         Remove
                                     </button>
                                 </td>
@@ -343,33 +223,17 @@
                         </tbody>
                     </table>
                 </div>
-    
-                <button
-                    type="button"
-                    class="btn btn-success"
-                    onclick="addProjectRow()"
-                >
+
+                <button type="button" class="btn btn-success" onclick="addProjectRow()">
                     Add Project
                 </button>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
+
     </div>
-    
-   
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
-        function generateServiceProviderNumber() {
-            const prefix = 'SP';
-            const randomNumber = Math.floor(Math.random() * 1000000);
-            const formattedNumber = prefix + randomNumber.toString().padStart(6, '0');
-            document.getElementById('number').value = formattedNumber;
-        }
-
-        // Call the function to set the value when the page loads
-        window.onload = generateServiceProviderNumber;
-    </script>
     <script>
         // Initialize the map
         const map = L.map('map').setView([6.9271, 79.8612], 13); // Default to Colombo, Sri Lanka
@@ -617,4 +481,3 @@
       <!-- /container -->
     </div> --}}
 @endsection
-
