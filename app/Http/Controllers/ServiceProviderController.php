@@ -1,13 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\City;
 
 use App\Models\District;
+use App\Models\Projects;
 use App\Models\Service;
 use App\Models\ServiceProvider;
 
 use Illuminate\Http\Request;
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class ServiceProviderController extends Controller
 {
@@ -71,38 +74,52 @@ class ServiceProviderController extends Controller
             $serviceProvider->max_project_value = $validated['maxProjectValue'];
             $serviceProvider->save();
 
-            return redirect()->back()->with('success', 'Service Provider added successfully!');
+            foreach ($request->projectName as $index => $projectName) {
+                $project = new Projects();
+                $project->service_provider_id = $serviceProvider->number; // Relate the project to the service provider
+                $project->name = $projectName;
+                $project->location = $request->projectLocation[$index];
+                $project->value = $request->projectValue[$index];
+                $project->person = $request->contactPerson[$index];
+                $project->number = $request->contactNumber[$index];
+                $project->save();
+            }
+    
+            return redirect()->back()->with('success', 'Service Provider and Project History added successfully!');
+    
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('An error occurred: ' . $e->getMessage());
         }
     }
 
 
-    public function view(){
+    public function view()
+    {
         $serviceProviders = ServiceProvider::all();
-        return view('admin.viewtbl.viewServiceProvider',compact('serviceProviders'));
+        return view('admin.viewtbl.viewServiceProvider', compact('serviceProviders'));
     }
 
-    public function approveServiceProviders(Request $request, $id){
+    public function approveServiceProviders(Request $request, $id)
+    {
         $serviceProvider = ServiceProvider::find($id);
         $serviceProvider->status = 'Approved';
         $serviceProvider->save();
         return redirect()->back()->with('success', 'Service Provider approved successfully!');
     }
 
-    public function rejectServiceProviders(Request $request, $id){
+    public function rejectServiceProviders(Request $request, $id)
+    {
         $serviceProvider = ServiceProvider::find($id);
         $serviceProvider->status = 'Rejected';
         $serviceProvider->save();
         return redirect()->back()->with('success', 'Service Provider rejected successfully!');
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         $serviceProvider = ServiceProvider::find($id);
         $serviceProvider->delete();
         return redirect()->back()->with('success', 'Service Provider deleted successfully!');
-
     }
 
-    
 }

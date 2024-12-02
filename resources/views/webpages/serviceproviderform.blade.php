@@ -193,33 +193,35 @@
                             </tr>
                         </thead>
                         <tbody id="projectHistory">
-                            <tr>
-                                <td>
-                                    <input type="text" class="form-control" name="projectName[]"
-                                        placeholder="Project Name" />
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control" name="projectLocation[]"
-                                        placeholder="Location" />
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control" name="projectValue[]"
-                                        placeholder="Value" />
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control" name="contactPerson[]"
-                                        placeholder="Contact Person" />
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control" name="contactNumber[]"
-                                        placeholder="Contact Number" />
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger" onclick="removeRow(this)">
-                                        Remove
-                                    </button>
-                                </td>
-                            </tr>
+                                @csrf
+                                <tr>
+                                    <td>
+                                        <input type="text" class="form-control" name="projectName[]"
+                                            placeholder="Project Name" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" name="projectLocation[]"
+                                            placeholder="Location" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" name="projectValue[]"
+                                            placeholder="Value" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" name="contactPerson[]"
+                                            placeholder="Contact Person" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" name="contactNumber[]"
+                                            placeholder="Contact Number" />
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" onclick="removeRow(this)">
+                                            Remove
+                                        </button>
+                                    </td>
+                                </tr>
+                            </form>
                         </tbody>
                     </table>
                 </div>
@@ -480,4 +482,5 @@
       </div>
       <!-- /container -->
     </div> --}}
+
 @endsection
