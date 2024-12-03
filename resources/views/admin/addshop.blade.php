@@ -57,13 +57,24 @@
                                                 <div class="col-md-6">
                                                     <!-- Shop Number shoud be a uniq and it need to auto ganarate  'SN001' like that-->
                                                     <div class="control-group form-group">
-                                                        <label class="form-label" for="shop_name">Shop Number:</label>
-                                                        <input type="text" class="form-control" name="snumber"
-                                                            id="shop_number" placeholder="Shop Number" required />
+                                                        <label class="form-label" for="shop_name">Shop Number:(<i>This is generated automatically</i>)</label>
+                                                        <input type="text" class="form-control" name="number"
+                                                            id="number" placeholder="Shop Number" readonly/>
                                                         <div class="invalid-feedback">
                                                             Automaticaly Genarated  a valid shop number.
                                                         </div>
                                                     </div>
+                                                    <script>
+                                                        function generateServiceProviderNumber() {
+                                                            const prefix = 'SHP';
+                                                            const randomNumber = Math.floor(Math.random() * 1000000); 
+                                                            const formattedNumber = prefix + randomNumber.toString().padStart(6, '0');
+                                                            document.getElementById('number').value = formattedNumber;
+                                                        }
+                                                    
+                                                        // Call the function to set the value when the page loads
+                                                        window.onload = generateServiceProviderNumber;
+                                                    </script>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="control-group form-group">
@@ -213,7 +224,7 @@
                                                         <div class="col-md-4">
                                                           <div class="form-group">
                                                             <label for="address">Address:</label>
-                                                            <input type="text" id="address2" name="loacatoin"  class="form-control-plaintext" />
+                                                            <input type="text" id="address2" name="location"  class="form-control-plaintext" />
                                                           </div>
                                         
                                                         </div>
@@ -221,9 +232,6 @@
                                                       <button type="submit" class="btn btn-primary">Save Location</button>
                                                     <div id="map" class="mt-3 boder-2"></div>
                                                 </div>
-                                                  
-                                                    
-                                                
                                             </div>
                                         </section>
 

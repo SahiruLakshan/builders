@@ -78,9 +78,9 @@
                                             <label for="product">Select Product:</label>
                                             <select class="form-control select2" id="product">
                                                 <option value="" disabled selected></option>
-                                                {{-- @foreach ($products as $product)
+                                                @foreach ($products as $product)
                                                     <option value="{{ $product->id }}">{{ $product->name }}</option>
-                                                @endforeach --}}
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -149,15 +149,15 @@
                                                         <thead>
                                                             <tr>
                                                                 <th class="wd-25p border-bottom-0">Product Name</th>
-                                                                <th class="wd-15p border-bottom-0">Brand</th>
-                                                                <th class="wd-20p border-bottom-0">Category</th>
-                                                                <th class="wd-20p border-bottom-0">Other Categories</th>
-                                                                <th class="wd-15p border-bottom-0">SubCategory</th>
-                                                                <th class="wd-10p border-bottom-0">Quantity</th>
+                                                                <th class="wd-15p border-bottom-0">Item</th>
+                                                                <th class="wd-20p border-bottom-0">Discount</th>
+                                                                <th class="wd-20p border-bottom-0">Units</th>
+                                                                <th class="wd-15p border-bottom-0">Unit Price</th>
+                                                                {{-- <th class="wd-10p border-bottom-0">Quantity</th>
                                                                 <th class="wd-25p border-bottom-0">Measurement</th>
                                                                 <th class="wd-25p border-bottom-0">Color</th>
                                                                 <th class="wd-25p border-bottom-0">Image</th>
-                                                                <th class="wd-25p border-bottom-0">Actions</th>
+                                                                <th class="wd-25p border-bottom-0">Actions</th> --}}
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -329,7 +329,7 @@
                 });
 
                 $.ajax({
-                    url: '{{ route('submit.products') }}',
+                    url: '',
                     method: 'POST',
                     data: formData,
                     contentType: false,

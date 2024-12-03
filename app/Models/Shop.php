@@ -11,12 +11,16 @@ class Shop extends Model
 
     protected $table = 'shops';
     protected $fillable = [
+        'number',
         'name',
         'email',
         'address',
         'district',
         'p_number',
+        'w_number',
         'city',
+        'latitude',
+        'longitude',
         'category',
         'location',
         'start_time',
