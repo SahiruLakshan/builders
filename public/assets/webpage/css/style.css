@@ -1172,7 +1172,7 @@ textarea.input {
     transform: translate(-50%, -5px);
 }
 
-.product .add-to-cart {
+/* .product .add-to-cart {
     position: absolute;
     left: 1px;
     right: 1px;
@@ -1186,12 +1186,37 @@ textarea.input {
     -webkit-transition: 0.2s all;
     transition: 0.2s all;
     z-index: 2;
+} */
+
+.product .add-to-cart {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px; /* Adjust positioning */
+    padding: 10px;
+    background: #1e1f29;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%);
+    transition: 0.3s all ease-in-out;
+    z-index: 50; /* Ensure it's on top */
 }
 
-.product:hover .add-to-cart {
+/* .product:hover .add-to-cart {
     -webkit-transform: translateY(100%);
     -ms-transform: translateY(100%);
     transform: translateY(100%);
+} */
+/* .product:hover .add-to-cart {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+} */
+.product:hover .add-to-cart {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0%);
 }
 
 .product .add-to-cart .add-to-cart-btn {
