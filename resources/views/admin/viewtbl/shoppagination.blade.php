@@ -4,7 +4,7 @@
     <table class="table table-bordered border text-nowrap mb-0 mt-3" style="margin-left:250px;width:500px;">
         <thead>
             <tr>
-                <th>Shop ID</th>
+                <th>Shop Number</th>
                 <th>Shop Name</th>
                 <th>Email</th>
                 <th>Address</th>
@@ -17,7 +17,7 @@
         <tbody>
             @foreach ($shops as $shop)
                 <tr id="shopRow{{ $shop->id }}">
-                    <td>{{ $shop->id }}</td>
+                    <td>{{ $shop->number }}</td>
                     <td>{{ $shop->name }}</td>
                     <td>{{ $shop->email }}</td>
                     <td>{{ $shop->address }}</td>

@@ -56,7 +56,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/addshop', [ShopController::class, 'index'])->name('addshop');
     Route::get('/shopprofile/{id}', [ShopController::class, 'shopprofile'])->name('shopprofile');
     Route::post('/submitshop', [ShopController::class, 'submitshop']);
-    Route::get('/shops', [ShopController::class, 'shops']);
+    Route::get('/viewshops', [ShopController::class, 'shops']);
     Route::get('/shopupdate/{id}', [ShopController::class, 'update']);
     Route::put('/shop/update/{id}', [ShopController::class, 'updateShop']);
     Route::get('/shop/delete/{id}', [ShopController::class, 'deleteShop']);
