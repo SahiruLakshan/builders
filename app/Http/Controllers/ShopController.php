@@ -67,7 +67,7 @@ class ShopController extends Controller
     {
         $query = $request->input('query');
 
-        $shops = Shop::where('name', 'like', '%' . $query . '%')->orWhere('id', 'like', '%' . $query . '%')->paginate(8);
+        $shops = Shop::where('name', 'like', '%' . $query . '%')->orWhere('number', 'like', '%' . $query . '%')->paginate(8);
 
         if ($request->ajax()) {
             return view('admin.viewtbl.shoppagination', compact('shops'))->render();
@@ -85,6 +85,8 @@ class ShopController extends Controller
             'p_number' => 'required|string|max:255',
             'district' => 'required|string|max:255',
             'city' => 'required|string|max:255',
+            'latitude' => 'required|string|max:255',
+            'longitude' => 'required|string|max:255',
             'category' => 'required|array',                   // multiple categories
             'category.*' => 'string|max:255',                 // each category must be a string
             'location' => 'nullable|string|max:255',
@@ -101,12 +103,16 @@ class ShopController extends Controller
 
         try {
             $data = $request->only([
+                'number',
                 'name',
                 'email',
                 'address',
                 'district',
                 'p_number',
+                'w_number',
                 'city',
+                'latitude',
+                'longitude',
                 'location',
                 'start_time',
                 'end_time',

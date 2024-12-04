@@ -56,7 +56,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/addshop', [ShopController::class, 'index'])->name('addshop');
     Route::get('/shopprofile/{id}', [ShopController::class, 'shopprofile'])->name('shopprofile');
     Route::post('/submitshop', [ShopController::class, 'submitshop']);
-    Route::get('/shops', [ShopController::class, 'shops']);
+    Route::get('/viewshops', [ShopController::class, 'shops']);
     Route::get('/shopupdate/{id}', [ShopController::class, 'update']);
     Route::put('/shop/update/{id}', [ShopController::class, 'updateShop']);
     Route::get('/shop/delete/{id}', [ShopController::class, 'deleteShop']);
@@ -105,6 +105,10 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/submitshopitem', [ShopproductController::class, 'submitProducts'])->name('submit.shopitem');
     Route::get('/shopitem', [ShopproductController::class, 'shopitem'])->name('shopitem');
     Route::get('/check-pro-no-unique', [ShopproductController::class, 'checkProNoUnique']);
+    Route::get('/get-items/{productId}', [ShopproductController::class, 'getItems']);
+    Route::post('/add-shop-items', [ShopproductController::class, 'addItems'])->name('shop.addItems');
+
+
 
     Route::get('/addproduct', [ProductController::class, 'index']);
     Route::get('/products', [ProductController::class, 'products']);

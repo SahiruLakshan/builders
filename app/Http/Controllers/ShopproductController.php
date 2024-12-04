@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Productcategory;
 use App\Models\Productsub;
 use App\Models\Shop;
+use App\Models\ShopItem;
 use App\Models\Shopproduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -22,13 +23,40 @@ class ShopproductController extends Controller
     public function index($id)
     {
         $shops = Shop::find($id);
-        $brand = Brand::all();
-        $measurement = Measurement::all();
         $products = Product::all();
-        $pc = Productcategory::all();
-        $sub = Productsub::all();
-        return view('admin.addshopproduct', compact('shops', 'brand', 'measurement', 'products', 'pc', 'sub'));
+        $shop_product = Shopproduct::with(['brand', 'subcategory', 'productcategory'])->get(); // Load all relationships
+
+        return view('admin.addshopproduct', compact('products', 'shop_product', 'shops'));
     }
+
+
+    public function getItems($productId)
+    {
+        $items = Shopproduct::with(['brand', 'subcategory', 'productcategory'])
+            ->where('product_id', $productId)
+            ->get();
+
+        return response()->json($items);
+    }
+
+
+    public function addItems(Request $request)
+    {
+        foreach ($request->products as $product) {
+            ShopItem::create([
+                'shop_id' => $request->shop_name,
+                'product_id' => $product['product'],
+                'item' => $product['item'],  // The updated column
+                'discount' => $product['discount'],
+                'units' => $product['units'],
+                'price' => $product['price'],
+            ]);
+        }
+
+        return response()->json(['message' => 'Products added successfully'], 200);
+    }
+
+
 
     public function shopitem()
     {
