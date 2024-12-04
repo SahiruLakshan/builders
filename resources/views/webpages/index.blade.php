@@ -176,7 +176,7 @@
 
     <!-- HEADER -->
     <header class="nav navbar-expand-lg fixed-top">
-        <div class="row justify-content-between justify-content-lg-start align-items-center align-items-lg-start">
+        <div class="row justify-content-between  px-2 px-md-0 py-3 py-md-0 justify-content-lg-start align-items-center align-items-lg-start" style="background-color: rgb(224, 156, 54)">
             <!-- Logo and Menu Section -->
                     {{-- <div class="col-12 d-flex align-items-center justify-content-between h-100 " style="background-color: rgb(224, 156, 54);">
                         <!-- Logo -->
