@@ -277,16 +277,14 @@ class WebController extends Controller
     //     // dd($serviceProviders);
     //     return view('webpages.shops', compact('serviceProviders', 'dictricts'));
     // }
-    public function serviceprovidercategory($name)
+    public function servicecategory($name)
     {
         $serviceProviders = ServiceProvider:: // Eager load the category relationship
-            with('district', 'city', 'service')
-            ->whereHas('service', function ($query) use ($name) {
+            with('district', 'city', 'category')
+            ->whereHas('category', function ($query) use ($name) {
                 $query->where('servicename', 'like', '%' . $name . '%');
             })
             ->paginate(20); // Eager load the district relationship;
-        // ->get();
-        // dd($serviceProviders->toArray());
         $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
         // Paginate the results
         // dd($serviceProviders);

@@ -523,7 +523,7 @@
                                             @foreach($services->chunk(6) as $chunk)
                                             @foreach($chunk as $service)    
                                             <div class="col-6 col-md-4 mb-3">
-                                                        <a href="{{ route('category.service', $service->id) }}">
+                                                        <a href="{{ route('category.service', $service->servicename) }}">
                                                             {{ $service->servicename }}
                                                         </a>
                                                     </div>

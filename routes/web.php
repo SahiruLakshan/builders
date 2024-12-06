@@ -209,10 +209,10 @@ Route::get('/shopSuppliers', [WebController::class, 'shopSuppliers'])->name('sho
 Route::post('/addshopSuppliers', [WebController::class, 'addshopSuppliers'])->name('addshopSuppliers');
 Route::get('/serviceproviderform', [WebController::class, 'servceproviders'])->name('serviceproviderform');
 
-// Route::name('category.')->group(function () {
-// });
-Route::get('product/cat/{name}', [WebController::class, 'shopcategory'])->name('category.shop');
-Route::get('service/cat/{name}', [WebController::class, 'serviceprovidercategory'])->name('category.service');
+Route::name('category.')->group(function () {
+    Route::get('product/cat/{name}', [WebController::class, 'shopcategory'])->name('shop');
+    Route::get('service/cat/{name}', [WebController::class, 'servicecategory'])->name('service');
+});
 
 // about us page route
 Route::get('/aboutus', function () {
