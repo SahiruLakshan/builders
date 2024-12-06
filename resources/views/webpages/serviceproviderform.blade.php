@@ -115,6 +115,15 @@
                 <hr>
                 <div class="row align-items-space-between">
                     <div class="col">
+                        <div class="mb-3 d-flex">
+                            <label for="profileImage" class="form-label">Profile Image:</label>
+                            <input type="file" id="providerImage" name="providerImage" accept="image/*" onchange="previewImage()" required>
+                            <div class="preview-box" id="imagePreview">
+                              <span>Image Preview</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
                         <label for="inputPassword6" class="col-form-label">Name :</label>
                         <input type="text" id="companyName" name="companyName" class="form-control"
                             aria-describedby="telephoneHelp">
@@ -237,6 +246,11 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
+
+
+
+
+
         // Initialize the map
         const map = L.map('map').setView([6.9271, 79.8612], 13); // Default to Colombo, Sri Lanka
 

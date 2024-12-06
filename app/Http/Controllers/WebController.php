@@ -257,7 +257,6 @@ class WebController extends Controller
         $term = $request->input('query');
         $tables = ['shops', 'service_providers', 'brands']; // Add your table names here
         $results = collect(); // Collection to store all results
-
         foreach ($tables as $table) {
             // Get all column names for the table
             $columns = DB::getSchemaBuilder()->getColumnListing($table);
@@ -287,6 +286,7 @@ class WebController extends Controller
 
     public function servicecategory($name)
     {
+
         $serviceProviders = ServiceProvider:: // Eager load the category relationship
             with('district', 'city', 'category')
             ->whereHas('category', function ($query) use ($name) {
@@ -294,8 +294,9 @@ class WebController extends Controller
             })
             ->paginate(20); // Eager load the district relationship;
         $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
+        $brands = Brand::select('id', 'b_name')->get();
         // Paginate the results
-        // dd($serviceProviders);
+        dd($serviceProviders);
         return view('webpages.shops', compact('serviceProviders', 'dictricts'));
     }
 

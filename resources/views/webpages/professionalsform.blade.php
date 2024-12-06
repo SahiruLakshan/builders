@@ -436,23 +436,23 @@
     //     });
     // });
 
-    function previewImage() {
-        const file = document.getElementById("profileImage").files[0];
-        const previewBox = document.getElementById("imagePreview");
-        previewBox.innerHTML = ""; // Clear any existing content
+    // function previewImage() {
+    //     const file = document.getElementById("profileImage").files[0];
+    //     const previewBox = document.getElementById("imagePreview");
+    //     previewBox.innerHTML = ""; // Clear any existing content
 
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = document.createElement("img");
-                img.src = e.target.result;
-                previewBox.appendChild(img);
-            };
-            reader.readAsDataURL(file);
-        } else {
-            previewBox.innerHTML = "<span>Image Preview</span>";
-        }
-    }
+    //     if (file) {
+    //         const reader = new FileReader();
+    //         reader.onload = function(e) {
+    //             const img = document.createElement("img");
+    //             img.src = e.target.result;
+    //             previewBox.appendChild(img);
+    //         };
+    //         reader.readAsDataURL(file);
+    //     } else {
+    //         previewBox.innerHTML = "<span>Image Preview</span>";
+    //     }
+    // }
               //   // select district and city 
                 
               // var cities=[
