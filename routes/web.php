@@ -218,6 +218,7 @@ Route::name('category.')->group(function () {
 Route::get('/aboutus', function () {
     return view('webpages.about');
 })->name('aboutus');
+//this one need to add when approve the service provider
 Route::get('/serviceproviderproject', function () {
     return view('admin.serviceproviderproject');
 })->name('serviceproviderproject');
