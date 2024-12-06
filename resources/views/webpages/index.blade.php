@@ -517,8 +517,9 @@
                                     <button class="subnavbtn fs-6">
                                         Service By Category <i class="fa fa-caret-down"></i>
                                     </button>
-                                    <div class="subnav-content" style="min-height:40vh" >
-                                        <div class="d-flex flex-wrap w-100">
+                                    <div class="subnav-content align-items-start " style="min-height:40vh" >
+                                        <div class="d-flex flex-wrap w-100  ">
+                                    
                                          
                                             @foreach($services->chunk(6) as $chunk)
                                             @foreach($chunk as $service)    
@@ -526,7 +527,7 @@
                                                         <a href="{{ route('category.service', $service->servicename) }}">
                                                             {{ $service->servicename }}
                                                         </a>
-                                                    </div>
+                                            </div>
                                             @endforeach
                                             @endforeach
                                         </div>
