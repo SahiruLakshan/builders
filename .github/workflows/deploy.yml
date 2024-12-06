@@ -44,7 +44,7 @@ jobs:
 
             #composer install --no-interaction --prefer-dist --optimize-autoloader
             # Install dependencies via npm
-            composer install
+            # sudo composer install 
             npm install
             #npm run prod
             npm run build
