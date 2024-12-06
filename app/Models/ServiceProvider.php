@@ -47,7 +47,7 @@ class ServiceProvider extends Model
         return $this->belongsTo(City::class, 'city_id', 'ds_id');
     }
 
-    public function category()
+    public function service()
     {
         return $this->belongsTo(Service::class, 'category_id', 'id');
 
