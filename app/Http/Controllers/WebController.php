@@ -277,7 +277,7 @@ class WebController extends Controller
     //     // dd($serviceProviders);
     //     return view('webpages.shops', compact('serviceProviders', 'dictricts'));
     // }
-    public function servicecategory($name)
+    public function serviceprovidercategory($name)
     {
         $serviceProviders = ServiceProvider:: // Eager load the category relationship
             with('district', 'city', 'service')
