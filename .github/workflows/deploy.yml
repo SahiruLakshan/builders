@@ -44,10 +44,10 @@ jobs:
 
             #composer install --no-interaction --prefer-dist --optimize-autoloader
             # Install dependencies via npm
+            composer install
             npm install
             #npm run prod
             npm run build
-            composer install
             # Set up the .env file
             # cp .env.example .env
             # php artisan key:generate
