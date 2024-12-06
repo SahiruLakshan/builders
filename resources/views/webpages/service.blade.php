@@ -168,9 +168,9 @@
                                     <input type="radio" name="filter-radio" class="form-check-input" />
                                     <span class="form-check-label">Brand new</span>
                                 </label>
-                            </div> --}}
+                            </div> 
                         </div>
-                    </article>
+                    </article>--}}
                 </div>
             </aside>
            
@@ -201,7 +201,7 @@
                                                         </div>
                                                         <div class="d-flex align-items-end">
                                                             <i class="fas fa-phone me-3"></i>
-                                                            <a href="tel:{{ $serviceProvider->number }}" class="text-truncate col">{{ $serviceProvider->number }}</a>
+                                                            <a href="tel:+94{{ $serviceProvider->whatsapp }}" class="text-truncate col">{{ $serviceProvider->whatsapp }}</a>
                                                         </div>
                                                         <div class="d-flex justify-content-between align-items-start">
                                                             <div>

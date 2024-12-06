@@ -395,7 +395,7 @@
                                     <button class="subnavbtn fs-6 ">
                                         Shop By Category <i class="fa fa-caret-down"></i>
                                     </button>
-                                    <div class="subnav-content" style="height:40vh">
+                                    <div class="subnav-content" style="min-height:40vh">
                                         <div class="d-flex flex-wrap">
                                             @foreach ($shopcats as $shopcat)
                                                 <div class="col-6 col-md-4 mb-0">
@@ -517,18 +517,17 @@
                                     <button class="subnavbtn fs-6">
                                         Service By Category <i class="fa fa-caret-down"></i>
                                     </button>
-                                    <div class="subnav-content" style="height: 40vh; ">
-                                        <div class="d-flex flex-wrap">
+                                    <div class="subnav-content" style="min-height:40vh" >
+                                        <div class="d-flex flex-wrap w-100">
+                                         
                                             @foreach($services->chunk(6) as $chunk)
-                                                <div class="col-6 col-md-4 mb-3">
-                                                    @foreach($chunk as $service)
-                                                    <div class="col-6 col-md-4 mb-0">
+                                            @foreach($chunk as $service)    
+                                            <div class="col-6 col-md-4 mb-3">
                                                         <a href="{{ route('category.service', $service->servicename) }}">
                                                             {{ $service->servicename }}
                                                         </a>
                                                     </div>
-                                                    @endforeach
-                                                </div>
+                                            @endforeach
                                             @endforeach
                                         </div>
                                     </div>
@@ -542,7 +541,7 @@
                                     <button class="subnavbtn fs-6 ">
                                         Purchase With Builders.lk <i class="fa fa-caret-down"></i>
                                     </button>
-                                    <div class="subnav-content">
+                                    <div class="subnav-content" style="min-height:40vh">
                                         <div class="col-6 col-md-4">
                                             <a href="#">As a Service Provider</a>
                                         </div>

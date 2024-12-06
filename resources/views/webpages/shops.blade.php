@@ -178,15 +178,15 @@
                                                         <i class="fas fa-phone me-3"></i>
                                                         {{ $shop->p_number }}
                                                     </div> 
-                                                    <a href="tel:{{ $shop->p_number }}"
+                                                    <a href="tel:+94{{ $shop->p_number }}"
                                                         class="btn text-white bg-warning shadow phone-button mt-2 ">
-                                                        <i class="fas fa-phone ms-auto"></i>
+                                                        <i class="fas fa-phone ms-auto me-3"> </i>Contact
                                                     </a>
 
-                                                    <a href="{{ route('view_Shop_profile', $shop->id) }}"
+                                                    {{-- <a href="{{ route('view_Shop_profile', $shop->id) }}"
                                                         class="btn text-white bg-warning shadow phone-button mt-2 ">
                                                         <i class="fas fa-user ms-auto"></i>
-                                                    </a>
+                                                    </a> --}}
                                                     {{-- {{$shop->id}} --}}
                                                 </div>
                                             </p>
