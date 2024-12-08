@@ -86,9 +86,9 @@
 
 
 
-                {{-- <div class="d-flex justify-content-center mt-4">
+                <div class="d-flex justify-content-center mt-4">
                     {{ $serviceProviders->onEachSide(1)->links('pagination::bootstrap-4') }}
-                </div> --}}
+                </div>
             </div>
         </div>
     </div>

@@ -24,49 +24,53 @@
                     <td>{{ $shop->p_number }}</td>
                     <td>
                         <!-- Shop Approval Status -->
-                        <span class="badge {{ $shop->shop_approve && $shop->cancel_shop == 'No' ? 'bg-success' : 'bg-danger' }}">
+                        <span
+                            class="badge {{ $shop->shop_approve && $shop->cancel_shop == 'No' ? 'bg-success' : 'bg-danger' }}">
                             {{ $shop->shop_approve && $shop->cancel_shop == 'No' ? 'Approved' : 'Pending' }}
                         </span>
-                        
+
                         <!-- Product Approval Status -->
-                        <span class="badge {{ $shop->product_approve && $shop->cancel_product == 'No' ? 'bg-success' : 'bg-danger' }}">
+                        <span
+                            class="badge {{ $shop->product_approve && $shop->cancel_product == 'No' ? 'bg-success' : 'bg-danger' }}">
                             @if ($shop->product_approve && $shop->cancel_product == 'No')
-                                <a href="{{ url('/addshopproduct/' . $shop->id) }}" class="btn btn-sm btn-primary">Add Products</a>
+                                <a href="{{ url('/addshopproduct/' . $shop->id) }}" class="btn btn-sm btn-primary">Add
+                                    Products</a>
                             @elseif ($shop->product_approve == null || $shop->cancel_product == 'Yes')
                                 Product Pending
                             @endif
-                        </span>                        
-                        
+                        </span>
                     </td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('/shopupdate/' . $shop->id) }}" class="btn btn-success btn-sm me-2">Edit Details</a>
-                            <a href="{{ url('/shop/delete/' . $shop->id) }}" class="btn btn-warning btn-sm me-2">Delete</a>
+                            <a href="{{ url('/shopupdate/' . $shop->id) }}" class="btn btn-success btn-sm me-2">Edit
+                                Details</a>
+                            <a href="{{ url('/shop/delete/' . $shop->id) }}"
+                                class="btn btn-warning btn-sm me-2">Delete</a>
                         </div>
-
-                       
                     </td>
                     <td>
                         <div class="d-flex align-items-center mt-2">
                             <!-- Shop Approval Buttons -->
                             @if ($shop->shop_approve == null || $shop->cancel_shop == 'Yes')
                                 <button type="button" class="btn btn-dark btn-sm me-2"
-                                    onclick="confirmApproval('{{ $shop->id }}', 'approveShop')">Shop Approve</button>
+                                    onclick="confirmApproval('{{ $shop->id }}', 'approveShop')">Shop
+                                    Approve</button>
                             @else
                                 <button type="button" class="btn btn-danger btn-sm me-2"
                                     onclick="confirmApproval('{{ $shop->id }}', 'cancelShop')">Cancel Shop</button>
                             @endif
 
                             <!-- Product Approval Buttons -->
-                            @if ($shop->shop_approve && $shop->product_approve == null || $shop->cancel_product == 'Yes')
+                            @if (($shop->shop_approve && $shop->product_approve == null) || $shop->cancel_product == 'Yes')
                                 <button type="button" class="btn btn-dark btn-sm me-2"
-                                    onclick="confirmApproval('{{ $shop->id }}', 'approveProduct')">Product Approve</button>
+                                    onclick="confirmApproval('{{ $shop->id }}', 'approveProduct')">Product
+                                    Approve</button>
                             @elseif ($shop->cancel_product == 'No')
                                 <button type="button" class="btn btn-danger btn-sm me-2"
-                                    onclick="confirmApproval('{{ $shop->id }}', 'cancelProduct')">Cancel Product</button>
+                                    onclick="confirmApproval('{{ $shop->id }}', 'cancelProduct')">Cancel
+                                    Product</button>
                             @endif
                         </div>
-
                     </td>
                 </tr>
             @endforeach
@@ -130,9 +134,10 @@
                         location.reload();
                     },
                     error: function(xhr, status, error) {
-    console.log(xhr.responseText);  // Log the error to the console for debugging
-    Swal.fire('Error', 'Something went wrong. Please try again later.', 'error');
-}
+                        console.log(xhr.responseText); // Log the error to the console for debugging
+                        Swal.fire('Error', 'Something went wrong. Please try again later.',
+                        'error');
+                    }
 
                 });
             }
