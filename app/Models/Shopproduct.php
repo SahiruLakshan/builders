@@ -9,8 +9,8 @@ class Shopproduct extends Model
 {
     use HasFactory;
 
-    protected $table='shop_product';
-    protected $fillable=[
+    protected $table = 'shop_product';
+    protected $fillable = [
         'pro_no',
         'product_id',
         'subcategory_id',
@@ -37,16 +37,21 @@ class Shopproduct extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class, 'product_id');
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 
-    public function category()
+    public function subcategory()
     {
-        return $this->belongsTo(Productcategory::class, 'product_category_id');
+        return $this->belongsTo(Productsub::class, 'subcategory_id', 'id');
+    }
+
+    public function productcategory()
+    {
+        return $this->belongsTo(Productcategory::class, 'product_category_id', 'id');
     }
 
     public function brand()
     {
-        return $this->belongsTo(Brand::class, 'brand_id');
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
 }

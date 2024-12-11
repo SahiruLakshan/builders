@@ -334,7 +334,7 @@
                                         </li>
                                        
                                         <li>
-                                            <a class="slide-item" href="/shops">View Shops</a>
+                                            <a class="slide-item" href="/viewshops">View Shops</a>
                                         </li>
                                         <li>
                                             <a class="slide-item" href="/approvedshops"> Fully Approved Shops</a>
@@ -362,7 +362,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/viewshopProducts">View Shop Products
+                                            <a class="slide-item" href="/viewshopProducts">View  Products Item
                                             </a>
                                         </li>
                                         <li>
@@ -458,7 +458,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="">View Service Provider</a>
+                                            <a class="slide-item" href="/serviceproviders">View Service Provider</a>
                                         </li>
                                     </ul>
                                 </li>

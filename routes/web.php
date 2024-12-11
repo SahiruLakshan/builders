@@ -56,7 +56,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/addshop', [ShopController::class, 'index'])->name('addshop');
     Route::get('/shopprofile/{id}', [ShopController::class, 'shopprofile'])->name('shopprofile');
     Route::post('/submitshop', [ShopController::class, 'submitshop']);
-    Route::get('/shops', [ShopController::class, 'shops']);
+    Route::get('/viewshops', [ShopController::class, 'shops']);
     Route::get('/shopupdate/{id}', [ShopController::class, 'update']);
     Route::put('/shop/update/{id}', [ShopController::class, 'updateShop']);
     Route::get('/shop/delete/{id}', [ShopController::class, 'deleteShop']);
@@ -105,6 +105,10 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/submitshopitem', [ShopproductController::class, 'submitProducts'])->name('submit.shopitem');
     Route::get('/shopitem', [ShopproductController::class, 'shopitem'])->name('shopitem');
     Route::get('/check-pro-no-unique', [ShopproductController::class, 'checkProNoUnique']);
+    Route::get('/get-items/{productId}', [ShopproductController::class, 'getItems']);
+    Route::post('/add-shop-items', [ShopproductController::class, 'addItems'])->name('shop.addItems');
+
+
 
     Route::get('/addproduct', [ProductController::class, 'index']);
     Route::get('/products', [ProductController::class, 'products']);
@@ -131,6 +135,10 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
     Route::post('/addserviceprovider/store', [ServiceProviderController::class, 'store'])->name('addserviceprovider.store');
     Route::get('/serviceproviders', [ServiceProviderController::class, 'view'])->name('serviceproviders.show');
+    Route::post('/approveserviceprovider/{id}', [ServiceProviderController::class, 'approveServiceProviders'])->name('services.approve');
+    Route::post('/rejectserviceprovider/{id}', [ServiceProviderController::class, 'rejectServiceProviders'])->name('services.reject');
+    Route::get('/deleteserviceprovider/{id}', [ServiceProviderController::class, 'destroy'])->name('services.destroy');
+    Route::post('/submitproject', [ServiceProviderController::class, 'submitproject'])->name('submit.project');
 
     Route::get('/categories', [ProfessionalCategoryController::class, 'index'])->name('categories.index');
     Route::get('/categories/create', [ProfessionalCategoryController::class, 'create'])->name('categories.create');
@@ -199,11 +207,7 @@ Route::get('/shops', function () {
 //bass form loarding
 Route::get('/shopSuppliers', [WebController::class, 'shopSuppliers'])->name('shopSuppliers');
 Route::post('/addshopSuppliers', [WebController::class, 'addshopSuppliers'])->name('addshopSuppliers');
-
-
-
 Route::get('/serviceproviderform', [WebController::class, 'servceproviders'])->name('serviceproviderform');
-
 
 Route::name('category.')->group(function () {
     Route::get('product/cat/{name}', [WebController::class, 'shopcategory'])->name('shop');
@@ -214,6 +218,10 @@ Route::name('category.')->group(function () {
 Route::get('/aboutus', function () {
     return view('webpages.about');
 })->name('aboutus');
+//this one need to add when approve the service provider
+Route::get('/serviceproviderproject', function () {
+    return view('admin.serviceproviderproject');
+})->name('serviceproviderproject');
 
 //Authentication Routes
 Route::get('register', [RegisteredUserController::class, 'create'])

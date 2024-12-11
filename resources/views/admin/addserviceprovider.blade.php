@@ -58,6 +58,13 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
+                                        <label for="inputPassword4">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            placeholder="Email Of The Service Provider" />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
                                         <label for="maxProjectValue">Grade </label>
                                         <input type="text" class="form-control" id="grade" name="grade"
                                             placeholder="Grade Of The Service Provider" />
@@ -262,6 +269,23 @@
                                         }
                                     });
                                 });
+                                function previewImage() {
+                                        const file = document.getElementById("providerImage").files[0];
+                                        const previewBox = document.getElementById("imagePreview");
+                                        previewBox.innerHTML = ""; // Clear any existing content
+
+                                        if (file) {
+                                            const reader = new FileReader();
+                                            reader.onload = function(e) {
+                                                const img = document.createElement("img");
+                                                img.src = e.target.result;
+                                                previewBox.appendChild(img);
+                                            };
+                                            reader.readAsDataURL(file);
+                                        } else {
+                                            previewBox.innerHTML = "<span>Image Preview</span>";
+                                        }
+                                    }
                             </script>
     
                             <h5>Contact Details</h5>
@@ -291,6 +315,15 @@
     
                             <h5>Company Details</h5>
                             <div class="row align-items-space-between">
+                                <div class="col">
+                                    <div class="mb-3 d-flex">
+                                        <label for="profileImage" class="form-label">Profile Image:</label>
+                                        <input type="file" id="providerImage" name="providerImage" accept="image/*" onchange="previewImage()" required>
+                                        <div class="preview-box" id="imagePreview">
+                                          <span>Image Preview</span>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col">
                                     <label for="inputPassword6" class="col-form-label">Name :</label>
                                     <input type="text" id="companyName" name="companyName" class="form-control"

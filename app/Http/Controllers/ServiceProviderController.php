@@ -1,13 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Mail\SpApprove;
 use App\Models\City;
 
 use App\Models\District;
+use App\Models\Projects;
 use App\Models\Service;
 use App\Models\ServiceProvider;
-
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class ServiceProviderController extends Controller
 {
@@ -33,6 +37,7 @@ class ServiceProviderController extends Controller
         try {
             $validated = $request->validate([
                 'number' => 'required|string',
+                'email' => 'required|email|max:255|unique:service_providers,email',
                 's_name' => 'required|string|max:255',
                 'grade' => 'required|string|max:50',
                 'inputAddress' => 'required|string|max:500',
@@ -53,6 +58,7 @@ class ServiceProviderController extends Controller
 
             $serviceProvider = new ServiceProvider();
             $serviceProvider->number = $validated['number'];
+            $serviceProvider->email = $validated['email'];
             $serviceProvider->s_name = $validated['s_name'];
             $serviceProvider->grade = $validated['grade'];
             $serviceProvider->address = $validated['inputAddress'];
@@ -71,13 +77,63 @@ class ServiceProviderController extends Controller
             $serviceProvider->max_project_value = $validated['maxProjectValue'];
             $serviceProvider->save();
 
-            return redirect()->back()->with('success', 'Service Provider added successfully!');
+            if ($request->has('projectName') && is_array($request->projectName)) {
+                foreach ($request->projectName as $index => $projectName) {
+                    $project = new Projects();
+                    $project->service_provider_id = $serviceProvider->number; // Relate the project to the service provider
+                    $project->name = $projectName;
+                    $project->location = $request->projectLocation[$index] ?? null; // Use null as a fallback if index doesn't exist
+                    $project->value = $request->projectValue[$index] ?? null;
+                    $project->person = $request->contactPerson[$index] ?? null;
+                    $project->number = $request->contactNumber[$index] ?? null;
+                    $project->save();
+                }
+            }            
+    
+            return redirect()->back()->with('success', 'Service Provider and Project History added successfully!');
+    
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('An error occurred: ' . $e->getMessage());
         }
+    }
 
+
+    public function view(Request $request)
+    {
+        $query = $request->input('query');
+        $serviceProviders = ServiceProvider::where('s_name', 'like', '%' . $query . '%')->orWhere('number', 'like', '%' . $query . '%')->orderBy('created_at', 'desc')->paginate(8);
+        if ($request->ajax()) {
+            return view('admin.viewtbl.serviceProviderPagination', compact('serviceProviders'))->render();
+        }
+
+        return view('admin.viewtbl.viewServiceProvider', compact('serviceProviders'));
+        
         
     }
 
-    
+    public function approveServiceProviders(Request $request, $id)
+    {
+        $serviceProvider = ServiceProvider::find($id);
+        $serviceProvider->status = 'Approved';
+        $serviceProvider->save();
+        Mail::to($serviceProvider->email)->send(new SpApprove($serviceProvider));
+        return redirect()->back()->with('success', 'Service Provider approved successfully!');
+    }
+
+    public function rejectServiceProviders(Request $request, $id)
+    {
+        $serviceProvider = ServiceProvider::find($id);
+        $serviceProvider->status = 'Rejected';
+        $serviceProvider->save();
+        
+        return redirect()->back()->with('success', 'Service Provider rejected successfully!');
+    }
+
+    public function destroy($id)
+    {
+        $serviceProvider = ServiceProvider::find($id);
+        $serviceProvider->delete();
+        return redirect()->back()->with('success', 'Service Provider deleted successfully!');
+    }
+
 }

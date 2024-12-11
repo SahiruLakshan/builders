@@ -53,15 +53,15 @@
                                         <!-- Contact button or action button -->
                                         @if (isset($result->p_number))
                                             <!-- This is a Shop -->
-                                            <a href="tel:{{ $result->p_number }}"
+                                            <a href="tel:+94{{ $result->p_number }}"
                                                 class="btn text-white bg-warning shadow phone-button">
-                                                <i class="fas fa-phone"></i>
+                                                <i class="fas fa-phone"></i>Contact
                                             </a>
                                         @elseif (isset($result->brand_contact_number))
                                             <!-- This is a Brand -->
-                                            <a href="tel:{{ $result->brand_contact_number }}"
+                                            <a href="tel:+94{{ $result->brand_contact_number }}"
                                                 class="btn text-white bg-warning shadow phone-button">
-                                                <i class="fas fa-phone"></i>
+                                                <i class="fas fa-phone"> </i>Contact
                                             </a>
                                         @endif
 

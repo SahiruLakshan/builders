@@ -57,10 +57,17 @@
                                             <input type="text"
                                                 class="form-control @error('professionalNumber') is-invalid @enderror"
                                                 id="professionalNumber" name="professionalNumber"
-                                                value="{{ old('professionalNumber') }}">
-                                            @error('professionalNumber')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
+                                                value="{{ old('professionalNumber') }}" readonly>
+                                                <script>
+                                                    function generateServiceProviderNumber() {
+                                                        const prefix = 'PR';
+                                                        const randomNumber = Math.floor(Math.random() * 100000); 
+                                                        const formattedNumber = prefix + randomNumber.toString().padStart(6, '0');
+                                                        document.getElementById('professionalNumber').value = formattedNumber;
+                                                    }
+
+                                                    window.onload = generateServiceProviderNumber;
+                                                </script>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -319,6 +326,27 @@
         </div>
     </div>
     <script>
+        function previewImage() {
+        const file = document.getElementById("profileImage").files[0];
+        const previewBox = document.getElementById("imagePreview");
+        previewBox.innerHTML = ""; // Clear any existing content
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                previewBox.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            previewBox.innerHTML = "<span>Image Preview</span>";
+        }
+    }
+
+
+
+
         $(document).ready(function() {
             $('.selectsum1').select2({
                 placeholder: "Select specializations...", // Sets the placeholder text

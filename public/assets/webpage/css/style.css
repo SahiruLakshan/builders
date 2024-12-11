@@ -93,7 +93,6 @@ Table OF Contents
         10
     ); /* Text color on hover/focus to maintain readability */
 }
-
 body {
     /* font-family: "Montserrat", sans-serif; 
      font-weight: 400;
@@ -101,7 +100,17 @@ body {
     background-color: #eae7dc; */
     background-color: #eae7dc;
 
-    margin-top: 160px;
+    margin-top: 70px;
+}
+@media (min-width: 768px) {
+    body {
+        margin-top: 80px;
+    }
+}
+@media (min-width: 992px) {
+    body {
+        margin-top: 190px;
+    }
 }
 /*
 h1,
@@ -592,7 +601,7 @@ textarea.input {
     position: absolute;
     left: 0;
     background-color: rgb(173, 172, 164);
-    width: 100%;
+    width: 100% !important;
     z-index: 99;
 }
 
@@ -1163,7 +1172,7 @@ textarea.input {
     transform: translate(-50%, -5px);
 }
 
-.product .add-to-cart {
+/* .product .add-to-cart {
     position: absolute;
     left: 1px;
     right: 1px;
@@ -1177,12 +1186,37 @@ textarea.input {
     -webkit-transition: 0.2s all;
     transition: 0.2s all;
     z-index: 2;
+} */
+
+.product .add-to-cart {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px; /* Adjust positioning */
+    padding: 10px;
+    background: #1e1f29;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%);
+    transition: 0.3s all ease-in-out;
+    z-index: 50; /* Ensure it's on top */
 }
 
-.product:hover .add-to-cart {
+/* .product:hover .add-to-cart {
     -webkit-transform: translateY(100%);
     -ms-transform: translateY(100%);
     transform: translateY(100%);
+} */
+/* .product:hover .add-to-cart {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+} */
+.product:hover .add-to-cart {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0%);
 }
 
 .product .add-to-cart .add-to-cart-btn {

@@ -235,7 +235,6 @@ class WebController extends Controller
         $term = $request->input('query');
         $tables = ['shops', 'service_providers', 'brands']; // Add your table names here
         $results = collect(); // Collection to store all results
-
         foreach ($tables as $table) {
             // Get all column names for the table
             $columns = DB::getSchemaBuilder()->getColumnListing($table);
@@ -263,18 +262,34 @@ class WebController extends Controller
         return view('webpages.viewprofiles', compact('shop'));
     }
 
+    // public function servicecategory($name)
+    // {
+
+    //     $serviceProviders = ServiceProvider:: // Eager load the category relationship
+    //         with('district', 'city', 'category')
+    //         ->whereHas('category', function ($query) use ($name) {
+    //             $query->where('servicename', 'like', '%' . $name . '%');
+    //         })
+    //         ->paginate(20); // Eager load the district relationship;
+    //     $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
+    //     // $brands = Brand::select('id', 'b_name')->get();
+    //     // Paginate the results
+    //     // dd($serviceProviders);
+    //     return view('webpages.shops', compact('serviceProviders', 'dictricts'));
+    // }
     public function servicecategory($name)
     {
         $serviceProviders = ServiceProvider:: // Eager load the category relationship
-        with('district','city','category')
-        ->whereHas('category', function ($query) use ($name) {
-            $query->where('servicename', 'like', '%' . $name . '%');
-        })
-        ->paginate(20); // Eager load the district relationship;
+            with('district', 'city', 'category')
+            ->whereHas('category', function ($query) use ($name) {
+                $query->where('servicename', 'like', '%' . $name . '%');
+            })
+            ->paginate(20); // Eager load the district relationship;
         $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
-     // Paginate the results
+        // Paginate the results
         // dd($serviceProviders);
         return view('webpages.service', compact('serviceProviders', 'dictricts'));
     }
+
 
 }

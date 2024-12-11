@@ -246,18 +246,31 @@
     <div class="custom-form-style px-5">
       <div class="border">
 
-        <form class="p-4" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+        <form class="p-4" method="POST" action="{{ route('submitprofessionals') }}" enctype="multipart/form-data">
+          @csrf
           <!-- Personal Information -->
           <h4>Personal Information</h4>
           <hr>
-          {{-- this one need to auto fill from our side like that PR00001 --}}
-          {{-- <div class=" mb-3">
-            <label for="fullName" class="form-label">Professional Number</label>
-            <input type="text" class="form-control" id="professionalNumber" name="professionalNumber" >
-          </div> --}}
+          <div class="form-group">
+            <label for="professionalNumber">Professional Number</label>
+            <input type="text"
+                class="form-control @error('professionalNumber') is-invalid @enderror"
+                id="professionalNumber" name="professionalNumber"
+                value="{{ old('professionalNumber') }}" readonly>
+                <script>
+                    function generateServiceProviderNumber() {
+                        const prefix = 'PR';
+                        const randomNumber = Math.floor(Math.random() * 100000); 
+                        const formattedNumber = prefix + randomNumber.toString().padStart(6, '0');
+                        document.getElementById('professionalNumber').value = formattedNumber;
+                    }
+
+                    window.onload = generateServiceProviderNumber;
+                </script>
+          </div>
           <div class="mb-3">
             <label for="fullName" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter full name" required>
+            <input type="text" class="form-control" id="fullName" name="p_Name" placeholder="Enter full name" required>
           </div>
           
           <div class="mb-3 d-flex">
@@ -275,13 +288,13 @@
             </div>
             <div class="col-12 col-md-6">
               <label for="email" class="form-label">Email Address</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" required>
+              <input type="email" class="form-control" id="email" name="p_email" placeholder="Enter email address" required>
             </div>
           </div>
 
           <div class="mb-3">
             <label for="address" class="form-label">Address</label>
-            <input type="text" class="form-control" id="address" name="address" placeholder="Street Address">
+            <input type="text" class="form-control" id="address" name="p_address" placeholder="Street Address">
           </div>
 
           <div class="row mb-3">
@@ -313,7 +326,7 @@
 
           <div class="mb-3">
             <label for="linkedin" class="form-label">LinkedIn Profile or Professional Website</label>
-            <input type="url" class="form-control" id="linkedin" name="linkedin" placeholder="URL to profile">
+            <input type="text" class="form-control" id="linkedin" name="linkedin" placeholder="URL to profile">
           </div>
 
           <!-- Professional Details -->
@@ -343,7 +356,7 @@
             {{-- in here also need to show professional Catogery get form data base 
              --}}
             <label for="specializations" class="form-label">Specializations</label>
-            <select multiple class="form-select select2" id="specializations" name="specializations[]">
+            <select multiple class="form-select select2" id="specializations" name="specialization[]">
               <option value="Civil Engineering">Civil Engineering</option>
               <option value="Electrical Work">Electrical Work</option>
               <option value="Structural Analysis">Structural Analysis</option>
@@ -416,30 +429,30 @@
         }
     });
 
-    $(document).ready(function() {
-        $('#specializations').select2({
-            placeholder: "Select Specializations",
-            allowClear: true
-        });
-    });
+    // $(document).ready(function() {
+    //     $('#specializations').select2({
+    //         placeholder: "Select Specializations",
+    //         allowClear: true
+    //     });
+    // });
 
-    function previewImage() {
-        const file = document.getElementById("profileImage").files[0];
-        const previewBox = document.getElementById("imagePreview");
-        previewBox.innerHTML = ""; // Clear any existing content
+    // function previewImage() {
+    //     const file = document.getElementById("profileImage").files[0];
+    //     const previewBox = document.getElementById("imagePreview");
+    //     previewBox.innerHTML = ""; // Clear any existing content
 
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = document.createElement("img");
-                img.src = e.target.result;
-                previewBox.appendChild(img);
-            };
-            reader.readAsDataURL(file);
-        } else {
-            previewBox.innerHTML = "<span>Image Preview</span>";
-        }
-    }
+    //     if (file) {
+    //         const reader = new FileReader();
+    //         reader.onload = function(e) {
+    //             const img = document.createElement("img");
+    //             img.src = e.target.result;
+    //             previewBox.appendChild(img);
+    //         };
+    //         reader.readAsDataURL(file);
+    //     } else {
+    //         previewBox.innerHTML = "<span>Image Preview</span>";
+    //     }
+    // }
               //   // select district and city 
                 
               // var cities=[
@@ -525,5 +538,34 @@
             });
           });
 
+//add cetification
+          $(document).ready(function() {
+              $('.selectsum1').select2({
+                  placeholder: "Select specializations...", // Sets the placeholder text
+                  allowClear: true // Allows users to clear the selection if desired
+              }).val(null).trigger('change');
+          });
+
+          $(document).ready(function() {
+
+
+              // Add new certification row
+              $('#addCertification').click(function() {
+                  // Clone the first certification row
+                  let newCertification = $('.certification-row:first').clone();
+
+                  // Clear the input fields in the cloned row
+                  newCertification.find('input').val('');
+
+                  // Append the cloned row to the certifications container
+                  $('#certifications').append(newCertification);
+              });
+
+              // Delete a specific certification row
+              $(document).on('click', '.delete-certification', function() {
+                  // Remove the certification row
+                  $(this).closest('.certification-row').remove();
+              });
+          });
 </script>
 @endsection
