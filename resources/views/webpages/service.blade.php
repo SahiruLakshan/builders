@@ -209,7 +209,7 @@
                                                                 Grade: {{ $serviceProvider->grade }}
                                                             </div>
                                                             <a href="tel:{{ $serviceProvider->number }}" class="btn text-white bg-warning shadow phone-button mt-2">
-                                                                <i class="fas fa-phone ms-auto"></i> Contact
+                                                                <i class="fas fa-phone ms-auto"></i> 
                                                             </a>
                                                         </div>
                                                     </p>
@@ -232,3 +232,4 @@
  
 @endsection
 
+Contact
