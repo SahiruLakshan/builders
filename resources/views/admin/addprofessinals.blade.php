@@ -344,16 +344,6 @@
         }
     }
 
-
-
-
-        $(document).ready(function() {
-            $('.selectsum1').select2({
-                placeholder: "Select specializations...", // Sets the placeholder text
-                allowClear: true // Allows users to clear the selection if desired
-            }).val(null).trigger('change');
-        });
-
         $(document).ready(function() {
 
 
