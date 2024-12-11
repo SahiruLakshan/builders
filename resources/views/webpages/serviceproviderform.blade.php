@@ -45,6 +45,13 @@
                             placeholder="Name Of The Service Provider" />
                     </div>
                     <div class="col">
+                        <div class="form-group">
+                            <label for="inputPassword4">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Email Of The Service Provider" />
+                        </div>
+                    </div>
+                    <div class="col">
                         <label for="maxProjectValue">Grade </label>
                         <input type="text" class="form-control" id="grade" name="grade"
                             placeholder="Grade Of The Service Provider" />
