@@ -37,8 +37,7 @@ class ShopController extends Controller
         $category_count = Shopproduct::where('shop_id', $id)->distinct('product_category_id')->count();
 
 
-        $shop_product = Shopproduct::where('shop_id', $id)->with('product', 'category', 'brand')->get();
-        ;
+        $shop_product = Shopproduct::where('shop_id', $id)->with('product', 'category', 'brand')->get();;
         if (!$shop) {
             return response()->json([
                 'message' => 'Shop not found',
@@ -67,7 +66,11 @@ class ShopController extends Controller
     {
         $query = $request->input('query');
 
-        $shops = Shop::where('name', 'like', '%' . $query . '%')->orWhere('number', 'like', '%' . $query . '%')->paginate(8);
+        $shops = Shop::where('name', 'like', '%' . $query . '%')
+            ->orWhere('number', 'like', '%' . $query . '%')
+            ->orderBy('created_at', 'desc') // Order by latest first
+            ->paginate(8);
+
 
         if ($request->ajax()) {
             return view('admin.viewtbl.shoppagination', compact('shops'))->render();
@@ -171,14 +174,14 @@ class ShopController extends Controller
             'br' => 'required|string|max:255',
             'shop_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-    
+
         try {
             $shop = Shop::findOrFail($id);                   // find the shop by ID
-    
+
             $data = $request->only([
                 'name',
                 'email',
@@ -192,29 +195,28 @@ class ShopController extends Controller
                 'fb_link',
                 'br'
             ]);
-    
+
             // Handle multiple categories
             $data['category'] = implode(',', $request->input('category')); // convert array to comma-separated string
-    
+
             if ($request->hasFile('shop_img')) {             // handle image upload if new file is provided
                 // Delete the old image if it exists
                 if ($shop->shop_img && file_exists(public_path('assets/shop/' . $shop->shop_img))) {
                     unlink(public_path('assets/shop/' . $shop->shop_img));
                 }
-    
+
                 $file = $request->file('shop_img');
                 $filename = time() . '_' . $file->getClientOriginalName();
                 $file->move('assets/shop', $filename);
                 $data['shop_img'] = $filename;
             }
-    
+
             $shop->update($data);                            // update shop data
-    
+
             return redirect()->back()->with('success', 'Shop Updated.');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors($e->getMessage())->withInput();
         }
-    
     }
 
     public function deleteShop($id)
@@ -292,7 +294,6 @@ class ShopController extends Controller
             Mail::to($shop->email)->send(new ProductApprove($shop));
 
             return response()->json(['message' => 'Product approved successfully!']);
-
         } catch (\Exception $e) {
             // Log the exception message
             Log::error("Error approving product for shop ID {$id}: " . $e->getMessage());
