@@ -184,6 +184,7 @@
                         <div class="d-flex flex-row flex-wrap justify-content-start mb-4">
                             @foreach ($serviceProviders as $serviceProvider)
                                 <div class="col-12 col-md-6 p-2">
+                                    {{-- <a href="{{route('view_Service_provider_profile', $serviceProvider->id) }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">   --}}
                                     <a href="#" class="text-decoration-none text-dark">
                                         <div class="shadow hcard-200 bg-white d-flex flex-row">
                                             <!-- Image on the left side -->
@@ -192,6 +193,7 @@
                                             <!-- Text and button on the right side -->
                                             <div class="col-8 d-flex flex-column p-4">
                                                 <div>
+
                                                     <h5 class="card-title">{{ $serviceProvider->s_name }}</h5>
                                                     <p class="card-text p-0 m-0 text-small text-muted">
                                                         <div class="text-truncate-two-line">
@@ -217,6 +219,7 @@
                                             </div>
                                         </div>
                                     </a>
+                                {{-- </a> --}}
                                 </div>
                             @endforeach
                         </div>
@@ -232,4 +235,3 @@
  
 @endsection
 
-Contact

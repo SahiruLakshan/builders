@@ -262,6 +262,14 @@ class WebController extends Controller
         return view('webpages.viewprofiles', compact('shop'));
     }
 
+    // public function view_Service_provider_profile($id)
+    // {
+
+    //     $serviceProvider = ServiceProvider::find($id);
+    //     $shopJson = json_encode($serviceProvider);
+    //     // dd($serviceProvider);
+    //     return view('webpages.viewprofiles', compact('serviceprovider'));
+    // }
     // public function servicecategory($name)
     // {
 
