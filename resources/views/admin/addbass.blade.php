@@ -24,9 +24,9 @@
                 <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                     <div class="card box-shadow-0">
                         <div class="card-header">
-                            <h4 class="card-title mb-1">Add New Professionals </h4>
+                            <h4 class="card-title mb-1">Add New Bass </h4>
                             <p class="mb-2">
-                                Enter the name of the Professionals you want to add
+                                Enter the name of the Bass you want to add
                             </p>
                         </div>
                         <div class="card-body pt-0">
@@ -38,10 +38,10 @@
                                 <h4>Personal Information</h4>
                                 <hr>
                                 {{-- this one need to auto fill from our side like that PR00001 --}}
-                                <div class="d-flex">
+                                <div class="d-flex ">
                                     <div class="col">
-                                        <!-- Display Validation Errors -->
-                                        {{-- @if ($errors->any())
+                                        {{-- <!-- Display Validation Errors -->
+                                        @if ($errors->any())
                                             <div class="alert alert-danger">
                                                 <ul>
                                                     @foreach ($errors->all() as $error)
@@ -53,43 +53,125 @@
 
                                         <!-- Personal Information -->
                                         <div class="form-group">
-                                            <label for="professionalNumber">Professional Number</label>
+                                            <label for="professionalNumber">Bass Number</label>
                                             <input type="text"
-                                                class="form-control @error('professionalNumber') is-invalid @enderror"
-                                                id="professionalNumber" name="professionalNumber"
-                                                value="{{ old('professionalNumber') }}" readonly>
-                                                <script>
-                                                    function generateServiceProviderNumber() {
-                                                        const prefix = 'PR';
-                                                        const randomNumber = Math.floor(Math.random() * 100000); 
-                                                        const formattedNumber = prefix + randomNumber.toString().padStart(6, '0');
-                                                        document.getElementById('professionalNumber').value = formattedNumber;
-                                                    }
-
-                                                    window.onload = generateServiceProviderNumber;
-                                                </script>
+                                                class="form-control @error('BassNumber') is-invalid @enderror"
+                                                id="BassNumber" name="BassNumber"
+                                                value="{{ old('BassNumber') }}" readonly>
+                                              
                                         </div>
                                     </div>
+                                   
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <div class="mb-3">
+                                                <label for="fullName" class="form-label">NIC No</label>
+                                                <input type="text" class="form-control" id="nic" name="nic"
+                                                    placeholder="Enter NIC Here" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="d-flex">
                                     <div class="col">
                                         <div class="form-group">
                                             <div class="mb-3">
                                                 <label for="fullName" class="form-label">Full Name</label>
-                                                <input type="text" class="form-control" id="fullName" name="p_Name"
+                                                <input type="text" class="form-control" id="fullName" name="b_Name"
                                                     placeholder="Enter full name" required>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="mb-3  d-flex">
-                                    <label for="profileImage" class="form-label">Profile Image:</label>
-                                    <input type="file" id="profileImage" name="profileImage" accept="image/*"
-                                        onchange="previewImage()" required>
-                                    <div class="preview-box" id="imagePreview">
-                                        <span>Image Preview</span>
-                                    </div>
 
                                 </div>
+                                {{-- <div class="row">
+                                    <div class="col ">
+                                        <div class="form-group">
+                                            <div class="mb-3 d-flex">
+                                                <label for="profileImage" class="form-label">NIC Image:</label>
+                                                <input type="file" id="nicImage" name="nicImage" accept="image/*"
+                                                    onchange="previewImage()" required>
+                                                <div class="preview-box" id="imagePreview2">
+                                                    <span>NIC Image Preview</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <div class="mb-3 d-flex">
+                                                <label for="profileImage" class="form-label">Back Side NIC Image:</label>
+                                                <input type="file" id="backNicImage" name="backNicImage" accept="image/*"
+                                                    onchange="previewImage()" required>
+                                                <div class="preview-box" id="imagePreview3">
+                                                    <span>Back Side NIC Image Preview</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                <div class="col">
+                                    <div class="mb-3 ">
+                                        <label for="profileImage" class="form-label">Profile Image:</label>
+                                        <input type="file" id="profileImage" name="profileImage" accept="image/*"
+                                            onchange="previewImage()" required>
+                                        <div class="preview-box" id="imagePreview">
+                                            <span>Image Preview</span>
+                                        </div>
+    
+                                    </div>
+                                </div> --}}
+                                <hr>
+                                <div class="row md-3 ">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <div class="mb-3 d-flex">
+                                                <label for="nicImage" class="form-label">NIC Image:</label>
+                                                <input type="file" id="nicImage" name="nicImage" accept="image/*" capture="enviorement"
+                                                    onchange="previewImage(this)" required>
+                                                <div class="preview-box" id="imagePreview2">
+                                                    <span>NIC Image Preview</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <div class="mb-3 d-flex">
+                                                <label for="backNicImage" class="form-label">Back Side NIC Image:</label>
+                                                <input type="file" id="backNicImage" name="backNicImage" accept="image/*"  capture="enviorement" 
+                                                    onchange="previewImage(this)" required>
+                                                <div class="preview-box" id="imagePreview3">
+                                                    <span>Back Side NIC Image Preview</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="d-flex">
+                                    <div class="form-group"">
+                                    <div class="col">
+                                            <div class="mb-3">
+                                                <label for="profileImage" class="form-label">Profile Image:</label>
+                                                <input type="file" id="profileImage" name="profileImage" accept="image/*"  capture="user"
+                                                onchange="previewImage(this)" required>
+                                                <div class="preview-box" id="imagePreview">
+                                                    <span>Image Preview</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="phoneNumber">Telephone Number</label>
+                                            <input type="text" class="form-control" id="telephoneNumber" name="telephoneNumber"
+                                                placeholder="Enter Phone Number" />
+                                        </div>
+                                    </div>
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="phoneNumber">Phone Number</label>
@@ -100,22 +182,18 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="email">Email Address</label>
-                                            <input type="text" class="form-control" id="email" name="p_email"
+                                            <input type="text" class="form-control" id="email" name="b_email"
                                                 placeholder="Enter Email Address" />
                                         </div>
                                     </div>
-
-
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="address">Address</label>
-                                        <textarea rows="3" class="form-control" id="address" name="p_address" placeholder="Street Address"></textarea>
+                                        <textarea rows="3" class="form-control" id="address" name="b_address" placeholder="Street Address"></textarea>
 
                                     </div>
                                 </div>
-
-
                                 <div class="d-flex mb-3">
                                     <div class="col-6 pt-2">
                                         <label for="district">Select District:</label>
@@ -130,8 +208,6 @@
                                         </select>
                                     </div>
                                 </div>
-
-                             
                                 <div class="d-flex">
                                     <div class="col-md-4">
                                         <label for="zip" class="form-label">Zip Code</label>
@@ -149,8 +225,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <div class="mb-3">
-                                            <label for="linkedin" class="form-label">LinkedIn Profile or Professional
-                                                Website</label>
+                                            <label for="linkedin" class="form-label">LinkedIn Profile or FaceBook
+                                                Link</label>
                                             <input type="text" class="form-control" id="linkedin" name="linkedin"
                                                 placeholder="URL to profile">
                                         </div>
@@ -158,10 +234,10 @@
                                 </div>
 
                                 <!-- Professional Details -->
-                                <h4>Professional Details</h4>
+                                <h4>Bass Details</h4>
                                 <hr>
                                 <div class="d-flex flex-wrap">
-                                    <div class="col-md-6">
+                                    <div class="col">
                                         <div class="form-group">
                                             <div class="mb-3">
                                                 <label for="jobTitle" class="form-label">Job Title/Role</label>
@@ -170,7 +246,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col">
                                         <div class="form-group">
                                             <div class="mb-3">
                                                 <label for="experienceLevel" class="form-label">Experience Level</label>
@@ -185,7 +261,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col">
                                         <div class="form-group">
                                             <div class="mb-3">
                                                 <label for="yearsOfExperience" class="form-label">Years of
@@ -195,6 +271,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="d-flex">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="mb-3">
@@ -202,20 +280,39 @@
                                                 <label for="specializations" class="form-label">Specializations</label>
                                                 <select multiple="multiple" name="specialization[]"
                                                     class="form-select selectsum1">
-                                                    @foreach ($cate as $category)
+                                                    {{-- @foreach ($cate as $category)
                                                         <option value="{{ $category->name }}">{{ $category->name }}
                                                         </option>
-                                                    @endforeach
+                                                    @endforeach --}}
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="mb-3">
+                                                {{-- Professional Category neet to shgow in here this one get form professinalCategory tyble it need to create contoller also --}}
+                                                <label for="specializations" class="form-label">Working Area</label>
+                                                <select multiple="multiple" name="workingArea[]"
+                                                    class="form-select selectsum1">
+                                                    {{-- @foreach ($cate as $category)
+                                                        <option value="{{ $category->name }}">{{ $category->name }}
+                                                        </option>
+                                                    @endforeach --}}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
+                                  
+                                
                                 <div class="col-md-12 mb-3">
                                     <label for="skills" class="form-label">Skills</label>
                                     <textarea class="form-control" id="skills" name="skills" rows="3"
                                         placeholder="List skills like CAD, project management, etc."></textarea>
                                 </div>
+
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Certifications</label>
                                     <div id="certifications">
@@ -254,7 +351,7 @@
                                         Certification</button>
 
                                 </div>
-                                <div class="form-group mt-3">
+                                {{-- <div class="form-group mt-3">
                                     <div class="col-md-12 ">
 
                                         <label for="licenseNumber" class="form-label">Professional License Number</label>
@@ -262,7 +359,7 @@
                                             name="licenseNumber" placeholder="License Number (if applicable)">
 
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-12">
                                     <!-- Submit Button -->
                                     <button type="submit" class="btn btn-primary mt-3 mb-2">Submit</button>
@@ -275,67 +372,99 @@
             </div>
         </div>
     </div>
-       <script>
-                                    // Prepare district and city data in JavaScript from Blade data
-                                    var cities = [
-                                        @foreach ($dictricts as $district)
-                                            {
-                                                "districtId": "{{ $district->dis_id }}",
-                                                "districtName": "{{ $district->dis_name }}",
-                                                "cities": [
-                                                    @foreach ($district->city as $city)
-                                                        {
-                                                            "cityName": "{{ $city->ds_name }}",
-                                                            "cityId": "{{ $city->ds_id }}"
-                                                        },
-                                                    @endforeach
-                                                ]
-                                            },
-                                        @endforeach
-                                    ];
-                                    // console.log("🚀 ~ $district:", cities)
-
-                                    $(document).ready(function() {
-
-                                        // Populate district dropdown
-                                        let districtOptions = '<option value="">Select District</option>';
-                                        cities.forEach((elem) => {
-                                            districtOptions += `<option value="${elem.districtId}">${elem.districtName}</option>`;
-                                        });
-                                        // console.log("🚀 ~ $ ~ districtOptions:", $('#district'))
-
-                                        $('#district').html(districtOptions); // Initialize Select2 on the district dropdown
-                                        $('#district').select2(); // Initialize Select2 on the district dropdown
-                                        $('#city').select2(); // Initialize Select2 on the city dropdown
-
-                                        $('#district').change(function() {
-                                            const selectedDistrict = cities.find((elem) => elem.districtId == $(this).val());
-
-                                            if (selectedDistrict) {
-                                                let cityOptions = '<option value="">Select City</option>';
-                                                selectedDistrict.cities.forEach((city) => {
-                                                    cityOptions += `<option value="${city.cityId}">${city.cityName}</option>`;
-                                                });
-
-                                                $('#city').html(cityOptions).prop("disabled", false).removeClass('disabled').select2();
-                                            } else {
-                                                $('#city').html('<option value="">Select City</option>').prop("disabled", true)
-                                                    .addClass('disabled');
-                                            }
-                                        });
-                                    });
-    </script>
     <script>
-        function previewImage() {
-        const file = document.getElementById("profileImage").files[0];
-        const previewBox = document.getElementById("imagePreview");
-        previewBox.innerHTML = ""; // Clear any existing content
+    
+    </script>
+    {{-- <script>
+        $(document).ready(function() {
 
+            // Prepare district and city data in JavaScript from Blade data
+            const cities = [
+                @foreach ($dictricts as $district)
+                    {
+                        districtId: "{{ $district->dis_id }}",
+                        districtName: "{{ $district->dis_name }}",
+                        cities: [
+                            @foreach ($district->city as $city)
+                                {
+                                    cityName: "{{ $city->ds_name }}",
+                                    cityId: "{{ $city->ds_id }}"
+                                },
+                            @endforeach
+                        ]
+                    },
+                @endforeach
+            ];
+
+            // Populate district dropdown
+            const districtOptions = '<option value="">Select District</option>';
+            cities.forEach((elem) => {
+                districtOptions += `<option value="${elem.districtId}">${elem.districtName}</option>`;
+            });
+
+            $('#district').html(districtOptions); // Initialize Select2 on the district dropdown
+            $('#district').select2(); // Initialize Select2 on the district dropdown
+            $('#city').select2(); // Initialize Select2 on the city dropdown
+
+            $('#district').change(function() {
+                const selectedDistrict = cities.find((elem) => elem.districtId == $(this).val());
+
+                if (selectedDistrict) {
+                    let cityOptions = '<option value="">Select City</option>';
+                    selectedDistrict.cities.forEach((city) => {
+                        cityOptions += `<option value="${city.cityId}">${city.cityName}</option>`;
+                    });
+
+                    $('#city').html(cityOptions).prop("disabled", false).removeClass('disabled').select2();
+                } else {
+                    $('#city').html('<option value="">Select City</option>').prop("disabled", true)
+                        .addClass('disabled');
+                }
+            });
+        });
+    </script> --}}
+    <script>
+    //     function previewImage() {
+    //     const file = document.getElementById("profileImage").files[0];
+    //     const previewBox = document.getElementById("imagePreview");
+    //     previewBox.innerHTML = ""; // Clear any existing content
+
+    //     if (file) {
+    //         const reader = new FileReader();
+    //         reader.onload = function(e) {
+    //             const img = document.createElement("img");
+    //             img.src = e.target.result;
+    //             previewBox.appendChild(img);
+    //         };
+    //         reader.readAsDataURL(file);
+    //     } else {
+    //         previewBox.innerHTML = "<span>Image Preview</span>";
+    //     }
+    // }
+
+    function generateBassNumber() {
+            const prefix = 'BR';
+            const randomNumber = Math.floor(Math.random() * 100000); 
+            const formattedNumber = prefix + randomNumber.toString().padStart(6, '0');
+            document.getElementById('BassNumber').value = formattedNumber;
+        }
+
+    window.onload = generateBassNumber;
+
+    function previewImage(input) 
+    {
+        const file = input.files[0]; // Get the file from the input
+        const previewBoxId = input.nextElementSibling.id; // Get the ID of the corresponding preview box
+        const previewBox = document.getElementById(previewBoxId);
+        previewBox.innerHTML = ""; // Clear any existing content
+        
         if (file) {
             const reader = new FileReader();
             reader.onload = function(e) {
                 const img = document.createElement("img");
                 img.src = e.target.result;
+                img.style.maxWidth = "100%"; // Adjust as needed
+                img.style.height = "auto";
                 previewBox.appendChild(img);
             };
             reader.readAsDataURL(file);
@@ -343,9 +472,8 @@
             previewBox.innerHTML = "<span>Image Preview</span>";
         }
     }
-
+                                    
         $(document).ready(function() {
-
 
             // Add new certification row
             $('#addCertification').click(function() {

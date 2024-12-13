@@ -198,8 +198,12 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 //search optoins route
 Route::get('/search', [WebController::class, 'search'])->name('search');
 
-
-
+Route::get('/addbass', function () {
+    return view('admin.addbass');
+});
+Route::get('/addbassCategory', function () {
+    return view('admin.addbassCategory');
+});
 Route::get('/shops', function () {
     return view('webpages.shops');
 });
@@ -251,11 +255,12 @@ Route::get('/serviceproviderprofile', function () {
 
 Route::get('/professionalsform', [ProfessionalController::class, 'professionalForm'])->name('professionalsform');
 
-// Route::get('/viewprofile', function () {
-//     return view('webpages.viewprofiles');
-// });
+Route::get('/bassform', function () {
+    return view('webpages.bassform');
+});
 
 Route::get('/view_Shop_profile/{id}', [WebController::class, 'view_Shop_profile'])->name('view_Shop_profile');
+// Route::get('/view_Service_provider_profile/{id}', [WebController::class, 'view_Service_provider_profile'])->name('view_Service_provider_profile');
 
 
 

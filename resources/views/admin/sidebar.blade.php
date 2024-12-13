@@ -495,14 +495,14 @@
                                             <a href="javascript:void(0);">Bass</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="addprofessionalsCategory">Add New Bass Category
+                                            <a class="slide-item" href="#">Add New Bass Category
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/categories">View Bass Category</a>
+                                            <a class="slide-item" href="#">View Bass Category</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="addprofessionals">Add New Bass
+                                            <a class="slide-item" href="#">Add New Bass
                                             </a>
                                         </li>
                                         <li>
