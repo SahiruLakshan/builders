@@ -1,0 +1,42 @@
+---
+deployment:
+  tasks:
+    - export DEPLOY_PATH=/home/builder1/public_html
+    - echo "Starting Laravel Deployment"
+
+    # Step 1: Install dependencies with Composer
+    - echo "Running Composer Instal l"
+    - /usr/local/bin/php /home/username/domain/artisan down
+    - composer install
+    # Step 2: Install dependencies with npm
+    - echo "Running NPM"
+    - /usr/local/bin/php /home/username/domain/artisan down
+    - npm install install
+    - npm run build
+
+    # Step 2: Set permissions
+    - echo "Setting permissions"
+    - find $DEPLOY_PATH/storage -type d -exec chmod 775 {} \;
+    - find $DEPLOY_PATH/storage -type f -exec chmod 664 {} \;
+    - find $DEPLOY_PATH/bootstrap/cache -type d -exec chmod 775 {} \;
+    - find $DEPLOY_PATH/bootstrap/cache -type f -exec chmod 664 {} \;
+
+    # Step 3: Update environment variables
+    # - echo "Updating .env file"
+    # - cp $DEPLOY_PATH/.env.production $DEPLOY_PATH/.env
+
+    # Step 4: Run database migrations
+    # - echo "Running database migrations"
+    # - /usr/local/bin/php $DEPLOY_PATH/artisan migrate --force
+
+    # Step 5: Optimize Laravel
+    # - echo "Optimizing Laravel application"
+    # - /usr/local/bin/php $DEPLOY_PATH/artisan config:cache
+    # - /usr/local/bin/php $DEPLOY_PATH/artisan route:cache
+    # - /usr/local/bin/php $DEPLOY_PATH/artisan view:cache
+
+    # Step 6: Bring the app back online
+    # - echo "Bringing Laravel application back online"
+    # - /usr/local/bin/php $DEPLOY_PATH/artisan up
+
+    # - echo "Laravel Deployment Completed Successfully"
