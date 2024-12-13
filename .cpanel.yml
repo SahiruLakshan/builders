@@ -6,11 +6,11 @@ deployment:
 
     # Step 1: Install dependencies with Composer
     - echo "Running Composer Instal l"
-    - /usr/local/bin/php /home/username/domain/artisan down
+    - /usr/local/bin/php /home/builder1/builders.lk/artisan down
     - composer install
     # Step 2: Install dependencies with npm
     - echo "Running NPM"
-    - /usr/local/bin/php /home/username/domain/artisan down
+    - /usr/local/bin/php /home/builder1/builders.lk/artisan down
     - npm install install
     - npm run build
 
@@ -22,8 +22,8 @@ deployment:
     - find $DEPLOY_PATH/bootstrap/cache -type f -exec chmod 664 {} \;
 
     # Step 3: Update environment variables
-    # - echo "Updating .env file"
-    # - cp $DEPLOY_PATH/.env.production $DEPLOY_PATH/.env
+    - echo "Updating .env file"
+    - cp $DEPLOY_PATH/.env $DEPLOY_PATH/.env
 
     # Step 4: Run database migrations
     # - echo "Running database migrations"
@@ -36,7 +36,7 @@ deployment:
     # - /usr/local/bin/php $DEPLOY_PATH/artisan view:cache
 
     # Step 6: Bring the app back online
-    # - echo "Bringing Laravel application back online"
-    # - /usr/local/bin/php $DEPLOY_PATH/artisan up
+    - echo "Bringing Laravel application back online"
+    - /usr/local/bin/php $DEPLOY_PATH/artisan up
 
-    # - echo "Laravel Deployment Completed Successfully"
+    - echo "Laravel Deployment Completed Successfully"
