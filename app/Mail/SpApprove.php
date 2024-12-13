@@ -26,7 +26,7 @@ class SpApprove extends Mailable
 
     public function build()
     {
-        return $this->view('emails.SpApprove')
+        return $this->view('emails.spapprove')
                     ->subject('Service Provider Has Been Approved')
                     ->with(['serviceProvider' => $this->serviceProvider]);
     }

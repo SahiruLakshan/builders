@@ -327,12 +327,12 @@
                                         <li class="side-menu__label1">
                                             <a href="javascript:void(0);">Shops</a>
                                         </li>
-                                      
+
                                         <li>
                                             <a class="slide-item" href="/addshop">Add New Shop
                                             </a>
                                         </li>
-                                       
+
                                         <li>
                                             <a class="slide-item" href="/viewshops">View Shops</a>
                                         </li>
@@ -413,7 +413,7 @@
                                         <li class="side-menu__label1">
                                             <a href="javascript:void(0);">Shop Catogory</a>
                                         </li>
-                                  
+
                                     </ul>
                                 </li> --}}
                                 {{-- <li class="slide">
@@ -424,20 +424,20 @@
                                             <a href="javascript:void(0);">Product Catogory</a>
                                         </li>
                                         <li>
-                                       
+
                                     </ul>
                                 </li> --}}
 
                                 {{-- <li class="slide">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
                                             class="side-menu__label">Product SubCatogory</span></a>
-                                   
+
                                 </li> --}}
 
                                 {{-- <li class="slide">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
                                             class="side-menu__label">Product Measurements</span></a>
-                                    
+
                                 </li> --}}
                                 <li class="slide">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span

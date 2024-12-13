@@ -15,7 +15,7 @@
                             <th>Telephone Number</th>
                             <th>Phone Number</th>
                             <th>Email Address</th>
-                            <th>Address</th>     
+                            <th>Address</th>
                             <th>District</th>
                             <th>City</th>
                             <th>Zip Code</th>
@@ -86,11 +86,11 @@
                                         <button type="submit" class="btn btn-sm btn-success">Add Projects</button>
                                     </form>
                                 </td>
-                                
+
                                 <td>
                                     <a href="{{ route('services.update', $service->id) }}"
                                         class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="{{ route('services.destroy', $service->id) }}"
+                                    <a href="{{ route('service.destroy', $service->id) }}"
                                         class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>

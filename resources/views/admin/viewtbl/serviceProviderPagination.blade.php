@@ -73,7 +73,7 @@
                                         </form>
                                     @endif
                                     {{-- here need to add add Project button --}}
-                                    
+
                                     {{-- <form action="" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-sm btn-success">Add Project</button>
@@ -83,7 +83,7 @@
                                 <td>
                                     <a href="{{ route('services.update', $service->id) }}"
                                         class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="{{ route('services.destroy', $service->id) }}"
+                                    <a href="{{ route('service.destroy', $service->id) }}"
                                         class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>

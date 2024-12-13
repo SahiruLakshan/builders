@@ -137,7 +137,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/serviceproviders', [ServiceProviderController::class, 'view'])->name('serviceproviders.show');
     Route::post('/approveserviceprovider/{id}', [ServiceProviderController::class, 'approveServiceProviders'])->name('services.approve');
     Route::post('/rejectserviceprovider/{id}', [ServiceProviderController::class, 'rejectServiceProviders'])->name('services.reject');
-    Route::get('/deleteserviceprovider/{id}', [ServiceProviderController::class, 'destroy'])->name('services.destroy');
+    Route::get('/deleteserviceprovider/{id}', [ServiceProviderController::class, 'destroy'])->name('service.destroy');
     Route::post('/submitproject', [ServiceProviderController::class, 'submitproject'])->name('submit.project');
 
     Route::get('/categories', [ProfessionalCategoryController::class, 'index'])->name('categories.index');
@@ -169,7 +169,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
     Route::get('/addprofessionalsCategory', [ProfessionalController::class, 'index'])->name('addprofessionalsCategory');
     Route::post('/addprofessioncateory', [ProfessionalController::class, 'addprofessionals'])->name('submitprofessionalsCategory');
-    Route::get('/viewprofessionalsCategory', [ProfessionalController::class, 'view'])->name('addprofessionalsCategory');
+    Route::get('/viewprofessionalsCategory', [ProfessionalController::class, 'view'])->name('viewprofessionalsCategory');
     Route::get('/addprofessionals', [ProfessionalController::class, 'addadminprofessionals'])->name('addprofessionals');
     Route::post('/submitprofessionals', [ProfessionalController::class, 'store'])->name('submitprofessionals');
     Route::get('/professionals', [ProfessionalController::class, 'viewpro'])->name('viewprofessionals');
