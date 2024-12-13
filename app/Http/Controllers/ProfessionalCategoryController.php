@@ -10,8 +10,8 @@ class ProfessionalCategoryController extends Controller
     // Display all categories
     public function index()
     {
-        $categories = ProfessionalCategory::all();
-        return view('admin/viewtbl/viewprofessionalcategory', compact('categories'));
+        $prof_cate = ProfessionalCategory::all();
+        return view('admin/viewtbl/viewprofessionalcategory', compact('prof_cate'));
     }
 
     // Show the form for creating a new category
