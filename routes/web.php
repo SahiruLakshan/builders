@@ -119,7 +119,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
     Route::get('/addproductcategory', [ProductcategoryController::class, 'index']);
     Route::post('/submitproductcategory', [ProductcategoryController::class, 'submitproductcate']);
-    Route::get('/categories', [ProductcategoryController::class, 'categories']);
+    Route::get('/productcategories', [ProductcategoryController::class, 'categories']);
     Route::get('/getproductcategory/{id}', [ProductcategoryController::class, 'getProductCategory']);
     Route::put('/update/productcategory/{id}', [ProductcategoryController::class, 'updateProductCategory']);
     Route::get('/delete/productcategory/{id}', [ProductcategoryController::class, 'deleteproductcate']);

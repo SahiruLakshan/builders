@@ -377,7 +377,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/categories">View Product Category</a>
+                                            <a class="slide-item" href="/productcategories">View Product Category</a>
                                         </li>
                                     </ul>
                                     <ul class="slide-menu">

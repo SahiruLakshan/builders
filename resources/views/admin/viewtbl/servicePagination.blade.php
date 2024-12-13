@@ -20,7 +20,7 @@
                                 <td>{{ $service->description }}</td>
                                 <td>
                                     <a href="{{ route('services.update', $service->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    <form action="{{ route('services.destroy', $service->id) }}" method="POST" style="display:inline-block;">
+                                    <form action="{{ route('service.delete', $service->id) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>

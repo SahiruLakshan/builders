@@ -170,9 +170,9 @@ class ServiceController extends Controller
     public function delete($id)
     {
         $service = Service::findOrFail($id);
-        $service->update(['status' => 0, 'updated_by' => auth()->id()]); // Soft delete and log editor
+        $service->delete(); // Soft delete and log editor
 
-        return redirect()->route('service.index')->with('success', 'Service deleted successfully.');
+        return redirect()->back()->with('success', 'Service deleted successfully.');
     }
 
 
