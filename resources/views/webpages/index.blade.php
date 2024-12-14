@@ -176,7 +176,7 @@
 
     <!-- HEADER -->
     <header class="nav navbar-expand-lg fixed-top">
-        <div class="row justify-content-between justify-content-lg-start align-items-center align-items-lg-start">
+        <div class="row justify-content-between  px-2 px-md-0 py-3 py-md-0 justify-content-lg-start align-items-center align-items-lg-start" style="background-color: rgb(224, 156, 54)">
             <!-- Logo and Menu Section -->
                     {{-- <div class="col-12 d-flex align-items-center justify-content-between h-100 " style="background-color: rgb(224, 156, 54);">
                         <!-- Logo -->
@@ -316,19 +316,34 @@
                         <div class="collapse navbar-collapse p-1" id="navbarNavDropdown">
                             <ul class="navbar-nav ms-auto p-1">
                                 <li class="nav-item dropdown custom-dropdown p-1">
-                                    <a href="#" class="nav-link dropdown-toggle p-1" data-bs-toggle="dropdown"
+                                    <a href="#" class="nav-link p-1" 
                                         aria-expanded="false">
                                         Find Bass
                                     </a>
-                                    <ul class="dropdown-menu p-1">
+                                    {{-- <ul class="dropdown-menu p-1">
                                         <li>
                                             <a href="#" class="dropdown-item border p-1">Welder</a>
                                         </li>
                                         <li>
                                             <a href="#" class="dropdown-item border p-1">QA</a>
                                         </li>
-                                    </ul>
+                                    </ul> --}}
                                 </li>
+                                <li class="nav-item dropdown custom-dropdown p-1">
+                                    <a href="#" class="nav-link p-1" 
+                                        aria-expanded="false">
+                                        Find Professionals
+                                    </a>
+                                    {{-- <ul class="dropdown-menu p-1">
+                                        <li>
+                                            <a href="#" class="dropdown-item border p-1">Welder</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="dropdown-item border p-1">QA</a>
+                                        </li>
+                                    </ul> --}}
+                                </li>
+
 
                                 <li class="nav-item dropdown custom-dropdown p-1">
                                     <a href="#" class="nav-link dropdown-toggle p-1" data-bs-toggle="dropdown"
@@ -380,7 +395,7 @@
                                     <button class="subnavbtn fs-6 ">
                                         Shop By Category <i class="fa fa-caret-down"></i>
                                     </button>
-                                    <div class="subnav-content" style="height:40vh">
+                                    <div class="subnav-content" style="min-height:40vh">
                                         <div class="d-flex flex-wrap">
                                             @foreach ($shopcats as $shopcat)
                                                 <div class="col-6 col-md-4 mb-0">
@@ -432,7 +447,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <!-- Search Bar -->
                             <div class="col-12 col-md-4 mb-2 mb-md-0">
                                 <form action="{{ route('search') }}" method="GET"
@@ -444,9 +458,6 @@
                                     </button>
                                 </form>
                             </div>
-
-
-
                             <!-- Second Dropdown -->
                             <div class=" mb-2 mb-md-0 p-0">
                                 {{-- <div class="subnav">
@@ -488,7 +499,7 @@
                                         </div>
                                     </div>
                                 </div> --}}
-                                <div class="subnav">
+                                {{-- <div class="subnav">
                                   <button class="subnavbtn fs-6 ">
                                       Service By Category <i class="fa fa-caret-down"></i>
                                   </button>
@@ -501,7 +512,28 @@
                                           @endforeach
                                       </div>
                                   </div>
-                              </div>
+                                </div> --}}
+                                <div class="subnav">
+                                    <button class="subnavbtn fs-6">
+                                        Service By Category <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <div class="subnav-content align-items-start " style="min-height:40vh" >
+                                        <div class="d-flex flex-wrap w-100  ">
+                                    
+                                         
+                                            @foreach($services->chunk(6) as $chunk)
+                                            @foreach($chunk as $service)    
+                                            <div class="col-6 col-md-4 mb-3">
+                                                        <a href="{{ route('category.service', $service->servicename) }}">
+                                                            {{ $service->servicename }}
+                                                        </a>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                
                             </div>
 
                             <!-- Fourth Dropdown -->
@@ -510,7 +542,7 @@
                                     <button class="subnavbtn fs-6 ">
                                         Purchase With Builders.lk <i class="fa fa-caret-down"></i>
                                     </button>
-                                    <div class="subnav-content">
+                                    <div class="subnav-content" style="min-height:40vh">
                                         <div class="col-6 col-md-4">
                                             <a href="#">As a Service Provider</a>
                                         </div>
@@ -707,6 +739,27 @@
       });
     </script> --}}
     <script>
+         function previewImage() {
+        const file = document.getElementById("providerImage").files[0];
+        const previewBox = document.getElementById("imagePreview");
+        previewBox.innerHTML = ""; // Clear any existing content
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                previewBox.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            previewBox.innerHTML = "<span>Image Preview</span>";
+        }
+    }
+
+
+
+
         // JavaScript to handle dropdown functionality
         document.querySelectorAll(".subnavbtn").forEach(function(button) {
             const subnavContent = button.nextElementSibling;

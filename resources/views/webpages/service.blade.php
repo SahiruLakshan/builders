@@ -2,7 +2,7 @@
 @section('content')
 
     <!-- /MAIN HEADER -->
-    <div class="container-fluid" style="padding-top:145px ">
+    <div class="container-fluid" >
         <div class="row">
             <h3>Select Your Products</h3>
             <aside class="col-md-3 px-0">
@@ -72,7 +72,7 @@
                                 <h6 class="title">Location</h6>
                             </a>
                         </header>
-                        <div class="filter-content collapse show" id="collapse_4">
+                        {{-- <div class="filter-content collapse show" id="collapse_4">
                             <div class="card-body">
                                 <select class="form-select" id="district">
                                     <option value="">Select District</option>
@@ -89,7 +89,7 @@
                                 </select>
                                 
                             </div>
-                        </div>
+                        </div> --}}
                     </article>
 
                     <!-- Servicers  Filter -->
@@ -168,51 +168,70 @@
                                     <input type="radio" name="filter-radio" class="form-check-input" />
                                     <span class="form-check-label">Brand new</span>
                                 </label>
-                            </div> --}}
+                            </div> 
                         </div>
-                    </article>
+                    </article>--}}
                 </div>
             </aside>
-            @if ($shops == null)
-                <div class="col">
+           
+            {{-- Service Providers Section --}}
+            @if ($serviceProviders->isEmpty())
+            <div class="col">
+                <h2>There are no Services in this Category</h2>
+            </div>
+                @else
+                    <div class="col-10 col-md-9">
+                        <div class="d-flex flex-row flex-wrap justify-content-start mb-4">
+                            @foreach ($serviceProviders as $serviceProvider)
+                                <div class="col-12 col-md-6 p-2">
+                                    {{-- <a href="{{route('view_Service_provider_profile', $serviceProvider->id) }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">   --}}
+                                    <a href="#" class="text-decoration-none text-dark">
+                                        <div class="shadow hcard-200 bg-white d-flex flex-row">
+                                            <!-- Image on the left side -->
+                                            <img src="{{ asset('assets/shop/'.$serviceProvider->s_img) }}" class="d-block col-4 object-fit-cover rounded-start" alt="Service Provider Image">
+                                            
+                                            <!-- Text and button on the right side -->
+                                            <div class="col-8 d-flex flex-column p-4">
+                                                <div>
 
-                    <h2>There are no Service  in this Category</h2>
-
-                </div>
-            @else
-                <div class="col-9">
-                    <div class="row row-cols-2 g-2 mb-2">
-                        @foreach ($shops as $shop)
-                            <div class="col">
-                                <div class="card d-flex flex-row">
-                                    <!-- Image on the left side -->
-                                    <img src="{{ asset('assets/shop/'.$shop->shop_img) }}" class="img-fluid" alt="..." style="width: 40%;">
-
-                                    <!-- Text and button on the right side -->
-                                    <div class="card-body d-flex flex-column justify-content-between">
-                                        <div>
-                                            <h5 class="card-title">{{ $shop->name }}</h5>
-                                            {{-- <p class="card-text">
-                        With supporting text below as a natural lead-in to additional content.
-                      </p> --}}
+                                                    <h5 class="card-title">{{ $serviceProvider->s_name }}</h5>
+                                                    <p class="card-text p-0 m-0 text-small text-muted">
+                                                        <div class="text-truncate-two-line">
+                                                            <i class="fas fa-map-marker-alt me-2"></i>
+                                                            {{ $serviceProvider->address }}
+                                                            {{ $serviceProvider->district->dis_name }}, {{ $serviceProvider->city->city_name }}
+                                                        </div>
+                                                        <div class="d-flex align-items-end">
+                                                            <i class="fas fa-phone me-3"></i>
+                                                            <a href="tel:+94{{ $serviceProvider->whatsapp }}" class="text-truncate col">{{ $serviceProvider->whatsapp }}</a>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between align-items-start">
+                                                            <div>
+                                                                <i class="fas fa-user-check me-3"></i>
+                                                                Grade: {{ $serviceProvider->grade }}
+                                                            </div>
+                                                            <a href="tel:{{ $serviceProvider->number }}" class="btn text-white bg-warning shadow phone-button mt-2">
+                                                                <i class="fas fa-phone ms-auto"></i> 
+                                                            </a>
+                                                        </div>
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <a href="tel:{{ $shop->p_number }}" class="btn btn-primary align-self-end">Contact
-                                            Us</a>
-                                    </div>
+                                    </a>
+                                {{-- </a> --}}
                                 </div>
-                            </div>
-                        @endforeach
-            @endif
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
         </div>
-
-
-
-
-        <div class="d-flex justify-content-center mt-4">
-            {{ $shops->links() }}
-        </div>
+        {{-- <div class="d-flex justify-content-center mt-4">
+            {{ $serviceProviders->links() }}
+        </div> --}}
     </div>
-    </div>
-    </div>
+    
+  
  
 @endsection
+

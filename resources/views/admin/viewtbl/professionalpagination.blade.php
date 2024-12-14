@@ -20,6 +20,7 @@
             <th style="max-width: 40%;">Certifications</th>
             <th style="max-width: 40%;">Professional L.Number</th>
             <th style="max-width: 10%;">Actions</th>
+            <th style="max-width: 10%;">Actions 2</th>
         </tr>
     </thead>
     <tbody>
@@ -60,6 +61,16 @@
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
                     </span>
+                </td>
+                <td>
+                    {{-- <span>
+                        <a href="" class="btn btn-success btn-sm">Add project</a>
+                        <form action="" method="POST" style="display:inline;">
+                            @csrf
+                            @method('')
+                            <button type="submit" class="btn btn-danger btn-sm">Add Project</button>
+                        </form>
+                    </span> --}}
                 </td>
             </tr>
         @endforeach

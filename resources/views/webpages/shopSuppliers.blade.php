@@ -196,6 +196,69 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
+        $(document).ready(function() {
+            $('#shop_category').select2({
+                placeholder: "Select a category",
+                allowClear: true
+            });
+
+            var cities = [
+                @foreach ($dictricts as $dictrict)
+                    {
+                        'districtId': '{{ $dictrict->dis_id }}',
+                        'districtName': '{{ $dictrict->dis_name }}',
+                        'cities': [
+                            @foreach ($dictrict->city as $city)
+                                {
+                                    'cityName': '{{ $city->ds_name }}',
+                                    'cityId': {{ $city->ds_id }}
+                                },
+                            @endforeach
+                        ]
+                    },
+                @endforeach
+            ];
+
+            let content = '<option value="">Select District</option>';
+            cities.forEach((elem) => {
+                content += `<option value="${elem.districtId}">${elem.districtName}</option>`;
+            });
+            $('#district').html(content);
+            $('#district').select2();
+            $('#city').select2();
+
+            $('#district').change(function() {
+                $('#city').removeClass('disabled');
+                $('#city').removeAttr('disabled');
+                let content = '<option value="">Select City</option>';
+                cities.find((elem) => elem.districtId == $(this).val()).cities.forEach((elem) => {
+                    content += `<option value="${elem.cityId}">${elem.cityName}</option>`;
+                });
+                $('#city').html(content);
+                $('#city').select2();
+            });
+        });
+
+        function previewImage() {
+            const file = document.getElementById("shop_image").files[0];
+            const previewBox = document.getElementById("imagePreview");
+            previewBox.innerHTML = ""; // Clear any existing content
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement("img");
+                    img.src = e.target.result;
+                    previewBox.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewBox.innerHTML = "<span>Image Preview</span>";
+            }
+        }
+
+
+
         const map = L.map('map').setView([6.9271, 79.8612], 13);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -328,65 +391,6 @@
             });
         }
 
-        $(document).ready(function() {
-            $('#shop_category').select2({
-                placeholder: "Select a category",
-                allowClear: true
-            });
-
-            var cities = [
-                @foreach ($dictricts as $dictrict)
-                    {
-                        'districtId': '{{ $dictrict->dis_id }}',
-                        'districtName': '{{ $dictrict->dis_name }}',
-                        'cities': [
-                            @foreach ($dictrict->city as $city)
-                                {
-                                    'cityName': '{{ $city->ds_name }}',
-                                    'cityId': {{ $city->ds_id }}
-                                },
-                            @endforeach
-                        ]
-                    },
-                @endforeach
-            ];
-
-            let content = '<option value="">Select District</option>';
-            cities.forEach((elem) => {
-                content += `<option value="${elem.districtId}">${elem.districtName}</option>`;
-            });
-            $('#district').html(content);
-            $('#district').select2();
-            $('#city').select2();
-
-            $('#district').change(function() {
-                $('#city').removeClass('disabled');
-                $('#city').removeAttr('disabled');
-                let content = '<option value="">Select City</option>';
-                cities.find((elem) => elem.districtId == $(this).val()).cities.forEach((elem) => {
-                    content += `<option value="${elem.cityId}">${elem.cityName}</option>`;
-                });
-                $('#city').html(content);
-                $('#city').select2();
-            });
-        });
-
-        function previewImage() {
-            const file = document.getElementById("shop_image").files[0];
-            const previewBox = document.getElementById("imagePreview");
-            previewBox.innerHTML = ""; // Clear any existing content
-
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement("img");
-                    img.src = e.target.result;
-                    previewBox.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            } else {
-                previewBox.innerHTML = "<span>Image Preview</span>";
-            }
-        }
+        
     </script> --}}
 @endsection

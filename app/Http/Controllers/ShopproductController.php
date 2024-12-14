@@ -18,7 +18,7 @@ class ShopproductController extends Controller
     public function viewshopProducts()
     {
 
-        return view('admin.viewtbl.viewshopProducts');
+        return view('admin.viewtbl.viewProductsitem');
     }
     public function index($id)
     {

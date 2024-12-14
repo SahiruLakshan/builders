@@ -6,43 +6,51 @@
                 <table class="table table-bordered border text-nowrap mb-0 mt-3">
                     <thead>
                         <tr>
-                            <th>ServiceProvider Number</th>
-                            <th>Name</th>
-                            <th>Grade</th>
+                            <th>Bass Number</th>
+                            <th>NIC No</th>
+                            <th>Full Name</th>
+                            <th>NIC Image</th>
+                            <th>Back Side NIC</th>
+                            <th>Profile Image</th>
+                            <th>Telephone Number</th>
+                            <th>Phone Number</th>
+                            <th>Email Address</th>
                             <th>Address</th>
-                            <th>Select Category</th>
-                            <th>Select District</th>
+                            <th>District</th>
                             <th>City</th>
-                            <th>Telephone</th>
-                            <th>Mobile</th>
-                            <th>WhatsApp</th>
-                            <th>Company Name</th>
-                            <th>BR</th>
-                            <th>NOF</th>
-                            <th>Maximum Project Value</th>
-                            <th>Location</th> <!-- New Location Column -->
-                            <th>Status</th>
+                            <th>Zip Code</th>
+                            <th>Date of Birth</th>
+                            <th>LinkedIn Profile or FaceBook Link</th> <!-- New Location Column -->
+                            <th>Job Title/Role</th>
+                            <th>Experience Level</th>
+                            <th>Years of Experience</th>
+                            <th>Specializations</th>
+                            <th>Working Area</th>
+                            <th>Skills</th>
+                            <th>Certifications</th>
                             <th>Action 1</th>
                             <th>Actions 2</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($serviceProviders as $service)
+                        {{-- @foreach ($serviceProviders as $service) --}}
                             <tr>
-                                <td>{{ $service->number }}</td>
-                                <td>{{ $service->s_name }}</td>
-                                <td>{{ $service->grade }}</td>
-                                <td>{{ $service->address }}</td>
-                                <td>{{ $service->category->servicename ?? 'N/A' }}</td>
-                                <td>{{ $service->district->dis_name ?? 'N/A' }}</td>
-                                <td>{{ $service->city->ds_name ?? 'N/A' }}</td>
-                                <td>{{ $service->telephone }}</td>
-                                <td>{{ $service->mobile }}</td>
-                                <td>{{ $service->whatsapp }}</td>
-                                <td>{{ $service->company_name }}</td>
-                                <td>{{ $service->business_reg_no }}</td>
-                                <td>{{ $service->no_of_employees }}</td>
-                                <td>{{ $service->max_project_value }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td>
                                     @if ($service->longitude && $service->latitude)
                                         <a href="https://www.google.com/maps?q={{ $service->latitude }},{{ $service->longitude }}"
@@ -72,14 +80,13 @@
                                             <button type="submit" class="btn btn-sm btn-danger">Reject</button>
                                         </form>
                                     @endif
-                                    {{-- here need to add add Project button --}}
-
-                                    {{-- <form action="" method="POST">
+                                    {{-- addbassproject blade form  need to link to here... --}}
+                                    <form action="" method="POST">
                                         @csrf
-                                        <button type="submit" class="btn btn-sm btn-success">Add Project</button>
-                                    </form> --}}
-
+                                        <button type="submit" class="btn btn-sm btn-success">Add Projects</button>
+                                    </form>
                                 </td>
+
                                 <td>
                                     <a href="{{ route('services.update', $service->id) }}"
                                         class="btn btn-warning btn-sm">Edit</a>
@@ -94,7 +101,7 @@
 
 
                 <div class="d-flex justify-content-center mt-4">
-                    {{ $serviceProviders->onEachSide(1)->links('pagination::bootstrap-4') }}
+                    {{-- {{ $serviceProviders->onEachSide(1)->links('pagination::bootstrap-4') }} --}}
                 </div>
             </div>
         </div>

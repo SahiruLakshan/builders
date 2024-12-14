@@ -88,10 +88,10 @@ class ServiceProviderController extends Controller
                     $project->number = $request->contactNumber[$index] ?? null;
                     $project->save();
                 }
-            }            
-    
+            }
+
             return redirect()->back()->with('success', 'Service Provider and Project History added successfully!');
-    
+
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('An error occurred: ' . $e->getMessage());
         }
@@ -107,8 +107,8 @@ class ServiceProviderController extends Controller
         }
 
         return view('admin.viewtbl.viewServiceProvider', compact('serviceProviders'));
-        
-        
+
+
     }
 
     public function approveServiceProviders(Request $request, $id)
@@ -125,7 +125,7 @@ class ServiceProviderController extends Controller
         $serviceProvider = ServiceProvider::find($id);
         $serviceProvider->status = 'Rejected';
         $serviceProvider->save();
-        
+
         return redirect()->back()->with('success', 'Service Provider rejected successfully!');
     }
 

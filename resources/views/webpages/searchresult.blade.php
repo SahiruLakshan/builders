@@ -42,7 +42,9 @@
 
                                     @if (isset($result->p_number))
                                         <!-- This is a Shop -->
-                                        <a href="tel:{{ $result->p_number }}" class="btn btn-primary align-self-end">Contact Us</a>
+
+                                        <a href="tel:+94{{ $result->p_number }}" class="btn btn-primary align-self-end">
+                                        </a>
                                     @elseif (isset($result->product_link))
                                         <!-- This is a ShopProduct -->
                                         <a href="{{ $result->product_link }}" class="btn btn-primary align-self-end">Buy Now</a>

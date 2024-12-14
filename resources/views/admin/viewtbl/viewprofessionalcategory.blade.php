@@ -34,10 +34,10 @@
                                     <td>{{ $i }}</td>
                                     <td>{{ $cate->name }}</td>
                                     <td>{{ $cate->description }}</td>
-                
+
                                     {{-- <td>
                                         <a href="{{ route('services.edit', $service->id) }}" class="btn btn-warning">Edit</a>
-                                        <form action="{{ route('services.destroy', $service->id) }}" method="POST" style="display:inline-block;">
+                                        <form action="{{ route('service.destroy', $service->id) }}" method="POST" style="display:inline-block;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -67,7 +67,7 @@
 
         $('#search-input').on('keyup', function() {
             var query = $(this).val();
-            fetchProducts(1, query); 
+            fetchProducts(1, query);
         });
 
         function fetchProducts(page, query) {

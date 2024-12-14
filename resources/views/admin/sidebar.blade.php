@@ -327,12 +327,12 @@
                                         <li class="side-menu__label1">
                                             <a href="javascript:void(0);">Shops</a>
                                         </li>
-                                      
+
                                         <li>
                                             <a class="slide-item" href="/addshop">Add New Shop
                                             </a>
                                         </li>
-                                       
+
                                         <li>
                                             <a class="slide-item" href="/viewshops">View Shops</a>
                                         </li>
@@ -362,7 +362,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/viewshopProducts">View Shop Products
+                                            <a class="slide-item" href="/viewshopProducts">View  Products Item
                                             </a>
                                         </li>
                                         <li>
@@ -413,7 +413,7 @@
                                         <li class="side-menu__label1">
                                             <a href="javascript:void(0);">Shop Catogory</a>
                                         </li>
-                                  
+
                                     </ul>
                                 </li> --}}
                                 {{-- <li class="slide">
@@ -424,20 +424,20 @@
                                             <a href="javascript:void(0);">Product Catogory</a>
                                         </li>
                                         <li>
-                                       
+
                                     </ul>
                                 </li> --}}
 
                                 {{-- <li class="slide">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
                                             class="side-menu__label">Product SubCatogory</span></a>
-                                   
+
                                 </li> --}}
 
                                 {{-- <li class="slide">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
                                             class="side-menu__label">Product Measurements</span></a>
-                                    
+
                                 </li> --}}
                                 <li class="slide">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><span
@@ -495,14 +495,14 @@
                                             <a href="javascript:void(0);">Bass</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="addprofessionalsCategory">Add New Bass Category
+                                            <a class="slide-item" href="#">Add New Bass Category
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/categories">View Bass Category</a>
+                                            <a class="slide-item" href="#">View Bass Category</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="addprofessionals">Add New Bass
+                                            <a class="slide-item" href="#">Add New Bass
                                             </a>
                                         </li>
                                         <li>

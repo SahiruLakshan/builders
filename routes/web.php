@@ -73,6 +73,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/brandupdate/{id}', [BrandController::class, 'update']);
     Route::put('/brand/update/{id}', [BrandController::class, 'updateBrand']);
     Route::get('/brand/delete/{id}', [BrandController::class, 'deleteBrand']);
+    // meka mn liwwe band page eknma multiple product select krnna
+    // Route::get('/addbrand', [BrandProductController::class, 'showproduct'])->name('brand');
 
     //this one for the connect band with product
 
@@ -137,9 +139,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/serviceproviders', [ServiceProviderController::class, 'view'])->name('serviceproviders.show');
     Route::post('/approveserviceprovider/{id}', [ServiceProviderController::class, 'approveServiceProviders'])->name('services.approve');
     Route::post('/rejectserviceprovider/{id}', [ServiceProviderController::class, 'rejectServiceProviders'])->name('services.reject');
-    Route::get('/deleteserviceprovider/{id}', [ServiceProviderController::class, 'destroy'])->name('services.destroy');
+    Route::get('/deleteserviceprovider/{id}', [ServiceProviderController::class, 'destroy'])->name('service.destroy');
     Route::post('/submitproject', [ServiceProviderController::class, 'submitproject'])->name('submit.project');
-    
+
     Route::get('/categories', [ProfessionalCategoryController::class, 'index'])->name('categories.index');
     Route::get('/categories/create', [ProfessionalCategoryController::class, 'create'])->name('categories.create');
     Route::post('/categories/store', [ProfessionalCategoryController::class, 'store'])->name('categories.store');
@@ -169,7 +171,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
     Route::get('/addprofessionalsCategory', [ProfessionalController::class, 'index'])->name('addprofessionalsCategory');
     Route::post('/addprofessioncateory', [ProfessionalController::class, 'addprofessionals'])->name('submitprofessionalsCategory');
-    Route::get('/viewprofessionalsCategory', [ProfessionalController::class, 'view'])->name('addprofessionalsCategory');
+    Route::get('/viewprofessionalsCategory', [ProfessionalController::class, 'view'])->name('viewprofessionalsCategory');
     Route::get('/addprofessionals', [ProfessionalController::class, 'addadminprofessionals'])->name('addprofessionals');
     Route::post('/submitprofessionals', [ProfessionalController::class, 'store'])->name('submitprofessionals');
     Route::get('/professionals', [ProfessionalController::class, 'viewpro'])->name('viewprofessionals');
@@ -198,8 +200,12 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 //search optoins route
 Route::get('/search', [WebController::class, 'search'])->name('search');
 
-
-
+Route::get('/addbass', function () {
+    return view('admin.addbass');
+});
+Route::get('/addbassCategory', function () {
+    return view('admin.addbassCategory');
+});
 Route::get('/shops', function () {
     return view('webpages.shops');
 });
@@ -211,13 +217,17 @@ Route::get('/serviceproviderform', [WebController::class, 'servceproviders'])->n
 
 Route::name('category.')->group(function () {
     Route::get('product/cat/{name}', [WebController::class, 'shopcategory'])->name('shop');
-    Route::get('service/cat/{name}', [WebController::class, 'serviceprovidercategory'])->name('service');
+    Route::get('service/cat/{name}', [WebController::class, 'servicecategory'])->name('service');
 });
 
 // about us page route
 Route::get('/aboutus', function () {
     return view('webpages.about');
 })->name('aboutus');
+//this one need to add when approve the service provider
+Route::get('/serviceproviderproject', function () {
+    return view('admin.serviceproviderproject');
+})->name('serviceproviderproject');
 
 //Authentication Routes
 Route::get('register', [RegisteredUserController::class, 'create'])
@@ -247,11 +257,12 @@ Route::get('/serviceproviderprofile', function () {
 
 Route::get('/professionalsform', [ProfessionalController::class, 'professionalForm'])->name('professionalsform');
 
-// Route::get('/viewprofile', function () {
-//     return view('webpages.viewprofiles');
-// });
+Route::get('/bassform', function () {
+    return view('webpages.bassform');
+});
 
 Route::get('/view_Shop_profile/{id}', [WebController::class, 'view_Shop_profile'])->name('view_Shop_profile');
+// Route::get('/view_Service_provider_profile/{id}', [WebController::class, 'view_Service_provider_profile'])->name('view_Service_provider_profile');
 
 
 

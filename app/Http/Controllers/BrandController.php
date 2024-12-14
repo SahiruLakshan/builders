@@ -4,15 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
 use App\Models\Brand;
-
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
+    // public function showproduct()
+    // {
+    //     $products = Product::all();
+
+
+    //     return view('admin.brand', compact('products', ));
+    // }
 
     public function index()
     {
-        return view('admin.addbrand');
+        $products = Product::all();
+        return view('admin.addbrand', compact('products'));
     }
     //for the connect product with Brand
     public function brandproduct()

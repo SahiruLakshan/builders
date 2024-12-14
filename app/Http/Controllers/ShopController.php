@@ -37,7 +37,8 @@ class ShopController extends Controller
         $category_count = Shopproduct::where('shop_id', $id)->distinct('product_category_id')->count();
 
 
-        $shop_product = Shopproduct::where('shop_id', $id)->with('product', 'category', 'brand')->get();;
+        $shop_product = Shopproduct::where('shop_id', $id)->with('product', 'category', 'brand')->get();
+        ;
         if (!$shop) {
             return response()->json([
                 'message' => 'Shop not found',
@@ -56,10 +57,9 @@ class ShopController extends Controller
 
     public function index()
     {
-        $districts = District::all();
-        $city = City::all();
+        $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
         $category = ShopCategory::all();
-        return view('admin.addshop', compact('districts', 'city', 'category'));
+        return view('admin.addshop', compact('dictricts', 'category'));
     }
 
     public function shops(Request $request)

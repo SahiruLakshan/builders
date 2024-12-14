@@ -45,6 +45,13 @@
                             placeholder="Name Of The Service Provider" />
                     </div>
                     <div class="col">
+                        <div class="form-group">
+                            <label for="inputPassword4">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Email Of The Service Provider" />
+                        </div>
+                    </div>
+                    <div class="col">
                         <label for="maxProjectValue">Grade </label>
                         <input type="text" class="form-control" id="grade" name="grade"
                             placeholder="Grade Of The Service Provider" />
@@ -114,6 +121,15 @@
                 <h5>Company Details</h5>
                 <hr>
                 <div class="row align-items-space-between">
+                    <div class="col">
+                        <div class="mb-3 d-flex">
+                            <label for="profileImage" class="form-label">Profile Image:</label>
+                            <input type="file" id="providerImage" name="providerImage" accept="image/*" onchange="previewImage()" required>
+                            <div class="preview-box" id="imagePreview">
+                              <span>Image Preview</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col">
                         <label for="inputPassword6" class="col-form-label">Name :</label>
                         <input type="text" id="companyName" name="companyName" class="form-control"
@@ -189,6 +205,7 @@
                                 <th scope="col">Value</th>
                                 <th scope="col">Contact Person</th>
                                 <th scope="col">Contact Number</th>
+                                <th scope="col">Project Image</th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
@@ -216,6 +233,10 @@
                                             placeholder="Contact Number" />
                                     </td>
                                     <td>
+                                        <!-- File input for image upload -->
+                                        <input type="file" class="form-control" name="projectImage[]" accept="image/*" capture="camera" />
+                                    </td>
+                                    <td>
                                         <button type="button" class="btn btn-danger" onclick="removeRow(this)">
                                             Remove
                                         </button>
@@ -237,6 +258,11 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
+
+
+
+
+
         // Initialize the map
         const map = L.map('map').setView([6.9271, 79.8612], 13); // Default to Colombo, Sri Lanka
 
@@ -337,6 +363,7 @@
               <td><input type="text" class="form-control" name="projectValue[]" placeholder="Value" /></td>
               <td><input type="text" class="form-control" name="contactPerson[]" placeholder="Contact Person" /></td>
               <td><input type="text" class="form-control" name="contactNumber[]" placeholder="Contact Number" /></td>
+              <td><input type="file" class="form-control" name="projectImage[]" accept="image/*" capture="camera" /></td>
               <td><button type="button" class="btn btn-danger" onclick="removeRow(this)">Remove</button></td>
             </tr>
           `;
