@@ -188,7 +188,7 @@
                                     <a href="#" class="text-decoration-none text-dark">
                                         <div class="shadow hcard-200 bg-white d-flex flex-row">
                                             <!-- Image on the left side -->
-                                            <img src="{{ asset('assets/shop/'.$serviceProvider->s_img) }}" class="d-block col-4 object-fit-cover rounded-start" alt="Service Provider Image">
+                                            <img src="{{ asset('assets/serviceProviders/'.$serviceProvider->s_img) }}" class="d-block col-4 object-fit-cover rounded-start" alt="Service Provider Image">
                                             
                                             <!-- Text and button on the right side -->
                                             <div class="col-8 d-flex flex-column p-4">
@@ -203,15 +203,15 @@
                                                         </div>
                                                         <div class="d-flex align-items-end">
                                                             <i class="fas fa-phone me-3"></i>
-                                                            <a href="tel:+94{{ $serviceProvider->whatsapp }}" class="text-truncate col">{{ $serviceProvider->whatsapp }}</a>
+                                                            <a href="tel:{{ $serviceProvider->whatsapp }}" class="text-truncate col">{{ $serviceProvider->whatsapp }}</a>
                                                         </div>
                                                         <div class="d-flex justify-content-between align-items-start">
                                                             <div>
                                                                 <i class="fas fa-user-check me-3"></i>
                                                                 Grade: {{ $serviceProvider->grade }}
                                                             </div>
-                                                            <a href="tel:{{ $serviceProvider->number }}" class="btn text-white bg-warning shadow phone-button mt-2">
-                                                                <i class="fas fa-phone ms-auto"></i> 
+                                                            <a href="tel:+94{{ $serviceProvider->whatsapp }}" class="btn text-white bg-warning shadow phone-button mt-2">
+                                                                <i class="fab fa-whatsapp ms-auto"></i> 
                                                             </a>
                                                         </div>
                                                     </p>
