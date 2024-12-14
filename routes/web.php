@@ -73,6 +73,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/brandupdate/{id}', [BrandController::class, 'update']);
     Route::put('/brand/update/{id}', [BrandController::class, 'updateBrand']);
     Route::get('/brand/delete/{id}', [BrandController::class, 'deleteBrand']);
+    // meka mn liwwe band page eknma multiple product select krnna
+    // Route::get('/addbrand', [BrandProductController::class, 'showproduct'])->name('brand');
 
     //this one for the connect band with product
 

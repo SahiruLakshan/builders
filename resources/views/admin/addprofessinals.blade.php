@@ -275,7 +275,7 @@
             </div>
         </div>
     </div>
-       <script>
+    <script>
                                     // Prepare district and city data in JavaScript from Blade data
                                     var cities = [
                                         @foreach ($dictricts as $district)
