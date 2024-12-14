@@ -7,6 +7,7 @@ use App\Models\ShopCategory;
 use App\Models\City;
 use App\Models\District;
 use App\Models\Brand;
+use App\Models\ShopItem;
 use App\Models\Shopproduct;
 use App\Models\Service;
 use App\Models\ServiceProvider;
@@ -16,6 +17,13 @@ use Illuminate\Support\Facades\Validator;
 
 class WebController extends Controller
 {
+    public function productcategoryItem($id)
+    {
+        $brands = Brand::select('id', 'b_name')->get();
+        $shopitems = ShopItem::with('product')->where('product_id', 'brands', $id)->paginate(20);
+        // dd($shopitems);
+        return view('webpages.shopItem', compact('shopitems', 'brands'));
+    }
     public function shopcategory($name)
     {
         // $shops = Shop::where('category', 'like', '%' . $name . '%')->paginate(20);

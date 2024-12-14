@@ -408,7 +408,7 @@
                                 </div>
                             </div>
                             <!-- Third Dropdown -->
-                            <div class="col-md-2 mb-2 mb-md-0 p-0">
+                            {{-- <div class="col-md-2 mb-2 mb-md-0 p-0">
                                 <div class="subnav">
                                     <button class="subnavbtn fs-6 ">
                                         Product By Category <i class="fa fa-caret-down"></i>
@@ -446,6 +446,82 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div> --}}
+                            <div class=" mb-2 mb-md-0 p-0">
+                                {{-- <div class="subnav">
+                                    <button class="subnavbtn fs-6 ">
+                                        Service By Category <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <div class="subnav-content">
+                                        <div class="col-6 col-md-4">
+                                            <a href="#">ARCHITECTS</a>
+                                            <a href="#">BUILDING CONTRACTORS</a>
+                                            <a href="#">INTERIOR DESIGNERS</a>
+                                            <a href="#">STRUCTURAL ENGINEERS</a>
+                                            <a href="#">QUANTITY SURVEYORS</a>
+                                            <a href="#">MEP CONSULTANTS</a>
+                                            <a href="#">FIRE CONSULTANTS</a>
+                                        </div>
+                                        <div class="col-6 col-md-4">
+                                            <a href="#">ALUMINIUM FABRICATORS</a>
+                                            <a href="#">ELECTRICIANS</a>
+                                            <a href="#">PLUMBERS</a>
+                                            <a href="#">STEEL FABRICATORS</a>
+                                            <a href="#">STAINLESS STEEL FABRICATORS</a>
+                                            <a href="#">TIMBER CONTRACTORS</a>
+                                        </div>
+                                        <div class="col-6 col-md-4">
+                                            <a href="#">MASONRY</a>
+                                            <a href="#">TILING TECHNICIANS</a>
+                                            <a href="#">LANDSCAPING</a>
+                                            <a href="#">WATERPROOFING</a>
+                                            <a href="#">MAINTENANCE</a>
+                                            <a href="#">PAINTERS</a>
+                                        </div>
+                                        <div class="col-6 col-md-4">
+                                            <a href="#">AC CONTRACTORS</a>
+                                            <a href="#">ELEVATORS</a>
+                                            <a href="#">SWIMMING POOL CONTRACTORS</a>
+                                            <a href="#">SOLAR POWER</a>
+                                            <a href="#">OTHERS</a>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                {{-- <div class="subnav">
+                                  <button class="subnavbtn fs-6 ">
+                                      Service By Category <i class="fa fa-caret-down"></i>
+                                  </button>
+                                  <div class="subnav-content" style="height:40vh">
+                                      <div class="d-flex flex-wrap">
+                                          @foreach($services as $service)
+                                              <div class="col-6 col-md-4 mb-0">
+                                                  <a href="{{route('category.service', $service->servicename)}}">{{ $service->servicename }}</a>
+                                              </div>
+                                          @endforeach
+                                      </div>
+                                  </div>
+                                </div> --}}
+                                <div class="subnav">
+                                    <button class="subnavbtn fs-6">
+                                        Product By Category <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <div class="subnav-content align-items-start " style="min-height:40vh" >
+                                        <div class="d-flex flex-wrap w-100  ">
+                                    
+                                         
+                                            @foreach($productcats->chunk(6) as $productcat1)
+                                            @foreach($productcat1 as $productcat)    
+                                            <div class="col-6 col-md-4 mb-3">
+                                                        <a href="{{ route('category.productcategoryItem', $productcat->id) }}">
+                                                            {{ $productcat->name }}
+                                                        </a>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                
                             </div>
                             <!-- Search Bar -->
                             <div class="col-12 col-md-4 mb-2 mb-md-0">

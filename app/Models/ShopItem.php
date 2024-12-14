@@ -29,6 +29,16 @@ class ShopItem extends Model
     {
         return $this->belongsTo(Product::class);
     }
+    // public function district()
+    // {
+    //     return $this->belongsTo(District::class, 'district', 'dis_id');
+    // }
+
+
+    // public function shopproduct()
+    // {
+    //     return $this->belongsTo(Shopproduct::class, 'product_id', 'id');
+    // }
 
     // public function item()
     // {
