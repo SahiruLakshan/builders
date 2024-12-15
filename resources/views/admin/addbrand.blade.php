@@ -1,5 +1,5 @@
 @extends('admin.sidebar')
-
+{{-- mekata alutin fileds tikk add kra bn eka balapmm aa  --}}
 @section('content')
 <!-- main-content -->
 <div class="main-content app-content">

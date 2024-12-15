@@ -146,14 +146,13 @@ class ShopController extends Controller
     public function update($id)
     {
         $shop = Shop::find($id);
-        $districts = District::all();
-        $city = City::all();
+        $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
         $selectedCategories = explode(',', $shop->category);
         $category = ShopCategory::all();
         if (!$shop) {
             return redirect()->back()->with('error', 'Shop is not found');
         }
-        return view('admin.updateforms.updateshop', compact('shop', 'districts', 'city', 'category', 'selectedCategories'));
+        return view('admin.updateforms.updateshop', compact('shop', 'dictricts', 'category', 'selectedCategories'));
     }
 
     public function updateShop(Request $request, $id)
