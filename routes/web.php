@@ -209,6 +209,8 @@ Route::get('/addbassCategory', function () {
 Route::get('/addAllproject', function () {
     return view('admin.addAllproject');
 });
+
+
 Route::get('/shops', function () {
     return view('webpages.shops');
 });
@@ -262,7 +264,7 @@ Route::get('/serviceproviderprofile', function () {
 // Route::get('/professionalsform', [ProfessionalController::class, 'webprofessional'])->name('professionalsform');
 
 Route::get('/professionalsform', [ProfessionalController::class, 'professionalForm'])->name('professionalsform');
-
+// websie eke bass form eka 
 Route::get('/bassform', function () {
     return view('webpages.bassform');
 });
