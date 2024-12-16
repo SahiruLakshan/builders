@@ -284,35 +284,35 @@
     
                             <h5>Contact Details</h5>
                             <div class="row">
-                                <div class="col">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="inputPassword4">Email</label>
+                                        <label for="inputPassword4">Email:</label>
                                         <input type="email" class="form-control" id="email" name="email"
                                             placeholder="Email Of The Service Provider" />
                                     </div>
-                                </div>
-                                <div class="col">
+                                </div> 
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="telephone" class="col-form-label">Telephone :</label>
+                                        <label for="telephone" class="col-form-label">Telephone:</label>
                                         <input type="tel" id="telephone" name="telephone" class="form-control"
                                             aria-describedby="telephoneHelp">
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="mobile" class="col-form-label">Mobile :</label>
                                         <input type="tel" id="mobile" name="mobile" class="form-control"
                                             aria-describedby="mobileHelp">
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="whatsapp" class="col-form-label">WhatsApp :</label>
                                         <input type="tel" id="whatsapp" name="whatsapp" class="form-control"
                                             aria-describedby="whatsappHelp">
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="web" class="col-form-label">Web LInk:</label>
                                         <input type="tel" id="web" name="web" class="form-control"
@@ -332,12 +332,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="form-group col-md-6">
                                     <label for="inputPassword6" class="col-form-label">Name :</label>
                                     <input type="text" id="companyName" name="companyName" class="form-control"
                                         aria-describedby="companyNameHelp">
                                 </div>
-                                <div class="col">
+                                <div class="form-group col-md-6">
                                     <label for="businessRegNo" class="col-form-label">Business Registration No :</label>
                                     <input type="text" id="businessRegNo" name="businessRegNo" class="form-control"
                                         aria-describedby="businessRegNoHelp">
