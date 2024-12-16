@@ -41,12 +41,7 @@
                     </div>
                     <div class="form-group col">
                         <label for="inputPassword4">Shop Name</label>
-                        <input type="text" class="form-control" name="name" id="supplier_name"
-                            placeholder="Name Of The Suppliers/Shop"/>
-                    </div>
-                    <div class="form-group col">
-                        <label for="inputPassword4">Email</label>
-                        <input type="email" class="form-control" name="email" id="email"
+                        <input type="text" class="form-control" name="shop_name" id="shop_name"
                             placeholder="Name Of The Suppliers/Shop"/>
                     </div>
                     <div class="col-12">
@@ -54,9 +49,11 @@
                         <textarea class="form-control" id="inputAddress" rows="2" name="address"
                             placeholder="Address Of The Service Provider"></textarea>
                     </div>
-                </div>
-
-                <div class="row">
+                    <div class="form-group col">
+                        <label for="inputPassword4">Email</label>
+                        <input type="email" class="form-control" name="email" id="email"
+                            placeholder="Name Of The Suppliers/Shop"/>
+                    </div>
                     <div class="col-4">
                         <div class="form-group">
                             <label for="category">Select Shop Category:</label>
@@ -68,13 +65,11 @@
                             </select>
                         </div>
                     </div>
-                    {{-- <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="location" class="col-form-label">Location :</label>
-                            <input type="text" name="location" id="location" class="form-control"
-                                aria-describedby="locationHelp">
-                        </div>
-                    </div> --}}
+                </div>
+
+                <div class="row">
+                   
+                
                 </div>
 
                 <div class="row">
@@ -89,7 +84,72 @@
                         </select>
                     </div>
                 </div>
-                <div class="border p-4">
+                <div class="d-flex flex-wrap mt-3 gap-3">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="start_time" class="col-form-label">Start Time :</label>
+                            <input type="time" name="start_time" id="start_time" class="form-control"
+                                aria-describedby="start_timeHelp">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="end_time" class="col-form-label">End Time :</label>
+                            <input type="time" name="end_time" id="end_time" class="form-control"
+                                aria-describedby="end_timeHelp">
+                        </div>
+                    </div>
+                    <div class="mb-3 d-flex">
+                        <label for="profileImage" class="form-label">Shop Image :</label>
+                        <input type="file" id="shop_img" name="shop_img" accept="image/*" onchange="previewImage()"
+                            required>
+                        <div class="preview-box" id="imagePreview">
+                            <span>Image Preview</span>
+                        </div>
+                    </div>
+                </div>
+                <h5 class="mt-4">Contact Details</h5>
+                <hr>
+                <div class="row">
+                    
+
+                    {{-- <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="telephone" class="col-form-label">Telephone :</label>
+                            <input type="tel" name="telephone" id="telephone" class="form-control"
+                                aria-describedby="telephoneHelp">
+                        </div>
+                    </div> --}}
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="mobile" class="col-form-label">Phone Number :</label>
+                            <input type="tel" name="p_number" id="phone" class="form-control"
+                                aria-describedby="mobileHelp">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="mobile" class="col-form-label">Mobile :</label>
+                            <input type="tel" name="m_number" id="mobile" class="form-control"
+                                aria-describedby="mobileHelp">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="whatsapp" class="col-form-label">WhatsApp :</label>
+                            <input type="tel" name="w_number" id="whatsapp" class="form-control"
+                                aria-describedby="whatsappHelp">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="facebook" class="col-form-label">FaceBook Link :</label>
+                            <input type="text" name="fb_link" id="fb_link" class="form-control"
+                                aria-describedby="telephoneHelp">
+                        </div>
+                    </div>
+                </div>
+                <div class="border mt-2 p-4">
                     <h5>Search and Select Location</h5>
                     <input type="text" id="search" placeholder="Search for a location (e.g., city, address)" />
 
@@ -123,67 +183,129 @@
                     <div id="map" class="mt-3 boder-2"></div>
                 </div>
 
-                <h5 class="mt-4">Other Details</h5>
-                <hr>
-                <div class="row">
-                    <div class="mb-3 d-flex">
-                        <label for="profileImage" class="form-label">Shop Image :</label>
-                        <input type="file" id="shop_img" name="shop_img" accept="image/*" onchange="previewImage()"
-                            required>
-                        <div class="preview-box" id="imagePreview">
-                            <span>Image Preview</span>
-                        </div>
-                    </div>
 
-                    {{-- <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="telephone" class="col-form-label">Telephone :</label>
-                            <input type="tel" name="telephone" id="telephone" class="form-control"
-                                aria-describedby="telephoneHelp">
-                        </div>
-                    </div> --}}
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="mobile" class="col-form-label">Mobile :</label>
-                            <input type="tel" name="p_number" id="mobile" class="form-control"
-                                aria-describedby="mobileHelp">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="whatsapp" class="col-form-label">WhatsApp :</label>
-                            <input type="tel" name="w_number" id="whatsapp" class="form-control"
-                                aria-describedby="whatsappHelp">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="facebook" class="col-form-label">FaceBook Link :</label>
-                            <input type="text" name="fb_link" id="fb_link" class="form-control"
-                                aria-describedby="telephoneHelp">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="start_time" class="col-form-label">Start Time :</label>
-                            <input type="time" name="start_time" id="start_time" class="form-control"
-                                aria-describedby="start_timeHelp">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="end_time" class="col-form-label">End Time :</label>
-                            <input type="time" name="end_time" id="end_time" class="form-control"
-                                aria-describedby="end_timeHelp">
-                        </div>
-                    </div>
-                    <div class="col-md-4 mt-3">
-                        <label for="bussiness_reg_no" class="col-form-label">Business Registration No :</label>
-                        <input type="text" name="br" id="bussiness_reg_no" class="form-control"
-                            aria-describedby="telephoneHelp">
-                    </div>
+                <div class="col-md-4 mt-3">
+                    <label for="bussiness_reg_no" class="col-form-label">Business Registration No :</label>
+                    <input type="text" name="br" id="bussiness_reg_no" class="form-control"
+                        aria-describedby="telephoneHelp">
                 </div>
+                <h4 class="mt-3">Company Details</h4> <hr>
+                                                <div class="d-flex flex-wrap gap-3">
+                                                    <div class="col">
+                                                        <div class="control-group form-group">
+                                                            <label class="form-label" for="shop_name">Shop Name</label>
+                                                            <input type="text" class="form-control" name="shop_name1"
+                                                                id="shop_name1" placeholder="Shop Name" required />
+                                                            <div class="invalid-feedback">
+                                                                Please enter a valid shop name.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="control-group form-group">
+                                                            <label class="form-label" for="br">Business
+                                                                Registration</label>
+                                                            <input type="text" class="form-control" name="br"
+                                                                id="br"
+                                                                placeholder="Enter Business Registration" />
+                                                            <div class="invalid-feedback">
+                                                                Enter Your Business Registration
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                          
+    
+    
+    
+                                           
+                                            <div class="form-group col-md-12">
+                                                <label for="directors-details">Directors/Proprietors/Partners</label>
+                                                <table class="table table-bordered">
+                                                  <thead>
+                                                    <tr>
+                                                      <th>Name</th>
+                                                      <th>Contact Number</th>
+                                                      <th>Action</th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody id="directors-table-body">
+                                                    <!-- Rows will be added dynamically -->
+                                                    <tr>
+                                                      <td>
+                                                        <input
+                                                          type="text"
+                                                          name="directors[0][name]"
+                                                          class="form-control"
+                                                          placeholder="Enter Name"
+                                                          required
+                                                        />
+                                                      </td>
+                                                      <td>
+                                                        <input
+                                                          type="text"
+                                                          name="directors[0][contact]"
+                                                          class="form-control"
+                                                          placeholder="Enter Contact Number"
+                                                          required
+                                                        />
+                                                      </td>
+                                                      <td>
+                                                        <button type="button" class="btn btn-danger btn-sm remove-row">Remove</button>
+                                                      </td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                                <button type="button" class="btn btn-primary" id="add-director-row">Add Row</button>
+                                              </div>
+                                              
+                                              
+                                                <script>
+                                                  document.getElementById('add-director-row').addEventListener('click', function () {
+                                                                  const tableBody = document.getElementById('directors-table-body');
+                                                                  const rowCount = tableBody.rows.length;
+                                                                
+                                                                  const newRow = document.createElement('tr');
+                                                                  newRow.innerHTML = `
+                                                                    <td>
+                                                                      <input
+                                                                        type="text"
+                                                                        name="directors[${rowCount}][name]"
+                                                                        class="form-control"
+                                                                        placeholder="Enter Name"
+                                                                        required
+                                                                      />
+                                                                    </td>
+                                                                    <td>
+                                                                      <input
+                                                                        type="text"
+                                                                        name="directors[${rowCount}][contact]"
+                                                                        class="form-control"
+                                                                        placeholder="Enter Contact Number"
+                                                                        required
+                                                                      />
+                                                                    </td>
+                                                                    <td>
+                                                                      <button type="button" class="btn btn-danger btn-sm remove-row">Remove</button>
+                                                                    </td>
+                                                                  `;
+                                                                
+                                                                  tableBody.appendChild(newRow);
+                                                                });
+                                                                
+                                                                // Event delegation to handle row removal
+                                                                document.getElementById('directors-table-body').addEventListener('click', function (event) {
+                                                                  if (event.target.classList.contains('remove-row')) {
+                                                                    event.target.closest('tr').remove();
+                                                                  }
+                                                                });
+                                                </script>
+                                               
+                                                    <div class="col-lg-12 col-md-12">
 
+                                                    </div>
+                                            
+                                           
                 <div class="mt-3 mb-3">
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <button type="button" class="btn btn-secondary"
@@ -195,6 +317,31 @@
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+          {{-- Dynamically syncs input values between two fields. --}}
+          <script>
+            const shopNameInput = document.getElementById('shop_name');
+            const shopName1Input = document.getElementById('shop_name1');
+          
+            // Automatically copy the value from shop_name to shop_name1
+            shopNameInput.addEventListener('input', () => {
+              if (!shopName1Input.dataset.manualChange) {
+                shopName1Input.value = shopNameInput.value;
+              }
+            });
+          
+            // Detect manual changes in shop_name1
+            shopName1Input.addEventListener('input', () => {
+              shopName1Input.dataset.manualChange = true; // Mark as manually changed
+            });
+          
+            // Reset manual change flag if shop_name1 becomes empty
+            shopName1Input.addEventListener('blur', () => {
+              if (shopName1Input.value.trim() === '') {
+                shopName1Input.dataset.manualChange = false;
+                shopName1Input.value = shopNameInput.value; // Revert to auto-filled value
+              }
+            });
+          </script>
     <script>
         $(document).ready(function() {
             $('#shop_category').select2({
