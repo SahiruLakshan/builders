@@ -56,13 +56,7 @@
                                             placeholder="Name Of The Service Provider" />
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="inputPassword4">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email"
-                                            placeholder="Email Of The Service Provider" />
-                                    </div>
-                                </div>
+                             
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="maxProjectValue">Grade </label>
@@ -290,24 +284,38 @@
     
                             <h5>Contact Details</h5>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="inputPassword4">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            placeholder="Email Of The Service Provider" />
+                                    </div>
+                                </div>
+                                <div class="col">
                                     <div class="form-group">
                                         <label for="telephone" class="col-form-label">Telephone :</label>
                                         <input type="tel" id="telephone" name="telephone" class="form-control"
                                             aria-describedby="telephoneHelp">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col">
                                     <div class="form-group">
                                         <label for="mobile" class="col-form-label">Mobile :</label>
                                         <input type="tel" id="mobile" name="mobile" class="form-control"
                                             aria-describedby="mobileHelp">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col">
                                     <div class="form-group">
                                         <label for="whatsapp" class="col-form-label">WhatsApp :</label>
                                         <input type="tel" id="whatsapp" name="whatsapp" class="form-control"
+                                            aria-describedby="whatsappHelp">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="web" class="col-form-label">Web LInk:</label>
+                                        <input type="tel" id="web" name="web" class="form-control"
                                             aria-describedby="whatsappHelp">
                                     </div>
                                 </div>
@@ -335,6 +343,87 @@
                                         aria-describedby="businessRegNoHelp">
                                 </div>
                             </div>
+                            <div class="form-group col-md-12">
+                                <label for="directors-details">Directors/Proprietors/Partners</label>
+                                <table class="table table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th>Name</th>
+                                      <th>Contact Number</th>
+                                      <th>Action</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody id="directors-table-body">
+                                    <!-- Rows will be added dynamically -->
+                                    <tr>
+                                      <td>
+                                        <input
+                                          type="text"
+                                          name="directors[0][name]"
+                                          class="form-control"
+                                          placeholder="Enter Name"
+                                          required
+                                        />
+                                      </td>
+                                      <td>
+                                        <input
+                                          type="text"
+                                          name="directors[0][contact]"
+                                          class="form-control"
+                                          placeholder="Enter Contact Number"
+                                          required
+                                        />
+                                      </td>
+                                      <td>
+                                        <button type="button" class="btn btn-danger btn-sm remove-row">Remove</button>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <button type="button" class="btn btn-primary" id="add-director-row">Add Row</button>
+                            </div>
+                              
+                              
+                                <script>
+                                  document.getElementById('add-director-row').addEventListener('click', function () {
+                                                  const tableBody = document.getElementById('directors-table-body');
+                                                  const rowCount = tableBody.rows.length;
+                                                
+                                                  const newRow = document.createElement('tr');
+                                                  newRow.innerHTML = `
+                                                    <td>
+                                                      <input
+                                                        type="text"
+                                                        name="directors[${rowCount}][name]"
+                                                        class="form-control"
+                                                        placeholder="Enter Name"
+                                                        required
+                                                      />
+                                                    </td>
+                                                    <td>
+                                                      <input
+                                                        type="text"
+                                                        name="directors[${rowCount}][contact]"
+                                                        class="form-control"
+                                                        placeholder="Enter Contact Number"
+                                                        required
+                                                      />
+                                                    </td>
+                                                    <td>
+                                                      <button type="button" class="btn btn-danger btn-sm remove-row">Remove</button>
+                                                    </td>
+                                                  `;
+                                                
+                                                  tableBody.appendChild(newRow);
+                                                });
+                                                
+                                                // Event delegation to handle row removal
+                                                document.getElementById('directors-table-body').addEventListener('click', function (event) {
+                                                  if (event.target.classList.contains('remove-row')) {
+                                                    event.target.closest('tr').remove();
+                                                  }
+                                                });
+                                </script>
     
                             <div class="row">
                                 <div class="col-4">
