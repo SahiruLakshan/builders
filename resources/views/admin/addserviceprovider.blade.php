@@ -300,14 +300,14 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="mobile" class="col-form-label">Mobile :</label>
+                                        <label for="mobile" class="col-form-label">Mobile:</label>
                                         <input type="tel" id="mobile" name="mobile" class="form-control"
                                             aria-describedby="mobileHelp">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="whatsapp" class="col-form-label">WhatsApp :</label>
+                                        <label for="whatsapp" class="col-form-label">WhatsApp:</label>
                                         <input type="tel" id="whatsapp" name="whatsapp" class="form-control"
                                             aria-describedby="whatsappHelp">
                                     </div>
@@ -325,7 +325,7 @@
                             <div class="row align-items-space-between">
                                 <div class="col">
                                     <div class="mb-3 d-flex">
-                                        <label for="profileImage" class="form-label">Profile Image:</label>
+                                        <label for="profileImage" class="form-label">Company Logo:</label>
                                         <input type="file" id="providerImage" name="providerImage" accept="image/*" onchange="previewImage()" required>
                                         <div class="preview-box" id="imagePreview">
                                           <span>Image Preview</span>
@@ -342,7 +342,53 @@
                                     <input type="text" id="businessRegNo" name="businessRegNo" class="form-control"
                                         aria-describedby="businessRegNoHelp">
                                 </div>
+                               
+                                <!-- Registrations File Upload -->
+                                <div class="form-group col-md-6">
+                                    <label for="registrations">Registrations</label>
+                                    <input type="file" name="registrations" id="registrations" class="form-control" accept=".pdf,.doc,.docx,.jpg,.png">
+                                </div>
+
+                                <!-- Certifications File Upload -->
+                                <div class="form-group col-md-6">
+                                    <label for="certifications">Certifications</label>
+                                    <input type="file" name="certifications" id="certifications" class="form-control" accept=".pdf,.doc,.docx,.jpg,.png">
+                                </div> 
                             </div>
+                             <!-- Dynamic Providing Services Section -->
+                            <div class="form-group">
+                                <label for="providing_services">Providing Services</label>
+                                <div id="services-container">
+                                    <!-- Initial Row with Two Fields -->
+                                    <div class="service-row mb-2 d-flex align-items-center">
+                                        <input type="text" name="service_name[]" class="form-control me-2" placeholder="Service Name">
+                                      
+                                        <button type="button" class="btn btn-danger btn-sm remove-service">Remove</button>
+                                    </div>
+                                </div>
+
+                                <!-- Add More Button -->
+                                <button type="button" id="add-more" class="btn btn-success mt-2">Add More</button>
+                            </div>
+                            <script>
+                                $(document).ready(function () {
+                                    // Add More Button Click
+                                    $('#add-more').click(function () {
+                                        $('#services-container').append(`
+                                            <div class="service-row mb-2 d-flex align-items-center">
+                                                <input type="text" name="service_name[]" class="form-control me-2" placeholder="Service Name">
+                                                
+                                                <button type="button" class="btn btn-danger btn-sm remove-service">Remove</button>
+                                            </div>
+                                        `);
+                                    });
+                            
+                                    // Remove Row
+                                    $(document).on('click', '.remove-service', function () {
+                                        $(this).closest('.service-row').remove();
+                                    });
+                                });
+                            </script>
                             <div class="form-group col-md-12">
                                 <label for="directors-details">Directors/Proprietors/Partners</label>
                                 <table class="table table-bordered">
@@ -444,6 +490,7 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                            <button type="reset" class="btn btn-secondary mt-3 ms-2">Cancel</button>
                         </form>
                     </div>
                 </div>

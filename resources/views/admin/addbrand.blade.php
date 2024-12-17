@@ -56,7 +56,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <div class="mb-4">
-                            <p class="mg-b-10">Select Your Shop Categories</p>
+                            <p class="mg-b-10">Select Product Category</p>
                             <select multiple="multiple" name="product[]"
                                 class="selectsum1">
                                 <option disabled selected value="">Select

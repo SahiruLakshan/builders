@@ -142,7 +142,7 @@
                 <div class="row align-items-space-between">
                     <div class="col">
                         <div class="mb-3 d-flex">
-                            <label for="profileImage" class="form-label">Profile Image:</label>
+                            <label for="profileImage" class="form-label">Company Logo:</label>
                             <input type="file" id="providerImage" name="providerImage" accept="image/*" onchange="previewImage()" required>
                             <div class="preview-box" id="imagePreview">
                               <span>Image Preview</span>
@@ -159,7 +159,56 @@
                         <input type="text" id="businessRegNoo" name="businessRegNo" class="form-control"
                             aria-describedby="telephoneHelp">
                     </div>
+                    
                 </div>
+                <div class="row">
+                        <!-- Registrations File Upload -->
+                        <div class="form-group col-md-6">
+                            <label for="registrations">Registrations</label>
+                            <input type="file" name="registrations" id="registrations" class="form-control" accept=".pdf,.doc,.docx,.jpg,.png">
+                        </div>
+
+                        <!-- Certifications File Upload -->
+                        <div class="form-group col-md-6">
+                            <label for="certifications">Certifications</label>
+                            <input type="file" name="certifications" id="certifications" class="form-control" accept=".pdf,.doc,.docx,.jpg,.png">
+                        </div>
+                                                     <!-- Dynamic Providing Services Section -->
+                                                     <div class="form-group">
+                                                        <label for="providing_services">Providing Services</label>
+                                                        <div id="services-container">
+                                                            <!-- Initial Row with Two Fields -->
+                                                            <div class="service-row mb-2 d-flex align-items-center">
+                                                                <input type="text" name="service_name[]" class="form-control me-2" placeholder="Service Name">
+                                                              
+                                                                <button type="button" class="btn btn-danger btn-sm remove-service">Remove</button>
+                                                            </div>
+                                                        </div>
+                        
+                                                        <!-- Add More Button -->
+                                                        <button type="button" id="add-more" class="btn btn-success mt-2">Add More</button>
+                                                    </div>
+                                                    <script>
+                                                        $(document).ready(function () {
+                                                            // Add More Button Click
+                                                            $('#add-more').click(function () {
+                                                                $('#services-container').append(`
+                                                                    <div class="service-row mb-2 d-flex align-items-center">
+                                                                        <input type="text" name="service_name[]" class="form-control me-2" placeholder="Service Name">
+                                                                        
+                                                                        <button type="button" class="btn btn-danger btn-sm remove-service">Remove</button>
+                                                                    </div>
+                                                                `);
+                                                            });
+                                                    
+                                                            // Remove Row
+                                                            $(document).on('click', '.remove-service', function () {
+                                                                $(this).closest('.service-row').remove();
+                                                            });
+                                                        });
+                                                    </script>
+                </div>
+
                    
                 <div class="form-group col-md-12">
                     <label for="directors-details">Directors/Proprietors/Partners</label>
