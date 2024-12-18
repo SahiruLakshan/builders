@@ -1,5 +1,5 @@
 @extends('admin.sidebar')
-
+{{-- mekata alutin fileds tikk add kra bn eka balapmm aa  --}}
 @section('content')
 <!-- main-content -->
 <div class="main-content app-content">
@@ -56,7 +56,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <div class="mb-4">
-                            <p class="mg-b-10">Select Your Shop Categories</p>
+                            <p class="mg-b-10">Select Product Category</p>
                             <select multiple="multiple" name="product[]"
                                 class="selectsum1">
                                 <option disabled selected value="">Select

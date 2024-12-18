@@ -199,13 +199,18 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 // });
 //search optoins route
 Route::get('/search', [WebController::class, 'search'])->name('search');
-
+//  me tika admin panal ekata enna oniii
 Route::get('/addbass', function () {
     return view('admin.addbass');
 });
 Route::get('/addbassCategory', function () {
     return view('admin.addbassCategory');
 });
+Route::get('/addAllproject', function () {
+    return view('admin.addAllproject');
+});
+
+
 Route::get('/shops', function () {
     return view('webpages.shops');
 });
@@ -218,6 +223,9 @@ Route::get('/serviceproviderform', [WebController::class, 'servceproviders'])->n
 Route::name('category.')->group(function () {
     Route::get('product/cat/{name}', [WebController::class, 'shopcategory'])->name('shop');
     Route::get('service/cat/{name}', [WebController::class, 'servicecategory'])->name('service');
+    //shopitem show form this route
+    Route::get('productcategory/cat/{id}', [WebController::class, 'productcategoryItem'])->name('productcategoryItem');
+
 });
 
 // about us page route
@@ -256,7 +264,7 @@ Route::get('/serviceproviderprofile', function () {
 // Route::get('/professionalsform', [ProfessionalController::class, 'webprofessional'])->name('professionalsform');
 
 Route::get('/professionalsform', [ProfessionalController::class, 'professionalForm'])->name('professionalsform');
-
+// websie eke bass form eka 
 Route::get('/bassform', function () {
     return view('webpages.bassform');
 });

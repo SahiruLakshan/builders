@@ -44,13 +44,7 @@
                         <input type="text" class="form-control" id="s_name" name="s_name"
                             placeholder="Name Of The Service Provider" />
                     </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="inputPassword4">Email</label>
-                            <input type="email" class="form-control" id="email" name="email"
-                                placeholder="Email Of The Service Provider" />
-                        </div>
-                    </div>
+                    
                     <div class="col">
                         <label for="maxProjectValue">Grade </label>
                         <input type="text" class="form-control" id="grade" name="grade"
@@ -93,6 +87,31 @@
 
 
                 <h5>Contact Details</h5>
+                    <hr>
+                    <div class="row mt-3 mb-3">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="inputPassword4">Email</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="Email Of The Service Provider" />
+                            </div>
+                        </div>
+                        {{-- meka aluthen damme tawa providers derectors tika aluthen dmme  --}}
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="inputPassword4">web Link</label>
+                                <input type="web" class="form-control" id="web" name="web"
+                                    placeholder="web Link Of The Service Provider" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="inputPassword4">Registation</label>
+                                <input type="email" class="form-control" id="registation" name="registation"
+                                    placeholder="Registation" />
+                            </div>
+                        </div>
+                    </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -123,7 +142,7 @@
                 <div class="row align-items-space-between">
                     <div class="col">
                         <div class="mb-3 d-flex">
-                            <label for="profileImage" class="form-label">Profile Image:</label>
+                            <label for="profileImage" class="form-label">Company Logo:</label>
                             <input type="file" id="providerImage" name="providerImage" accept="image/*" onchange="previewImage()" required>
                             <div class="preview-box" id="imagePreview">
                               <span>Image Preview</span>
@@ -140,7 +159,138 @@
                         <input type="text" id="businessRegNoo" name="businessRegNo" class="form-control"
                             aria-describedby="telephoneHelp">
                     </div>
+                    
                 </div>
+                <div class="row">
+                        <!-- Registrations File Upload -->
+                        <div class="form-group col-md-6">
+                            <label for="registrations">Registrations</label>
+                            <input type="file" name="registrations" id="registrations" class="form-control" accept=".pdf,.doc,.docx,.jpg,.png">
+                        </div>
+
+                        <!-- Certifications File Upload -->
+                        <div class="form-group col-md-6">
+                            <label for="certifications">Certifications</label>
+                            <input type="file" name="certifications" id="certifications" class="form-control" accept=".pdf,.doc,.docx,.jpg,.png">
+                        </div>
+                                                     <!-- Dynamic Providing Services Section -->
+                                                     <div class="form-group">
+                                                        <label for="providing_services">Providing Services</label>
+                                                        <div id="services-container">
+                                                            <!-- Initial Row with Two Fields -->
+                                                            <div class="service-row mb-2 d-flex align-items-center">
+                                                                <input type="text" name="service_name[]" class="form-control me-2" placeholder="Service Name">
+                                                              
+                                                                <button type="button" class="btn btn-danger btn-sm remove-service">Remove</button>
+                                                            </div>
+                                                        </div>
+                        
+                                                        <!-- Add More Button -->
+                                                        <button type="button" id="add-more" class="btn btn-success mt-2">Add More</button>
+                                                    </div>
+                                                    <script>
+                                                        $(document).ready(function () {
+                                                            // Add More Button Click
+                                                            $('#add-more').click(function () {
+                                                                $('#services-container').append(`
+                                                                    <div class="service-row mb-2 d-flex align-items-center">
+                                                                        <input type="text" name="service_name[]" class="form-control me-2" placeholder="Service Name">
+                                                                        
+                                                                        <button type="button" class="btn btn-danger btn-sm remove-service">Remove</button>
+                                                                    </div>
+                                                                `);
+                                                            });
+                                                    
+                                                            // Remove Row
+                                                            $(document).on('click', '.remove-service', function () {
+                                                                $(this).closest('.service-row').remove();
+                                                            });
+                                                        });
+                                                    </script>
+                </div>
+
+                   
+                <div class="form-group col-md-12">
+                    <label for="directors-details">Directors/Proprietors/Partners</label>
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Contact Number</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="directors-table-body">
+                        <!-- Rows will be added dynamically -->
+                        <tr>
+                          <td>
+                            <input
+                              type="text"
+                              name="directors[0][name]"
+                              class="form-control"
+                              placeholder="Enter Name"
+                              required
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              name="directors[0][contact]"
+                              class="form-control"
+                              placeholder="Enter Contact Number"
+                              required
+                            />
+                          </td>
+                          <td>
+                            <button type="button" class="btn btn-danger btn-sm remove-row">Remove</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <button type="button" class="btn btn-primary" id="add-director-row">Add Row</button>
+                </div>
+                  
+                  
+                    <script>
+                      document.getElementById('add-director-row').addEventListener('click', function () {
+                                      const tableBody = document.getElementById('directors-table-body');
+                                      const rowCount = tableBody.rows.length;
+                                    
+                                      const newRow = document.createElement('tr');
+                                      newRow.innerHTML = `
+                                        <td>
+                                          <input
+                                            type="text"
+                                            name="directors[${rowCount}][name]"
+                                            class="form-control"
+                                            placeholder="Enter Name"
+                                            required
+                                          />
+                                        </td>
+                                        <td>
+                                          <input
+                                            type="text"
+                                            name="directors[${rowCount}][contact]"
+                                            class="form-control"
+                                            placeholder="Enter Contact Number"
+                                            required
+                                          />
+                                        </td>
+                                        <td>
+                                          <button type="button" class="btn btn-danger btn-sm remove-row">Remove</button>
+                                        </td>
+                                      `;
+                                    
+                                      tableBody.appendChild(newRow);
+                                    });
+                                    
+                                    // Event delegation to handle row removal
+                                    document.getElementById('directors-table-body').addEventListener('click', function (event) {
+                                      if (event.target.classList.contains('remove-row')) {
+                                        event.target.closest('tr').remove();
+                                      }
+                                    });
+                    </script>
 
                 <div class="row">
                     <div class="col-4">
@@ -149,7 +299,7 @@
                             aria-describedby="noOfEmpHelp">
                     </div>
                     <div class="col-4">
-                        <label for="employeesQualification" class="col-form-label">Employees Qualification :</label>
+                        <label for="employeesQualification" class="col-form-label">Employees Qualification:</label>
                         <input type="text" id="employeesQualification" name="employeesQualification"
                             class="form-control" aria-describedby="employeesQualificationHelp">
                     </div>
