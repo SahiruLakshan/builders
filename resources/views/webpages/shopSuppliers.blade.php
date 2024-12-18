@@ -184,11 +184,11 @@
                 </div>
 
 
-                <div class="col-md-4 mt-3">
+                {{-- <div class="col-md-4 mt-3">
                     <label for="bussiness_reg_no" class="col-form-label">Business Registration No :</label>
                     <input type="text" name="br" id="bussiness_reg_no" class="form-control"
                         aria-describedby="telephoneHelp">
-                </div>
+                </div> --}}
                 <h4 class="mt-3">Company Details</h4> <hr>
                                                 <div class="d-flex flex-wrap gap-3">
                                                     <div class="col">
@@ -257,7 +257,7 @@
                                                   </tbody>
                                                 </table>
                                                 <button type="button" class="btn btn-primary" id="add-director-row">Add Row</button>
-                                              </div>
+                                            </div>
                                               
                                               
                                                 <script>
@@ -301,9 +301,7 @@
                                                                 });
                                                 </script>
                                                
-                                                    <div class="col-lg-12 col-md-12">
-
-                                                    </div>
+                                                    
                                             
                                            
                 <div class="mt-3 mb-3">

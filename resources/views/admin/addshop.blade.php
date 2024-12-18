@@ -365,9 +365,9 @@
                                                 <div class="div d-flex flex-wrap">
                                                     <div class="col-md-6">
                                                         <div class="control-group form-group">
-                                                            <label class="form-label" for="shop_name">Shop Name</label>
-                                                            <input type="text" class="form-control" name="shop_name1"
-                                                                id="shop_name1" placeholder="Shop Name" required />
+                                                            <label class="form-label" for="shop_name">Company Name</label>
+                                                            <input type="text" class="form-control" name="company_name"
+                                                                id="company_name" placeholder="company_name" required />
                                                             <div class="invalid-feedback">
                                                                 Please enter a valid shop name.
                                                             </div>
@@ -377,7 +377,7 @@
                                                         <div class="control-group form-group">
                                                             <label class="form-label" for="br">Business
                                                                 Registration</label>
-                                                            <input type="text" class="form-control" name="br"
+                                                            <input type="text" class="form-control" name="c_br"
                                                                 id="br"
                                                                 placeholder="Enter Business Registration" />
                                                             <div class="invalid-feedback">
