@@ -205,7 +205,7 @@
                             type="tel"
                             class="form-control"
                             id="contact_Person"
-                            name="brand_contact_Person"
+                            name="contact_person"
                             placeholder="Enter Your Contact Person"
                     
                             required
