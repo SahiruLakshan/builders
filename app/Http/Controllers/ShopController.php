@@ -96,7 +96,6 @@ class ShopController extends Controller
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i|after:start_time',
             'fb_link' => 'nullable|url|max:255',
-            'br' => 'required|string|max:255',
             'shop_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -120,7 +119,9 @@ class ShopController extends Controller
                 'start_time',
                 'end_time',
                 'fb_link',
-                'br'
+                'company_name',
+                'c_br',
+                'directors'
             ]);
 
             // Handle multiple categories
@@ -132,7 +133,7 @@ class ShopController extends Controller
                 $file->move('assets/shop', $filename);
                 $data['shop_img'] = $filename;
             }
-
+            $data['directors'] = json_encode($request->input('directors', []));
             $shop = new Shop($data);                         // save shop data
             $shop->save();
 
