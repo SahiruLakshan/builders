@@ -31,7 +31,10 @@ class Shop extends Model
         'shop_approve',
         'product_approve',
         'cancel_shop',
-        'cancel_product'
+        'cancel_product',
+        'company_name',
+        'c_br',
+        'directors'
     ];
 
     public function district()

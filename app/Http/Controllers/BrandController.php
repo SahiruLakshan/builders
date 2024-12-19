@@ -44,128 +44,101 @@ class BrandController extends Controller
 
     public function submitBrand(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $validated = $request->validate([
             'b_name' => 'required|string|max:255',
             'company_name' => 'required|string|max:255',
-            'address' => 'required|string|max:500',
-            'description' => 'nullable|string|max:1000',
+            'address' => 'required|string',
+            'description' => 'required|string',
             'country_of_origin' => 'required|string|max:255',
-            'production' => 'required|string|max:255',
-            'brand_contact_number' => 'required|regex:/^[0-9]{10}$/',
-            'email' => 'required|email|max:255|unique:brands,email',
-            'brand_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // optional image upload
+            'production' => 'required|string',
+            'brand_contact_number' => 'required|digits:10',
+            'brand_img' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'br' => 'nullable|string|max:255',
+            'contact_person' => 'nullable|string|max:255',
+            'designation' => 'nullable|string|max:255',
+            'whatsapp_no' => 'nullable|digits:10',
+            'b_email' => 'nullable|email',
+            'b_web_link' => 'required',
+            'directors' => 'nullable|array',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->with('error', 'Validation is failed.');
+        if ($request->hasFile('brand_img')) {
+            $file = $request->file('brand_img');
+            $filename = time() . '_' . $file->getClientOriginalName(); // Create a unique filename
+            $file->move(public_path('assets/brand'), $filename); // Move the file to the desired directory
+            $validated['brand_img'] = 'assets/brand/' . $filename; // Save the relative path
         }
 
-        try {
-            // Prepare data for saving
-            $data = $request->only([
-                'b_name',
-                'company_name',
-                'address',
-                'description',
-                'country_of_origin',
-                'production',
-                'brand_contact_number',
-                'email'
-            ]);
+        $validated['directors'] = json_encode($request->input('directors', []));
 
-            // Handle file upload if provided
-            if ($request->hasFile('brand_img')) {
-                $file = $request->file('brand_img');
-                $filename = time() . '_' . $file->getClientOriginalName();
-                $file->move('assets/brand', $filename); // Save image to 'storage/app/public/brand_images'
-                $data['brand_img'] = $filename;  // Store filename in the database
-            }
+        Brand::create($validated);
 
-            // Save brand data
-            $brand = new Brand($data);
-            $brand->save();
-
-            return redirect()->back()->with('success', 'Brand Added.');
-
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'An error occurred while adding the brand.');
-        }
+        return redirect()->back()->with('success', 'Brand added successfully!');
     }
 
 
     public function update($id)
     {
         $brand = Brand::find($id);
+        $products = Product::all();
         if (!$brand) {
             return redirect()->back()->with('error', 'Brand is not found');
         }
-        return view('admin.updateforms.updatebrand', compact('brand'));
+        return view('admin.updateforms.updatebrand', compact('brand', 'products'));
     }
 
     public function updateBrand(Request $request, $id)
     {
-        // Find the brand by ID
-        $brand = Brand::find($id);
-
-        if (!$brand) {
-            return redirect()->back()->with('error', 'Brand is not found.');
-        }
-
-        // Validate the incoming data
-        $validator = Validator::make($request->all(), [
+        // Validate the request
+        $validated = $request->validate([
             'b_name' => 'required|string|max:255',
             'company_name' => 'required|string|max:255',
-            'address' => 'required|string|max:500',
-            'description' => 'nullable|string|max:1000',
+            'address' => 'required|string',
+            'description' => 'required|string',
             'country_of_origin' => 'required|string|max:255',
-            'production' => 'required|string|max:255',
-            'brand_contact_number' => 'required|regex:/^[0-9]{10}$/',
-            'email' => 'required|email|max:255|unique:brands,email,' . $brand->id, // Ignore current brand's email for uniqueness check
-
+            'production' => 'required|string',
+            'brand_contact_number' => 'required|digits:10',
+            'brand_img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'br' => 'nullable|string|max:255',
+            'contact_person' => 'nullable|string|max:255',
+            'designation' => 'nullable|string|max:255',
+            'whatsapp_no' => 'nullable|digits:10',
+            'b_email' => 'nullable|email',
+            'b_web_link' => 'required|string',
+            'directors' => 'nullable|array',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->with('error', 'Validation failed.');
-        }
+        // Find the existing brand record
+        $brand = Brand::findOrFail($id);
 
-        try {
-            // Update the brand data
-            $data = $request->only([
-                'b_name',
-                'company_name',
-                'address',
-                'description',
-                'country_of_origin',
-                'production',
-                'brand_contact_number',
-                'email'
-            ]);
-
-            if ($request->hasFile('brand_img')) {
-                if (!empty($brand->brand_img) && file_exists(public_path('assets/brand/' . $brand->brand_img))) {
-                    unlink(public_path('assets/brand/' . $brand->brand_img));
-                }
-
-                $file = $request->file('brand_img');
-                $filename = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('assets/brand'), $filename); // Move to the 'assets/brand' directory
-
-                $data['brand_img'] = $filename;
+        // Update the brand image if a new file is uploaded
+        if ($request->hasFile('brand_img')) {
+            // Delete the old image
+            if ($brand->brand_img && file_exists(public_path($brand->brand_img))) {
+                unlink(public_path($brand->brand_img));
             }
 
-            // Update other brand data if necessary
-            $brand->update($data); // Assuming $data contains other fields too
-
-
-            // Update the brand
-            $brand->update($data);
-
-            return redirect()->back()->with('success', 'Brand Updated.');
-
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'An error occurred while updating the Brand.');
+            // Handle the new image
+            $file = $request->file('brand_img');
+            $filename = time() . '_' . $file->getClientOriginalName(); // Create a unique filename
+            $file->move(public_path('assets/brand'), $filename); // Move the file to the desired directory
+            $validated['brand_img'] = 'assets/brand/' . $filename; // Save the relative path
+        } else {
+            // Keep the existing image if no new file is uploaded
+            $validated['brand_img'] = $brand->brand_img;
         }
+
+
+
+        // Convert directors to JSON format
+        $validated['directors'] = json_encode($request->input('directors', []));
+
+        // Update the brand record
+        $brand->update($validated);
+
+        return redirect()->back()->with('success', 'Brand updated successfully!');
     }
+
 
 
     public function deleteBrand($id)
@@ -182,7 +155,6 @@ class BrandController extends Controller
             $brand->delete();
 
             return redirect()->back()->with('success', 'Brand Deleted.');
-
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An error occurred while deleting the brand.');
         }

@@ -19,7 +19,14 @@ class Brand extends Model
         'production',
         'brand_contact_number',
         'email',
-        'brand_img'
+        'brand_img',
+        'br',
+        'contact_person',
+        'designation',
+        'whatsapp_no',
+        'b_email',
+        'b_web_link',
+        'directors'
     ];
     public function brandProducts()
     {
