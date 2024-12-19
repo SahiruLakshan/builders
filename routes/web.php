@@ -171,6 +171,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
     Route::get('/addprofessionalsCategory', [ProfessionalController::class, 'index'])->name('addprofessionalsCategory');
     Route::post('/addprofessioncateory', [ProfessionalController::class, 'addprofessionals'])->name('submitprofessionalsCategory');
+    // Route::put('/professionalscategory/{id}', [ProfessionalController::class, 'update'])->name('service.update');
     Route::get('/viewprofessionalsCategory', [ProfessionalController::class, 'view'])->name('viewprofessionalsCategory');
     Route::get('/addprofessionals', [ProfessionalController::class, 'addadminprofessionals'])->name('addprofessionals');
     Route::post('/submitprofessionals', [ProfessionalController::class, 'store'])->name('submitprofessionals');
