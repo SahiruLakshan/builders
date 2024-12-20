@@ -41,22 +41,7 @@ class ProfessionalController extends Controller
         return view('admin.viewtbl.viewprofessionalcategory', compact('prof_cate'));
     }
 
-    // public function update(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'description' => 'required|string',
-    //     ]);
 
-    //     $ProfessionCategory = ProfessionCategory::findOrFail($id);
-    //     $ProfessionCategory->update([
-    //         'name' => strtoupper($request->input('servicename')),
-    //         'description' => $request->input('description'),
-    //         'updated_by' => auth()->id(), // Save the user ID of the editor
-    //     ]);
-
-    //     return redirect()->route('admin.updateforms.updateprofessionalCategory')->with('success', 'Service updated successfully.');
-    // }
 
     // public function webprofessional(Request $request)
     // {
