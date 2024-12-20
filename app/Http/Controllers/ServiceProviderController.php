@@ -54,6 +54,12 @@ class ServiceProviderController extends Controller
                 'noOfEmp' => 'required|integer',
                 'employeesQualification' => 'nullable|string|max:255',
                 'maxProjectValue' => 'nullable|string|max:50',
+                'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'services' => 'nullable|array',
+                'services.*' => 'nullable|string|max:255',
+                'directors' => 'array',
+                'directors.*.name' => 'string|max:255',
+                'directors.*.contact' => 'string|max:15',
             ]);
 
             $serviceProvider = new ServiceProvider();
@@ -75,28 +81,40 @@ class ServiceProviderController extends Controller
             $serviceProvider->no_of_employees = $validated['noOfEmp'];
             $serviceProvider->employees_qualification = $validated['employeesQualification'];
             $serviceProvider->max_project_value = $validated['maxProjectValue'];
-            $serviceProvider->save();
 
-            if ($request->has('projectName') && is_array($request->projectName)) {
-                foreach ($request->projectName as $index => $projectName) {
-                    $project = new Projects();
-                    $project->service_provider_id = $serviceProvider->number; // Relate the project to the service provider
-                    $project->name = $projectName;
-                    $project->location = $request->projectLocation[$index] ?? null; // Use null as a fallback if index doesn't exist
-                    $project->value = $request->projectValue[$index] ?? null;
-                    $project->person = $request->contactPerson[$index] ?? null;
-                    $project->number = $request->contactNumber[$index] ?? null;
-                    $project->save();
-                }
+            // Handle logo upload
+            if ($request->hasFile('logo')) {
+                $file = $request->file('logo');
+                $filename = time() . '_' . $file->getClientOriginalName(); // Create a unique filename
+                $file->move(public_path('assets/serviceprovider'), $filename); // Move the file to the desired directory
+                $serviceProvider->logo = 'assets/serviceprovider/' . $filename; // Save the relative path
             }
 
-            return redirect()->back()->with('success', 'Service Provider and Project History added successfully!');
+            // Handle registrations upload
+            if ($request->hasFile('registrations')) {
+                $file = $request->file('registrations');
+                $filename = time() . '_' . $file->getClientOriginalName(); // Create a unique filename
+                $file->move(public_path('assets/serviceprovider'), $filename); // Move the file to the desired directory
+                $serviceProvider->registrations = 'assets/serviceprovider/' . $filename; // Save the relative path
+            }
+    
+            // Handle certifications upload
+            if ($request->hasFile('certifications')) {
+                $file = $request->file('certifications');
+                $filename = time() . '_' . $file->getClientOriginalName(); // Create a unique filename
+                $file->move(public_path('assets/serviceprovider'), $filename); // Move the file to the desired directory
+                $serviceProvider->certifications = 'assets/serviceprovider/' . $filename; // Save the relative path
+            }
 
+            // Handle services
+            $serviceProvider->services = json_encode($validated['services']);
+            $serviceProvider->directors = json_encode($validated['directors']);
+            $serviceProvider->save();
+            return redirect()->back()->with('success', 'Service Provider added successfully!');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('An error occurred: ' . $e->getMessage());
         }
     }
-
 
     public function view(Request $request)
     {
@@ -107,8 +125,6 @@ class ServiceProviderController extends Controller
         }
 
         return view('admin.viewtbl.viewServiceProvider', compact('serviceProviders'));
-
-
     }
 
     public function approveServiceProviders(Request $request, $id)
@@ -135,5 +151,4 @@ class ServiceProviderController extends Controller
         $serviceProvider->delete();
         return redirect()->back()->with('success', 'Service Provider deleted successfully!');
     }
-
 }

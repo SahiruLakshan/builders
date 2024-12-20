@@ -18,6 +18,7 @@ use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdvertisementUploadController;
+use App\Http\Controllers\BassController;
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\BrandProductController;
 use App\Http\Controllers\ProfessionalController;
@@ -177,6 +178,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/submitprofessionals', [ProfessionalController::class, 'store'])->name('submitprofessionals');
     Route::get('/professionals', [ProfessionalController::class, 'viewpro'])->name('viewprofessionals');
 
+    Route::post('/addbasscategory', [BassController::class, 'store']);
+    Route::post('/addbass', [BassController::class, 'addbass'])->name('addbass.store');
     //  admin panel service poriders
     // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');
 

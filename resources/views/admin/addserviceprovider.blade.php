@@ -29,7 +29,7 @@
                     </div>
                     <div class="card-body pt-0">
                         {{-- <form class="border p-4" method="POST" action="{{ route('addserviceprovider.store') }}"> --}}
-                        <form class="border p-4" method="POST" action="/addserviceprovider/store">
+                        <form class="border p-4" method="POST" action="/addserviceprovider/store" enctype="multipart/form-data">
                             @csrf
                             <div class="d-flex">
                                 <div class="form-group">
@@ -326,7 +326,7 @@
                                 <div class="col">
                                     <div class="mb-3 d-flex">
                                         <label for="profileImage" class="form-label">Company Logo:</label>
-                                        <input type="file" id="providerImage" name="providerImage" accept="image/*" onchange="previewImage()" required>
+                                        <input type="file" id="providerImage" name="logo" accept="image/*" onchange="previewImage()" required>
                                         <div class="preview-box" id="imagePreview">
                                           <span>Image Preview</span>
                                         </div>
@@ -361,7 +361,7 @@
                                 <div id="services-container">
                                     <!-- Initial Row with Two Fields -->
                                     <div class="service-row mb-2 d-flex align-items-center">
-                                        <input type="text" name="service_name[]" class="form-control me-2" placeholder="Service Name">
+                                        <input type="text" name="services[]" class="form-control me-2" placeholder="Service Name">
                                       
                                         <button type="button" class="btn btn-danger btn-sm remove-service">Remove</button>
                                     </div>
