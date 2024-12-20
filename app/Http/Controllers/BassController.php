@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 use App\Models\District;
+use App\Models\City;
 use Illuminate\Http\Request;
 use App\Models\BassCategory;
 use App\Models\Bass;
 
 class BassController extends Controller
 {
+    // meken tama bn distric city ehema gnne form wlaala
     public function index()
     {
         $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
 
-        return view('admin.addbass', compact('dictricts', ));
+        return view('admin.addbass', compact('dictricts'));
     }
+
     public function store(Request $request)
     {
         $validated = $request->validate([

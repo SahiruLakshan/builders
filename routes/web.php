@@ -179,6 +179,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/professionals', [ProfessionalController::class, 'viewpro'])->name('viewprofessionals');
 
     Route::post('/addbasscategory', [BassController::class, 'store']);
+    // Route::get('/addshop', [ShopController::class, 'index'])->name('addshop');
     Route::post('/addbass', [BassController::class, 'addbass'])->name('addbass.store');
     //  admin panel service poriders
     // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');
