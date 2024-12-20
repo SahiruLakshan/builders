@@ -1,13 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\District;
 use Illuminate\Http\Request;
 use App\Models\BassCategory;
 use App\Models\Bass;
 
 class BassController extends Controller
 {
+    public function index()
+    {
+        $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
+
+        return view('admin.addbass', compact('dictricts', ));
+    }
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -110,5 +116,5 @@ class BassController extends Controller
             return redirect()->back()->withErrors('An error occurred: ' . $e->getMessage());
         }
     }
-    
+
 }
