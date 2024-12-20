@@ -31,7 +31,7 @@
                         </div>
                         <div class="card-body pt-0">
                             {{-- <form class="border p-4" method="POST" action="{{ route('addserviceprovider.store') }}"> --}}
-                            <form class="border p-4" method="POST" action="{{ route('submitprofessionals') }}"
+                            <form class="border p-4" method="POST" action="/addbass"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <!-- Personal Information -->
@@ -40,17 +40,7 @@
                                 {{-- this one need to auto fill from our side like that PR00001 --}}
                                 <div class="d-flex ">
                                     <div class="col">
-                                        {{-- <!-- Display Validation Errors -->
-                                        @if ($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif --}}
-
+                                    
                                         <!-- Personal Information -->
                                         <div class="form-group">
                                             <label for="professionalNumber">Bass Number</label>
@@ -78,51 +68,14 @@
                                         <div class="form-group">
                                             <div class="mb-3">
                                                 <label for="fullName" class="form-label">Full Name</label>
-                                                <input type="text" class="form-control" id="fullName" name="b_Name"
+                                                <input type="text" class="form-control" id="fullName" name="fullname"
                                                     placeholder="Enter full name" required>
                                             </div>
                                         </div>
                                     </div>
 
                                 </div>
-                                {{-- <div class="row">
-                                    <div class="col ">
-                                        <div class="form-group">
-                                            <div class="mb-3 d-flex">
-                                                <label for="profileImage" class="form-label">NIC Image:</label>
-                                                <input type="file" id="nicImage" name="nicImage" accept="image/*"
-                                                    onchange="previewImage()" required>
-                                                <div class="preview-box" id="imagePreview2">
-                                                    <span>NIC Image Preview</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <div class="mb-3 d-flex">
-                                                <label for="profileImage" class="form-label">Back Side NIC Image:</label>
-                                                <input type="file" id="backNicImage" name="backNicImage" accept="image/*"
-                                                    onchange="previewImage()" required>
-                                                <div class="preview-box" id="imagePreview3">
-                                                    <span>Back Side NIC Image Preview</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                <div class="col">
-                                    <div class="mb-3 ">
-                                        <label for="profileImage" class="form-label">Profile Image:</label>
-                                        <input type="file" id="profileImage" name="profileImage" accept="image/*"
-                                            onchange="previewImage()" required>
-                                        <div class="preview-box" id="imagePreview">
-                                            <span>Image Preview</span>
-                                        </div>
-    
-                                    </div>
-                                </div> --}}
+                    
                                 <hr>
                                 <div class="row md-3 ">
                                     <div class="col">
@@ -197,13 +150,13 @@
                                 <div class="d-flex mb-3">
                                     <div class="col-6 pt-2">
                                         <label for="district">Select District:</label>
-                                        <select id="district" name="district" class="form-select">
+                                        <select id="district" name="district_id" class="form-select">
                                             <option value="">Select District</option>
                                         </select>
                                     </div>
                                     <div class="col-6 pt-2">
                                         <label for="city">City:</label>
-                                        <select id="city" name="city" class="form-select disabled" disabled>
+                                        <select id="city" name="city_id" class="form-select disabled" disabled>
                                             <option value="">Select City</option>
                                         </select>
                                     </div>
@@ -319,18 +272,18 @@
                                         <div class="row certification-row">
                                             <div class="col-md-4">
                                                 <input type="text" class="form-control mb-2"
-                                                    name="certificationName[]" placeholder="Certification Name">
+                                                    name="certificationDetails[0][name]" placeholder="Certification Name">
                                             </div>
                                             <div class="col-md-4">
-                                                <input type="text" class="form-control mb-2" name="issuingAuthority[]"
+                                                <input type="text" class="form-control mb-2" name="certificationDetails[0][authority]"
                                                     placeholder="Issuing Authority">
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="date" class="form-control mb-2" name="dateIssued[]"
+                                                <input type="date" class="form-control mb-2" name="certificationDetails[0][dateIssued]"
                                                     placeholder="Date Issued">
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="date" class="form-control mb-2" name="expirationDate[]"
+                                                <input type="date" class="form-control mb-2" name="certificationDetails[0][expirationDate]"
                                                     placeholder="Expiration Date">
                                             </div>
 
@@ -338,7 +291,7 @@
                                                 <label for="certificationPdf" class="form-label">Certification PDF (if
                                                     applicable)</label>
                                                 <input type="file" class="form-control" id="certificationPdf"
-                                                    name="certificates[]" multiple placeholder="Upload PDF(s)">
+                                                    name="certifications" multiple placeholder="Upload PDF(s)">
                                             </div>
 
                                             <div class="col-md-12 text-end">
@@ -351,15 +304,6 @@
                                         Certification</button>
 
                                 </div>
-                                {{-- <div class="form-group mt-3">
-                                    <div class="col-md-12 ">
-
-                                        <label for="licenseNumber" class="form-label">Professional License Number</label>
-                                        <input type="text" class="form-control" id="licenseNumber"
-                                            name="licenseNumber" placeholder="License Number (if applicable)">
-
-                                    </div>
-                                </div> --}}
                                 <div class="col-md-12">
                                     <!-- Submit Button -->
                                     <button type="submit" class="btn btn-primary mt-3 mb-2">Submit</button>
