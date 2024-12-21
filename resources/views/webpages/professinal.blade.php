@@ -98,7 +98,8 @@
                         <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_2" aria-expanded="true">
                                 <i class="icon-control fa fa-chevron-down"></i>
-                                <h6 class="title">Services </h6>
+                                {{-- in here dianamicaly need to show bass category and when check soem category need to show bass  --}}
+                                <h6 class="title"> Select poffesinal Categorys </h6>
                             </a>
                         </header>
                         <div class="filter-content collapse show" id="collapse_2">
@@ -108,16 +109,7 @@
                                     <span class="form-check-label">
                                         <span class="badge bg-light text-dark float-end">120</span></span>
                                 </label>
-                                <label class="form-check">
-                                    <input type="checkbox" class="form-check-input" checked />
-                                    <span class="form-check-label">Dulux
-                                        <span class="badge bg-light text-dark float-end">15</span></span>
-                                </label>
-                                <label class="form-check">
-                                    <input type="checkbox" class="form-check-input" checked />
-                                    <span class="form-check-label">Alumex
-                                        <span class="badge bg-light text-dark float-end">35</span></span>
-                                </label>
+                               
                             </div>
                         </div>
                     </article>
@@ -175,42 +167,41 @@
             </aside>
            
             {{-- Service Providers Section --}}
-            @if ($serviceProviders->isEmpty())
+            {{-- @if ($serviceProviders->isEmpty()); --}}
             <div class="col">
                 <h2>There are no Services in this Category</h2>
             </div>
                 @else
                     <div class="col-10 col-md-9">
                         <div class="d-flex flex-row flex-wrap justify-content-start mb-4">
-                            @foreach ($serviceProviders as $serviceProvider)
+                            @foreach ($ as )
                                 <div class="col-12 col-md-6 p-2">
                                     {{-- <a href="{{route('view_Service_provider_profile', $serviceProvider->id) }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">   --}}
                                     <a href="#" class="text-decoration-none text-dark">
                                         <div class="shadow hcard-200 bg-white d-flex flex-row">
                                             <!-- Image on the left side -->
-                                            <img src="{{ asset('assets/serviceProviders/'.$serviceProvider->s_img) }}" class="d-block col-4 object-fit-cover rounded-start" alt="Service Provider Image">
+                                            <img src="{{ asset('assets/serviceProviders/'." class="d-block col-4 object-fit-cover rounded-start" alt="Service Provider Image">
                                             
                                             <!-- Text and button on the right side -->
                                             <div class="col-8 d-flex flex-column p-4">
                                                 <div>
 
-                                                    <h5 class="card-title">{{ $serviceProvider->s_name }}</h5>
+                                                    <h5 class="card-title"></h5>
                                                     <p class="card-text p-0 m-0 text-small text-muted">
                                                         <div class="text-truncate-two-line">
                                                             <i class="fas fa-map-marker-alt me-2"></i>
-                                                            {{ $serviceProvider->address }}
-                                                            {{ $serviceProvider->district->dis_name }}, {{ $serviceProvider->city->city_name }}
+                                                            
                                                         </div>
                                                         <div class="d-flex align-items-end">
                                                             <i class="fas fa-phone me-3"></i>
-                                                            <a href="tel:{{ $serviceProvider->whatsapp }}" class="text-truncate col">{{ $serviceProvider->whatsapp }}</a>
+                                                            <a href="tel:" class="text-truncate col"></a>
                                                         </div>
                                                         <div class="d-flex justify-content-between align-items-start">
                                                             <div>
                                                                 <i class="fas fa-user-check me-3"></i>
-                                                                Grade: {{ $serviceProvider->grade }}
+                                                                Grade:
                                                             </div>
-                                                            <a href="tel:+94{{ $serviceProvider->whatsapp }}" class="btn text-white bg-warning shadow phone-button mt-2">
+                                                            <a href="tel:+94" class="btn text-white bg-warning shadow phone-button mt-2">
                                                                 <i class="fab fa-whatsapp ms-auto"></i> 
                                                             </a>
                                                         </div>

@@ -1,13 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\District;
+use App\Models\City;
 use Illuminate\Http\Request;
 use App\Models\BassCategory;
 use App\Models\Bass;
 
 class BassController extends Controller
 {
+    public function index()
+    {
+        $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
+        $allCities = City::all(); // Fetch all cities directly from the City model
+        $bassCategories = BassCategory::all();
+        return view('admin.addbass', compact('dictricts', 'allCities', 'bassCategories'));
+    }
+    // meken tama bn distric city ehema gnne form wlaala
+
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -110,5 +121,5 @@ class BassController extends Controller
             return redirect()->back()->withErrors('An error occurred: ' . $e->getMessage());
         }
     }
-    
+
 }

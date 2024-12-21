@@ -150,17 +150,67 @@
                                 <div class="d-flex mb-3">
                                     <div class="col-6 pt-2">
                                         <label for="district">Select District:</label>
-                                        <select id="district" name="district_id" class="form-select">
+                                        <select id="district" name="district" class="form-select">
                                             <option value="">Select District</option>
                                         </select>
                                     </div>
                                     <div class="col-6 pt-2">
                                         <label for="city">City:</label>
-                                        <select id="city" name="city_id" class="form-select disabled" disabled>
+                                        <select id="city" name="city" class="form-select disabled" disabled>
                                             <option value="">Select City</option>
                                         </select>
                                     </div>
                                 </div>
+                                <script>
+                                    // Prepare district and city data in JavaScript from Blade data
+                                    var cities = [
+                                        @foreach ($dictricts as $district)
+                                            {
+                                                "districtId": "{{ $district->dis_id }}",
+                                                "districtName": "{{ $district->dis_name }}",
+                                                "cities": [
+                                                    @foreach ($district->city as $city)
+                                                        {
+                                                            "cityName": "{{ $city->ds_name }}",
+                                                            "cityId": "{{ $city->ds_id }}"
+                                                        },
+                                                    @endforeach
+                                                ]
+                                            },
+                                        @endforeach
+                                    ];
+                                    // console.log("🚀 ~ $district:", cities)
+                            
+                                    $(document).ready(function() {
+                            
+                                        // Populate district dropdown
+                                        let districtOptions = '<option value="">Select District</option>';
+                                        cities.forEach((elem) => {
+                                            districtOptions += `<option value="${elem.districtId}">${elem.districtName}</option>`;
+                                        });
+                                        // console.log("🚀 ~ $ ~ districtOptions:", $('#district'))
+                            
+                                        $('#district').html(districtOptions); // Initialize Select2 on the district dropdown
+                                        $('#district').select2(); // Initialize Select2 on the district dropdown
+                                        $('#city').select2(); // Initialize Select2 on the city dropdown
+                            
+                                        $('#district').change(function() {
+                                            const selectedDistrict = cities.find((elem) => elem.districtId == $(this).val());
+                            
+                                            if (selectedDistrict) {
+                                                let cityOptions = '<option value="">Select City</option>';
+                                                selectedDistrict.cities.forEach((city) => {
+                                                    cityOptions += `<option value="${city.cityId}">${city.cityName}</option>`;
+                                                });
+                            
+                                                $('#city').html(cityOptions).prop("disabled", false).removeClass('disabled').select2();
+                                            } else {
+                                                $('#city').html('<option value="">Select City</option>').prop("disabled", true)
+                                                    .addClass('disabled');
+                                            }
+                                        });
+                                    });
+                                </script>
                                 <div class="d-flex">
                                     <div class="col-md-4">
                                         <label for="zip" class="form-label">Zip Code</label>
@@ -229,14 +279,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="mb-3">
-                                                {{-- Professional Category neet to shgow in here this one get form professinalCategory tyble it need to create contoller also --}}
-                                                <label for="specializations" class="form-label">Specializations</label>
-                                                <select multiple="multiple" name="specialization[]"
+                                                {{-- Bass Category neet to shgow in here this one get form bassCategories tyble it need to create contoller also --}}
+                                                <label for="specializations" class="form-label">Bass Categories</label>
+                                                <select multiple="multiple" name="bassCategories[]"
                                                     class="form-select selectsum1">
-                                                    {{-- @foreach ($cate as $category)
+                                                    @foreach ($bassCategories as $category)
                                                         <option value="{{ $category->name }}">{{ $category->name }}
                                                         </option>
-                                                    @endforeach --}}
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -244,19 +294,51 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="mb-3">
-                                                {{-- Professional Category neet to shgow in here this one get form professinalCategory tyble it need to create contoller also --}}
+                                                {{-- Professional Category (Working Area) --}}
                                                 <label for="specializations" class="form-label">Working Area</label>
-                                                <select multiple="multiple" name="workingArea[]"
-                                                    class="form-select selectsum1">
-                                                    {{-- @foreach ($cate as $category)
-                                                        <option value="{{ $category->name }}">{{ $category->name }}
-                                                        </option>
-                                                    @endforeach --}}
+                                                <select multiple="multiple" name="workingArea[]" class="form-select disabled selectsum1 workingArea">
+                                                    <!-- Options will be populated dynamically -->
                                                 </select>
                                             </div>
+                                            <p id="city-count" class="mt-2 text-muted">Selected Cities: 0</p> <!-- Display the count here -->
                                         </div>
-
                                     </div>
+                                    
+                                    <script>
+                                        $(document).ready(function() {
+                                            // JavaScript to populate the Working Area dropdown
+                                            var allCities = [
+                                                @foreach ($allCities as $city)
+                                                    {
+                                                        "cityId": "{{ $city->ds_id }}",
+                                                        "cityName": "{{ $city->ds_name }}"
+                                                    },
+                                                @endforeach
+                                            ];
+                                    
+                                            // Populate the Working Area dropdown
+                                            let workingAreaOptions = '';
+                                            allCities.forEach((city) => {
+                                                workingAreaOptions += `<option value="${city.cityId}">${city.cityName}</option>`;
+                                            });
+                                    
+                                            $('.workingArea').html(workingAreaOptions).select2({
+                                                placeholder: "Select cities",
+                                                closeOnSelect: false,
+                                                templateSelection: function () {
+                                                    return ""; // Hides the selected values in the dropdown
+                                                }
+                                            });
+                                    
+                                            // Update the city count dynamically
+                                            $('.workingArea').on('change', function() {
+                                                const selectedCount = $(this).val() ? $(this).val().length : 0;
+                                                $('#city-count').text(`Selected Cities: ${selectedCount}`);
+                                            });
+                                        });
+                                    </script>
+                                    
+                                    
                                 </div>
                                   
                                 
@@ -293,6 +375,175 @@
                                                 <input type="file" class="form-control" id="certificationPdf"
                                                     name="certifications" multiple placeholder="Upload PDF(s)">
                                             </div>
+                                            
+                            <h5>Company Details</h5>
+                            <div class="row align-items-space-between">
+                                <div class="col">
+                                    <div class="mb-3 d-flex">
+                                        <label for="profileImage" class="form-label">Company Logo:</label>
+                                        <input type="file" id="providerImage" name="providerImage" accept="image/*" onchange="previewImage()" required>
+                                        <div class="preview-box" id="imagePreview">
+                                          <span>Image Preview</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword6" class="col-form-label">Name :</label>
+                                    <input type="text" id="companyName" name="companyName" class="form-control"
+                                        aria-describedby="companyNameHelp">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="businessRegNo" class="col-form-label">Business Registration No :</label>
+                                    <input type="text" id="businessRegNo" name="businessRegNo" class="form-control"
+                                        aria-describedby="businessRegNoHelp">
+                                </div>
+                               
+                                <!-- Registrations File Upload -->
+                                <div class="form-group col-md-6">
+                                    <label for="registrations">Registrations</label>
+                                    <input type="file" name="registrations" id="registrations" class="form-control" accept=".pdf,.doc,.docx,.jpg,.png">
+                                </div>
+
+                                <!-- Certifications File Upload -->
+                                <div class="form-group col-md-6">
+                                    <label for="certifications">Certifications</label>
+                                    <input type="file" name="certifications" id="certifications" class="form-control" accept=".pdf,.doc,.docx,.jpg,.png">
+                                </div> 
+                            </div>
+                             <!-- Dynamic Providing Services Section -->
+                            <div class="form-group">
+                                <label for="providing_services">Providing Services</label>
+                                <div id="services-container">
+                                    <!-- Initial Row with Two Fields -->
+                                    <div class="service-row mb-2 d-flex align-items-center">
+                                        <input type="text" name="service_name[]" class="form-control me-2" placeholder="Service Name">
+                                      
+                                        <button type="button" class="btn btn-danger btn-sm remove-service">Remove</button>
+                                    </div>
+                                </div>
+
+                                <!-- Add More Button -->
+                                <button type="button" id="add-more" class="btn btn-success mt-2">Add More</button>
+                            </div>
+                            <script>
+                                $(document).ready(function () {
+                                    // Add More Button Click
+                                    $('#add-more').click(function () {
+                                        $('#services-container').append(`
+                                            <div class="service-row mb-2 d-flex align-items-center">
+                                                <input type="text" name="service_name[]" class="form-control me-2" placeholder="Service Name">
+                                                
+                                                <button type="button" class="btn btn-danger btn-sm remove-service">Remove</button>
+                                            </div>
+                                        `);
+                                    });
+                            
+                                    // Remove Row
+                                    $(document).on('click', '.remove-service', function () {
+                                        $(this).closest('.service-row').remove();
+                                    });
+                                });
+                            </script>
+                            <div class="form-group col-md-12">
+                                <label for="directors-details">Directors/Proprietors/Partners</label>
+                                <table class="table table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th>Name</th>
+                                      <th>Contact Number</th>
+                                      <th>Action</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody id="directors-table-body">
+                                    <!-- Rows will be added dynamically -->
+                                    <tr>
+                                      <td>
+                                        <input
+                                          type="text"
+                                          name="directors[0][name]"
+                                          class="form-control"
+                                          placeholder="Enter Name"
+                                          required
+                                        />
+                                      </td>
+                                      <td>
+                                        <input
+                                          type="text"
+                                          name="directors[0][contact]"
+                                          class="form-control"
+                                          placeholder="Enter Contact Number"
+                                          required
+                                        />
+                                      </td>
+                                      <td>
+                                        <button type="button" class="btn btn-danger btn-sm remove-row">Remove</button>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <button type="button" class="btn btn-primary" id="add-director-row">Add Row</button>
+                            </div>
+                              
+                              
+                                <script>
+                                  document.getElementById('add-director-row').addEventListener('click', function () {
+                                                  const tableBody = document.getElementById('directors-table-body');
+                                                  const rowCount = tableBody.rows.length;
+                                                
+                                                  const newRow = document.createElement('tr');
+                                                  newRow.innerHTML = `
+                                                    <td>
+                                                      <input
+                                                        type="text"
+                                                        name="directors[${rowCount}][name]"
+                                                        class="form-control"
+                                                        placeholder="Enter Name"
+                                                        required
+                                                      />
+                                                    </td>
+                                                    <td>
+                                                      <input
+                                                        type="text"
+                                                        name="directors[${rowCount}][contact]"
+                                                        class="form-control"
+                                                        placeholder="Enter Contact Number"
+                                                        required
+                                                      />
+                                                    </td>
+                                                    <td>
+                                                      <button type="button" class="btn btn-danger btn-sm remove-row">Remove</button>
+                                                    </td>
+                                                  `;
+                                                
+                                                  tableBody.appendChild(newRow);
+                                                });
+                                                
+                                                // Event delegation to handle row removal
+                                                document.getElementById('directors-table-body').addEventListener('click', function (event) {
+                                                  if (event.target.classList.contains('remove-row')) {
+                                                    event.target.closest('tr').remove();
+                                                  }
+                                                });
+                                </script>
+    
+                            <div class="row">
+                                <div class="col-4">
+                                    <label for="noOfEmp" class="col-form-label">Number of Employees :</label>
+                                    <input type="number" id="noOfEmp" name="noOfEmp" class="form-control"
+                                        aria-describedby="noOfEmpHelp">
+                                </div>
+                                <div class="col-4">
+                                    <label for="employeesQualification" class="col-form-label">Employees Qualification
+                                        :</label>
+                                    <input type="text" id="employeesQualification" name="employeesQualification"
+                                        class="form-control" aria-describedby="employeesQualificationHelp">
+                                </div>
+                                <div class="col-4">
+                                    <label for="maxProjectValue" class="col-form-label">Maximum Project Value :</label>
+                                    <input type="text" id="maxProjectValue" name="maxProjectValue" class="form-control"
+                                        aria-describedby="maxProjectValueHelp">
+                                </div>
+                            </div>
 
                                             <div class="col-md-12 text-end">
                                                 <button type="button"
