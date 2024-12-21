@@ -18,6 +18,7 @@ use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdvertisementUploadController;
+use App\Http\Controllers\BassController;
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\BrandProductController;
 use App\Http\Controllers\ProfessionalController;
@@ -171,11 +172,24 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
     Route::get('/addprofessionalsCategory', [ProfessionalController::class, 'index'])->name('addprofessionalsCategory');
     Route::post('/addprofessioncateory', [ProfessionalController::class, 'addprofessionals'])->name('submitprofessionalsCategory');
+    // Route::put('/professionalscategory/{id}', [ProfessionalController::class, 'update'])->name('service.update');
     Route::get('/viewprofessionalsCategory', [ProfessionalController::class, 'view'])->name('viewprofessionalsCategory');
     Route::get('/addprofessionals', [ProfessionalController::class, 'addadminprofessionals'])->name('addprofessionals');
     Route::post('/submitprofessionals', [ProfessionalController::class, 'store'])->name('submitprofessionals');
     Route::get('/professionals', [ProfessionalController::class, 'viewpro'])->name('viewprofessionals');
 
+    Route::post('/addbasscategory', [BassController::class, 'store']);
+    // Route::get('/addshop', [ShopController::class, 'index'])->name('addshop');
+    Route::post('/addbass', [BassController::class, 'addbass'])->name('addbass.store');
+    Route::get('/adminAddbass', [BassController::class, 'index'])->name('adminAddbass');
+    Route::get('/viewbass', [BassController::class, 'viewbass'])->name('viewbass');
+    Route::get('/viewbasscategory', [BassController::class, 'viewbasscate'])->name('viewbasscate');
+    Route::delete('/deletebasscategory/{id}', [BassController::class, 'deleteBassCategory'])->name('bassCategory.delete');
+    Route::delete('/deletebass/{id}', [BassController::class, 'deleteBass'])->name('bass.delete');
+
+    // Route::get('/adminAddbass', function () {
+    //     return view('admin.addbass');
+    // });
     //  admin panel service poriders
     // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');
 
@@ -200,9 +214,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 //search optoins route
 Route::get('/search', [WebController::class, 'search'])->name('search');
 //  me tika admin panal ekata enna oniii
-Route::get('/addbass', function () {
-    return view('admin.addbass');
-});
+
 Route::get('/addbassCategory', function () {
     return view('admin.addbassCategory');
 });

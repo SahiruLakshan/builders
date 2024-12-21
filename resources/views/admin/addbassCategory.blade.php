@@ -10,12 +10,12 @@
                     </p>
                 </div>
                 <div class="card-body pt-0">
-                    <form action="" method="POST" class="form-horizontal" id="addporfessionalscategory">
+                    <form action="/addbasscategory" method="POST" class="form-horizontal" id="addporfessionalscategory">
                         @csrf
                         <!-- Professional Name Field -->
                         <div class="form-group">
                             <label for="product_name">Bass Category Name</label>
-                            <input type="text" class="form-control" name="bc_name" placeholder="Bass Category Name" required onchange="this.value = this.value.toUpperCase();" />
+                            <input type="text" class="form-control" name="name" placeholder="Bass Category Name" required onchange="this.value = this.value.toUpperCase();" />
                             <small class="form-text text-muted">Enter the Bass Category name. This field is
                                 required.</small>
                         </div>

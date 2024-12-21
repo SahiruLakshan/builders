@@ -8,15 +8,15 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($products as $product)
+        @foreach ($professionalCategories as $professionalCategory)
             <tr>
-                <td>{{ $product->id }}</td>
-                <td style="max-width:300px;overflow:scroll">{{ $product->name }}</td>
-                <td style="max-width:600px;overflow:scroll">{{ $product->description }}</td>
+                <td>{{ $professionalCategory->id }}</td>
+                <td style="max-width:300px;overflow:scroll">{{ $professionalCategory->name }}</td>
+                <td style="max-width:600px;overflow:scroll">{{ $professionalCategory->description }}</td>
                 <td>
                     <span>
-                        <a href="{{ url('/getproduct/' . $product->id) }}" class="btn btn-success btn-sm">Edit</a>
-                        <a href="{{ url('/delete/product/' . $product->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="{{ url('/getproduct/' . $professionalCategory->id) }}" class="btn btn-success btn-sm">Edit</a>
+                        <a href="{{ url('/delete/product/' . $professionalCategory->id) }}" class="btn btn-danger btn-sm">Delete</a>
                     </span>
                 </td>
             </tr>

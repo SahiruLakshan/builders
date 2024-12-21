@@ -41,6 +41,8 @@ class ProfessionalController extends Controller
         return view('admin.viewtbl.viewprofessionalcategory', compact('prof_cate'));
     }
 
+
+
     // public function webprofessional(Request $request)
     // {
     //     $districts = District::with('city')->select('dis_id', 'dis_name')->get();
@@ -91,7 +93,7 @@ class ProfessionalController extends Controller
                 'certifications.*' => 'string|max:255', // Each certification path
                 'licenseNumber' => 'nullable|string|max:50|unique:professionals,license_number',
             ]);
-            
+
 
             // Handle file upload
             // $profileImagePath = null;

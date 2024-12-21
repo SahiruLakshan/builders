@@ -499,14 +499,14 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="#">View Bass Category</a>
+                                            <a class="slide-item" href="/viewbasscategory">View Bass Category</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/addbass">Add New Bass
+                                            <a class="slide-item" href="adminAddbass">Add New Bass
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="#">View Bass</a>
+                                            <a class="slide-item" href="/viewbass">View Bass</a>
                                         </li>
                                     </ul>
                                 </li>
