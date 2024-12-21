@@ -571,7 +571,7 @@
                 }
             });
         });
-</script>
+    </script>
       <script>
           window.addEventListener("load", function() {
               const map = L.map('map').setView([6.9271, 79.8612], 13);

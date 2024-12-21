@@ -502,7 +502,7 @@
                                             <a class="slide-item" href="#">View Bass Category</a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/addbass">Add New Bass
+                                            <a class="slide-item" href="adminAddbass">Add New Bass
                                             </a>
                                         </li>
                                         <li>

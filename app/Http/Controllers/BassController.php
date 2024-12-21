@@ -9,13 +9,15 @@ use App\Models\Bass;
 
 class BassController extends Controller
 {
-    // meken tama bn distric city ehema gnne form wlaala
     public function index()
     {
         $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
-
-        return view('admin.addbass', compact('dictricts'));
+        $allCities = City::all(); // Fetch all cities directly from the City model
+        $bassCategories = BassCategory::all();
+        return view('admin.addbass', compact('dictricts', 'allCities', 'bassCategories'));
     }
+    // meken tama bn distric city ehema gnne form wlaala
+
 
     public function store(Request $request)
     {

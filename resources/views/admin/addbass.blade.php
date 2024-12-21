@@ -150,17 +150,67 @@
                                 <div class="d-flex mb-3">
                                     <div class="col-6 pt-2">
                                         <label for="district">Select District:</label>
-                                        <select id="district" name="district_id" class="form-select">
+                                        <select id="district" name="district" class="form-select">
                                             <option value="">Select District</option>
                                         </select>
                                     </div>
                                     <div class="col-6 pt-2">
                                         <label for="city">City:</label>
-                                        <select id="city" name="city_id" class="form-select disabled" disabled>
+                                        <select id="city" name="city" class="form-select disabled" disabled>
                                             <option value="">Select City</option>
                                         </select>
                                     </div>
                                 </div>
+                                <script>
+                                    // Prepare district and city data in JavaScript from Blade data
+                                    var cities = [
+                                        @foreach ($dictricts as $district)
+                                            {
+                                                "districtId": "{{ $district->dis_id }}",
+                                                "districtName": "{{ $district->dis_name }}",
+                                                "cities": [
+                                                    @foreach ($district->city as $city)
+                                                        {
+                                                            "cityName": "{{ $city->ds_name }}",
+                                                            "cityId": "{{ $city->ds_id }}"
+                                                        },
+                                                    @endforeach
+                                                ]
+                                            },
+                                        @endforeach
+                                    ];
+                                    // console.log("🚀 ~ $district:", cities)
+                            
+                                    $(document).ready(function() {
+                            
+                                        // Populate district dropdown
+                                        let districtOptions = '<option value="">Select District</option>';
+                                        cities.forEach((elem) => {
+                                            districtOptions += `<option value="${elem.districtId}">${elem.districtName}</option>`;
+                                        });
+                                        // console.log("🚀 ~ $ ~ districtOptions:", $('#district'))
+                            
+                                        $('#district').html(districtOptions); // Initialize Select2 on the district dropdown
+                                        $('#district').select2(); // Initialize Select2 on the district dropdown
+                                        $('#city').select2(); // Initialize Select2 on the city dropdown
+                            
+                                        $('#district').change(function() {
+                                            const selectedDistrict = cities.find((elem) => elem.districtId == $(this).val());
+                            
+                                            if (selectedDistrict) {
+                                                let cityOptions = '<option value="">Select City</option>';
+                                                selectedDistrict.cities.forEach((city) => {
+                                                    cityOptions += `<option value="${city.cityId}">${city.cityName}</option>`;
+                                                });
+                            
+                                                $('#city').html(cityOptions).prop("disabled", false).removeClass('disabled').select2();
+                                            } else {
+                                                $('#city').html('<option value="">Select City</option>').prop("disabled", true)
+                                                    .addClass('disabled');
+                                            }
+                                        });
+                                    });
+                                </script>
                                 <div class="d-flex">
                                     <div class="col-md-4">
                                         <label for="zip" class="form-label">Zip Code</label>
@@ -229,14 +279,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="mb-3">
-                                                {{-- Professional Category neet to shgow in here this one get form professinalCategory tyble it need to create contoller also --}}
-                                                <label for="specializations" class="form-label">Specializations</label>
-                                                <select multiple="multiple" name="specialization[]"
+                                                {{-- Bass Category neet to shgow in here this one get form bassCategories tyble it need to create contoller also --}}
+                                                <label for="specializations" class="form-label">Bass Categories</label>
+                                                <select multiple="multiple" name="bassCategories[]"
                                                     class="form-select selectsum1">
-                                                    {{-- @foreach ($cate as $category)
+                                                    @foreach ($bassCategories as $category)
                                                         <option value="{{ $category->name }}">{{ $category->name }}
                                                         </option>
-                                                    @endforeach --}}
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -244,19 +294,51 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="mb-3">
-                                                {{-- Professional Category neet to shgow in here this one get form professinalCategory tyble it need to create contoller also --}}
+                                                {{-- Professional Category (Working Area) --}}
                                                 <label for="specializations" class="form-label">Working Area</label>
-                                                <select multiple="multiple" name="workingArea[]"
-                                                    class="form-select selectsum1">
-                                                    {{-- @foreach ($cate as $category)
-                                                        <option value="{{ $category->name }}">{{ $category->name }}
-                                                        </option>
-                                                    @endforeach --}}
+                                                <select multiple="multiple" name="workingArea[]" class="form-select disabled selectsum1 workingArea">
+                                                    <!-- Options will be populated dynamically -->
                                                 </select>
                                             </div>
+                                            <p id="city-count" class="mt-2 text-muted">Selected Cities: 0</p> <!-- Display the count here -->
                                         </div>
-
                                     </div>
+                                    
+                                    <script>
+                                        $(document).ready(function() {
+                                            // JavaScript to populate the Working Area dropdown
+                                            var allCities = [
+                                                @foreach ($allCities as $city)
+                                                    {
+                                                        "cityId": "{{ $city->ds_id }}",
+                                                        "cityName": "{{ $city->ds_name }}"
+                                                    },
+                                                @endforeach
+                                            ];
+                                    
+                                            // Populate the Working Area dropdown
+                                            let workingAreaOptions = '';
+                                            allCities.forEach((city) => {
+                                                workingAreaOptions += `<option value="${city.cityId}">${city.cityName}</option>`;
+                                            });
+                                    
+                                            $('.workingArea').html(workingAreaOptions).select2({
+                                                placeholder: "Select cities",
+                                                closeOnSelect: false,
+                                                templateSelection: function () {
+                                                    return ""; // Hides the selected values in the dropdown
+                                                }
+                                            });
+                                    
+                                            // Update the city count dynamically
+                                            $('.workingArea').on('change', function() {
+                                                const selectedCount = $(this).val() ? $(this).val().length : 0;
+                                                $('#city-count').text(`Selected Cities: ${selectedCount}`);
+                                            });
+                                        });
+                                    </script>
+                                    
+                                    
                                 </div>
                                   
                                 

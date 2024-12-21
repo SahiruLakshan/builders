@@ -181,6 +181,10 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/addbasscategory', [BassController::class, 'store']);
     // Route::get('/addshop', [ShopController::class, 'index'])->name('addshop');
     Route::post('/addbass', [BassController::class, 'addbass'])->name('addbass.store');
+    Route::get('/adminAddbass', [BassController::class, 'index'])->name('adminAddbass');
+    // Route::get('/adminAddbass', function () {
+    //     return view('admin.addbass');
+    // });
     //  admin panel service poriders
     // Route::get('/addserviceprovider', [ServiceProviderController::class, 'addservceproviders'])->name('addserviceprovider');
 
@@ -205,9 +209,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 //search optoins route
 Route::get('/search', [WebController::class, 'search'])->name('search');
 //  me tika admin panal ekata enna oniii
-Route::get('/addbass', function () {
-    return view('admin.addbass');
-});
+
 Route::get('/addbassCategory', function () {
     return view('admin.addbassCategory');
 });
