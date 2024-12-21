@@ -9,6 +9,8 @@ class Bass extends Model
 {
     use HasFactory;
 
+    protected $table = 'bass';
+
     protected $fillable = [
         'number',
         'nic',

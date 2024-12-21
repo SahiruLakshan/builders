@@ -33,32 +33,39 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($serviceProviders as $service) --}}
+                        @foreach ($bass as $bass)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $bass->number }}</td>
+                                <td>{{ $bass->nic }}</td>
+                                <td>{{ $bass->fullname }}</td>
+                                <td><img src="{{ asset('assets/bass/' . $bass->nic_image) }}" alt="NIC Image"
+                                        width="50"></td>
+                                <td><img src="{{ asset('assets/bass/' . $bass->back_nic_image) }}" alt="Back NIC Image"
+                                        width="50"></td>
+                                <td><img src="{{ asset('assets/bass/' . $bass->profile_image) }}" alt="Profile Image"
+                                        width="50"></td>
+                                <td>{{ $bass->telephone_number }}</td>
+                                <td>{{ $bass->phone_number }}</td>
+                                <td>{{ $bass->b_email }}</td>
+                                <td>{{ $bass->b_address }}</td>
+                                <td>{{ $bass->district->dis_name }}</td>
+                                <td>{{ $bass->city->ds_name }}</td>
+                                <td>{{ $bass->zip }}</td>
+                                <td>{{ $bass->dob }}</td>
+                                <td>{{ $bass->linkedin }}</td>
+                                <td>{{ $bass->jobTitle }}</td>
+                                <td>{{ $bass->experienceLevel }}</td>
+                                <td>{{ $bass->yearsOfExperience }}</td>
+                                <td>{{ implode(', ', json_decode($bass->specialization, true) ?? []) }}</td>
+                                <td>{{ implode(', ', json_decode($bass->workingArea, true) ?? []) }}</td>
+                                <td>{{ $bass->skills }}</td>
                                 <td>
-                                    @if ($service->longitude && $service->latitude)
-                                        <a href="https://www.google.com/maps?q={{ $service->latitude }},{{ $service->longitude }}"
-                                            target="_blank" class="btn btn-link">View Location</a>
-                                    @else
-                                        N/A
-                                    @endif
+                                    @foreach (json_decode($bass->certifications, true) ?? [] as $certification)
+                                        <a href="{{ asset('assets/bass/' . $certification) }}"
+                                            target="_blank">View</a><br>
+                                    @endforeach
                                 </td>
+
                                 <td>
                                     @if ($service->status == 'Approved')
                                         <span class="badge bg-success">Approved</span>
@@ -90,8 +97,12 @@
                                 <td>
                                     <a href="{{ route('services.update', $service->id) }}"
                                         class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="{{ route('service.destroy', $service->id) }}"
-                                        class="btn btn-danger btn-sm">Delete</a>
+                                    <form action="{{ route('bass.delete', $bass->id) }}" method="POST"
+                                        style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

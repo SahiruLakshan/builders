@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\District;
 use App\Models\City;
 use Illuminate\Http\Request;
 use App\Models\BassCategory;
 use App\Models\Bass;
+use Illuminate\Support\Facades\Redis;
 
 class BassController extends Controller
 {
@@ -120,6 +122,74 @@ class BassController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('An error occurred: ' . $e->getMessage());
         }
+    }
+
+    public function viewbass(Request $request)
+    {
+        $query = $request->input('query');
+
+        $bass = Bass::where('fullname', 'like', '%' . $query . '%')->orWhere('number', 'like', '%' . $query . '%')->paginate(8);
+
+        if ($request->ajax()) {
+            return view('admin.viewtbl.basspagination', compact('bass'))->render();
+        }
+        return view('admin.viewtbl.viewbass', compact('bass'));
+    }
+
+    public function viewbasscate(Request $request)
+    {
+        $query = $request->input('query');
+
+        $basscate = BassCategory::where('name', 'like', '%' . $query . '%')->orWhere('id', 'like', '%' . $query . '%')->paginate(8);
+
+        if ($request->ajax()) {
+            return view('admin.viewtbl.bassCategorypagination', compact('basscate'))->render();
+        }
+        return view('admin.viewtbl.viewbasscategory', compact('basscate'));
+    }
+
+    public function deleteBassCategory($id)
+    {
+        $bassCategory = BassCategory::find($id);
+
+        if ($bassCategory) {
+            $bassCategory->delete();
+            return redirect()->back()->with('success', 'Bass category deleted successfully.');
+        }
+
+        return redirect()->back()->with('error', 'Bass category not found.');
+    }
+
+    public function deleteBass($id)
+    {
+        $bass = Bass::find($id);
+
+        if ($bass) {
+            // Delete associated images
+            if (file_exists(public_path('assets/bass/' . $bass->nic_image))) {
+                unlink(public_path('assets/bass/' . $bass->nic_image));
+            }
+            if (file_exists(public_path('assets/bass/' . $bass->back_nic_image))) {
+                unlink(public_path('assets/bass/' . $bass->back_nic_image));
+            }
+            if (file_exists(public_path('assets/bass/' . $bass->profile_image))) {
+                unlink(public_path('assets/bass/' . $bass->profile_image));
+            }
+            // Delete certification files
+            $certificationFiles = json_decode($bass->certifications, true);
+            if (is_array($certificationFiles)) {
+                foreach ($certificationFiles as $file) {
+                    if (file_exists(public_path('assets/bass/' . $file))) {
+                        unlink(public_path('assets/bass/' . $file));
+                    }
+                }
+            }
+
+            $bass->delete();
+            return redirect()->back()->with('success', 'Bass deleted successfully.');
+        }
+
+        return redirect()->back()->with('error', 'Bass not found.');
     }
 
 }

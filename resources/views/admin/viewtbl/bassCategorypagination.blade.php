@@ -8,15 +8,21 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($products as $product)
+        @foreach ($basscate as $bass)
             <tr>
-                <td></td>
-                <td style="max-width:300px;overflow:scroll"></td>
-                <td style="max-width:600px;overflow:scroll"></td>
+                <td>{{ $bass->id }}</td>
+                <td style="max-width:300px;overflow:scroll">{{ $bass->name }}</td>
+                <td style="max-width:600px;overflow:scroll">{{ $bass->description }}</td>
                 <td>
                     <span>
                         <a href="" class="btn btn-success btn-sm">Edit</a>
-                        <a href="" class="btn btn-danger btn-sm">Delete</a>
+                        
+                    <form action="{{ route('bassCategory.delete', $bass->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                    
                     </span>
                 </td>
             </tr>
@@ -25,5 +31,5 @@
 </table>
 
 <div class="d-flex justify-content-center mt-4">
-    {{ $products->onEachSide(1)->links('pagination::bootstrap-4') }}
+    {{ $basscate->onEachSide(1)->links('pagination::bootstrap-4') }}
 </div>

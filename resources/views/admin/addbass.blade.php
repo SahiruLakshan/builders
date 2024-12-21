@@ -45,9 +45,9 @@
                                         <div class="form-group">
                                             <label for="professionalNumber">Bass Number</label>
                                             <input type="text"
-                                                class="form-control @error('BassNumber') is-invalid @enderror"
-                                                id="BassNumber" name="BassNumber"
-                                                value="{{ old('BassNumber') }}" readonly>
+                                                class="form-control @error(' number') is-invalid @enderror"
+                                                id="number" name="number"
+                                                value="{{ old('number') }}" readonly>
                                               
                                         </div>
                                     </div>
@@ -638,10 +638,10 @@
     // }
 
     function generateBassNumber() {
-            const prefix = 'BR';
+            const prefix = 'BASS';
             const randomNumber = Math.floor(Math.random() * 100000); 
             const formattedNumber = prefix + randomNumber.toString().padStart(6, '0');
-            document.getElementById('BassNumber').value = formattedNumber;
+            document.getElementById('number').value = formattedNumber;
         }
 
     window.onload = generateBassNumber;

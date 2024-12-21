@@ -8,7 +8,7 @@
     </div>
 
     <div class="table-responsive" id="pagination-data">
-        @include('admin.viewtbl.servicePagination') <!-- Load paginated data -->
+        @include('admin.viewtbl.bassCategorypagination') <!-- Load paginated data -->
     </div>
 @endsection
 
