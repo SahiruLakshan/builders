@@ -145,7 +145,7 @@ class BassController extends Controller
         if ($request->ajax()) {
             return view('admin.viewtbl.bassCategorypagination', compact('basscate'))->render();
         }
-        return view('admin.viewtbl.viewbasscategory', compact('basscate'));
+        return view('admin.viewtbl.viewBassCategory', compact('basscate'));
     }
 
     public function deleteBassCategory($id)
