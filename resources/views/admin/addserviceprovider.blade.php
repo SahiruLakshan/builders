@@ -68,23 +68,20 @@
                                
                             </div>
     
-                            <div class="row">
-                                <div class="col-12">
-                                    <label for="inputAddress">Address</label>
-                                    <textarea class="form-control" id="inputAddress" name="inputAddress" rows="3"
-                                        placeholder="Address Of The Service Provider"></textarea>
-                                </div>
-                            </div>
-    
-                            <div class="row">
-                                <div class="col-4">
-                                    <label for="category">Select Category:</label>
-                                    <select id="category" name="category" class="form-select">
-                                        <option value="" disabled selected>Select Your Service Category</option>
-                                        @foreach ($services as $service)
-                                            <option value="{{ $service->id }}">{{ $service->servicename }}</option>
-                                        @endforeach
-                                    </select>
+                            
+                            <div class="d-flex flex-wrap">
+                                <div class="col-4 pt-2 ">
+                                    <div class="form-grop">
+                                            <label for="category">Select Category:</label>
+                                        {{-- metana multiple select dmma --}}
+                                        <select multiple="multiple" name="category[]" class="form-select selectsum1">
+                                        {{-- <select id="category" name="category" class="form-select"> --}}
+                                            <option value="" disabled selected>Select Your Service Category</option>
+                                            @foreach ($services as $service)
+                                                <option value="{{ $service->id }}">{{ $service->servicename }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div> 
                                 </div>
                                 
                                 <div class="col-4 pt-2">
@@ -99,6 +96,16 @@
                                         <option value="">Select City</option>
                                     </select>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="inputAddress">Address</label>
+                                    <textarea class="form-control" id="inputAddress" name="inputAddress" rows="3"
+                                        placeholder="Address Of The Service Provider"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">                   
                                 <div class="border p-4 mt-3">
                                     <h5>Search and Select Location</h5>
                                     <input type="text" id="search" placeholder="Search for a location (e.g., city, address)" />
@@ -213,8 +220,8 @@
                                 </script>
                                 
                                 
-    
-                            <script>
+                                
+                                <script>
                                 // Prepare district and city data in JavaScript from Blade data
                                 var cities = [
                                     @foreach ($dictricts as $district)
@@ -280,10 +287,10 @@
                                             previewBox.innerHTML = "<span>Image Preview</span>";
                                         }
                                     }
-                            </script>
+                                </script>
     
-                            <h5>Contact Details</h5>
-                            <div class="row">
+                                <h5>Contact Details</h5>
+                                <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputPassword4">Email:</label>
@@ -489,8 +496,14 @@
                                         aria-describedby="maxProjectValueHelp">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
-                            <button type="reset" class="btn btn-secondary mt-3 ms-2">Cancel</button>
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary w-60">Submit</button>
+                                    <button type="reset" class="btn btn-secondary w-60">Cancel</button>
+                                </div>
+                                
+                              
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -502,4 +515,5 @@
 
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 @endsection
+
 

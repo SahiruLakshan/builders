@@ -47,8 +47,8 @@ class BassController extends Controller
                 'phoneNumber' => 'required|string|max:15',
                 'b_email' => 'required|email|unique:bass',
                 'b_address' => 'required|string',
-                'district_id' => 'required|exists:districts,dis_id',
-                'city_id' => 'required|exists:cities,ds_id',
+                'district_id' => 'required|exists:tbl_district,dis_id',
+                'city_id' => 'required|exists:tbl_ds,ds_id',
                 'zip' => 'nullable|string|max:10',
                 'dob' => 'nullable|date',
                 'linkedin' => 'nullable|string|max:255',
@@ -145,7 +145,7 @@ class BassController extends Controller
         if ($request->ajax()) {
             return view('admin.viewtbl.bassCategorypagination', compact('basscate'))->render();
         }
-        return view('admin.viewtbl.viewBassCategory', compact('basscate'));
+        return view('admin.viewtbl.viewbasscategory', compact('basscate'));
     }
 
     public function deleteBassCategory($id)
