@@ -346,7 +346,7 @@
 
                 <h5>Project History</h5>
                 <hr>
-                <div class="table-responsive">
+                {{-- <div class="table-responsive">
                     <table class="table" id="projectTable">
                         <thead>
                             <tr>
@@ -399,7 +399,7 @@
 
                 <button type="button" class="btn btn-success" onclick="addProjectRow()">
                     Add Project
-                </button>
+                </button> --}}
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
