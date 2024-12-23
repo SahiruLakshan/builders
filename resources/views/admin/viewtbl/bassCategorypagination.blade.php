@@ -15,7 +15,7 @@
                 <td style="max-width:600px;overflow:scroll">{{ $bass->description }}</td>
                 <td>
                     <span>
-                        <a href="" class="btn btn-success btn-sm">Edit</a>
+                        <a href="{{ route('bassCategory.edit', $bass->id) }}" class="btn btn-success btn-sm">Edit</a>
                         
                     <form action="{{ route('bassCategory.delete', $bass->id) }}" method="POST" style="display:inline;">
                         @csrf

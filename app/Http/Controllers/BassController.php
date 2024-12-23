@@ -56,10 +56,20 @@ class BassController extends Controller
                 'experienceLevel' => 'required|string|max:50',
                 'yearsOfExperience' => 'nullable|integer',
                 'skills' => 'nullable|string',
-                'specialization' => 'nullable|array',
+                // 'specialization' => 'nullable|array',
                 'workingArea' => 'nullable|array',
                 'certificationDetails' => 'nullable|array',
-                'certifications' => 'nullable|array'
+                'certifications' => 'required|array', // Ensure certifications is an array
+                'certifications.*' => 'file|mimes:pdf,doc,docx,jpg,png|max:2048', // Ensure each certification is a string
+                'companyName' => 'nullable|string|max:255',
+                'businessRegNo' => 'nullable|string|max:255',
+                'registrations' => 'nullable|file|mimes:pdf,doc,docx,jpg,png|max:2048',
+                'providerImage' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'noOfEmp' => 'nullable|integer',
+                'employeesQualification' => 'nullable|string|max:255',
+                'maxProjectValue' => 'nullable|string|max:255',
+                'service_name' => 'nullable|array',
+                'directors' => 'nullable|array',
             ]);
 
             // Handle image uploads
@@ -115,7 +125,16 @@ class BassController extends Controller
                 'specialization' => json_encode($validated['specialization']),
                 'workingArea' => json_encode($validated['workingArea']),
                 'certification_details' => json_encode($certificationDetails),
-                'certifications' => json_encode($certificationFiles)
+                'certifications' => json_encode($certificationFiles),
+                'company_name' => $validated['companyName'],
+                'business_reg_no' => $validated['businessRegNo'],
+                'registrations' => $validated['registrations'],
+                'provider_image' => $validated['providerImage'],
+                'no_of_emp' => $validated['noOfEmp'],
+                'employees_qualification' => $validated['employeesQualification'],
+                'max_project_value' => $validated['maxProjectValue'],
+                'service_name' => json_encode($validated['service_name']),
+                'directors' => json_encode($validated['directors']),
             ]);
 
             return redirect()->back()->with('success', 'Bass added successfully!');
@@ -192,4 +211,32 @@ class BassController extends Controller
         return redirect()->back()->with('error', 'Bass not found.');
     }
 
+    public function editBassCategory($id)
+    {
+        $bassCategory = BassCategory::find($id);
+
+        if ($bassCategory) {
+            return view('admin.updateforms.updatebassCategory', compact('bassCategory'));
+        }
+
+        return redirect()->back()->with('error', 'Bass category not found.');
+    }
+
+    public function updateBassCategory(Request $request, $id)
+    {
+        $bassCategory = BassCategory::find($id);
+
+        if ($bassCategory) {
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'description' => 'nullable|string',
+            ]);
+
+            $bassCategory->update($validated);
+
+            return redirect()->back()->with('success', 'Bass category updated successfully.');
+        }
+
+        return redirect()->back()->with('error', 'Bass category not found.');
+    }
 }
