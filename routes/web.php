@@ -142,14 +142,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/rejectserviceprovider/{id}', [ServiceProviderController::class, 'rejectServiceProviders'])->name('services.reject');
     Route::get('/deleteserviceprovider/{id}', [ServiceProviderController::class, 'destroy'])->name('service.destroy');
     Route::post('/submitproject', [ServiceProviderController::class, 'submitproject'])->name('submit.project');
-
-    Route::get('/categories', [ProfessionalCategoryController::class, 'index'])->name('categories.index');
-    Route::get('/categories/create', [ProfessionalCategoryController::class, 'create'])->name('categories.create');
-    Route::post('/categories/store', [ProfessionalCategoryController::class, 'store'])->name('categories.store');
-    Route::get('/categories/edit/{id}', [ProfessionalCategoryController::class, 'edit'])->name('categories.edit');
-    Route::post('/categories/update/{id}', [ProfessionalCategoryController::class, 'update'])->name('categories.update');
-    Route::get('/categories/delete/{id}', [ProfessionalCategoryController::class, 'destroy'])->name('categories.destroy');
-
+    Route::get('/updateserviceprovider/{id}', [ServiceProviderController::class, 'updateserviceprovider'])->name('serviceprovider.update');
+    Route::put('/editserviceprovider/{id}', [ServiceProviderController::class, 'editserviceprovider'])->name('serviceprovider.edit');
     //advertisement routes
     // Route::get('/addadvertisement', [AdvertisementController::class, 'index'])->name('addadvertisement');
 
@@ -164,19 +158,27 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/addservice', [ServiceController::class, 'create'])->name('addservice');
     Route::get('/viewservice', [ServiceController::class, 'viewservice']);
     // Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit'); // Display update form
-    // Route::put('service/{id}', [ServiceController::class, 'update'])->name('service.update');  // Handle update request
     Route::post('/service', [ServiceController::class, 'store'])->name('service.store');
+    Route::get('service/{id}', [ServiceController::class, 'edit'])->name('service.edit'); 
     Route::put('/service/{id}', [ServiceController::class, 'update'])->name('service.update');
     Route::delete('/service/{id}', [ServiceController::class, 'delete'])->name('service.delete');
     //professionals routes
 
-    Route::get('/addprofessionalsCategory', [ProfessionalController::class, 'index'])->name('addprofessionalsCategory');
-    Route::post('/addprofessioncateory', [ProfessionalController::class, 'addprofessionals'])->name('submitprofessionalsCategory');
+    // Route::get('', [ProfessionalController::class, 'index'])->name('');
+    // Route::('', [ProfessionalController::class, ''])->name('');
     // Route::put('/professionalscategory/{id}', [ProfessionalController::class, 'update'])->name('service.update');
-    Route::get('/viewprofessionalsCategory', [ProfessionalController::class, 'view'])->name('viewprofessionalsCategory');
+    // Route::get('', [ProfessionalController::class, ''])->name('');
     Route::get('/addprofessionals', [ProfessionalController::class, 'addadminprofessionals'])->name('addprofessionals');
     Route::post('/submitprofessionals', [ProfessionalController::class, 'store'])->name('submitprofessionals');
     Route::get('/professionals', [ProfessionalController::class, 'viewpro'])->name('viewprofessionals');
+
+    Route::get('/addprofessionalsCategory', [ProfessionalCategoryController::class, 'index'])->name('addprofessionalsCategory');
+    Route::post('/addprofessioncateory', [ProfessionalCategoryController::class, 'addprofessionals'])->name('viewprofessionalsCategory');
+    Route::get('/viewprofessionalsCategory', [ProfessionalCategoryController::class, 'view'])->name('categories.store');
+    Route::get('/editpcate/{id}', [ProfessionalCategoryController::class, 'edit'])->name('categories.edit');
+
+    // Route::post('/categories/update/{id}', [ProfessionalCategoryController::class, 'update'])->name('categories.update');
+    // Route::get('/categories/delete/{id}', [ProfessionalCategoryController::class, 'destroy'])->name('categories.destroy');
 
     Route::post('/addbasscategory', [BassController::class, 'store']);
     // Route::get('/addshop', [ShopController::class, 'index'])->name('addshop');

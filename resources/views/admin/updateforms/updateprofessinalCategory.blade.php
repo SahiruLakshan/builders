@@ -10,7 +10,7 @@
                     </p>
                 </div>
                 <div class="card-body pt-0">
-                    <form action="/categories/update/{{ $category->id }}" method="POST" class="form-horizontal" id="addporfessionalscategory">
+                    <form action="" method="POST" class="form-horizontal" id="addporfessionalscategory">
                         @csrf
                         <!-- Professional Name Field -->
                         <div class="form-group">

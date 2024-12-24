@@ -15,7 +15,7 @@
                 <td style="max-width:600px;overflow:scroll">{{ $professionalCategory->description }}</td>
                 <td>
                     <span>
-                        <a href="{{ url('/getproduct/' . $professionalCategory->id) }}" class="btn btn-success btn-sm">Edit</a>
+                        <a href="{{ route('categories.edit', $professionalCategory->id) }}" class="btn btn-success btn-sm">Edit</a>
                         <a href="{{ url('/delete/product/' . $professionalCategory->id) }}" class="btn btn-danger btn-sm">Delete</a>
                     </span>
                 </td>
@@ -25,5 +25,5 @@
 </table>
 
 <div class="d-flex justify-content-center mt-4">
-    {{ $products->onEachSide(1)->links('pagination::bootstrap-4') }}
+    {{ $professionalCategories->onEachSide(1)->links('pagination::bootstrap-4') }}
 </div>

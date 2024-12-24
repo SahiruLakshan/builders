@@ -32,7 +32,7 @@
                             <button type="submit" class="btn btn-primary">
                                 Update Service
                             </button>
-                            <a href="{{ route('service.index') }}" class="btn btn-secondary ms-4">
+                            <a href="" class="btn btn-secondary ms-4">
                                 Cancel
                             </a>
                         </div>

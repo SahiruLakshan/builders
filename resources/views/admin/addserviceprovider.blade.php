@@ -78,7 +78,7 @@
                                         {{-- <select id="category" name="category" class="form-select"> --}}
                                             <option value="" disabled selected>Select Your Service Category</option>
                                             @foreach ($services as $service)
-                                                <option value="{{ $service->id }}">{{ $service->servicename }}</option>
+                                                <option value="{{ $service->servicename }}">{{ $service->servicename }}</option>
                                             @endforeach
                                         </select>
                                     </div> 

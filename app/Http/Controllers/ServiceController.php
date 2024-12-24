@@ -149,6 +149,11 @@ class ServiceController extends Controller
         return redirect()->back()->with('success', 'Service added successfully!');
     }
 
+    public function edit($id)
+    {
+        $service = Service::findOrFail($id);
+        return view('admin.updateforms.updateService', compact('service'));
+    }
 
 
     public function update(Request $request, $id)
@@ -160,13 +165,13 @@ class ServiceController extends Controller
 
         $service = Service::findOrFail($id);
         $service->update([
-            'servicename' => strtoupper($request->input('servicename')),
-            'description' => $request->input('description'),
-            'updated_by' => auth()->id(), // Save the user ID of the editor
+            'servicename' => strtoupper($request->servicename),
+            'description' => $request->description,
         ]);
 
-        return redirect()->route('admin.updateforms.updateService')->with('success', 'Service updated successfully.');
+        return redirect()->back()->with('success', 'Service updated successfully.');
     }
+    
     public function delete($id)
     {
         $service = Service::findOrFail($id);
@@ -174,7 +179,4 @@ class ServiceController extends Controller
 
         return redirect()->back()->with('success', 'Service deleted successfully.');
     }
-
-
 }
-
