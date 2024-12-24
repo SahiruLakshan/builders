@@ -15,7 +15,7 @@
                 <td style="max-width:600px;overflow:scroll">{{ $professionalCategory->description }}</td>
                 <td>
                     <span>
-                        <a href="{{ url('/edit/professional-category/' . $professionalCategory->id) }}" class="btn btn-success btn-sm">Edit</a>
+                        <a href="{{ route('categories.edit', $professionalCategory->id) }}" class="btn btn-success btn-sm">Edit</a>
                         <a href="{{ url('/delete/product/' . $professionalCategory->id) }}" class="btn btn-danger btn-sm">Delete</a>
                     </span>
                 </td>

@@ -77,7 +77,7 @@ class ProfessionalCategoryController extends Controller
     public function edit($id)
     {
         $category = ProfessionalCategory::findOrFail($id);
-        return view('admin\updateforms\updateprofessinalCategory', compact('category'));
+        return view('admin.updateforms.updateprofessinalCategory', compact('category'));
     }
 
     // // Update the specified category in storage

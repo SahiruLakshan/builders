@@ -81,7 +81,7 @@
 
                                 </td>
                                 <td>
-                                    <a href="{{ route('services.update', $service->id) }}"
+                                    <a href="{{ route('serviceprovider.update', $service->id) }}"
                                         class="btn btn-warning btn-sm">Edit</a>
                                     <a href="{{ route('service.destroy', $service->id) }}"
                                         class="btn btn-danger btn-sm">Delete</a>
