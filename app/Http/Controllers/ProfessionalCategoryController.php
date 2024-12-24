@@ -34,7 +34,20 @@ class ProfessionalCategoryController extends Controller
         $professionalCategories = ProfessionCategory::paginate(10); // Fetch 10 items per page
         return view('admin.viewtbl.viewprofessionalcategory', compact('professionalCategories'));
     }
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
 
+        $professionalCategory = ProfessionCategory::findOrFail($id);
+        $professionalCategory->name = $request->name;
+        $professionalCategory->description = $request->description;
+        $professionalCategory->save();
+
+        return redirect()->route('view.profession.categories')->with('success', 'Category updated successfully!');
+    }
     // Display all categories
     // public function index()
     // {
@@ -61,11 +74,11 @@ class ProfessionalCategoryController extends Controller
     // }
 
     // Show the form for editing the specified category
-    // public function edit($id)
-    // {
-    //     $category = ProfessionalCategory::findOrFail($id);
-    //     return view('admin\updateforms\updateprofessinalCategory', compact('category'));
-    // }
+    public function edit($id)
+    {
+        $category = ProfessionalCategory::findOrFail($id);
+        return view('admin\updateforms\updateprofessinalCategory', compact('category'));
+    }
 
     // // Update the specified category in storage
     // public function update(Request $request, $id)
@@ -93,19 +106,5 @@ class ProfessionalCategoryController extends Controller
     //     return view('admin.updateprofessinalCategory', compact('professionalCategory'));
     // }
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-        ]);
-
-        $professionalCategory = ProfessionCategory::findOrFail($id);
-        $professionalCategory->name = $request->name;
-        $professionalCategory->description = $request->description;
-        $professionalCategory->save();
-
-        return redirect()->route('view.profession.categories')->with('success', 'Category updated successfully!');
-    }
 
 }
