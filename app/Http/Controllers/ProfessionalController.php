@@ -13,10 +13,8 @@ use App\Models\Specialization;
 
 class ProfessionalController extends Controller
 {
-    public function index()
-    {
-        return view('admin.addprofessionalsCategory');
-    }
+
+
     public function addadminprofessionals(Request $request)
     {
         $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
@@ -24,23 +22,6 @@ class ProfessionalController extends Controller
         // dd($dictricts);
         return view('admin.addprofessinals', compact('dictricts', 'cate'));
     }
-
-    public function addprofessionals(Request $request)
-    {
-        $prof_cate = new ProfessionCategory();
-        $prof_cate->name = $request->input('name');
-        $prof_cate->description = $request->input('description');
-        $prof_cate->save();
-
-        return redirect()->back()->with('success', 'Profession Category Added Successfully');
-    }
-
-    public function view()
-    {
-        $prof_cate = ProfessionCategory::all();
-        return view('admin.viewtbl.viewprofessionalcategory', compact('prof_cate'));
-    }
-
 
 
     // public function webprofessional(Request $request)
