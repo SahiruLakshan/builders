@@ -186,7 +186,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/viewbasscategory', [BassController::class, 'viewbasscate'])->name('viewbasscate');
     Route::delete('/deletebasscategory/{id}', [BassController::class, 'deleteBassCategory'])->name('bassCategory.delete');
     Route::delete('/deletebass/{id}', [BassController::class, 'deleteBass'])->name('bass.delete');
-
+    Route::get('/editbasscategory/{id}', [BassController::class, 'editBassCategory'])->name('bassCategory.edit');
+    Route::put('/updatebasscategory/{id}', [BassController::class, 'updateBassCategory'])->name('basscategory.update');
     // Route::get('/adminAddbass', function () {
     //     return view('admin.addbass');
     // });

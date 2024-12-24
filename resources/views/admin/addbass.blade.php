@@ -150,13 +150,13 @@
                                 <div class="d-flex mb-3">
                                     <div class="col-6 pt-2">
                                         <label for="district">Select District:</label>
-                                        <select id="district" name="district" class="form-select">
+                                        <select id="district" name="district_id" class="form-select">
                                             <option value="">Select District</option>
                                         </select>
                                     </div>
                                     <div class="col-6 pt-2">
                                         <label for="city">City:</label>
-                                        <select id="city" name="city" class="form-select disabled" disabled>
+                                        <select id="city" name="city_id" class="form-select disabled" disabled>
                                             <option value="">Select City</option>
                                         </select>
                                     </div>
@@ -373,7 +373,7 @@
                                                 <label for="certificationPdf" class="form-label">Certification PDF (if
                                                     applicable)</label>
                                                 <input type="file" class="form-control" id="certificationPdf"
-                                                    name="certifications" multiple placeholder="Upload PDF(s)">
+                                                    name="certifications[]" multiple placeholder="Upload PDF(s)">
                                             </div>
                                             
                             <h5>Company Details</h5>
@@ -405,10 +405,10 @@
                                 </div>
 
                                 <!-- Certifications File Upload -->
-                                <div class="form-group col-md-6">
+                                {{-- <div class="form-group col-md-6">
                                     <label for="certifications">Certifications</label>
-                                    <input type="file" name="certifications" id="certifications" class="form-control" accept=".pdf,.doc,.docx,.jpg,.png">
-                                </div> 
+                                    <input type="file" name="b_certifications" id="certifications" class="form-control" accept=".pdf,.doc,.docx,.jpg,.png">
+                                </div>  --}}
                             </div>
                              <!-- Dynamic Providing Services Section -->
                             <div class="form-group">
