@@ -80,7 +80,23 @@ $(document).ready(function() {
         });
     }
 
+<<<<<<< HEAD
   
+=======
+    // // Trigger AJAX on pagination link click
+    // $(document).on('click', '.pagination a', function(event) {
+    //     event.preventDefault();
+    //     var page = $(this).attr('href').split('page=')[1];
+    //     var query = $('#search-input').val();
+    //     fetchServices(page, query);
+    // });
+
+    // // Trigger AJAX on search input keyup
+    // $('#search-input').on('keyup', function() {
+    //     var query = $(this).val();
+    //     fetchServices(1, query); // Always start from the first page
+    // });
+>>>>>>> udara_branch
 });
 </script>
 @endsection
