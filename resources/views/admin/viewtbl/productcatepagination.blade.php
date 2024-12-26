@@ -3,7 +3,7 @@
         <tr>
             <th style="max-width: 15%;">Category ID</th>
             <th style="max-width: 40%;">Name</th>
-            <th style="max-width: 35%;">Unit Price</th>
+            {{-- <th style="max-width: 35%;">Unit Price</th> --}}
             <th style="max-width: 10%;">Actions</th>
         </tr>
     </thead>
