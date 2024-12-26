@@ -40,13 +40,13 @@ class ProfessionalCategoryController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
         ]);
-
+        
         $professionalCategory = ProfessionCategory::findOrFail($id);
         $professionalCategory->name = $request->name;
         $professionalCategory->description = $request->description;
-        $professionalCategory->save();
+        $professionalCategory->update();
 
-        return redirect()->route('view.profession.categories')->with('success', 'Category updated successfully!');
+        return redirect()->back()->with('success', 'Category updated successfully!');
     }
     // Display all categories
     // public function index()
@@ -76,8 +76,17 @@ class ProfessionalCategoryController extends Controller
     // Show the form for editing the specified category
     public function edit($id)
     {
+        
         $category = ProfessionalCategory::findOrFail($id);
         return view('admin.updateforms.updateprofessinalCategory', compact('category'));
+    }
+
+    public function destroy($id)
+    {
+        $professionalCategory = ProfessionCategory::find($id);
+        $professionalCategory->delete();
+
+        return redirect()->back()->with('success', 'Category deleted successfully!');
     }
 
     // // Update the specified category in storage
