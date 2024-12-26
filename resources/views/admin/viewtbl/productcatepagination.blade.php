@@ -12,7 +12,7 @@
             <tr>
                 <td>{{ $cate->id }}</td>
                 <td style="max-width:300px;overflow:scroll">{{ $cate->name }}</td>
-                <td style="max-width:600px;overflow:scroll">{{ $cate->unit_price }}</td>
+                {{-- <td style="max-width:600px;overflow:scroll">{{ $cate->unit_price }}</td> --}}
                 <td>
                     <span>
                         <a href="{{ url('/getproductcategory/' . $cate->id) }}" class="btn btn-success btn-sm">Edit</a>
