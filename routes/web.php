@@ -175,7 +175,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/addprofessionalsCategory', [ProfessionalCategoryController::class, 'index'])->name('addprofessionalsCategory');
     Route::post('/addprofessioncateory', [ProfessionalCategoryController::class, 'addprofessionals'])->name('viewprofessionalsCategory');
     Route::get('/viewprofessionalsCategory', [ProfessionalCategoryController::class, 'view'])->name('categories.store');
-    Route::get('/editpcate/{id}', [ProfessionalCategoryController::class, 'edit'])->name('categories.edit');
+    Route::get('/getprofessionalcategories/{id}', [ProfessionalCategoryController::class, 'edit'])->name('professionalcategories.edit');
+    Route::put('/updateprofessionalcategories/{id}', [ProfessionalCategoryController::class, 'update'])->name('professionalcategories.update');
+    Route::get('/deleteprofessionalcategories/{id}', [ProfessionalCategoryController::class, 'destroy'])->name('professionalcategories.delete');
 
     // Route::post('/categories/update/{id}', [ProfessionalCategoryController::class, 'update'])->name('categories.update');
     // Route::get('/categories/delete/{id}', [ProfessionalCategoryController::class, 'destroy'])->name('categories.destroy');
