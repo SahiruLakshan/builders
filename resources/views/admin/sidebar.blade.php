@@ -366,11 +366,11 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/addproduct">Add New Product
+                                            <a class="slide-item" href="/addproduct">Add New Product 
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/products">View Product </a>
+                                            <a class="slide-item" href="/products">View Product</a>
                                         </li>
                                         <li>
                                             <a class="slide-item" href="/addproductcategory">Add New Product Category
