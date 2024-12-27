@@ -1,8 +1,7 @@
 @extends('webpages.index')
 @section('content')
-
     <!-- /MAIN HEADER -->
-    <div class="container-fluid" >
+    <div class="container-fluid">
         <div class="row">
             <h3>Select Your Services</h3>
             <aside class="col-md-3 px-0">
@@ -28,7 +27,7 @@
                         <script>
                             $(".select2").select2();
                         </script>
-                   
+
                     </article> --}}
                     <!-- Product Type Filter with Searchable Dropdown -->
                     <article class="filter-group">
@@ -87,7 +86,7 @@
                                 <select class="form-select" id="city" disabled>
                                     <option value="">Select City</option>
                                 </select>
-                                
+
                             </div>
                         </div> --}}
                     </article>
@@ -99,20 +98,22 @@
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_2" aria-expanded="true">
                                 <i class="icon-control fa fa-chevron-down"></i>
                                 {{-- in here dianamicaly need to show bass category and when check soem category need to show bass  --}}
-                                <h6 class="title"> Select poffesinal Categorys </h6>
+                                <h6 class="title"> Select Bass Categorys </h6>
                             </a>
                         </header>
                         <div class="filter-content collapse show" id="collapse_2">
                             <div class="card-body">
-                                <label class="form-check">
-                                    <input type="checkbox" class="form-check-input" checked />
-                                    <span class="form-check-label">
-                                        <span class="badge bg-light text-dark float-end">120</span></span>
-                                </label>
-                               
+                                @foreach ($professionalsCategory as $category)
+                                    <label class="form-check">
+                                        <input type="checkbox" class="form-check-input" value="{{ $category->id }}" />
+                                        <span class="form-check-label">{{ $category->name }}
+                                            <span class="badge bg-light text-dark float-end">{{ $category->count }}</span>
+                                        </span>
+                                    </label>
+                                @endforeach
                             </div>
-                        </div>
                     </article>
+
 
                     <!-- Price Range Filter -->
                     <article class="filter-group">
@@ -132,8 +133,7 @@
                                     </div>
                                     <div class="col-md-6 text-end">
                                         <label for="max-price">Max</label>
-                                        <input id="max-price" class="form-control" placeholder="$1,0000"
-                                            type="number" />
+                                        <input id="max-price" class="form-control" placeholder="$1,0000" type="number" />
                                     </div>
                                 </div>
                                 <button class="btn btn-warning w-100 mt-2">Apply</button>
@@ -150,7 +150,7 @@
                                 <h6 class="title">More filter</h6>
                             </a>
                         </header> --}}
-                        {{-- <div class="filter-content collapse" id="collapse_5">
+                    {{-- <div class="filter-content collapse" id="collapse_5">
                             <div class="card-body">
                                 <label class="form-check">
                                     <input type="radio" name="filter-radio" class="form-check-input" checked />
@@ -160,69 +160,67 @@
                                     <input type="radio" name="filter-radio" class="form-check-input" />
                                     <span class="form-check-label">Brand new</span>
                                 </label>
-                            </div> 
+                            </div>
                         </div>
-                    </article>--}}
+                    </article> --}}
                 </div>
             </aside>
-           
+
             {{-- Service Providers Section --}}
             {{-- @if ($serviceProviders->isEmpty()); --}}
-            <div class="col">
+            {{-- <div class="col">
                 <h2>There are no Services in this Category</h2>
             </div>
-                @else
-                    <div class="col-10 col-md-9">
-                        <div class="d-flex flex-row flex-wrap justify-content-start mb-4">
-                            @foreach ($ as )
-                                <div class="col-12 col-md-6 p-2">
-                                    {{-- <a href="{{route('view_Service_provider_profile', $serviceProvider->id) }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">   --}}
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <div class="shadow hcard-200 bg-white d-flex flex-row">
-                                            <!-- Image on the left side -->
-                                            <img src="{{ asset('assets/serviceProviders/'." class="d-block col-4 object-fit-cover rounded-start" alt="Service Provider Image">
-                                            
-                                            <!-- Text and button on the right side -->
-                                            <div class="col-8 d-flex flex-column p-4">
-                                                <div>
+                @else --}}
+            <div class="col-10 col-md-9">
+                <div class="d-flex flex-row flex-wrap justify-content-start mb-4">
+                    @foreach ($professionals as $base)
+                        <div class="col-12 col-md-6 p-2">
+                            {{-- <a href="{{route('view_Service_provider_profile', $serviceProvider->id) }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">   --}}
+                            <a href="#" class="text-decoration-none text-dark">
+                                <div class="shadow hcard-200 bg-white d-flex flex-row">
+                                    <!-- Image on the left side -->
+                                    <img src="{{ asset('assets/professional/' . $base->profile_image) }}"
+                                        class="d-block col-4 object-fit-cover rounded-start" alt="Service Provider Image">
 
-                                                    <h5 class="card-title"></h5>
-                                                    <p class="card-text p-0 m-0 text-small text-muted">
-                                                        <div class="text-truncate-two-line">
-                                                            <i class="fas fa-map-marker-alt me-2"></i>
-                                                            
-                                                        </div>
-                                                        <div class="d-flex align-items-end">
-                                                            <i class="fas fa-phone me-3"></i>
-                                                            <a href="tel:" class="text-truncate col"></a>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between align-items-start">
-                                                            <div>
-                                                                <i class="fas fa-user-check me-3"></i>
-                                                                Grade:
-                                                            </div>
-                                                            <a href="tel:+94" class="btn text-white bg-warning shadow phone-button mt-2">
-                                                                <i class="fab fa-whatsapp ms-auto"></i> 
-                                                            </a>
-                                                        </div>
-                                                    </p>
-                                                </div>
+                                    <!-- Text and button on the right side -->
+                                    <div class="col-8 d-flex flex-column p-4">
+                                        <div>
+
+                                            <h5 class="card-title"></h5>
+                                            <p class="card-text p-0 m-0 text-small text-muted">
+                                            <div class="text-truncate-two-line">
+                                                <i class="fas fa-map-marker-alt me-2"></i>
+
                                             </div>
+                                            <div class="d-flex align-items-end">
+                                                <i class="fas fa-phone me-3"></i>
+                                                <a href="tel:" class="text-truncate col"></a>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <i class="fas fa-user-check me-3"></i>
+                                                    Grade:
+                                                </div>
+                                                <a href="tel:+94"
+                                                    class="btn text-white bg-warning shadow phone-button mt-2">
+                                                    <i class="fab fa-whatsapp ms-auto"></i>
+                                                </a>
+                                            </div>
+                                            </p>
                                         </div>
-                                    </a>
-                                {{-- </a> --}}
+                                    </div>
                                 </div>
-                            @endforeach
+                            </a>
+                            {{-- </a> --}}
                         </div>
-                    </div>
-                @endif
+                    @endforeach
+                </div>
+            </div>
+            {{-- @endif --}}
         </div>
         {{-- <div class="d-flex justify-content-center mt-4">
             {{ $serviceProviders->links() }}
         </div> --}}
     </div>
-    
-  
- 
 @endsection
-
