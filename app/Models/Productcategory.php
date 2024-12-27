@@ -15,5 +15,6 @@ class Productcategory extends Model
         'brand',
         'name',
         'description',
+        'unit_price'
     ];
 }
