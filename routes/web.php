@@ -159,7 +159,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/viewservice', [ServiceController::class, 'viewservice']);
     // Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit'); // Display update form
     Route::post('/service', [ServiceController::class, 'store'])->name('service.store');
-    Route::get('service/{id}', [ServiceController::class, 'edit'])->name('service.edit'); 
+    Route::get('service/{id}', [ServiceController::class, 'edit'])->name('service.edit');
     Route::put('/service/{id}', [ServiceController::class, 'update'])->name('service.update');
     Route::delete('/service/{id}', [ServiceController::class, 'delete'])->name('service.delete');
     //professionals routes
@@ -245,6 +245,12 @@ Route::name('category.')->group(function () {
 
 });
 
+// Bass view route
+Route::get('/viewbass', [WebController::class, 'viewbass'])->name('viewbass');
+
+//professional
+Route::get('/viewprofessionals', [WebController::class, 'professionals'])->name('viewprofessionals');
+
 // about us page route
 Route::get('/aboutus', function () {
     return view('webpages.about');
@@ -281,7 +287,7 @@ Route::get('/serviceproviderprofile', function () {
 // Route::get('/professionalsform', [ProfessionalController::class, 'webprofessional'])->name('professionalsform');
 
 Route::get('/professionalsform', [ProfessionalController::class, 'professionalForm'])->name('professionalsform');
-// websie eke bass form eka 
+// websie eke bass form eka
 Route::get('/bassform', function () {
     return view('webpages.bassform');
 });

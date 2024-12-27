@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bass;
+use App\Models\BassCategory;
 use App\Models\Shop;
 use App\Models\ShopCategory;
 use App\Models\City;
 use App\Models\District;
 use App\Models\Brand;
+use App\Models\Professional;
+use App\Models\ProfessionalCategory;
 use App\Models\ShopItem;
 use App\Models\Shopproduct;
 use App\Models\Service;
@@ -307,5 +311,18 @@ class WebController extends Controller
         return view('webpages.service', compact('serviceProviders', 'dictricts'));
     }
 
+    public function viewbass(){
+        $bases = Bass::select('id','name','email','phone','profile_image','address')->paginate(20);
+        $baseCategory = BassCategory::select('id','name')->get();
+        // dd($bases->toArray(), $baseCategory->toArray());
+        return view('webpages.bassview',compact('bases','baseCategory'));
+    }
+
+    public function professionals(){
+        $professionals = Professional::select('id','name','email','phone','profile_image','address')->paginate(20);
+        $professionalsCategory = ProfessionalCategory::select('id','name')->get();
+        // dd($professionals->toArray(), $professionalsCategory->toArray());
+        return view('webpages.professinal',compact('professionals','professionalsCategory'));
+    }
 
 }
