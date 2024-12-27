@@ -26,7 +26,7 @@
 
         $('#search-input').on('keyup', function() {
             var query = $(this).val();
-            fetchProducts(1, query); 
+            fetchProducts(1, query);
         });
 
         function fetchProducts(page, query) {

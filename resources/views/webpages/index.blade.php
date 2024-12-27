@@ -69,7 +69,7 @@
 </head>
 
 <body class="overflow-x-hidden">
-    
+
     <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasExample"
         aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
@@ -107,13 +107,13 @@
                         <div class="accordion-body">
                             <a href="serviceproviderform" class="dropdown-item p-1 border">Service
                                 Providers</a>
-                     
-                
+
+
                             <a href="/professionalsform" class="dropdown-item p-1 border">Professionals</a>
-                       
+
                             <a href="#" class="dropdown-item p-1 border">Bass</a>
-                      
-                     
+
+
                             <a href="shopSuppliers" class="dropdown-item p-1 border">Shops</a>
                         </div>
                     </div>
@@ -201,7 +201,7 @@
 
                     </div> --}}
                     {{-- <div class="col-2 d-flex align-items-center justify-content-center h-100 " style="background-color: rgb(224, 156, 54)">
-                        
+
                         <div class=" d-flex flex-column ">
                             <a href="{{ url('/') }}">
                                 <img src="{{ asset('assets/webpage/img/LOGO-01.png') }}" alt="Builders.lk"
@@ -211,7 +211,7 @@
                                 role="button" aria-controls="offcanvasExample">
                                 <i class="fa-solid fa-bars fs-2 px-4"></i>
                             </div>
-                           
+
                         </div>
                     </div> --}}
                 <div
@@ -316,7 +316,7 @@
                         <div class="collapse navbar-collapse p-1" id="navbarNavDropdown">
                             <ul class="navbar-nav ms-auto p-1">
                                 <li class="nav-item dropdown custom-dropdown p-1">
-                                    <a href="#" class="nav-link p-1" 
+                                    <a href="viewbass" class="nav-link p-1"
                                         aria-expanded="false">
                                         Find Bass
                                     </a>
@@ -330,7 +330,7 @@
                                     </ul> --}}
                                 </li>
                                 <li class="nav-item dropdown custom-dropdown p-1">
-                                    <a href="#" class="nav-link p-1" 
+                                    <a href="viewprofessionals" class="nav-link p-1"
                                         aria-expanded="false">
                                         Find Professionals
                                     </a>
@@ -507,10 +507,10 @@
                                     </button>
                                     <div class="subnav-content align-items-start " style="min-height:40vh" >
                                         <div class="d-flex flex-wrap w-100  ">
-                                    
-                                         
+
+
                                             @foreach($productcats->chunk(6) as $productcat1)
-                                            @foreach($productcat1 as $productcat)    
+                                            @foreach($productcat1 as $productcat)
                                             <div class="col-6 col-md-4 mb-3">
                                                         <a href="{{ route('category.productcategoryItem', $productcat->id) }}">
                                                             {{ $productcat->name }}
@@ -521,7 +521,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <!-- Search Bar -->
                             <div class="col-12 col-md-4 mb-2 mb-md-0">
@@ -595,10 +595,10 @@
                                     </button>
                                     <div class="subnav-content align-items-start " style="min-height:40vh" >
                                         <div class="d-flex flex-wrap w-100  ">
-                                    
-                                         
+
+
                                             @foreach($services->chunk(6) as $chunk)
-                                            @foreach($chunk as $service)    
+                                            @foreach($chunk as $service)
                                             <div class="col-6 col-md-4 mb-3">
                                                         <a href="{{ route('category.service', $service->servicename) }}">
                                                             {{ $service->servicename }}
@@ -609,7 +609,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
 
                             <!-- Fourth Dropdown -->
