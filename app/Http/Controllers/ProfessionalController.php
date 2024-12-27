@@ -141,6 +141,6 @@ class ProfessionalController extends Controller
     public function viewpro()
     {
         $prof = Professional::all();
-        return view('admin.viewtbl.viewprofessionals', compact('prof'));
+        return view('admin.viewtbl.viewProfessionals', compact('prof'));
     }
 }
