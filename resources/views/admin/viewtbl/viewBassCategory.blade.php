@@ -1,7 +1,7 @@
 @extends('admin.sidebar')
 
 @section('content')
-    <h1 style="margin-left:300px; margin-top:20px;">Service Details</h1>
+    <h1 style="margin-left:300px; margin-top:20px;">Bass Category Details</h1>
 
     <div class="search-bar" style="margin-left:300px; margin-top:20px; width: 800px;">
         <input type="text" id="search-input" class="form-control" placeholder="Search services by Name or ID...">
