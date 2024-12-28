@@ -184,10 +184,10 @@
                                         class="d-block col-4 object-fit-cover rounded-start" alt="Service Provider Image">
 
                                     <!-- Text and button on the right side -->
-                                    <div class="col-8 d-flex flex-column p-4">
+                                    {{-- <div class="col-8 d-flex flex-column p-4">
                                         <div>
 
-                                            <h5 class="card-title"></h5>
+                                            <h5 class="card-title">{{$base->name}}</h5>
                                             <p class="card-text p-0 m-0 text-small text-muted">
                                             <div class="text-truncate-two-line">
                                                 <i class="fas fa-map-marker-alt me-2"></i>
@@ -202,11 +202,45 @@
                                                     <i class="fas fa-user-check me-3"></i>
                                                     Grade:
                                                 </div>
-                                                <a href="tel:+94"
+                                                <a href="tel:+94{{ $base ->whatsapp }}"
                                                     class="btn text-white bg-warning shadow phone-button mt-2">
                                                     <i class="fab fa-whatsapp ms-auto"></i>
                                                 </a>
                                             </div>
+                                            </p>
+                                        </div>
+                                    </div> --}}
+                                    <div class="col-8 d-flex flex-column p-4">
+                                        <div>
+                                            <!-- Name -->
+                                            <h5 class="card-title">{{ $base->name }}</h5>
+                                            
+                                            <!-- Address -->
+                                            <p class="card-text p-0 m-0 text-small text-muted">
+                                                <div class="text-truncate-two-line">
+                                                    <i class="fas fa-map-marker-alt me-2"></i>
+                                                    {{ $base->address }}
+                                                </div>
+                                    
+                                                <!-- Phone Number -->
+                                                <div class="d-flex align-items-end">
+                                                    <i class="fas fa-phone me-3"></i>
+                                                    <a href="tel:{{ $base->phone }}" class="text-truncate col">{{ $base->phone }}</a>
+                                                </div>
+                                    
+                                                <!-- Grade (if applicable) -->
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <div>
+                                                        <i class="fas fa-user-check me-3"></i>
+                                                        Grade: <span class="text-muted"></span> <!-- Replace "N/A" with actual grade if available -->
+                                                    </div>
+                                    
+                                                    <!-- WhatsApp Button -->
+                                                    <a href="tel:+94{{ $base->phone }}" 
+                                                       class="btn text-white bg-warning shadow phone-button mt-2">
+                                                        <i class="fab fa-whatsapp ms-auto"></i>
+                                                    </a>
+                                                </div>
                                             </p>
                                         </div>
                                     </div>
