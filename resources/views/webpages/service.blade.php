@@ -33,10 +33,10 @@
                     <!-- Product Type Filter with Searchable Dropdown -->
                     <article class="filter-group">
                         <header class="card-header">
-                            <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_1" aria-expanded="true">
+                            {{-- <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_1" aria-expanded="true">
                                 <i class="icon-control fa fa-chevron-down"></i>
                                 <h6 class="title">Service Type with Search</h6>
-                            </a>
+                            </a> --}}
                         </header>
                         {{-- <div class="filter-content collapse show" id="collapse_1">
                             <div class="card-body">
@@ -65,14 +65,14 @@
 
                     <!-- Location Filter -->
                     {{-- get form distrc tble and city table --}}
-                    <article class="filter-group">
+                    {{-- <article class="filter-group">
                         <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_4" aria-expanded="true">
                                 <i class="icon-control fa fa-chevron-down"></i>
                                 <h6 class="title">Location</h6>
                             </a>
                         </header>
-                        {{-- <div class="filter-content collapse show" id="collapse_4">
+                        <div class="filter-content collapse show" id="collapse_4">
                             <div class="card-body">
                                 <select class="form-select" id="district">
                                     <option value="">Select District</option>
@@ -89,8 +89,8 @@
                                 </select>
                                 
                             </div>
-                        </div> --}}
-                    </article>
+                        </div>
+                    </article> --}}
 
                     <!-- Servicers  Filter -->
                     {{-- //get form the service table --}}
@@ -98,32 +98,16 @@
                         <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_2" aria-expanded="true">
                                 <i class="icon-control fa fa-chevron-down"></i>
-                                <h6 class="title">Services </h6>
+                                <h6 class="title">Services Category </h6>
                             </a>
                         </header>
                         <div class="filter-content collapse show" id="collapse_2">
-                            <div class="card-body">
-                                <label class="form-check">
-                                    <input type="checkbox" class="form-check-input" checked />
-                                    <span class="form-check-label">
-                                        <span class="badge bg-light text-dark float-end">120</span></span>
-                                </label>
-                                <label class="form-check">
-                                    <input type="checkbox" class="form-check-input" checked />
-                                    <span class="form-check-label">Dulux
-                                        <span class="badge bg-light text-dark float-end">15</span></span>
-                                </label>
-                                <label class="form-check">
-                                    <input type="checkbox" class="form-check-input" checked />
-                                    <span class="form-check-label">Alumex
-                                        <span class="badge bg-light text-dark float-end">35</span></span>
-                                </label>
-                            </div>
+                        
                         </div>
                     </article>
 
                     <!-- Price Range Filter -->
-                    <article class="filter-group">
+                    {{-- <article class="filter-group">
                         <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_3" aria-expanded="true">
                                 <i class="icon-control fa fa-chevron-down"></i>
@@ -147,7 +131,7 @@
                                 <button class="btn btn-warning w-100 mt-2">Apply</button>
                             </div>
                         </div>
-                    </article>
+                    </article> --}}
 
                     <!-- Additional Filters -->
                     {{-- <article class="filter-group">
