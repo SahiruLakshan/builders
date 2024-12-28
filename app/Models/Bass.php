@@ -34,7 +34,16 @@ class Bass extends Model
         'specialization',
         'workingArea',
         'certification_details',
-        'certifications'
+        'certifications',
+        'company_name',
+        'business_reg_no',
+        'registrations',
+        'provider_image',
+        'no_of_emp',
+        'employees_qualification',
+        'max_project_value',
+        'service_name',
+        'directors',
     ];
 
     public function district()
