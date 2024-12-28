@@ -58,13 +58,13 @@ class BassController extends Controller
                 'skills' => 'nullable|string',
                 // 'specialization' => 'nullable|array',
                 'workingArea' => 'nullable|array',
-                'certificationDetails' => 'nullable|array',
+                'certification_details' => 'nullable|array',
                 'certifications' => 'required|array', // Ensure certifications is an array
-                'certifications.*' => 'file|mimes:pdf,doc,docx,jpg,png|max:2048', // Ensure each certification is a string
+                'certifications.*' => 'file|mimes:pdf,doc,docx,jpg,png', // Ensure each certification is a string
                 'companyName' => 'nullable|string|max:255',
                 'businessRegNo' => 'nullable|string|max:255',
-                'registrations' => 'nullable|file|mimes:pdf,doc,docx,jpg,png|max:2048',
-                'providerImage' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'registrations' => 'nullable|file|mimes:pdf,doc,docx,jpg,png',
+                'providerImage' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
                 'noOfEmp' => 'nullable|integer',
                 'employeesQualification' => 'nullable|string|max:255',
                 'maxProjectValue' => 'nullable|string|max:255',
@@ -122,7 +122,7 @@ class BassController extends Controller
                 'experienceLevel' => $validated['experienceLevel'],
                 'yearsOfExperience' => $validated['yearsOfExperience'],
                 'skills' => $validated['skills'],
-                'specialization' => json_encode($validated['specialization']),
+                // 'specialization' => json_encode($validated['specialization']),
                 'workingArea' => json_encode($validated['workingArea']),
                 'certification_details' => json_encode($certificationDetails),
                 'certifications' => json_encode($certificationFiles),

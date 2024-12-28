@@ -86,10 +86,10 @@ class ShopController extends Controller
             'email' => 'required|email|max:255|unique:shops,email',
             'address' => 'required|string|max:500',
             'p_number' => 'required|string|max:255',
+            't_number' => 'required|string|max:255',
+            'w_number' => 'required|string|max:255',
             'district' => 'required|string|max:255',
             'city' => 'required|string|max:255',
-            'latitude' => 'required|string|max:255',
-            'longitude' => 'required|string|max:255',
             'category' => 'required|array',                   // multiple categories
             'category.*' => 'string|max:255',                 // each category must be a string
             'location' => 'nullable|string|max:255',
@@ -97,6 +97,13 @@ class ShopController extends Controller
             'end_time' => 'required|date_format:H:i|after:start_time',
             'fb_link' => 'nullable|url|max:255',
             'shop_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'company_name' => 'required|string|max:255',
+            'c_br' => 'required|string|max:255',
+            'directors' => 'required|array',
+            'directors.*.name' => 'required|string|max:255',
+            'directors.*.contact' => 'required|string|max:255',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
         ]);
 
         if ($validator->fails()) {
@@ -111,17 +118,17 @@ class ShopController extends Controller
                 'address',
                 'district',
                 'p_number',
+                't_number',
                 'w_number',
                 'city',
-                'latitude',
-                'longitude',
                 'location',
                 'start_time',
                 'end_time',
                 'fb_link',
                 'company_name',
                 'c_br',
-                'directors'
+                'latitude',
+                'longitude'
             ]);
 
             // Handle multiple categories
@@ -133,13 +140,14 @@ class ShopController extends Controller
                 $file->move('assets/shop', $filename);
                 $data['shop_img'] = $filename;
             }
+
             $data['directors'] = json_encode($request->input('directors', []));
             $shop = new Shop($data);                         // save shop data
             $shop->save();
 
             return redirect()->back()->with('success', 'Shop Added.');
         } catch (\Exception $e) {
-            return redirect()->back()->withErrors($e)->withInput();
+            return redirect()->back()->withErrors($e->getMessage())->withInput();
         }
     }
 
@@ -163,16 +171,24 @@ class ShopController extends Controller
             'email' => 'required|email|max:255|unique:shops,email,' . $id, // ignore current shop's email
             'address' => 'required|string|max:500',
             'p_number' => 'required|string|max:255',
+            't_number' => 'required|string|max:255',
+            'w_number' => 'required|string|max:255',
             'district' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'category' => 'required|array',                   // multiple categories
             'category.*' => 'string|max:255',                 // each category must be a string
             'location' => 'nullable|string|max:255',
-            'start_time' => 'required',
-            'end_time' => 'required|after:start_time',
+            'start_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i|after:start_time',
             'fb_link' => 'nullable|url|max:255',
-            'br' => 'required|string|max:255',
             'shop_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'company_name' => 'required|string|max:255',
+            'c_br' => 'required|string|max:255',
+            'directors' => 'required|array',
+            'directors.*.name' => 'required|string|max:255',
+            'directors.*.contact' => 'required|string|max:255',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
         ]);
 
         if ($validator->fails()) {
@@ -188,12 +204,17 @@ class ShopController extends Controller
                 'address',
                 'district',
                 'p_number',
+                't_number',
+                'w_number',
                 'city',
                 'location',
                 'start_time',
                 'end_time',
                 'fb_link',
-                'br'
+                'company_name',
+                'c_br',
+                'latitude',
+                'longitude'
             ]);
 
             // Handle multiple categories
@@ -211,6 +232,7 @@ class ShopController extends Controller
                 $data['shop_img'] = $filename;
             }
 
+            $data['directors'] = json_encode($request->input('directors', []));
             $shop->update($data);                            // update shop data
 
             return redirect()->back()->with('success', 'Shop Updated.');
