@@ -311,18 +311,20 @@ class WebController extends Controller
         return view('webpages.service', compact('serviceProviders', 'dictricts'));
     }
 
-    public function viewbass(){
-        $bases = Bass::select('id','name','email','phone','profile_image','address')->paginate(20);
-        $baseCategory = BassCategory::select('id','name')->get();
+    public function viewbass()
+    {
+        $bases = Bass::select('id', 'name', 'email', 'phone', 'profile_image', 'address')->paginate(20);
+        $baseCategory = BassCategory::select('id', 'name')->get();
         // dd($bases->toArray(), $baseCategory->toArray());
-        return view('webpages.bassview',compact('bases','baseCategory'));
+        return view('webpages.bassview', compact('bases', 'baseCategory'));
     }
 
-    public function professionals(){
-        $professionals = Professional::select('id','name','email','phone','profile_image','address')->paginate(20);
-        $professionalsCategory = ProfessionalCategory::select('id','name')->get();
+    public function professionals()
+    {
+        $professionals = Professional::select('id', 'name', 'email', 'phone', 'profile_image', 'address')->paginate(20);
+        $professionalsCategory = ProfessionalCategory::select('id', 'name')->get();
         // dd($professionals->toArray(), $professionalsCategory->toArray());
-        return view('webpages.professinal',compact('professionals','professionalsCategory'));
+        return view('webpages.professinal', compact('professionals', 'professionalsCategory'));
     }
 
 }

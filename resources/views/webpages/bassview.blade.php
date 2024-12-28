@@ -3,7 +3,7 @@
     <!-- /MAIN HEADER -->
     <div class="container-fluid">
         <div class="row">
-            <h3>Select Your Services</h3>
+            <h3>Select Your Bass Category</h3>
             <aside class="col-md-3 px-0">
                 <div class="card">
                     <!-- Product Type Filter -->
@@ -31,12 +31,12 @@
                     </article> --}}
                     <!-- Product Type Filter with Searchable Dropdown -->
                     <article class="filter-group">
-                        <header class="card-header">
+                        {{-- <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_1" aria-expanded="true">
                                 <i class="icon-control fa fa-chevron-down"></i>
                                 <h6 class="title">Service Type with Search</h6>
                             </a>
-                        </header>
+                        </header> --}}
                         {{-- <div class="filter-content collapse show" id="collapse_1">
                             <div class="card-body">
                                 <form>
@@ -65,12 +65,12 @@
                     <!-- Location Filter -->
                     {{-- get form distrc tble and city table --}}
                     <article class="filter-group">
-                        <header class="card-header">
+                        {{-- <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_4" aria-expanded="true">
                                 <i class="icon-control fa fa-chevron-down"></i>
                                 <h6 class="title">Location</h6>
                             </a>
-                        </header>
+                        </header> --}}
                         {{-- <div class="filter-content collapse show" id="collapse_4">
                             <div class="card-body">
                                 <select class="form-select" id="district">
@@ -123,7 +123,7 @@
                                 <h6 class="title">Price range</h6>
                             </a>
                         </header>
-                        <div class="filter-content collapse show" id="collapse_3">
+                        {{-- <div class="filter-content collapse show" id="collapse_3">
                             <div class="card-body">
                                 <input type="range" class="form-range" min="0" max="100" />
                                 <div class="row mt-2">
@@ -138,7 +138,7 @@
                                 </div>
                                 <button class="btn btn-warning w-100 mt-2">Apply</button>
                             </div>
-                        </div>
+                        </div> --}}
                     </article>
 
                     <!-- Additional Filters -->
