@@ -59,7 +59,7 @@ class BassController extends Controller
                 // 'specialization' => 'nullable|array',
                 'workingArea' => 'nullable|array',
                 'certification_details' => 'nullable|array',
-                'certifications' => 'required|array', // Ensure certifications is an array
+                'certifications' => 'nullable|array', // Ensure certifications is an array
                 'certifications.*' => 'file|mimes:pdf,doc,docx,jpg,png', // Ensure each certification is a string
                 'companyName' => 'nullable|string|max:255',
                 'businessRegNo' => 'nullable|string|max:255',

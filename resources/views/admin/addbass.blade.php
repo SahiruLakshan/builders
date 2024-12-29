@@ -95,7 +95,7 @@
                                             <div class="mb-3 d-flex">
                                                 <label for="backNicImage" class="form-label">Back Side NIC Image:</label>
                                                 <input type="file" id="backNicImage" name="backNicImage" accept="image/*"  capture="enviorement" 
-                                                    onchange="previewImage(this)" required>
+                                                    onchange="previewImage(this)" >
                                                 <div class="preview-box" id="imagePreview3">
                                                     <span>Back Side NIC Image Preview</span>
                                                 </div>
@@ -109,7 +109,7 @@
                                             <div class="mb-3">
                                                 <label for="profileImage" class="form-label">Profile Image:</label>
                                                 <input type="file" id="profileImage" name="profileImage" accept="image/*"  capture="user"
-                                                onchange="previewImage(this)" required>
+                                                onchange="previewImage(this)" >
                                                 <div class="preview-box" id="imagePreview">
                                                     <span>Image Preview</span>
                                                 </div>
@@ -245,7 +245,7 @@
                                             <div class="mb-3">
                                                 <label for="jobTitle" class="form-label">Job Title/Role</label>
                                                 <input type="text" class="form-control" id="jobTitle"
-                                                    name="jobTitle" placeholder="e.g., Architect, Engineer" required>
+                                                    name="jobTitle" placeholder="e.g., Architect, Engineer" >
                                             </div>
                                         </div>
                                     </div>
@@ -475,7 +475,7 @@
                                               name="directors[0][name]"
                                               class="form-control"
                                               placeholder="Enter Name"
-                                              required
+                                         
                                             />
                                           </td>
                                           <td>
@@ -484,7 +484,7 @@
                                               name="directors[0][contact]"
                                               class="form-control"
                                               placeholder="Enter Contact Number"
-                                              required
+                                        
                                             />
                                           </td>
                                           <td>
@@ -510,7 +510,7 @@
                                                             name="directors[${rowCount}][name]"
                                                             class="form-control"
                                                             placeholder="Enter Name"
-                                                            required
+                                                     
                                                           />
                                                         </td>
                                                         <td>
@@ -519,7 +519,7 @@
                                                             name="directors[${rowCount}][contact]"
                                                             class="form-control"
                                                             placeholder="Enter Contact Number"
-                                                            required
+                                                         
                                                           />
                                                         </td>
                                                         <td>
