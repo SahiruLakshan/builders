@@ -295,7 +295,7 @@
                                     <div class="form-group">
                                         <label for="inputPassword4">Email:</label>
                                         <input type="email" class="form-control" id="email" name="email"
-                                            placeholder="Email Of The Service Provider" />
+                                            placeholder="Email Of The Service Provider"  required/>
                                     </div>
                                 </div> 
                                 <div class="col-md-6">

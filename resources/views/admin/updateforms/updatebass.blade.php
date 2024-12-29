@@ -85,44 +85,7 @@
                                     </div>
 
                                 </div>
-                                {{-- <div class="row">
-                                    <div class="col ">
-                                        <div class="form-group">
-                                            <div class="mb-3 d-flex">
-                                                <label for="profileImage" class="form-label">NIC Image:</label>
-                                                <input type="file" id="nicImage" name="nicImage" accept="image/*"
-                                                    onchange="previewImage()" required>
-                                                <div class="preview-box" id="imagePreview2">
-                                                    <span>NIC Image Preview</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <div class="mb-3 d-flex">
-                                                <label for="profileImage" class="form-label">Back Side NIC Image:</label>
-                                                <input type="file" id="backNicImage" name="backNicImage" accept="image/*"
-                                                    onchange="previewImage()" required>
-                                                <div class="preview-box" id="imagePreview3">
-                                                    <span>Back Side NIC Image Preview</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                <div class="col">
-                                    <div class="mb-3 ">
-                                        <label for="profileImage" class="form-label">Profile Image:</label>
-                                        <input type="file" id="profileImage" name="profileImage" accept="image/*"
-                                            onchange="previewImage()" required>
-                                        <div class="preview-box" id="imagePreview">
-                                            <span>Image Preview</span>
-                                        </div>
-    
-                                    </div>
-                                </div> --}}
+                            
                                 <hr>
                                 <div class="row md-3 ">
                                     <div class="col">
@@ -130,7 +93,7 @@
                                             <div class="mb-3 d-flex">
                                                 <label for="nicImage" class="form-label">NIC Image:</label>
                                                 <input type="file" id="nicImage" name="nicImage" accept="image/*" capture="enviorement"
-                                                    onchange="previewImage(this)" required>
+                                                    onchange="previewImage(this)" >
                                                 <div class="preview-box" id="imagePreview2">
                                                     <span>NIC Image Preview</span>
                                                 </div>
@@ -142,7 +105,7 @@
                                             <div class="mb-3 d-flex">
                                                 <label for="backNicImage" class="form-label">Back Side NIC Image:</label>
                                                 <input type="file" id="backNicImage" name="backNicImage" accept="image/*"  capture="enviorement" 
-                                                    onchange="previewImage(this)" required>
+                                                    onchange="previewImage(this)" >
                                                 <div class="preview-box" id="imagePreview3">
                                                     <span>Back Side NIC Image Preview</span>
                                                 </div>
@@ -156,7 +119,7 @@
                                             <div class="mb-3">
                                                 <label for="profileImage" class="form-label">Profile Image:</label>
                                                 <input type="file" id="profileImage" name="profileImage" accept="image/*"  capture="user"
-                                                onchange="previewImage(this)" required>
+                                                onchange="previewImage(this)" >
                                                 <div class="preview-box" id="imagePreview">
                                                     <span>Image Preview</span>
                                                 </div>
@@ -183,7 +146,7 @@
                                         <div class="form-group">
                                             <label for="email">Email Address</label>
                                             <input type="text" class="form-control" id="email" name="b_email"
-                                                placeholder="Enter Email Address" />
+                                                placeholder="Enter Email Address" required />
                                         </div>
                                     </div>
                                 </div>
@@ -242,7 +205,7 @@
                                             <div class="mb-3">
                                                 <label for="jobTitle" class="form-label">Job Title/Role</label>
                                                 <input type="text" class="form-control" id="jobTitle"
-                                                    name="jobTitle" placeholder="e.g., Architect, Engineer" required>
+                                                    name="jobTitle" placeholder="e.g., Architect, Engineer" >
                                             </div>
                                         </div>
                                     </div>
@@ -251,7 +214,7 @@
                                             <div class="mb-3">
                                                 <label for="experienceLevel" class="form-label">Experience Level</label>
                                                 <select class="form-select" id="experienceLevel" name="experienceLevel"
-                                                    required>
+                                                    >
                                                     <option value="" disabled selected>Select experience level
                                                     </option>
                                                     <option value="Junior">Junior</option>
@@ -346,7 +309,7 @@
                                 <div class="col">
                                     <div class="mb-3 d-flex">
                                         <label for="profileImage" class="form-label">Company Logo:</label>
-                                        <input type="file" id="providerImage" name="providerImage" accept="image/*" onchange="previewImage()" required>
+                                        <input type="file" id="providerImage" name="providerImage" accept="image/*" onchange="previewImage()" >
                                         <div class="preview-box" id="imagePreview">
                                           <span>Image Preview</span>
                                         </div>
@@ -428,7 +391,7 @@
                                           name="directors[0][name]"
                                           class="form-control"
                                           placeholder="Enter Name"
-                                          required
+                                          
                                         />
                                       </td>
                                       <td>
@@ -437,7 +400,7 @@
                                           name="directors[0][contact]"
                                           class="form-control"
                                           placeholder="Enter Contact Number"
-                                          required
+                                          
                                         />
                                       </td>
                                       <td>
@@ -463,7 +426,7 @@
                                                         name="directors[${rowCount}][name]"
                                                         class="form-control"
                                                         placeholder="Enter Name"
-                                                        required
+                                                        
                                                       />
                                                     </td>
                                                     <td>
@@ -472,7 +435,7 @@
                                                         name="directors[${rowCount}][contact]"
                                                         class="form-control"
                                                         placeholder="Enter Contact Number"
-                                                        required
+                                                        
                                                       />
                                                     </td>
                                                     <td>

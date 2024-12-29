@@ -101,7 +101,7 @@
                                         <div class="form-group">
                                             <label for="email">Email Address</label>
                                             <input type="text" class="form-control" id="email" name="p_email"
-                                                placeholder="Enter Email Address" />
+                                                placeholder="Enter Email Address" required />
                                         </div>
                                     </div>
 
