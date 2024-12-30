@@ -54,7 +54,8 @@
                 <td>{{ $professional->license_number }}</td>
                 <td>
                     <span>
-                        <a href="" class="btn btn-success btn-sm">Edit</a>
+                        
+                        <a href="{{ url('getprofessionals/' . $professional->id) }}" class="btn btn-info btn-sm">Edit</a>
                         <form action="" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

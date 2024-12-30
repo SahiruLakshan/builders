@@ -143,14 +143,14 @@ class BassController extends Controller
         }
     }
 
-    public function Viewadminbass(Request $request)
+    public function viewadminbass(Request $request)
     {
         $query = $request->input('query');
 
         $bass = Bass::where('fullname', 'like', '%' . $query . '%')->orWhere('number', 'like', '%' . $query . '%')->paginate(8);
 
         if ($request->ajax()) {
-            return view('admin.viewtbl.basspagination', compact('bass'))->render();
+            return view('admin.viewtbl.Viewadminbass', compact('bass'))->render();
         }
         return view('admin.viewtbl.Viewadminbass', compact('bass'));
     }

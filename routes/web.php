@@ -171,7 +171,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/addprofessionals', [ProfessionalController::class, 'addadminprofessionals'])->name('addprofessionals');
     Route::post('/submitprofessionals', [ProfessionalController::class, 'store'])->name('submitprofessionals');
     Route::get('/professionals', [ProfessionalController::class, 'viewpro'])->name('viewprofessionals');
-
+    Route::get('/getprofessionals/{id}', [ProfessionalController::class, 'getprofessionals'])->name('getprofessionals');
+    Route::put('/updateprofessionals/{id}', [ProfessionalController::class, 'updateprofessionals'])->name('updateprofessionals');
     Route::get('/addprofessionalsCategory', [ProfessionalCategoryController::class, 'index'])->name('addprofessionalsCategory');
     Route::post('/addprofessioncateory', [ProfessionalCategoryController::class, 'addprofessionals'])->name('viewprofessionalsCategory');
     Route::get('/viewprofessionalsCategory', [ProfessionalCategoryController::class, 'view'])->name('categories.store');
@@ -186,7 +187,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     // Route::get('/addshop', [ShopController::class, 'index'])->name('addshop');
     Route::post('/addbass', [BassController::class, 'addbass'])->name('addbass.store');
     Route::get('/adminAddbass', [BassController::class, 'index'])->name('adminAddbass');
-    Route::get('/Viewadminbass', [BassController::class, 'Viewadminbass'])->name('Viewadminbass');
+    Route::get('/viewadminbass', [BassController::class, 'viewadminbass'])->name('viewadminbass');
     Route::get('/viewbasscategory', [BassController::class, 'viewbasscate'])->name('viewbasscate');
     Route::delete('/deletebasscategory/{id}', [BassController::class, 'deleteBassCategory'])->name('bassCategory.delete');
     Route::delete('/deletebass/{id}', [BassController::class, 'deleteBass'])->name('bass.delete');
