@@ -59,7 +59,7 @@ class BassController extends Controller
                 // 'specialization' => 'nullable|array',
                 'workingArea' => 'nullable|array',
                 'certification_details' => 'nullable|array',
-                'certifications' => 'required|array', // Ensure certifications is an array
+                'certifications' => 'nullable|array', // Ensure certifications is an array
                 'certifications.*' => 'file|mimes:pdf,doc,docx,jpg,png', // Ensure each certification is a string
                 'companyName' => 'nullable|string|max:255',
                 'businessRegNo' => 'nullable|string|max:255',
@@ -143,16 +143,16 @@ class BassController extends Controller
         }
     }
 
-    public function viewbass(Request $request)
+    public function viewadminbass(Request $request)
     {
         $query = $request->input('query');
 
         $bass = Bass::where('fullname', 'like', '%' . $query . '%')->orWhere('number', 'like', '%' . $query . '%')->paginate(8);
 
         if ($request->ajax()) {
-            return view('admin.viewtbl.basspagination', compact('bass'))->render();
+            return view('admin.viewtbl.Viewadminbass', compact('bass'))->render();
         }
-        return view('admin.viewtbl.viewbass', compact('bass'));
+        return view('admin.viewtbl.Viewadminbass', compact('bass'));
     }
 
     public function viewbasscate(Request $request)

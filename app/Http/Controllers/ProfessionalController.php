@@ -143,4 +143,92 @@ class ProfessionalController extends Controller
         $prof = Professional::all();
         return view('admin.viewtbl.viewProfessionals', compact('prof'));
     }
+
+    public function getprofessionals($id)
+    {
+        $prof = Professional::find($id);
+        $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
+        $cate = ProfessionCategory::all();
+        return view('admin.updateforms.updateprofessinals', compact('prof', 'dictricts', 'cate'));
+    }
+
+    public function updateprofessionals(Request $request, $id)
+    {
+        try {
+            // Validate incoming data
+            $request->validate([
+                'p_Name' => 'required|string|max:255',
+                'profileImage' => 'nullable|image|max:2048',
+                'phoneNumber' => 'required|digits_between:10,15|regex:/^[0-9]+$/',
+                'p_email' => 'required|email|max:255|unique:professionals,email,' . $id,
+                'p_address' => 'required|string|max:500',
+                'district' => 'required|string|max:100',
+                'city' => 'required|string|max:100',
+                'zip' => 'required|digits:5',
+                'dob' => 'required|date|before:today',
+                'linkedin' => 'nullable|url|max:255',
+                'jobTitle' => 'required|string|max:100',
+                'experienceLevel' => 'required|in:entry,mid,senior,expert',
+                'yearsOfExperience' => 'required|integer|min:0|max:50',
+                'specialization' => 'nullable|array',
+                'specialization.*' => 'string|max:100',
+                'skills' => 'nullable|string|max:500',
+                'certificationName' => 'nullable|array',
+                'certificationName.*' => 'string|max:100',
+                'licenseNumber' => 'nullable|string|max:50|unique:professionals,license_number,' . $id,
+            ]);
+
+            $prof = Professional::find($id);
+
+            // Handle file upload
+            if ($request->hasFile('profileImage')) {
+                $file = $request->file('profileImage');
+                $ext = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $ext;
+                $file->move('assets/professional', $filename);
+
+                // Delete old image
+                if (File::exists(public_path('assets/professional/' . $prof->profile_image))) {
+                    File::delete(public_path('assets/professional/' . $prof->profile_image));
+                }
+
+                $prof->profile_image = $filename;
+            }
+
+            $certifications = [];
+            if ($request->certificationName) {
+                foreach ($request->certificationName as $index => $name) {
+                    $certifications[] = [
+                        'name' => $name,
+                        'authority' => $request->issuingAuthority[$index] ?? null,
+                        'issued' => $request->dateIssued[$index] ?? null,
+                        'expires' => $request->expirationDate[$index] ?? null,
+                    ];
+                }
+            }
+
+            $prof->name = $request->p_Name;
+            $prof->phone = $request->phoneNumber;
+            $prof->email = $request->p_email;
+            $prof->address = $request->p_address;
+            $prof->district = $request->district;
+            $prof->city = $request->city;
+            $prof->zip = $request->zip;
+            $prof->dob = $request->dob;
+            $prof->linkedin = $request->linkedin;
+            $prof->job_title = $request->jobTitle;
+            $prof->experience_level = $request->experienceLevel;
+            $prof->years_of_experience = $request->yearsOfExperience;
+            $prof->specializations = json_encode($request->specialization);
+            $prof->skills = $request->skills;
+            $prof->certifications = json_encode($certifications);
+            $prof->license_number = $request->licenseNumber;
+
+            $prof->save();
+
+            return redirect()->back()->with('success', 'Professional updated successfully!');
+        } catch (\Throwable $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
 }

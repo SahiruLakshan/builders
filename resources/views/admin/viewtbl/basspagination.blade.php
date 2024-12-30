@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 "style="margin-left:100px;width:800px;">
-                <h1>Services</h1>
+                <h1>Bass</h1>
                 <table class="table table-bordered border text-nowrap mb-0 mt-3">
                     <thead>
                         <tr>

@@ -8,7 +8,7 @@
             <aside class="col-md-3 px-0">
                 <div class="card">
                     <!-- Product Type Filter -->
-                    {{-- <article class="filter-group">
+                    <article class="filter-group">
                         <!-- Search Bar with Dropdown -->
                         <div class="container">
                             <div class="row">
@@ -29,7 +29,7 @@
                             $(".select2").select2();
                         </script>
                    
-                    </article> --}}
+                    </article> 
                     <!-- Product Type Filter with Searchable Dropdown -->
                     <article class="filter-group">
                         <header class="card-header">
@@ -65,7 +65,7 @@
 
                     <!-- Location Filter -->
                     {{-- get form distrc tble and city table --}}
-                    {{-- <article class="filter-group">
+                     <article class="filter-group">
                         <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_4" aria-expanded="true">
                                 <i class="icon-control fa fa-chevron-down"></i>
@@ -90,7 +90,7 @@
                                 
                             </div>
                         </div>
-                    </article> --}}
+                    </article> 
 
                     <!-- Servicers  Filter -->
                     {{-- //get form the service table --}}
@@ -107,7 +107,7 @@
                     </article>
 
                     <!-- Price Range Filter -->
-                    {{-- <article class="filter-group">
+                    <article class="filter-group">
                         <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_3" aria-expanded="true">
                                 <i class="icon-control fa fa-chevron-down"></i>
@@ -131,18 +131,18 @@
                                 <button class="btn btn-warning w-100 mt-2">Apply</button>
                             </div>
                         </div>
-                    </article> --}}
+                    </article> 
 
                     <!-- Additional Filters -->
-                    {{-- <article class="filter-group">
+                  <article class="filter-group">
                         <header class="card-header">
                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_5"
                                 aria-expanded="false">
                                 <i class="icon-control fa fa-chevron-down"></i>
                                 <h6 class="title">More filter</h6>
                             </a>
-                        </header> --}}
-                        {{-- <div class="filter-content collapse" id="collapse_5">
+                        </header>
+                        <div class="filter-content collapse" id="collapse_5">
                             <div class="card-body">
                                 <label class="form-check">
                                     <input type="radio" name="filter-radio" class="form-check-input" checked />
@@ -154,9 +154,9 @@
                                 </label>
                             </div> 
                         </div>
-                    </article>--}}
+                    </article>
                 </div>
-            </aside>
+            </aside> 
            
             {{-- Service Providers Section --}}
             @if ($serviceProviders->isEmpty())

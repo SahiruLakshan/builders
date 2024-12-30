@@ -506,7 +506,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="slide-item" href="/viewbass">View Bass</a>
+                                            <a class="slide-item" href="/viewadminbass">View Bass</a>
                                         </li>
                                     </ul>
                                 </li>

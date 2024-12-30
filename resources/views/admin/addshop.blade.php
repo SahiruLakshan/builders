@@ -98,7 +98,7 @@
                                                     <div class="form-group mb-0">
                                                         <label class="form-label" for="address">Address</label>
                                                         <textarea type="text" class="form-control" name="address" id="address"
-                                                            placeholder="Address" required></textarea>
+                                                            placeholder="Address" ></textarea>
                                                         <div class="invalid-feedback">
                                                             Please enter an Address.
                                                         </div>
@@ -155,7 +155,7 @@
                                                             <label class="form-label" for="start_time">Start
                                                                 Time</label>
                                                             <input type="time" class="form-control"
-                                                                name="start_time" id="start_time" required />
+                                                                name="start_time" id="start_time"  />
                                                             <div class="invalid-feedback">
                                                                 Please enter a valid start time.
                                                             </div>
@@ -168,7 +168,7 @@
                                                             <label class="form-label" for="close_time">Close
                                                                 Time</label>
                                                             <input type="time" class="form-control"
-                                                                name="end_time" id="close_time" required />
+                                                                name="end_time" id="close_time"  />
                                                             <div class="invalid-feedback">
                                                                 Please enter a valid close time.
                                                             </div>
@@ -250,7 +250,7 @@
                                                         <div class="control-group form-group">
                                                             <label class="form-label" for="phone_number">Phone Number</label>
                                                             <input type="tel" class="form-control" name="t_number"
-                                                                id="phone_number" placeholder="Phone Number" required />
+                                                                id="phone_number" placeholder="Phone Number"  />
                                                             <div class="invalid-feedback">
                                                                 Please enter a valid phone number.
                                                             </div>
@@ -261,7 +261,7 @@
                                                         <div class="control-group form-group">
                                                             <label class="form-label" for="phone_number">Mobile </label>
                                                             <input type="tel" class="form-control" name="p_number"
-                                                                id="phone_number" placeholder="Phone Number" required />
+                                                                id="phone_number" placeholder="Phone Number"  />
                                                             <div class="invalid-feedback">
                                                                 Please enter a valid phone number.
                                                             </div>
@@ -272,7 +272,7 @@
                                                         <div class="control-group form-group">
                                                             <label class="form-label" for="phone_number">WhatsApp Number</label>
                                                             <input type="tel" class="form-control" name="w_number"
-                                                                id="phone_number" placeholder="Phone Number" required />
+                                                                id="phone_number" placeholder="Phone Number"  />
                                                             <div class="invalid-feedback">
                                                                 Please enter a valid phone number.
                                                             </div>
@@ -367,7 +367,7 @@
                                                         <div class="control-group form-group">
                                                             <label class="form-label" for="shop_name">Company Name</label>
                                                             <input type="text" class="form-control" name="company_name"
-                                                                id="company_name" placeholder="company_name" required />
+                                                                id="company_name" placeholder="company_name"  />
                                                             <div class="invalid-feedback">
                                                                 Please enter a valid shop name.
                                                             </div>
@@ -410,7 +410,7 @@
                                                           name="directors[0][name]"
                                                           class="form-control"
                                                           placeholder="Enter Name"
-                                                          required
+                                                      
                                                         />
                                                       </td>
                                                       <td>
@@ -419,7 +419,7 @@
                                                           name="directors[0][contact]"
                                                           class="form-control"
                                                           placeholder="Enter Contact Number"
-                                                          required
+                                                     
                                                         />
                                                       </td>
                                                       <td>
@@ -445,7 +445,7 @@
                                                                         name="directors[${rowCount}][name]"
                                                                         class="form-control"
                                                                         placeholder="Enter Name"
-                                                                        required
+                                                                       
                                                                       />
                                                                     </td>
                                                                     <td>
@@ -454,7 +454,7 @@
                                                                         name="directors[${rowCount}][contact]"
                                                                         class="form-control"
                                                                         placeholder="Enter Contact Number"
-                                                                        required
+                                                                
                                                                       />
                                                                     </td>
                                                                     <td>
@@ -646,12 +646,5 @@
               });
           });
       </script>
-    {{-- <script>
-      setTimeout(function () {
-        var submitButton = document.getElementById("submit-button");
-        submitButton.addEventListener("click", function () {
-          console.log("submit button clicked");
-        });
-      }, 5000);
-    </script> --}}
+  
 @endsection

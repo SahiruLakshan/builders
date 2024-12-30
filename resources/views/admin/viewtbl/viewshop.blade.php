@@ -17,17 +17,17 @@
 
 <script>
     $(document).ready(function() {
-        $(document).on('click', '.pagination a', function(event) {
-            event.preventDefault();
-            var page = $(this).attr('href').split('page=')[1];
-            var query = $('#search-input').val();
-            fetchProducts(page, query);
-        });
+        // $(document).on('click', '.pagination a', function(event) {
+        //     event.preventDefault();
+        //     var page = $(this).attr('href').split('page=')[1];
+        //     var query = $('#search-input').val();
+        //     fetchProducts(page, query);
+        // });
 
-        $('#search-input').on('keyup', function() {
-            var query = $(this).val();
-            fetchProducts(1, query); 
-        });
+        // $('#search-input').on('keyup', function() {
+        //     var query = $(this).val();
+        //     fetchProducts(1, query); 
+        // });
 
         function fetchProducts(page, query) {
             $.ajax({
