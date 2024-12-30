@@ -143,7 +143,7 @@ class BassController extends Controller
         }
     }
 
-    public function viewbass(Request $request)
+    public function Viewadminbass(Request $request)
     {
         $query = $request->input('query');
 
@@ -152,7 +152,7 @@ class BassController extends Controller
         if ($request->ajax()) {
             return view('admin.viewtbl.basspagination', compact('bass'))->render();
         }
-        return view('admin.viewtbl.viewbass', compact('bass'));
+        return view('admin.viewtbl.Viewadminbass', compact('bass'));
     }
 
     public function viewbasscate(Request $request)

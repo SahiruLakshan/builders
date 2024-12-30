@@ -393,7 +393,7 @@
                                     <div class="col">
                                         <div class="mb-3 d-flex">
                                             <label for="profileImage" class="form-label">Company Logo:</label>
-                                            <input type="file" id="providerImage" name="providerImage" accept="image/*" onchange="previewImage()" required>
+                                            <input type="file" id="providerImage" name="providerImage" accept="image/*" onchange="previewImage()">
                                             <div class="preview-box" id="imagePreview">
                                               <span>Image Preview</span>
                                             </div>

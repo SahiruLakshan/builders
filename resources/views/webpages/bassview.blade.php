@@ -177,7 +177,7 @@
                     @foreach ($bases as $base)
                         <div class="col-12 col-md-6 p-2">
                             {{-- <a href="{{route('view_Service_provider_profile', $serviceProvider->id) }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">   --}}
-                            <a href="#" class="text-decoration-none text-dark">
+                            {{-- <a href="#" class="text-decoration-none text-dark">
                                 <div class="shadow hcard-200 bg-white d-flex flex-row">
                                     <!-- Image on the left side -->
                                     <img src="{{ asset('assets/bass/' . $base->profile_image) }}"
@@ -187,7 +187,7 @@
                                     <div class="col-8 d-flex flex-column p-4">
                                         <div>
 
-                                            <h5 class="card-title"></h5>
+                                            <h5 class="card-title">{{$base->name}}</h5>
                                             <p class="card-text p-0 m-0 text-small text-muted">
                                             <div class="text-truncate-two-line">
                                                 <i class="fas fa-map-marker-alt me-2"></i>
@@ -211,7 +211,53 @@
                                         </div>
                                     </div>
                                 </div>
-                            </a>
+                            </a> --}}
+                            <div class="d-flex flex-row flex-wrap justify-content-start mb-4">
+                                @foreach ($bases as $base)
+                                    <div class="col-12 col-md-6 p-2">
+                                        <a href="#" class="text-decoration-none text-dark">
+                                            <div class="shadow hcard-200 bg-white d-flex flex-row">
+                                                <!-- Image on the left side -->
+                                                <img src="{{ asset('assets/bass/' . $base->profile_image) }}"
+                                                    class="d-block col-4 object-fit-cover rounded-start" alt="Profile Image">
+                            
+                                                <!-- Text and button on the right side -->
+                                                <div class="col-8 d-flex flex-column p-4">
+                                                    <div>
+                                                        <!-- ID -->
+                                                        <p class="card-text text-muted">
+                                                            <strong>ID:</strong> {{ $base->id }}
+                                                        </p>
+                                                        <!-- Name -->
+                                                        <h5 class="card-title">{{ $base->name }}</h5>
+                                                        <!-- Email -->
+                                                        <p class="card-text text-muted">
+                                                            <strong>Email:</strong> <a href="mailto:{{ $base->email }}" class="text-decoration-none">{{ $base->email }}</a>
+                                                        </p>
+                                                        <!-- Phone -->
+                                                        <div class="d-flex align-items-center mb-2">
+                                                            <i class="fas fa-phone me-2"></i>
+                                                            <a href="tel:{{ $base->phone }}" class="text-decoration-none">{{ $base->phone }}</a>
+                                                        </div>
+                                                        <!-- Address -->
+                                                        <p class="card-text text-muted">
+                                                            <strong>Address:</strong> {{ $base->address }}
+                                                        </p>
+                                                        <!-- WhatsApp Button -->
+                                                        <div class="d-flex justify-content-end mt-2">
+                                                            <a href="https://wa.me/{{ $base->phone }}" target="_blank" 
+                                                                class="btn text-white bg-warning shadow phone-button">
+                                                                <i class="fab fa-whatsapp"></i> WhatsApp
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                            
                             {{-- </a> --}}
                         </div>
                     @endforeach
