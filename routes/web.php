@@ -186,7 +186,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     // Route::get('/addshop', [ShopController::class, 'index'])->name('addshop');
     Route::post('/addbass', [BassController::class, 'addbass'])->name('addbass.store');
     Route::get('/adminAddbass', [BassController::class, 'index'])->name('adminAddbass');
-    Route::get('/viewbass', [BassController::class, 'viewbass'])->name('viewbass');
+    Route::get('/Viewadminbass', [BassController::class, 'Viewadminbass'])->name('Viewadminbass');
     Route::get('/viewbasscategory', [BassController::class, 'viewbasscate'])->name('viewbasscate');
     Route::delete('/deletebasscategory/{id}', [BassController::class, 'deleteBassCategory'])->name('bassCategory.delete');
     Route::delete('/deletebass/{id}', [BassController::class, 'deleteBass'])->name('bass.delete');

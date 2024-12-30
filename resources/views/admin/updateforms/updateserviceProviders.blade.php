@@ -281,7 +281,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputPassword4">Email:</label>
-                                        <input type="email" class="form-control" id="email" name="email" value="{{ $serviceProvider->email }}" placeholder="Email Of The Service Provider" />
+                                        <input type="email" class="form-control" id="email" name="email" value="{{ $serviceProvider->email }}" placeholder="Email Of The Service Provider" required/>
                                     </div>
                                 </div> 
                                 <div class="col-md-6">
@@ -398,10 +398,10 @@
                                     @foreach(json_decode($serviceProvider->directors) as $index => $director)
                                         <tr>
                                           <td>
-                                            <input type="text" name="directors[{{ $index }}][name]" class="form-control" value="{{ $director->name }}" placeholder="Enter Name" required />
+                                            <input type="text" name="directors[{{ $index }}][name]" class="form-control" value="{{ $director->name }}" placeholder="Enter Name"  />
                                           </td>
                                           <td>
-                                            <input type="text" name="directors[{{ $index }}][contact]" class="form-control" value="{{ $director->contact }}" placeholder="Enter Contact Number" required />
+                                            <input type="text" name="directors[{{ $index }}][contact]" class="form-control" value="{{ $director->contact }}" placeholder="Enter Contact Number"  />
                                           </td>
                                           <td>
                                             <button type="button" class="btn btn-danger btn-sm remove-row">Remove</button>
@@ -422,10 +422,10 @@
                                                   const newRow = document.createElement('tr');
                                                   newRow.innerHTML = `
                                                     <td>
-                                                      <input type="text" name="directors[${rowCount}][name]" class="form-control" placeholder="Enter Name" required />
+                                                      <input type="text" name="directors[${rowCount}][name]" class="form-control" placeholder="Enter Name"  />
                                                     </td>
                                                     <td>
-                                                      <input type="text" name="directors[${rowCount}][contact]" class="form-control" placeholder="Enter Contact Number" required />
+                                                      <input type="text" name="directors[${rowCount}][contact]" class="form-control" placeholder="Enter Contact Number"  />
                                                     </td>
                                                     <td>
                                                       <button type="button" class="btn btn-danger btn-sm remove-row">Remove</button>

@@ -99,7 +99,7 @@
                                                     <div class="form-group mb-0">
                                                         <label class="form-label" for="address">Address</label>
                                                         <textarea type="text" class="form-control" name="address" id="address"
-                                                        value="{{ $shop->address }}" placeholder="Address" required></textarea>
+                                                        value="{{ $shop->address }}" placeholder="Address" ></textarea>
                                                         <div class="invalid-feedback">
                                                             Please enter an Address.
                                                         </div>
@@ -159,7 +159,7 @@
                                                             <label class="form-label" for="start_time">Start
                                                                 Time</label>
                                                             <input type="time" class="form-control"
-                                                                name="start_time" id="start_time" value="{{ $shop->start_time }}" required />
+                                                                name="start_time" id="start_time" value="{{ $shop->start_time }}"  />
                                                             <div class="invalid-feedback">
                                                                 Please enter a valid start time.
                                                             </div>
@@ -172,7 +172,7 @@
                                                             <label class="form-label" for="close_time">Close
                                                                 Time</label>
                                                             <input type="time" class="form-control"
-                                                                name="end_time" id="close_time" value="{{ $shop->end_time }}" required />
+                                                                name="end_time" id="close_time" value="{{ $shop->end_time }}"  />
                                                             <div class="invalid-feedback">
                                                                 Please enter a valid close time.
                                                             </div>
@@ -256,7 +256,7 @@
                                                         <div class="control-group form-group">
                                                             <label class="form-label" for="phone_number">Phone Number</label>
                                                             <input type="tel" class="form-control" name="t_number"
-                                                                id="phone_number" placeholder="Phone Number" required />
+                                                                id="phone_number" placeholder="Phone Number"  />
                                                             <div class="invalid-feedback">
                                                                 Please enter a valid phone number.
                                                             </div>
@@ -267,7 +267,7 @@
                                                         <div class="control-group form-group">
                                                             <label class="form-label" for="phone_number">Mobile </label>
                                                             <input type="tel" class="form-control" name="p_number"
-                                                                id="phone_number" value="{{ $shop->p_number }}" placeholder="Phone Number" required />
+                                                                id="phone_number" value="{{ $shop->p_number }}" placeholder="Phone Number"  />
                                                             <div class="invalid-feedback">
                                                                 Please enter a valid phone number.
                                                             </div>
@@ -278,7 +278,7 @@
                                                         <div class="control-group form-group">
                                                             <label class="form-label" for="phone_number">WhatsApp Number</label>
                                                             <input type="tel" class="form-control" name="w_number"
-                                                                id="phone_number" placeholder="Phone Number" required />
+                                                                id="phone_number" placeholder="Phone Number"  />
                                                             <div class="invalid-feedback">
                                                                 Please enter a valid phone number.
                                                             </div>
@@ -334,7 +334,7 @@
                                                         <div class="control-group form-group">
                                                             <label class="form-label" for="shop_name">Shop Name</label>
                                                             <input type="text" class="form-control" name="shop_name1"
-                                                                id="shop_name1" placeholder="Shop Name" required />
+                                                                id="shop_name1" placeholder="Shop Name"  />
                                                             <div class="invalid-feedback">
                                                                 Please enter a valid shop name.
                                                             </div>
@@ -373,7 +373,7 @@
                                                           name="directors[0][name]"
                                                           class="form-control"
                                                           placeholder="Enter Name"
-                                                          required
+                                                         
                                                         />
                                                       </td>
                                                       <td>
@@ -382,7 +382,7 @@
                                                           name="directors[0][contact]"
                                                           class="form-control"
                                                           placeholder="Enter Contact Number"
-                                                          required
+                                                        
                                                         />
                                                       </td>
                                                       <td>
@@ -406,7 +406,7 @@
                                                                         name="directors[${rowCount}][name]"
                                                                         class="form-control"
                                                                         placeholder="Enter Name"
-                                                                        required
+                                                                     
                                                                       />
                                                                     </td>
                                                                     <td>
@@ -415,7 +415,7 @@
                                                                         name="directors[${rowCount}][contact]"
                                                                         class="form-control"
                                                                         placeholder="Enter Contact Number"
-                                                                        required
+                                                                       
                                                                       />
                                                                     </td>
                                                                     <td>

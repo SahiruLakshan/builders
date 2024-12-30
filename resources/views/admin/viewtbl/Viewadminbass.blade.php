@@ -1,7 +1,7 @@
 @extends('admin.sidebar')
 
 @section('content')
-    <h1 style="margin-left:300px; margin-top:20px;">Shop Products Details</h1>
+    <h1 style="margin-left:300px; margin-top:20px;">Bass Details</h1>
 
     <div class="search-bar" style="margin-left:300px; margin-top:20px; width: 800px;">
         <input type="text" id="search-input" class="form-control" placeholder="Search  by Name or ID...">
@@ -15,19 +15,19 @@
 @section('scripts')
 {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
-{{-- <script>
+<script>
     $(document).ready(function() {
-        $(document).on('click', '.pagination a', function(event) {
-            event.preventDefault();
-            var page = $(this).attr('href').split('page=')[1];
-            var query = $('#search-input').val();
-            fetchProducts(page, query);
-        });
+        // $(document).on('click', '.pagination a', function(event) {
+        //     event.preventDefault();
+        //     var page = $(this).attr('href').split('page=')[1];
+        //     var query = $('#search-input').val();
+        //     fetchProducts(page, query);
+        // });
 
-        $('#search-input').on('keyup', function() {
-            var query = $(this).val();
-            fetchProducts(1, query); 
-        });
+        // $('#search-input').on('keyup', function() {
+        //     var query = $(this).val();
+        //     fetchProducts(1, query); 
+        // });
         // Fetch services data via AJAX
         function fetchServices(page, query) {
                     $.ajax({
@@ -43,5 +43,5 @@
                     });
                 }
     });
-</script> --}}
+</script>
 @endsection

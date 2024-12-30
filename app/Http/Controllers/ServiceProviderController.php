@@ -51,7 +51,7 @@ class ServiceProviderController extends Controller
                 'mobile' => 'required|string|max:15',
                 'whatsapp' => 'nullable|string|max:15',
                 'companyName' => 'required|string|max:255',
-                'businessRegNo' => 'required|string|max:100',
+                'businessRegNo' => 'nullable|string|max:100',
                 'noOfEmp' => 'required|integer',
                 'employeesQualification' => 'nullable|string|max:255',
                 'maxProjectValue' => 'nullable|string|max:50',
@@ -98,7 +98,7 @@ class ServiceProviderController extends Controller
                 $file->move(public_path('assets/serviceprovider'), $filename); // Move the file to the desired directory
                 $serviceProvider->registrations = 'assets/serviceprovider/' . $filename; // Save the relative path
             }
-    
+
             // Handle certifications upload
             if ($request->hasFile('certifications')) {
                 $file = $request->file('certifications');
@@ -155,11 +155,11 @@ class ServiceProviderController extends Controller
 
     public function updateserviceprovider($id)
     {
-       $serviceProvider = ServiceProvider::find($id);
-       $selecteddistrict = District::where('dis_id', $serviceProvider->district_id)->first();
-       $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
-       $services = Service::select('id', 'servicename')->get();
-       return view('admin.updateforms.updateserviceProviders', compact('serviceProvider','dictricts','services','selecteddistrict'));
+        $serviceProvider = ServiceProvider::find($id);
+        $selecteddistrict = District::where('dis_id', $serviceProvider->district_id)->first();
+        $dictricts = District::with('city')->select('dis_id', 'dis_name')->get();
+        $services = Service::select('id', 'servicename')->get();
+        return view('admin.updateforms.updateserviceProviders', compact('serviceProvider', 'dictricts', 'services', 'selecteddistrict'));
     }
 
     public function editserviceprovider(Request $request, $id)

@@ -75,7 +75,7 @@
                                             <div class="mb-3">
                                                 <label for="fullName" class="form-label">Full Name</label>
                                                 <input type="text" class="form-control" id="fullName" name="p_Name"
-                                                    placeholder="Enter full name" required>
+                                                    placeholder="Enter full name" >
                                             </div>
                                         </div>
                                     </div>
@@ -83,7 +83,7 @@
                                 <div class="mb-3  d-flex">
                                     <label for="profileImage" class="form-label">Profile Image:</label>
                                     <input type="file" id="profileImage" name="profileImage" accept="image/*"
-                                        onchange="previewImage()" required>
+                                        onchange="previewImage()" >
                                     <div class="preview-box" id="imagePreview">
                                         <span>Image Preview</span>
                                     </div>
@@ -101,7 +101,7 @@
                                         <div class="form-group">
                                             <label for="email">Email Address</label>
                                             <input type="text" class="form-control" id="email" name="p_email"
-                                                placeholder="Enter Email Address" />
+                                                placeholder="Enter Email Address"  required/>
                                         </div>
                                     </div>
 
@@ -166,7 +166,7 @@
                                             <div class="mb-3">
                                                 <label for="jobTitle" class="form-label">Job Title/Role</label>
                                                 <input type="text" class="form-control" id="jobTitle"
-                                                    name="jobTitle" placeholder="e.g., Architect, Engineer" required>
+                                                    name="jobTitle" placeholder="e.g., Architect, Engineer" >
                                             </div>
                                         </div>
                                     </div>
@@ -175,7 +175,7 @@
                                             <div class="mb-3">
                                                 <label for="experienceLevel" class="form-label">Experience Level</label>
                                                 <select class="form-select" id="experienceLevel" name="experienceLevel"
-                                                    required>
+                                                    >
                                                     <option value="" disabled selected>Select experience level
                                                     </option>
                                                     <option value="Junior">Junior</option>
@@ -249,7 +249,7 @@
                                 <div class="col">
                                     <div class="mb-3 d-flex">
                                         <label for="profileImage" class="form-label">Company Logo:</label>
-                                        <input type="file" id="providerImage" name="providerImage" accept="image/*" onchange="previewImage()" required>
+                                        <input type="file" id="providerImage" name="providerImage" accept="image/*" onchange="previewImage()" >
                                         <div class="preview-box" id="imagePreview">
                                           <span>Image Preview</span>
                                         </div>
@@ -331,7 +331,7 @@
                                           name="directors[0][name]"
                                           class="form-control"
                                           placeholder="Enter Name"
-                                          required
+                                          
                                         />
                                       </td>
                                       <td>
@@ -340,7 +340,7 @@
                                           name="directors[0][contact]"
                                           class="form-control"
                                           placeholder="Enter Contact Number"
-                                          required
+                                          
                                         />
                                       </td>
                                       <td>
@@ -366,7 +366,7 @@
                                                         name="directors[${rowCount}][name]"
                                                         class="form-control"
                                                         placeholder="Enter Name"
-                                                        required
+                                                        
                                                       />
                                                     </td>
                                                     <td>
@@ -375,7 +375,7 @@
                                                         name="directors[${rowCount}][contact]"
                                                         class="form-control"
                                                         placeholder="Enter Contact Number"
-                                                        required
+                                                        
                                                       />
                                                     </td>
                                                     <td>
