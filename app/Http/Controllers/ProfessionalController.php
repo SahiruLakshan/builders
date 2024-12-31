@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\City;
 use App\Models\District;
-use App\Models\Service;
+
 use App\Models\ProfessionCategory;
 use App\Models\Professional;
 use Illuminate\Support\Facades\File;
@@ -42,7 +42,7 @@ class ProfessionalController extends Controller
     public function professionalForm(Request $request)
     {
         $districts = District::with('city')->select('dis_id', 'dis_name')->get();
-        $services = Service::select('id', 'servicename')->get();
+        $professionalsCategory = ProfessionCategory::select('id', 'servicename')->get();
         return view('webpages.professionalsform', compact('districts', 'services'));
     }
 
