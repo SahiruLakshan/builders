@@ -56,11 +56,13 @@
                     <span>
                         
                         <a href="{{ url('getprofessionals/' . $professional->id) }}" class="btn btn-info btn-sm">Edit</a>
-                        <form action="" method="POST" style="display:inline;">
+                        {{-- <form action="" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                        </form>
+                        </form> --}}
+                        <a href="{{ route('deleteprofessional', $professional->id) }}" class="btn btn-danger btn-sm">Delete</a>
+
                     </span>
                 </td>
                 <td>

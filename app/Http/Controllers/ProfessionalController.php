@@ -231,4 +231,13 @@ class ProfessionalController extends Controller
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
+    public function destroy($id)
+    {
+        $professional = Professional::findOrFail($id); // Fetch the record by ID
+        $professional->delete(); // Delete the record
+
+        return redirect()->back()->with('success', 'Professional deleted successfully!');
+    }
+
+
 }

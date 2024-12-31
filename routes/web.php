@@ -173,6 +173,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/professionals', [ProfessionalController::class, 'viewpro'])->name('viewprofessionals');
     Route::get('/getprofessionals/{id}', [ProfessionalController::class, 'getprofessionals'])->name('getprofessionals');
     Route::put('/updateprofessionals/{id}', [ProfessionalController::class, 'updateprofessionals'])->name('updateprofessionals');
+    // Route::get('/deleteprofessionals/{id}', [ProfessionalController::class, 'destroy'])->name('deleteprofessionals');
+    Route::get('/deleteprofessional/{id}', [ProfessionalController::class, 'destroy'])->name('deleteprofessional');
+
     Route::get('/addprofessionalsCategory', [ProfessionalCategoryController::class, 'index'])->name('addprofessionalsCategory');
     Route::post('/addprofessioncateory', [ProfessionalCategoryController::class, 'addprofessionals'])->name('viewprofessionalsCategory');
     Route::get('/viewprofessionalsCategory', [ProfessionalCategoryController::class, 'view'])->name('categories.store');
