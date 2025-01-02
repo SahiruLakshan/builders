@@ -10,7 +10,8 @@ class Professional extends Model
 
     use HasFactory;
 
-    protected $table='professional';
+    protected $table = 'professional';
+
 
     protected $fillable = [
         'professional_number',
@@ -32,5 +33,5 @@ class Professional extends Model
         'certifications',
         'certificates',
         'license_number',
-    ];    
+    ];
 }
